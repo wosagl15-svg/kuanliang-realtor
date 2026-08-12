@@ -37,9 +37,18 @@ export async function isCurrentUserAdmin(): Promise<boolean> {
     return true;
   }
 
-  const { email } = await getAdminCheckArgs();
-  if (!email) return false;
-  const list = adminEmails();
-  if (list.length === 0) return false;
-  return list.includes(email.toLowerCase());
+  // 🔴 2026-08-12：auth() 在「AUTH_GOOGLE_ID / SECRET 沒設」時會拋錯，
+  //    導致整個 /admin/* 回 500 白畫面，看不出是「沒登入」還是「系統壞了」。
+  //    這裡吞掉例外並回 false —— 失敗一律當成「沒權限」，畫面顯示請登入。
+  //    fail closed：拋錯時絕不放行。
+  try {
+    const { email } = await getAdminCheckArgs();
+    if (!email) return false;
+    const list = adminEmails();
+    if (list.length === 0) return false;
+    return list.includes(email.toLowerCase());
+  } catch (e) {
+    console.error("[admin-check] auth 失敗（多半是 AUTH_GOOGLE_* 未設定）:", e);
+    return false;
+  }
 }
