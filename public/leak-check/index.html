@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>漏水屋況檢查清單｜海線房仲冠良</title>
+<meta name="description" content="看屋現場逐項打勾，32 項漏水與屋況檢查。含最準的兩招：看浴室隔壁那面牆、直接敲鄰居的門問。買房前先自保，別交屋才後悔。">
+<meta property="og:title" content="漏水屋況檢查清單｜海線房仲冠良"><meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#f5f0e8;--cream-2:#f7f3ea;--navy:#1c2733;--gold:#c8973f;--gold-lt:#e0b566;--ink:#2b2b2b;--muted:#6f6a62;--line:rgba(28,39,51,.12)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--cream);color:var(--ink);font-family:"Noto Sans TC",system-ui,"Microsoft JhengHei",sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+.wrap{max-width:800px;margin:0 auto;padding:0 20px}
+header{background:var(--navy);color:var(--cream);padding:44px 0 34px}
+.eyebrow{font-size:12.5px;letter-spacing:.22em;color:var(--gold-lt);font-weight:500;margin-bottom:10px}
+h1{font-family:"DM Serif Display","Noto Sans TC",serif;font-size:clamp(26px,5vw,38px);font-weight:400}
+h1 span{color:var(--gold-lt)}
+.lede{margin-top:12px;color:rgba(245,240,232,.82);font-size:15px;max-width:34em}
+.progress{position:sticky;top:0;z-index:20;background:rgba(245,240,232,.95);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+.pin{display:flex;align-items:center;gap:14px;max-width:800px;margin:0 auto;padding:11px 20px}
+.track{flex:1;height:7px;background:rgba(28,39,51,.1);border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-lt));transition:width .3s}
+.count{font-size:.85rem;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.count b{color:var(--navy)}
+.reset{background:none;border:1px solid var(--line);color:var(--muted);border-radius:99px;padding:4px 12px;font-size:.78rem;cursor:pointer;font-family:inherit}
+main{padding:30px 0 10px}
+.card{background:var(--navy);color:var(--cream);border-radius:16px;margin-bottom:22px;overflow:hidden}
+.card-head{display:flex;align-items:baseline;gap:12px;padding:20px 24px 4px}
+.step{font-family:"DM Serif Display",serif;font-size:1.5rem;color:var(--gold)}
+.card-head h2{font-size:1.1rem;font-weight:700}
+.card-body{padding:6px 24px 20px}
+.item{display:flex;gap:13px;padding:12px 0;border-top:1px solid rgba(245,240,232,.1);cursor:pointer}
+.item:first-child{border-top:none}
+.box{flex:none;width:22px;height:22px;margin-top:2px;border:1.5px solid rgba(224,181,102,.6);border-radius:6px;display:grid;place-items:center;transition:.15s}
+.box:after{content:"✓";color:var(--navy);font-weight:800;font-size:13px;opacity:0;transform:scale(.5);transition:.15s}
+.item.done .box{background:var(--gold);border-color:var(--gold)}
+.item.done .box:after{opacity:1;transform:scale(1)}
+.item.done .txt{opacity:.45;text-decoration:line-through}
+.txt{font-size:.97rem}
+.txt em{display:block;font-style:normal;font-size:.82rem;color:rgba(245,240,232,.6);margin-top:2px}
+.note{background:var(--cream-2);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:16px 18px;margin-bottom:22px}
+.note h3{font-size:.95rem;color:var(--navy);margin-bottom:6px}
+.note p{font-size:.9rem;color:var(--muted)}
+.cta{background:var(--gold);border-radius:16px;padding:24px;text-align:center;color:#3a2a0c;margin:6px 0 30px}
+.cta a{display:inline-block;background:var(--navy);color:var(--cream);text-decoration:none;padding:12px 26px;border-radius:999px;font-weight:700;margin-top:10px}
+footer{border-top:1px solid var(--line);padding:24px 0 40px;font-size:.8rem;color:var(--muted)}
+footer b{color:var(--navy)}
+@media print{.progress,.cta,.reset{display:none}.card{background:#fff;color:#000;border:1px solid #999}.step{color:#000}.item.done .txt{text-decoration:none;opacity:1}}
+</style>
+</head>
+<body>
+<a href="/" style="position:fixed;top:12px;left:12px;z-index:99999;background:#16283f;color:#fff;padding:9px 15px;border-radius:22px;font:600 14px/1 'Microsoft JhengHei',sans-serif;text-decoration:none;box-shadow:0 3px 10px rgba(0,0,0,.3)">← 回首頁</a>
+<header><div class="wrap">
+  <p class="eyebrow">看屋必備工具</p>
+  <h1>漏水屋況<span>檢查清單</span></h1>
+  <p class="lede">現場一項一項勾，32 項幫你把最容易被藏起來的屋況問題找出來。少看一項，可能就是交屋後的一場惡夢。</p>
+</div></header>
+<div class="progress"><div class="pin">
+  <div class="track"><div class="fill" id="fill"></div></div>
+  <div class="count"><b id="done">0</b> / <span id="total">0</span> 項</div>
+  <button class="reset" id="reset">重來</button>
+</div></div>
+<main class="wrap">
+  <section class="card"><div class="card-head"><div class="step">01</div><h2>牆面、天花板、地板</h2></div><div class="card-body"><ul style="list-style:none">
+    <li class="item"><span class="box"></span><span class="txt">天花板、牆角有沒有水漬、變色、暈開的黃斑<em>剛粉刷過、局部特別白，反而要提高警覺</em></span></li>
+    <li class="item"><span class="box"></span><span class="txt">用手摸牆面有沒有粉化、剝落、壁癌白色結晶</span></li>
+    <li class="item"><span class="box"></span><span class="txt">牆壁踢腳板、窗框下緣有沒有發霉、發黑</span></li>
+    <li class="item"><span class="box"></span><span class="txt">地板磁磚有沒有膨拱、空心（用硬幣敲聽聲音）</span></li>
+    <li class="item"><span class="box"></span><span class="txt">木地板踩起來有沒有翹起、軟腳、異味</span></li>
+    <li class="item"><span class="box"></span><span class="txt">聞聞看有沒有揮之不去的霉味、潮味</span></li>
+  </ul></div></section>
+
+  <div class="note"><h3>最準的兩招</h3><p><b>一、看浴室隔壁那面牆：</b>漏水最常從浴室滲到隔壁房間，那面牆的下半部要特別看。<br><b>二、直接敲鄰居的門問：</b>樓上樓下、隔壁住戶最知道這間有沒有漏過、修過。花五分鐘，勝過看一小時。</p></div>
+
+  <section class="card"><div class="card-head"><div class="step">02</div><h2>浴室、廚房、給排水</h2></div><div class="card-body"><ul style="list-style:none">
+    <li class="item"><span class="box"></span><span class="txt">浴室地面、牆面磁磚縫有沒有發霉、矽利康發黑</span></li>
+    <li class="item"><span class="box"></span><span class="txt">打開所有水龍頭、蓮蓬頭，水量、水壓夠不夠</span></li>
+    <li class="item"><span class="box"></span><span class="txt">馬桶沖水順不順、有沒有回堵、底座有沒有滲水</span></li>
+    <li class="item"><span class="box"></span><span class="txt">地板排水孔排水順不順、會不會積水</span></li>
+    <li class="item"><span class="box"></span><span class="txt">洗手台、流理台下方櫃內有沒有水漬、潮濕、發霉</span></li>
+    <li class="item"><span class="box"></span><span class="txt">熱水器位置有沒有裝在通風處<em>裝在室內或陽台封閉處，有一氧化碳中毒風險</em></span></li>
+    <li class="item"><span class="box"></span><span class="txt">廚房抽油煙機、排水、瓦斯管線有沒有問題</span></li>
+  </ul></div></section>
+
+  <section class="card"><div class="card-head"><div class="step">03</div><h2>窗戶、陽台、外牆</h2></div><div class="card-body"><ul style="list-style:none">
+    <li class="item"><span class="box"></span><span class="txt">窗框四周、窗台有沒有滲水痕、發霉<em>下雨天看最準，可以問能不能雨天再看一次</em></span></li>
+    <li class="item"><span class="box"></span><span class="txt">窗戶開關順不順、關起來會不會漏風、有沒有變形</span></li>
+    <li class="item"><span class="box"></span><span class="txt">陽台地面、女兒牆有沒有裂縫、滲水、防水脫落</span></li>
+    <li class="item"><span class="box"></span><span class="txt">外牆磁磚有沒有剝落、鼓起、裂縫</span></li>
+    <li class="item"><span class="box"></span><span class="txt">頂樓戶要特別看天花板與屋頂防水</span></li>
+  </ul></div></section>
+
+  <section class="card"><div class="card-head"><div class="step">04</div><h2>結構、管線、公共區</h2></div><div class="card-body"><ul style="list-style:none">
+    <li class="item"><span class="box"></span><span class="txt">樑柱、牆面有沒有明顯裂縫（尤其 45 度斜裂、貫穿裂）<em>結構性裂縫要特別小心，必要時請專業技師鑑定</em></span></li>
+    <li class="item"><span class="box"></span><span class="txt">電箱、插座數量夠不夠、有沒有跳電、老舊裸線</span></li>
+    <li class="item"><span class="box"></span><span class="txt">總電量、是否有獨立電表、是否需重拉管線</span></li>
+    <li class="item"><span class="box"></span><span class="txt">看社區公共區：頂樓、地下室、走道有沒有漏水滲水</span></li>
+    <li class="item"><span class="box"></span><span class="txt">問管委會：這棟有沒有漏水、壁癌、外牆整修的歷史</span></li>
+    <li class="item"><span class="box"></span><span class="txt">確認有沒有頂樓加蓋、陽台外推等違建</span></li>
+  </ul></div></section>
+
+  <section class="card"><div class="card-head"><div class="step">05</div><h2>環境與時段</h2></div><div class="card-body"><ul style="list-style:none">
+    <li class="item"><span class="box"></span><span class="txt">不同時段各看一次：白天採光、晚上音量、假日人車</span></li>
+    <li class="item"><span class="box"></span><span class="txt">下雨過後看一次，最能看出滲漏與周邊排水</span></li>
+    <li class="item"><span class="box"></span><span class="txt">海線靠海側注意鹽害：鐵件、鋁窗、外牆鏽蝕</span></li>
+    <li class="item"><span class="box"></span><span class="txt">周邊有沒有嫌惡設施（宮廟、工廠、電塔、加油站）</span></li>
+    <li class="item"><span class="box"></span><span class="txt">停車實際狀況、社區車位大小</span></li>
+    <li class="item"><span class="box"></span><span class="txt">要求賣方於不動產說明書據實揭露漏水、壁癌、凶宅等事項</span></li>
+    <li class="item"><span class="box"></span><span class="txt">屋況現況全程拍照或錄影存證，含日期</span></li>
+    <li class="item"><span class="box"></span><span class="txt">重大瑕疵可於契約約定修繕責任、保固或解約條件</span></li>
+  </ul></div></section>
+
+  <div class="cta">看到有問題、或想找人陪你一起看屋把關？<br><a href="https://lin.ee/QyQmggG" target="_blank" rel="noopener">加 LINE 找冠良 →</a></div>
+</main>
+<script>
+(function(){
+  var items=[].slice.call(document.querySelectorAll('.item'));
+  var fill=document.getElementById('fill'),doneEl=document.getElementById('done');
+  document.getElementById('total').textContent=items.length;
+  function upd(){var n=document.querySelectorAll('.item.done').length;doneEl.textContent=n;fill.style.width=(n/items.length*100)+'%';}
+  items.forEach(function(el){el.addEventListener('click',function(){el.classList.toggle('done');upd();});});
+  document.getElementById('reset').addEventListener('click',function(){items.forEach(function(el){el.classList.remove('done');});upd();});
+  upd();
+})();
+</script>
+</body>
+</html>

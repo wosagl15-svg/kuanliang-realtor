@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>賣房前你必須知道的事｜海線房仲冠良</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #f5f0e8;
+    --navy: #0f1b2d;
+    --navy-card: #ffffff;
+    --amber: #f5a623;
+    --amber-light: #fbbf47;
+    --text: #1a1a2e;
+    --muted: #666677;
+    --line-green: #06c755;
+  }
+
+  body {
+    background: #f5f0e8;
+    color: #1a1a2e;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--cream);
+    color: var(--navy);
+    padding: 64px 24px 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: #f5a623;
+    opacity: 0.15;
+  }
+  .hero-eyebrow {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--amber);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 6vw, 48px);
+    color: var(--navy);
+    line-height: 1.25;
+    margin-bottom: 16px;
+  }
+  .hero h1 span {
+    color: var(--amber);
+  }
+  .hero-sub {
+    font-size: 15px;
+    color: #3a3a4a;
+    max-width: 540px;
+    margin: 0 auto 32px;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #f5f0e8;
+    color: var(--cream);
+    font-size: 13px;
+    padding: 8px 18px;
+    border-radius: 100px;
+  }
+  .hero-badge .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--amber);
+    flex-shrink: 0;
+  }
+
+  /* NAV TABS */
+  .tab-nav {
+    display: flex;
+    overflow-x: auto;
+    gap: 0;
+    background: #f5f0e8;
+    border-bottom: 1px solid #e0d8c8;
+    scrollbar-width: none;
+  }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    flex-shrink: 0;
+    padding: 14px 20px;
+    font-size: 13px;
+    font-family: 'Noto Sans TC', sans-serif;
+    color: #5a6070;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all .2s;
+    white-space: nowrap;
+  }
+  .tab-btn.active {
+    color: var(--amber);
+    border-bottom-color: var(--amber);
+  }
+  .tab-btn:hover:not(.active) { color: #1a1a2e; }
+
+  /* SECTIONS */
+  .section {
+    display: none;
+    padding: 40px 20px 60px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .section.active { display: block; }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+  .section-lead {
+    font-size: 14px;
+    color: #5a6070;
+    margin-bottom: 28px;
+    line-height: 1.7;
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--navy-card);
+    border: 1px solid #e8e0d0;
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 16px;
+  }
+  .card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-icon {
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    background: rgba(245,166,35,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .card p {
+    font-size: 14px;
+    color: #555565;
+    line-height: 1.8;
+  }
+  .card ul {
+    list-style: none;
+    font-size: 14px;
+    color: #555565;
+  }
+  .card ul li {
+    padding: 5px 0;
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.7;
+  }
+  .card ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--amber);
+    font-size: 12px;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight {
+    background: rgba(245,166,35,0.10);
+    border-left: 3px solid var(--amber);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 20px;
+    font-size: 14px;
+    color: #c8b890;
+    margin-bottom: 16px;
+    line-height: 1.8;
+  }
+  .highlight strong { color: var(--amber-light); }
+
+  /* TAX TABLE */
+  .tax-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 10px;
+  }
+  .tax-table th {
+    background: #0f1b2d;
+    color: #ffffff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 500;
+    border-bottom: 1px solid #e8e0d0;
+  }
+  .tax-table td {
+    padding: 10px 14px;
+    color: #555565;
+    border-bottom: 1px solid #e8e0d0;
+    vertical-align: top;
+  }
+  .tax-table tr:last-child td { border-bottom: none; }
+  .tax-rate { color: var(--amber-light); font-weight: 700; }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #e8e0d0;
+    font-size: 14px;
+    color: #555565;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .check-box {
+    width: 20px; height: 20px;
+    border-radius: 5px;
+    border: 1.5px solid #c8bea8;
+    flex-shrink: 0;
+    margin-top: 2px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .2s;
+  }
+  .check-box.checked {
+    background: var(--amber);
+    border-color: var(--amber);
+  }
+  .check-box.checked::after {
+    content: '✓';
+    font-size: 11px;
+    color: var(--navy);
+    font-weight: 700;
+  }
+  .checklist li.done .check-label { text-decoration: line-through; opacity: 0.4; }
+  .check-label { line-height: 1.6; cursor: pointer; }
+
+  /* STEP FLOW */
+  .steps { position: relative; padding-left: 36px; }
+  .steps::before {
+    content: '';
+    position: absolute;
+    left: 11px; top: 8px; bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, #f5a623, #f5a62333);
+  }
+  .step {
+    position: relative;
+    margin-bottom: 28px;
+  }
+  .step::before {
+    content: '';
+    position: absolute;
+    left: -29px; top: 4px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--amber);
+    border: 2px solid #f5f0e8;
+    box-shadow: 0 0 0 3px rgba(212,80,10,0.15);
+  }
+  .step-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 6px;
+  }
+  .step-desc {
+    font-size: 13px;
+    color: #66666a;
+    line-height: 1.7;
+  }
+
+  /* CTA */
+  .cta-block {
+    background: #ffffff;
+    border-radius: 16px; border: 1px solid #e8e0d0;
+    padding: 32px 28px;
+    text-align: center;
+    margin-top: 40px;
+  }
+  .cta-block h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .cta-block p {
+    font-size: 13px;
+    color: #3a3a4a;
+    margin-bottom: 20px;
+  }
+  .cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .btn-line {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: var(--line-green);
+    color: #fff;
+    font-size: 14px; font-weight: 700;
+    padding: 11px 22px;
+    border-radius: 100px;
+    text-decoration: none;
+  }
+  .btn-call {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: #f5f0e8;
+    color: var(--amber);
+    font-size: 14px; font-weight: 700;
+    padding: 11px 22px;
+    border-radius: 100px;
+    text-decoration: none;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 32px 20px;
+    font-size: 12px;
+    color: #8a8070;
+    border-top: 1px solid #e8e0d0;
+  }
+
+  @media(max-width:480px) {
+    .hero { padding: 48px 20px 40px; }
+    .card { padding: 18px; }
+  }
+</style>
+</head>
+<body>
+<a href="/" style="position:fixed;top:12px;left:12px;z-index:99999;background:#16283f;color:#fff;padding:9px 15px;border-radius:22px;font:600 14px/1 'Microsoft JhengHei',sans-serif;text-decoration:none;box-shadow:0 3px 10px rgba(0,0,0,.3)">← 回首頁</a>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">賣房全攻略</div>
+  <h1>賣房前你<span>必須知道</span>的事</h1>
+  <p class="hero-sub">從定價到交屋，每個環節都可能影響你的口袋。這份指南幫你看清楚，少走冤枉路。</p>
+  <div class="hero-badge">
+    <span class="dot"></span>
+    海線房仲冠良｜懂你又懂房
+  </div>
+</div>
+
+<!-- TABS -->
+<nav class="tab-nav" id="tabNav">
+  <button class="tab-btn active" data-tab="price">💰 開價策略</button>
+  <button class="tab-btn" data-tab="tax">📋 稅費試算</button>
+  <button class="tab-btn" data-tab="docs">📁 必備文件</button>
+  <button class="tab-btn" data-tab="process">🔑 出售流程</button>
+  <button class="tab-btn" data-tab="mistakes">⚠️ 常見錯誤</button>
+</nav>
+
+<!-- SECTION: 開價策略 -->
+<div class="section active" id="tab-price">
+  <div class="section-title">開價策略</div>
+  <p class="section-lead">開太高嚇跑買方，開太低自己虧。定價是賣房成敗的第一關。</p>
+
+  <div class="highlight">
+    <strong>海線行情提醒：</strong>沙鹿、清水、梧棲近年成交單價差異可達 15–25%，同一條街不同棟結果天差地遠。開價前一定要看「成交價」，不是「掛牌價」。
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-icon">📊</span>如何找到合理開價區間</div>
+    <ul>
+      <li>查詢實價登錄近半年同社區或同路段成交紀錄</li>
+      <li>比較條件：樓層、屋齡、有無車位、裝潢狀況</li>
+      <li>市場熱度判斷：同社區掛牌數量多寡</li>
+      <li>開價通常比預期成交價高 5–10%，保留談判空間</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-icon">⏱️</span>掛牌時間與降價時機</div>
+    <ul>
+      <li>掛牌後 2 週沒有帶看：廣告曝光或開價有問題</li>
+      <li>帶看 5 組以上都沒出價：多半是價格問題</li>
+      <li>建議每 3–4 週評估一次，小幅調整比一次大降好</li>
+      <li>避免來回反覆調整，讓買方覺得屋主「很急」</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-icon">🏠</span>影響定價的關鍵因素</div>
+    <ul>
+      <li>樓層：一樓與頂樓通常較低，2–4 樓電梯大樓最搶手</li>
+      <li>朝向：東北向或西曬明顯的物件需讓價</li>
+      <li>屋況：漏水、壁癌、設備老舊需提前估修繕費反映</li>
+      <li>法定停車位 vs 自設車位：市場認定價值差很多</li>
+      <li>管理費金額與社區管理品質</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SECTION: 稅費試算 -->
+<div class="section" id="tab-tax">
+  <div class="section-title">賣房稅費一覽</div>
+  <p class="section-lead">很多屋主算完才發現「賺的沒有想像中多」。提前算清楚才不會措手不及。</p>
+
+  <div class="card">
+    <div class="card-title"><span class="card-icon">🏛️</span>房地合一稅（2.0）</div>
+    <p style="margin-bottom:12px;">2021年7月起適用，以「賣價 − 買價 − 相關費用」為課稅所得。</p>
+    <table class="tax-table">
+      <tr><th>持有期間</th><th>適用對象</th><th>稅率</th></tr>
+      <tr><td>2 年以內</td><td>個人</td><td class="tax-rate">45%</td></tr>
+      <tr><td>2–5 年</td><td>個人</td><td class="tax-rate">35%</td></tr>
+      <tr><td>5–10 年</td><td>個人</td><td class="tax-rate">20%</td></tr>
+      <tr><td>10 年以上</td><td>個人</td><td class="tax-rate">15%</td></tr>
+      <tr><td>自住滿 6 年</td><td>符合條件者</td><td class="tax-rate">免稅（上限400萬）</td></tr>
+    </table>
+  </div>
+
+  <div class="highlight">
+    <strong>自住免稅條件：</strong>本人、配偶或未成年子女設籍，且持有並居住滿 6 年，出售前 6 年內無出租或營業使用，符合者售屋所得 400 萬以內免稅。
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-icon">💸</span>其他賣方費用</div>
+    <ul>
+      <li>仲介服務費：成交價 × 4%（依合約約定）</li>
+      <li>土地增值稅：依公告現值增幅計算，自用住宅優惠稅率 10%</li>
+      <li>財產交易所得稅：若不適用房地合一，舊制仍需申報</li>
+      <li>塗銷抵押權費：有設定貸款需辦理塗銷，約 NT$3,000–6,000</li>
+      <li>搬遷費、修繕費：視屋況而定</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-icon">📉</span>可扣除的成本費用</div>
+    <ul>
+      <li>當初買入價格（含契稅、代書費、仲介費）</li>
+      <li>持有期間重大裝修費用（需有收據）</li>
+      <li>本次出售的仲介費、代書費、廣告費</li>
+      <li>土地漲價總數額（已繳土增稅可扣）</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SECTION: 必備文件 -->
+<div class="section" id="tab-docs">
+  <div class="section-title">賣房必備文件</div>
+  <p class="section-lead">文件備齊，流程才跑得順。點擊項目可打勾確認。</p>
+
+  <div class="card">
+    <div class="card-title"><span class="card-icon">📄</span>屋主身分文件</div>
+    <ul class="checklist" id="cl-identity">
+      <li><span class="check-box" onclick="toggle(this)"></span><span class="check-label">身分證正反面影本</span></li>
+      <li><span class="check-box" onclick="toggle(this)"></span><span class="check-label">印鑑章 + 印鑑證明（出售時使用）</span></li>
+      <li><span class="check-box" onclick="toggle(this)"></span><span class="check-label">若有共有人：全體共有人同意書或授權書</span></li>
+      <li><span class="check-box" onclick="toggle(this)"></span><span class="check-label">若為繼承取得：遺產稅繳清（或免稅）證明</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-icon">🏠</span>不動產相關文件</div>
+    <ul class="checklist" id="cl-property">
+      <li><span class="check-box" onclick="toggle(this)"></span><span class="check-label">土地及建物所有權狀正本</span></li>
+      <li><span class="check-box" onclick="toggle(this)"></span><span class="check-label">房屋稅單（近期）</span></li>
+      <li><span class="check-box" onclick="toggle(this)"></span><span class="check-label">地價稅繳納證明</span></li>
+      <li><span class="check-box" onclick="toggle(this)"></span><span class="check-label">管理費繳納收據（社區大樓）</span></li>
+      <li><span class="check-box" onclick="toggle(this)"></span><span class="check-label">停車位使用權狀或分管協議（如有）</span></li>
+      <li><span class="check-box" onclick="toggle(this)"></span><span class="check-label">建物測量成果圖 / 地籍謄本（代書協助調閱）</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-icon">🏦</span>貸款相關（有設定者）</div>
+    <ul class="checklist" id="cl-loan">
+      <li><span class="check-box" onclick="toggle(this)"></span><span class="check-label">貸款銀行聯絡窗口與剩餘金額確認</span></li>
+      <li><span class="check-box" onclick="toggle(this)"></span><span class="check-label">確認提前還款違約金規定</span></li>
+      <li><span class="check-box" onclick="toggle(this)"></span><span class="check-label">抵押權塗銷所需文件（銀行提供）</span></li>
+    </ul>
+  </div>
+
+  <div class="highlight">
+    <strong>溫馨提示：</strong>權狀遺失可向地政事務所申請補發，約需 2–3 週。建議提早確認，避免影響簽約時程。
+  </div>
+</div>
+
+<!-- SECTION: 出售流程 -->
+<div class="section" id="tab-process">
+  <div class="section-title">出售完整流程</div>
+  <p class="section-lead">從委託到交屋，完整走完約需 2–3 個月。提早規劃搬遷與資金安排。</p>
+
+  <div class="card">
+    <div class="steps">
+      <div class="step">
+        <div class="step-title">① 市場評估 & 委託簽約</div>
+        <div class="step-desc">仲介到場勘屋，提供行情評估報告，確認委託方式（專任或一般）、委託期間、服務費率，簽署委託銷售契約書。</div>
+      </div>
+      <div class="step">
+        <div class="step-title">② 物件曝光 & 帶看期</div>
+        <div class="step-desc">照片拍攝、平台上架（、591、我家網等），開始帶看。建議保持屋況整潔，配合帶看時間。</div>
+      </div>
+      <div class="step">
+        <div class="step-title">③ 買方出價 & 議價</div>
+        <div class="step-desc">買方提出要約書，屋主確認是否接受或反價。此階段需謹慎回應，避免讓買方判斷底價。</div>
+      </div>
+      <div class="step">
+        <div class="step-title">④ 簽訂買賣契約</div>
+        <div class="step-desc">雙方合意後，由代書安排簽約。買方支付簽約款（通常 10–15%），確認交屋條件、點交清單。</div>
+      </div>
+      <div class="step">
+        <div class="step-title">⑤ 用印 & 完稅</div>
+        <div class="step-desc">雙方到代書事務所用印，繳納相關稅費（土增稅、契稅由買方繳），取得完稅證明。</div>
+      </div>
+      <div class="step">
+        <div class="step-title">⑥ 銀行對保 & 撥款</div>
+        <div class="step-desc">買方辦理貸款對保，銀行審核通過後安排撥款日期。賣方此時辦理貸款清償與抵押塗銷。</div>
+      </div>
+      <div class="step">
+        <div class="step-title">⑦ 交屋 & 尾款結清</div>
+        <div class="step-desc">雙方依點交清單確認屋況，移交鑰匙、權狀、相關文件，賣方收取尾款，仲介費同步結清。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <strong>時間軸參考：</strong>委託到簽約平均 4–8 週，簽約到交屋約 45–60 天（依貸款撥款速度而定）。若有租客，需提前協調搬遷時間。
+  </div>
+</div>
+
+<!-- SECTION: 常見錯誤 -->
+<div class="section" id="tab-mistakes">
+  <div class="section-title">賣方常見的 7 個錯誤</div>
+  <p class="section-lead">這些坑很多人踩過，看完幫你省錢省時間。</p>
+
+  <div class="card">
+    <div class="card-title"><span class="card-icon">❌</span>錯誤一：憑感覺開價</div>
+    <p>「鄰居賣 1,000 萬，我比他好所以開 1,100 萬」——鄰居那個成沒成交？什麼時候的事？屋況一樣嗎？沒有數據支撐的開價，只是在幫對面的物件賣而已。</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-icon">❌</span>錯誤二：不揭露瑕疵</div>
+    <p>漏水、海砂、輻射、凶宅等重大瑕疵若故意隱瞞，事後買方可主張解約或請求損害賠償。依法賣方有告知義務，誠實揭露並反映在價格上，才是保護自己的方式。</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-icon">❌</span>錯誤三：同時委託太多家仲介</div>
+    <p>一般委託看似靈活，實際上仲介沒有強烈動機優先推你的案子。物件被多家同時曝光，反而讓買方覺得「這間是不是很難賣」，造成反效果。</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-icon">❌</span>錯誤四：忽略稅費試算</div>
+    <p>賣 1,000 萬不代表你口袋進 1,000 萬。房地合一稅、土增稅、仲介費加起來可能吃掉 10–20% 以上。事前算清楚，才知道「低於多少不能賣」。</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-icon">❌</span>錯誤五：帶看時一直跟著講解</div>
+    <p>屋主在場常讓買方不敢說真心話，也容易因為聊天透露底價或急售原因。建議交給仲介帶看，你只需要保持屋況整潔即可。</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-icon">❌</span>錯誤六：要約書不認真看就簽</div>
+    <p>買方的要約書裡有付款條件、貸款成數、交屋時間、附贈設備清單等細節，每一條都可能影響你的利益。簽之前一定要逐條確認。</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="card-icon">❌</span>錯誤七：交屋前沒做點交確認</div>
+    <p>冷氣、熱水器、燈具、窗簾是否含在售價內？有沒有要留傢俱？一定要在合約裡白紙黑字寫清楚，交屋當天才不會有爭議。</p>
+  </div>
+</div>
+
+<!-- CTA -->
+<div style="max-width:720px;margin:0 auto;padding:0 20px;">
+  <div class="cta-block">
+    <h3>有問題，直接問冠良</h3>
+    <p>沙鹿、清水、梧棲、龍井、大肚、大甲，在地深耕，免費市場評估</p>
+    <div class="cta-btns">
+      <a class="btn-line" href="https://line.me/ti/p/wosawo" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        LINE 找冠良
+      </a>
+      <a class="btn-call" href="tel:0915295958">
+        📞 0915-295958
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+   <br>
+  不動產經紀人 吳冠良｜證號 (114) 登字第 498528 號
+</footer>
+
+<script>
+  // Tab switching
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Checklist toggle
+  function toggle(box) {
+    box.classList.toggle('checked');
+    const li = box.closest('li');
+    li.classList.toggle('done', box.classList.contains('checked'));
+  }
+</script>
+</body>
+</html>

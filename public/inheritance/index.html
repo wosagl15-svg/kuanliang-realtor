@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>繼承・贈與稅試算器（115年）｜海線房仲冠良</title>
+<meta name="description" content="依財政部 115 年適用金額試算：輸入遺產總額與繼承人結構，算出免稅額、扣除額與應納遺產稅；另附年度贈與稅試算。免費、不用留資料。">
+<meta property="og:title" content="繼承・贈與稅試算器｜海線房仲冠良"><meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#f7f3ea;--cream-2:#efe8da;--navy:#16283f;--navy-2:#1f3752;--gold:#c8963e;--gold-soft:#e8c887;--ink:#2b2b2b;--muted:#6f6a60;--line:#ddd2bd}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--cream);color:var(--ink);font-family:"Noto Sans TC",system-ui,"Microsoft JhengHei",sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+header{background:var(--navy);color:var(--cream);padding:44px 0 36px;position:relative;overflow:hidden}
+header:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 88% 12%,rgba(200,150,62,.22),transparent 52%)}
+header .wrap{position:relative}
+.eyebrow{font-size:12.5px;letter-spacing:.22em;color:var(--gold-soft);font-weight:500;margin-bottom:10px}
+h1{font-family:"DM Serif Display",Georgia,serif;font-size:clamp(26px,5vw,38px);font-weight:400}
+.lede{margin-top:12px;color:#cfd8e2;font-size:15px;max-width:32em}
+section{padding:28px 0}
+.tabs{display:flex;gap:8px;margin-bottom:16px}
+.tab{flex:1;padding:12px;border:1px solid var(--line);background:#fff;border-radius:10px;font:inherit;font-size:15px;font-weight:500;color:var(--muted);cursor:pointer}
+.tab.on{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:16px;box-shadow:0 2px 0 rgba(22,40,63,.05)}
+label{display:block;font-size:14px;font-weight:500;color:var(--navy);margin:14px 0 6px}
+input,select{width:100%;padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font-size:16px;background:var(--cream);color:var(--ink);font-family:inherit}
+input:focus,select:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:transparent}
+.grid{display:grid;gap:14px;grid-template-columns:1fr 1fr}@media(max-width:520px){.grid{grid-template-columns:1fr}}
+.row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.row:last-child{border-bottom:none}
+.row .k{color:var(--muted)} .row .v{font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums}
+.out{background:var(--navy);color:var(--cream);border-radius:14px;padding:24px;text-align:center}
+.out .k{font-size:13px;color:#cfd8e2}
+.out .v{font-family:"DM Serif Display",Georgia,serif;font-size:40px;color:var(--gold-soft);line-height:1.1;margin:4px 0}
+.out .u{font-size:14px;color:#cfd8e2}
+.cta{background:var(--gold);border-radius:14px;padding:24px;text-align:center;color:#3a2a0c;margin-top:16px}
+.cta a{display:inline-block;background:var(--navy);color:var(--cream);text-decoration:none;padding:12px 26px;border-radius:999px;font-weight:700;margin-top:10px}
+.note{font-size:12px;color:var(--muted);margin-top:14px;line-height:1.7}
+footer{background:var(--navy);color:#a9b6c4;padding:26px 0;font-size:13px;margin-top:20px}
+footer strong{color:var(--gold-soft);font-weight:500}
+footer .legal{margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.1);color:#7f8d9c;font-size:12px}
+.hide{display:none}
+</style>
+</head>
+<body>
+<a href="/" style="position:fixed;top:12px;left:12px;z-index:99999;background:#16283f;color:#fff;padding:9px 15px;border-radius:22px;font:600 14px/1 'Microsoft JhengHei',sans-serif;text-decoration:none;box-shadow:0 3px 10px rgba(0,0,0,.3)">← 回首頁</a>
+<header><div class="wrap">
+  <p class="eyebrow">115 年適用金額 · 免費試算</p>
+  <h1>繼承・贈與稅試算器</h1>
+  <p class="lede">多數家庭其實不用繳遺產稅。先算一次，心裡有底。</p>
+</div></header>
+<div class="wrap">
+<section>
+  <div class="tabs">
+    <button class="tab on" id="tE" onclick="tab('E')">遺產稅</button>
+    <button class="tab" id="tG" onclick="tab('G')">贈與稅</button>
+  </div>
+
+  <div id="paneE">
+    <div class="card">
+      <label>遺產總額（萬）<span style="font-weight:400;color:var(--muted);font-size:12.5px"> 不動產以公告現值計，通常低於市價</span></label>
+      <input id="eTotal" type="number" value="3000" min="0">
+      <div class="grid">
+        <div><label>配偶</label><select id="eSpouse"><option value="1">有（扣 553 萬）</option><option value="0">無</option></select></div>
+        <div><label>直系血親卑親屬人數<span style="font-weight:400;color:var(--muted);font-size:12px"> 每人 56 萬</span></label><input id="eChild" type="number" value="2" min="0"></div>
+        <div><label>父母人數<span style="font-weight:400;color:var(--muted);font-size:12px"> 每人 138 萬</span></label><input id="eParent" type="number" value="0" min="0"></div>
+        <div><label>重度以上身心障礙人數<span style="font-weight:400;color:var(--muted);font-size:12px"> 每人 693 萬</span></label><input id="eDis" type="number" value="0" min="0"></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="row"><span class="k">免稅額</span><span class="v">1,333 萬</span></div>
+      <div class="row"><span class="k">各項扣除額合計（含喪葬費 138 萬）</span><span class="v" id="eDed">—</span></div>
+      <div class="row"><span class="k">課稅遺產淨額</span><span class="v" id="eNet">—</span></div>
+    </div>
+    <div class="out"><div class="k">預估應納遺產稅</div><div class="v" id="eTax">—</div><div class="u">萬元</div></div>
+  </div>
+
+  <div id="paneG" class="hide">
+    <div class="card">
+      <label>本年度贈與總額（萬）</label>
+      <input id="gTotal" type="number" value="500" min="0">
+      <p style="font-size:13px;color:var(--muted);margin-top:8px">每人每年免稅額 244 萬。超過部分才課稅。</p>
+    </div>
+    <div class="card">
+      <div class="row"><span class="k">免稅額</span><span class="v">244 萬</span></div>
+      <div class="row"><span class="k">課稅贈與淨額</span><span class="v" id="gNet">—</span></div>
+    </div>
+    <div class="out"><div class="k">預估應納贈與稅</div><div class="v" id="gTax">—</div><div class="u">萬元</div></div>
+  </div>
+
+  <div class="cta">
+    數字只是起點，實際還要看資產內容與分配方式。<br>
+    <a href="https://lin.ee/QyQmggG" target="_blank" rel="noopener">加 LINE 問冠良 →</a>
+  </div>
+  <p class="note">本試算依遺產及贈與稅法與財政部公告 115 年適用金額之一般情形估算，未涵蓋特留分、剩餘財產差額分配、死亡前二年贈與併計、保險金實質課稅等複雜情形。結果僅供參考，正式申報請洽會計師、地政士或所轄國稅局。</p>
+</section>
+</div>
+<footer><div class="wrap">
+  <strong>海線房仲冠良｜懂你又懂房</strong><br>
+  ・｜沙鹿・清水・梧棲・龍井・大肚・大甲<br>
+  0915-295-958｜LINE：wosawo
+</div></footer>
+<script>
+function estateTax(net){ // net 萬
+  if(net<=0) return 0;
+  if(net<=5621) return net*0.10;
+  if(net<=11242) return net*0.15-281.05;
+  return net*0.20-843.35;
+}
+function giftTax(net){
+  if(net<=0) return 0;
+  if(net<=2811) return net*0.10;
+  if(net<=5621) return net*0.15-140.55;
+  return net*0.20-421.60;
+}
+function r(x){return (Math.round(x*100)/100).toLocaleString();}
+function calcE(){
+  var t=+document.getElementById('eTotal').value||0;
+  var ded=1333 + (+document.getElementById('eSpouse').value)*553
+    + (+document.getElementById('eChild').value||0)*56
+    + (+document.getElementById('eParent').value||0)*138
+    + (+document.getElementById('eDis').value||0)*693
+    + 138; // 喪葬
+  var net=Math.max(0,t-ded);
+  document.getElementById('eDed').textContent=r(ded-1333)+' 萬';
+  document.getElementById('eNet').textContent=r(net)+' 萬';
+  document.getElementById('eTax').textContent=r(estateTax(net));
+}
+function calcG(){
+  var t=+document.getElementById('gTotal').value||0;
+  var net=Math.max(0,t-244);
+  document.getElementById('gNet').textContent=r(net)+' 萬';
+  document.getElementById('gTax').textContent=r(giftTax(net));
+}
+function tab(w){
+  document.getElementById('tE').classList.toggle('on',w==='E');
+  document.getElementById('tG').classList.toggle('on',w==='G');
+  document.getElementById('paneE').classList.toggle('hide',w!=='E');
+  document.getElementById('paneG').classList.toggle('hide',w!=='G');
+}
+['eTotal','eSpouse','eChild','eParent','eDis'].forEach(function(id){document.getElementById(id).addEventListener('input',calcE);});
+document.getElementById('gTotal').addEventListener('input',calcG);
+calcE();calcG();
+</script>
+</body>
+</html>

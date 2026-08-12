@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>海線學區查詢地圖｜沙鹿・清水・梧棲・龍井・大肚・大甲 國中小學區｜海線房仲冠良</title>
+<meta name="description" content="輸入你家的「里」，一秒查台中海線六區的國小＋國中學區、校址、電話與地圖。沙鹿、清水、梧棲、龍井、大肚、大甲，買房看學區先查這裡。">
+<meta property="og:title" content="海線學區查詢地圖｜海線房仲冠良">
+<meta property="og:description" content="選行政區、選里，查海線六區國中小學區。買房看學區先查這裡。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#f7f3ea;--cream-2:#efe8da;--navy:#16283f;--navy-2:#1f3752;
+--gold:#c8963e;--gold-soft:#e8c887;--ink:#2b2b2b;--muted:#6f6a60;--line:#ddd2bd;--es:#b5732a;--js:#5b47a8}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+header{background:var(--navy);color:var(--cream);padding:48px 0 40px;position:relative;overflow:hidden}
+header:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 88% 12%,rgba(200,150,62,.22),transparent 52%)}
+header .wrap{position:relative}
+.eyebrow{font-size:12.5px;letter-spacing:.22em;color:var(--gold-soft);font-weight:500;margin-bottom:12px}
+h1{font-family:"DM Serif Display",Georgia,serif;font-size:clamp(28px,5.5vw,42px);line-height:1.18;font-weight:400}
+.lede{margin-top:14px;color:#cfd8e2;font-size:15.5px;max-width:34em}
+section{padding:30px 0}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:18px;box-shadow:0 2px 0 rgba(22,40,63,.05)}
+.card h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;font-size:22px;color:var(--navy);margin-bottom:14px}
+label{display:block;font-size:13.5px;color:var(--muted);margin:12px 0 5px;font-weight:500}
+select{width:100%;padding:12px 13px;border:1.5px solid var(--line);border-radius:10px;font-size:16px;background:var(--cream);color:var(--ink);font-family:inherit}
+select:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:transparent}
+.result{margin-top:18px}
+.zone{background:var(--cream-2);border:1px solid var(--line);border-radius:12px;padding:15px 16px;margin-bottom:12px}
+.zone .lbl{display:inline-block;font-size:12px;font-weight:700;color:#fff;padding:3px 12px;border-radius:12px;margin-bottom:8px;letter-spacing:.05em}
+.es{background:var(--es)} .js{background:var(--js)}
+.school{padding:10px 0;border-bottom:1px dashed var(--line)}
+.school:last-child{border-bottom:none}
+.school .n{font-weight:700;font-size:16px;color:var(--navy)}
+.school .a{font-size:13px;color:var(--muted);margin-top:3px}
+.school a{color:#0f6d5f;text-decoration:none;font-weight:700}
+.school a:hover{text-decoration:underline}
+.empty{color:#999;font-size:14px;padding:8px 0}
+.note{font-size:12px;color:var(--muted);line-height:1.65;margin-top:12px}
+.note b{color:var(--navy)}
+.life h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;font-size:22px;color:var(--navy);margin-bottom:6px}
+details{border-top:1px solid var(--line);padding:4px 0}details:first-of-type{border-top:none}
+summary{cursor:pointer;font-weight:700;color:var(--navy);font-size:15px;padding:9px 0;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary:before{content:"＋ ";color:var(--gold);font-weight:700}
+details[open] summary:before{content:"− "}
+.life ul{list-style:none;padding:0 0 8px 4px}
+.life li{margin:6px 0;font-size:14px}
+.life a{color:#0f6d5f;text-decoration:none}.life a:hover{text-decoration:underline}
+.cta{background:var(--gold);border-radius:14px;padding:26px;text-align:center;color:#3a2a0c}
+.cta h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;font-size:22px;margin-bottom:6px;color:#3a2a0c}
+.cta p{font-size:14.5px;margin-bottom:16px}
+.cta a.line{display:inline-block;background:var(--navy);color:var(--cream);text-decoration:none;padding:12px 28px;border-radius:999px;font-weight:700;font-size:15.5px}
+.cta a.line:hover{background:var(--navy-2)}
+.cta .tel{display:block;margin-top:12px;color:#4a3610;font-size:13.5px;text-decoration:none}
+footer{background:var(--navy);color:#a9b6c4;padding:28px 0;font-size:13px;margin-top:24px}
+footer strong{color:var(--gold-soft);font-weight:500}
+footer .legal{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.1);color:#7f8d9c;font-size:12px}
+@media(max-width:560px){header{padding:36px 0 30px}}
+</style>
+</head>
+<body>
+<a href="/" style="position:fixed;top:12px;left:12px;z-index:99999;background:#16283f;color:#fff;padding:9px 15px;border-radius:22px;font:600 14px/1 'Microsoft JhengHei',sans-serif;text-decoration:none;box-shadow:0 3px 10px rgba(0,0,0,.3)">← 回首頁</a>
+<header><div class="wrap">
+  <p class="eyebrow">海線學區查詢</p>
+  <h1>你家的「里」，<br>讀哪一間國中小？</h1>
+  <p class="lede">選行政區、選里，一秒查台中海線六區的國小＋國中學區、校址、電話與地圖。買房看學區，先在這裡查清楚。</p>
+</div></header>
+
+<div class="wrap">
+<section>
+  <div class="card">
+    <h2>① 查你家的學區</h2>
+    <label>選擇行政區</label>
+    <select id="area"><option value="">請選擇…</option></select>
+    <label>選擇里別</label>
+    <select id="li"><option value="">請先選行政區…</option></select>
+    <div class="result" id="result"></div>
+    <div class="note">⚠️ 資料來源：台中市政府開放平台（國小 112 學年度、國中 107 學年度）。<b>部分里以「鄰」細分跨學區、或有共同學區</b>，實際分發請以就讀學校與<b>台中市教育局公告</b>為準。</div>
+  </div>
+
+  <div class="card life">
+    <h2>② 海線重要生活機能</h2>
+    <details open><summary>🛒 賣場・購物</summary><ul>
+      <li><a href="https://www.google.com/maps/search/三井OUTLET台中港" target="_blank" rel="noopener">三井 OUTLET PARK 台中港（梧棲）</a></li>
+      <li><a href="https://www.google.com/maps/search/Costco台中中港店" target="_blank" rel="noopener">Costco 好市多 台中中港店</a></li>
+      <li><a href="https://www.google.com/maps/search/全聯 沙鹿" target="_blank" rel="noopener">全聯（沙鹿・梧棲・清水・大甲多門市）</a></li>
+    </ul></details>
+    <details><summary>🚆 交通</summary><ul>
+      <li><a href="https://www.google.com/maps/search/台鐵沙鹿車站" target="_blank" rel="noopener">台鐵 沙鹿站</a>（海線通勤主站）</li>
+      <li><a href="https://www.google.com/maps/search/台鐵清水車站" target="_blank" rel="noopener">台鐵 清水站</a></li>
+      <li><a href="https://www.google.com/maps/search/台鐵大甲車站" target="_blank" rel="noopener">台鐵 大甲站</a></li>
+      <li><a href="https://www.google.com/maps/search/台鐵龍井車站" target="_blank" rel="noopener">台鐵 龍井站</a></li>
+    </ul></details>
+    <details><summary>🏥 醫療</summary><ul>
+      <li><a href="https://www.google.com/maps/search/光田綜合醫院沙鹿" target="_blank" rel="noopener">光田綜合醫院（沙鹿）</a></li>
+      <li><a href="https://www.google.com/maps/search/童綜合醫院梧棲" target="_blank" rel="noopener">童綜合醫院（梧棲）</a></li>
+      <li><a href="https://www.google.com/maps/search/光田綜合醫院大甲" target="_blank" rel="noopener">光田綜合醫院（大甲）</a></li>
+    </ul></details>
+    <div class="note">生活機能為海線代表性地標，點連結可在 Google 地圖查看實際位置與周邊。</div>
+  </div>
+
+  <div class="cta">
+    <h2>想知道這個學區的房價？</h2>
+    <p>學區選好了，房子還沒？海線在地房仲冠良，站在你這邊，<br>用理性分析、良心陪你選擇。把想找的學區傳給我，幫你抓行情。</p>
+    <a class="line" href="https://lin.ee/QyQmggG" target="_blank" rel="noopener">加 LINE 找冠良 →</a>
+    <a class="tel" href="tel:0915295958">或直接撥 0915-295-958</a>
+  </div>
+</section>
+</div>
+
+<footer><div class="wrap">
+  <strong>海線房仲冠良｜懂你又懂房</strong><br>
+  服務沙鹿・清水・梧棲・龍井・大肚・大甲<br>
+  0915-295-958｜LINE：wosawo
+</div></footer>
+
+<script type="text/plain" id="es-data">
+42,66000,西屯區,東海國小,龍井區,東海里（全里）新東里（第1-8鄰）【與龍峰國小共同學區】,臺中市西屯區福聯里國際街75號,23509797
+107,66000,清水區,清水國小,清水區,鰲峰里(13、15、17-20)靈泉里(全里)清水里(全里)文昌里(6-8、10、12、13、15、18)南寧里(全)西寧里(1-4)中興里(3-4、6、9-10)西社里(1、3-4、6-11、13-14)南社里(1-9、21-23、24-27、37鄰),清水區光華路125號,26222004
+108,66000,清水區,西寧國小,清水區,鰲峰里(1、3、5、7-10、12)文昌里(3)西寧里(5-14)；北寧里(全里)中興里(5)田寮里(10-12、14-15)橋頭里(7-26、28、31、32、33、35、36、37、38)下湳里(15-28),清水區五權東路50號,26222430
+109,66000,清水區,建國國小,清水區,西社里(15-19、33、34)南社里(9-19鄰、27、28、29、30、31、34、35、36、38)秀水里(12、16-20)中社里(14、20-38)橋頭里(29-30、34),"清水區建國路10 號",26262334
+110,66000,清水區,大秀國小,清水區,裕嘉里(1)臨江里(8-11)秀水里(1-11、13-15、21-24)武鹿里(全里)海濱里(全里)中社里(39-42),清水區五權路336號,26263754
+111,66000,清水區,槺榔國小,清水區,"南社里(20 、32、33)槺榔里(全里)中社里(39-42)",清水區中央路23—12號,26562684
+112,66000,清水區,三田國小,清水區,裕嘉里(1-6、8、9)臨江里(1-6)國姓里(全里)菁埔里(1、3-5、7-9、17-18)頂湳里(1、3、5)田寮里(2-9、16-17)橋頭里(1-6)下湳里(1、3-6、8、9、11-14),"清水區三田路4 號",26262400
+113,66000,清水區,高美國小,清水區,臨江里(7)高西里(全里)高南里(全里)高東里(2-3、5-10)高北里(全里)高美里(全里),清水區護岸路37號,26112505
+114,66000,清水區,甲南國小,清水區,高東里(11-12)菁埔里(10-16、19)頂湳里(6-8、10-18),清水區臨海路26號,26261834
+115,66000,清水區,大楊國小,清水區,海風里(全里)楊厝里(全里),清水區頂三塊厝路10-1號,26200634
+116,66000,清水區,東山國小,清水區,東山里(全里),清水區神清路6—1號,26200517
+117,66000,清水區,吳厝國小,清水區,吳厝里(全里),清水區東山路1—3號,26200864
+118,66000,梧棲區,梧棲國小,梧棲區,"頂寮里(全里)下寮里(全里)中正里(全里)中和里(全里)文化里(全里)安仁里(全里)草湳里（第1,14,16~18,27~28,30~43鄰）",梧棲區民生街45號,26562834
+119,66000,梧棲區,中正國小,梧棲區,"南簡里(全里)福德里（18鄰除外）大庄里（第1~4,23~25,35~39,42,44~48鄰)",梧棲區中央路二段15號,26560844
+120,66000,梧棲區,永寧國小,梧棲區,永寧里(全里)永安里(全里)興農里（第19~21鄰除外）,梧棲區中央路一段160號,26394234
+121,66000,梧棲區,梧南國小,梧棲區,"草湳里（第2~13,15,19~26,29,44~56鄰）",梧棲區文化路一段6號,26391661
+122,66000,梧棲區,中港國小,梧棲區,大庄里（第18，29~30，40鄰）大村里（第16~24，35~36鄰）興農里（19~21鄰）,臺中市梧棲區文明街100號,26655929
+123,66000,梧棲區,大德國小,梧棲區,"福德里（18鄰）大庄里（第5~17,19~22,26~28,31~34,41,43鄰)大村里（1~15，25~34，37~41鄰）",臺中市梧棲區文昌路343號,26568928
+134,66000,沙鹿區,沙鹿國小,沙鹿區,洛泉里（全里）沙鹿里（全里）美仁里（全里）興仁里（第4-21鄰）興安里（第15-19鄰）北勢里（第18-29鄰）,沙鹿區美仁里中正街3號,26625014
+135,66000,沙鹿區,文光國小,沙鹿區,斗抵里（全里）福興里（第1、2、16、17鄰）興仁里（第1-3鄰）興安里（第1-14、20鄰）,沙鹿區斗潭路文光巷12號,26352806
+136,66000,沙鹿區,竹林國小,沙鹿區,竹林里（全里）鹿寮里（第8-30鄰、第32-36鄰、第39、40鄰）居仁里（全里）犁分里（全里）,沙鹿區竹林里中棲路301號,26624713
+137,66000,沙鹿區,鹿峰國小,沙鹿區,鹿峰里（全里）鹿寮里（第1－4鄰、第31鄰、第37鄰、第38鄰）,沙鹿區鹿峰里星河路209號,26224210
+138,66000,沙鹿區,北勢國小,沙鹿區,"北勢里（第1－17鄰、第30鄰）埔子里（全里）三鹿里（全里）南勢里（全里）晉江里（第2-10鄰、第12鄰、第13鄰）六路里（全里）福興里（第3-16鄰、第18鄰）",沙鹿區六路里南陽路376號,26315032
+139,66000,沙鹿區,公館國小,沙鹿區,西勢里（全里）,沙鹿區西勢里中清路85之7號,26154353
+140,66000,沙鹿區,公明國小,沙鹿區,公明里（全里）清泉里（全里）晉江里（第11鄰）,沙鹿區公明里忠貞路213號,26150963
+145,66000,龍井區,龍峰國小,龍井區,新東里（9-26鄰）新庄里（全里）南寮里（全里）新東里（第1-8鄰）【與東海國小共同學區】,龍井區新庄里中沙路2號,26314707
+146,66000,龍井區,龍泉國小,龍井區,龍泉里（全里）龍崗里（全里）竹坑里（全里）,龍井區龍泉里龍新路162號,26353340
+147,66000,龍井區,龍山國小,龍井區,山腳里（全里）,龍井區山腳里中山1路86號,26352454
+148,66000,龍井區,龍井國小,龍井區,龍東里（全里）龍西里（全里）田中里（全里）福田里（全里）,龍井區龍西里龍門路51號,26397131
+149,66000,龍井區,龍港國小,龍井區,麗水里（全里）,龍井區麗水里三港路１號,26395586
+150,66000,龍井區,龍津國小,龍井區,龍津里（全里）、三德里（全里）,龍井區龍津里中央路1段165巷50號,26393394
+151,66000,龍井區,龍海國小,龍井區,忠和里（全里）,龍井區忠和里中央路3段206號,26393334
+152,66000,大肚區,大肚國小,大肚區,"大肚里（全里）永和里（全里）大東里（全里）頂街里（1鄰-22鄰）（26鄰-44鄰）新興里（1鄰-3鄰）",大肚區頂街里華山路77號,26992016
+153,66000,大肚區,追分國小,大肚區,中和里（全里）王田里（全里）福山里（全里）營埔里（全里）,大肚區福山里沙田路一段364號,26932604
+154,66000,大肚區,大忠國小,大肚區,"社腳里（全里）新興里（4鄰-10鄰）（13鄰-16鄰）",大肚區社腳里沙田路一段854巷24號,26993693
+155,66000,大肚區,永順國小,大肚區,永順里（全里）磺溪里（全里）成功里（全里）,大肚區永順里文昌路二段586號,26992461
+156,66000,大肚區,瑞峰國小,大肚區,自強里（1鄰-25鄰）蔗廍里（全里）,大肚區蔗廍里太平路1號,26911291
+157,66000,大肚區,山陽國小,大肚區,山陽里（全里）頂街里（24鄰-25鄰）,大肚區山陽里榮華街630號,26983117
+158,66000,大肚區,瑞井國小,大肚區,瑞井里（全里）,大肚區瑞井里華山路680號,26912550
+124,66000,大甲區,大甲國小,大甲區,文武里(全里)岷山里(全里)武曲里(全里)頂店里(全里)奉化里(第1、2、10、11鄰),大甲區育德路233號,26872048
+125,66000,大甲區,順天國小,大甲區,"薰風里(全里)新美里(全里)庄美里(全里)義和里(全里)南陽里(第6-12鄰)順天里(第6-10鄰、12鄰、13鄰、17-19鄰)",大甲區新美里18鄰經國路168號,26872040
+126,66000,大甲區,文昌國小,大甲區,平安里(全里)大甲里(全里)孔門里(全里)朝陽里(全里)順天里(第1-5鄰、11鄰、14-16鄰),大甲區育德路113號,26872076
+127,66000,大甲區,東陽國小,大甲區,中山里(全里)南陽里(第1-2鄰),大甲區甲東路520號,26876823
+128,66000,大甲區,德化國小,大甲區,江南里(全里)德化里(全里)奉化里(第3-9鄰),大甲區和平路290號,26874602
+129,66000,大甲區,文武國小,大甲區,文曲里(全里)武陵里(全里),大甲區文曲路61號,26710928
+130,66000,大甲區,日南國小,大甲區,孟春里(全里)日南里(第1-4鄰)太白里(第1-7鄰)幸福里(第1-5鄰、9鄰、13鄰),大甲區中山路2段568號,26813704
+131,66000,大甲區,東明國小,大甲區,幸福里(第6-8鄰、10-12鄰)太白里(第8-10鄰),大甲區東明路93號,26814404
+132,66000,大甲區,華龍國小,大甲區,龍泉里(第1-4鄰、6-10鄰)銅安里(第9-10鄰)建興里(第9鄰)日南里(第5-19鄰)西岐里(第1、11鄰),大甲區工二路1號,26811270
+133,66000,大甲區,西岐國小,大甲區,"福德里(全里)西岐里(第2-10鄰)龍泉里(5鄰)銅安里(第1-8鄰)建興里(第1-8鄰、10鄰)",大甲區順帆路96號,26811747
+</script>
+<script type="text/plain" id="js-data">
+23,66000,福科國中,西屯區,福聯里、福瑞里、福林里(全里)福雅里(第13-25鄰）龍井區-東海里(全里)【為福科、四箴國中共同學區】,西屯區福林路333號,24618112
+42,66000,清水國中,清水區,鰲峰里(全里)靈泉里(全里)清水里(全里)文昌里(全里)南寧里(全里)西寧里(全里)北寧里(全里)中興里(全里)西社里(全里)南社里(1-19、21-31、34-38鄰)中社里(14-15、20-38鄰)田寮里(10-17鄰)橋頭里(7-38鄰)下湳里(15-28鄰)秀水里(12、16-20鄰)吳厝里(全里)海風里(全里)楊厝里(全里),清水區西社里鰲峰路250號,26262042
+43,66000,清泉國中,清水區,裕嘉里(全里)高西里(全里)高東里(全里)高南里(全里)高北里(全里)高美里(全里)國姓里(全里)菁埔里(全里)頂湳里(全里)臨江里(1-5鄰、7鄰)下湳里(1-14鄰)田寮里(2-9鄰)橋頭里(1-6鄰),清水區菁埔里臨海路27-2號,26113134
+44,66000,清海國中,清水區,槺榔里(全里)秀水里(全里)臨江里(全里)武鹿里(全里)海濱里(全里)中社里(全里)南社里(20、32、33鄰),清水區中央路51之60號,26271902
+45,66000,中港高中國中部,梧棲區,設籍梧棲鎮中棲路以南、港埠路以東之學區，包括大村里、大庄里〈不含36鄰〉永寧里(全里)永安里(全里)興農里(全里)福德里(第18鄰),梧棲區文昌路400號,26578270
+46,66000,梧棲國中,梧棲區,頂寮里(全里)下寮里(全里)中正里(全里)中和里(全里)文化里(全里)安仁里(全里)南簡里(全里)福德里(第18鄰除外)大庄里〈36鄰〉,梧棲區民生街12號,26562850
+50,66000,沙鹿國中,沙鹿區,居仁里(全里)美仁里(全里)洛泉里(全里)沙鹿里(全里)斗抵里(全里)興仁里(全里)興安里(全里)北勢里(18-29鄰)福興里(1、2、17鄰),沙鹿區中正街1號,26622163
+51,66000,鹿寮國中,沙鹿區,鹿寮里(全里)鹿峰里(全里)竹林里(全里)犁分里(全里),沙鹿區光華路385號,26622207
+52,66000,北勢國中,沙鹿區,北勢里(1-17鄰、30鄰)埔子里(全里)三鹿里(全里)南勢里(全里)晉江里(1-10鄰、12鄰、13鄰)六路里(全里)福興里(3-16鄰、18鄰),沙鹿區英才路150號,26322236
+53,66000,公明國中,沙鹿區,公明里(全里)清泉里(全里)西勢里(全里)晉江里(11鄰),沙鹿區中清路41號,26154262
+55,66000,龍井國中,龍井區,山腳里(全里)龍泉里(全里)龍崗里(全里)竹坑里(全里)田中里(全里)龍西里(全里)龍東里(全里)福田里(自由學區),龍井區觀光路9號,26353344
+56,66000,四箴國中,龍井區,新東里(全里)新庄里(全里)南寮里(全里)瑞井里(全里)自強里(全里)東海里(全里),龍井區中沙路2號,26314606
+57,66000,龍津高中國中部,龍井區,麗水里(全里)龍津里(全里)三德里(全里)忠和里及福田里【自由學區】,龍井區三港路130號,26304536
+47,66000,大甲國中,大甲區,大甲里(全里)中山里(全里)孔門里(全里)文武里(全里)平安里(全里)江南里(全里)奉化里(全里)岷山里(全里)頂店里(全里)朝陽里(全里)德化里(全里),大甲區育英路186號,26872564
+48,66000,日南國中,大甲區,福德里(全里)建興里(全里)西岐里(全里)銅安里(全里)龍泉里(全里)日南里(全里)孟春里(全里)幸福里(全里)太白里(全里),大甲區中山路二段69之11號,26813721
+49,66000,順天國中,大甲區,南陽里(全里)薰風里(全里)順天里(全里)義和里(全里)文曲里(全里)武曲里(全里)武陵里(全里)庄美里(全里)新美里(全里),大甲區大安港路67號,26880600
+58,66000,大道國中,大肚區,成功里(全里)永順里(全里)磺溪里(全里)永和里(全里)新興里(全里)營埔里(全里)中和里(全里)山陽里(全里)頂街里(全里)大肚里(全里)大東里(全里)社腳里(全里)福山里(全里)王田里(全里),大肚區仁德路60號,26992028
+</script>
+<script>
+function parseCSV(text){
+  const rows=[];let row=[],cur='',q=false;
+  for(let i=0;i<text.length;i++){const c=text[i];
+    if(q){ if(c=='"'){ if(text[i+1]=='"'){cur+='"';i++;} else q=false; } else cur+=c; }
+    else { if(c=='"')q=true; else if(c==','){row.push(cur);cur='';} else if(c=='\n'){row.push(cur);if(row.some(x=>x.trim()))rows.push(row);row=[];cur='';} else if(c=='\r'){} else cur+=c; }
+  }
+  if(cur!==''||row.length){row.push(cur);if(row.some(x=>x.trim()))rows.push(row);}
+  return rows;
+}
+const AREAS=['沙鹿區','梧棲區','清水區','龍井區','大肚區','大甲區'];
+function extractLi(s){
+  const set=new Set();
+  (s.match(/[一-龥]{2,3}里/g)||[]).forEach(x=>{ if(x!=='全里'&&x!=='自由里') set.add(x); });
+  return [...set];
+}
+const IDX={};
+function ensure(li){ if(!IDX[li])IDX[li]={area:'',es:[],js:[]}; return IDX[li]; }
+parseCSV(document.getElementById('es-data').textContent.trim()).forEach(r=>{
+  const zoneArea=r[4], school=r[3], li=r[5], addr=r[6], tel=r[7];
+  extractLi(li).forEach(l=>{ const o=ensure(l); if(AREAS.includes(zoneArea))o.area=zoneArea; if(!o.es.find(x=>x.name===school))o.es.push({name:school,addr,tel}); });
+});
+parseCSV(document.getElementById('js-data').textContent.trim()).forEach(r=>{
+  const zoneArea=r[3], school=r[2], li=r[4], addr=r[5], tel=r[6];
+  extractLi(li).forEach(l=>{ const o=ensure(l); if(AREAS.includes(zoneArea)&&!o.area)o.area=zoneArea; if(!o.js.find(x=>x.name===school))o.js.push({name:school,addr,tel}); });
+});
+const byArea={}; AREAS.forEach(a=>byArea[a]=[]);
+Object.keys(IDX).forEach(li=>{ const a=IDX[li].area; if(AREAS.includes(a))byArea[a].push(li); });
+Object.values(byArea).forEach(arr=>arr.sort((a,b)=>a.localeCompare(b,'zh')));
+const areaSel=document.getElementById('area'),liSel=document.getElementById('li'),res=document.getElementById('result');
+AREAS.forEach(a=>{ if(byArea[a].length){const o=document.createElement('option');o.value=a;o.textContent=a+'（'+byArea[a].length+'里）';areaSel.appendChild(o);} });
+areaSel.onchange=()=>{ liSel.innerHTML='<option value="">請選擇里別…</option>'; res.innerHTML=''; (byArea[areaSel.value]||[]).forEach(l=>{const o=document.createElement('option');o.value=l;o.textContent=l;liSel.appendChild(o);}); };
+function schoolHTML(s){ const g='https://www.google.com/maps/search/'+encodeURIComponent(s.addr); return `<div class="school"><div class="n">${s.name}</div><div class="a">📍 ${s.addr} ｜ ☎ ${s.tel||'—'} ｜ <a href="${g}" target="_blank" rel="noopener">Google 地圖 ↗</a></div></div>`; }
+liSel.onchange=()=>{
+  const li=liSel.value; if(!li){res.innerHTML='';return;}
+  const o=IDX[li];
+  let h=`<div class="zone"><span class="lbl es">國小學區</span>`;
+  h+= o.es.length? o.es.map(schoolHTML).join('') : '<div class="empty">查無資料</div>';
+  h+=`</div><div class="zone"><span class="lbl js">國中學區</span>`;
+  h+= o.js.length? o.js.map(schoolHTML).join('') : '<div class="empty">查無資料</div>';
+  h+=`</div>`;
+  res.innerHTML=h;
+};
+</script>
+</body>
+</html>

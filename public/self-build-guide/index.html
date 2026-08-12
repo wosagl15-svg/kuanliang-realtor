@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>自地自建全流程指南｜買地・貸款・建照・監工・成本控管 - 海線房仲冠良</title>
+<meta name="description" content="自地自建怎麼開始？從買建地、土地貸款成數、建築師規劃、找營造廠、建照使照、監工查核到成本追加地雷，一頁看懂。台中海線沙鹿、清水、梧棲、龍井、大肚、大甲在地房仲整理。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f7f3ea;
+    --cream-2:#efe8db;
+    --navy:#12293f;
+    --navy-2:#1c3c58;
+    --gold:#c4922e;
+    --gold-lite:#dcaa42;
+    --gold-soft:#f0dcae;
+    --brick:#a8412c;
+    --ink:#2c3038;
+    --muted:#6b6559;
+    --line:#ddd2bd;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--cream);color:var(--ink);
+    font-family:'Noto Sans TC',system-ui,sans-serif;
+    line-height:1.85;font-size:16.5px;letter-spacing:.01em;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'DM Serif Display','Noto Serif TC',serif;font-weight:700;letter-spacing:.02em;line-height:1.35;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px;}
+  .narrow{max-width:820px;margin:0 auto;padding:0 20px;}
+
+  /* ---------- header ---------- */
+  header{background:var(--navy);color:#fff;position:sticky;top:0;z-index:60;border-bottom:2px solid var(--gold);}
+  .bar{max-width:960px;margin:0 auto;padding:11px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15px;}
+  .brand .dot{width:9px;height:9px;background:var(--gold);border-radius:50%;flex:none;}
+  .brand small{display:block;font-weight:400;font-size:11px;color:#b9c6d2;letter-spacing:.08em;}
+  .navlinks{display:flex;gap:16px;font-size:13.5px;}
+  .navlinks a{color:#cfdae4;text-decoration:none;}
+  .navlinks a:hover{color:var(--gold);}
+  @media(max-width:760px){.navlinks{display:none;}}
+
+  /* ---------- hero ---------- */
+  .hero{background:var(--navy);color:#fff;padding:56px 0 62px;position:relative;overflow:hidden;}
+  .hero:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:38px;
+    background:radial-gradient(ellipse 60% 100% at 20% 0%,transparent 60%,var(--cream) 61%),var(--cream);
+    -webkit-mask:none;}
+  .hero .eyebrow{font-size:12.5px;letter-spacing:.28em;color:var(--gold);margin-bottom:16px;}
+  .hero h1{font-size:clamp(30px,6.2vw,48px);margin:0 0 18px;color:#fff;}
+  .hero h1 em{font-style:normal;color:var(--gold);}
+  .hero p{color:#c6d2dd;max-width:640px;margin:0 0 26px;font-size:16px;}
+  .hero-stats{display:flex;flex-wrap:wrap;gap:10px;}
+  .stat{background:rgba(255,255,255,.07);border:1px solid rgba(196,146,46,.35);border-radius:3px;padding:10px 15px;}
+  .stat b{display:block;font-family:'DM Serif Display',serif;font-size:21px;color:var(--gold);line-height:1.2;}
+  .stat span{font-size:12px;color:#b3c1ce;letter-spacing:.05em;}
+
+  /* ---------- sections ---------- */
+  section{padding:52px 0;}
+  section:nth-of-type(even){background:var(--cream-2);}
+  .sec-head{margin-bottom:26px;}
+  .sec-head .num{font-family:'DM Serif Display',serif;font-size:13px;color:var(--gold);letter-spacing:.22em;display:block;margin-bottom:6px;}
+  .sec-head h2{font-size:clamp(23px,4.4vw,32px);margin:0 0 8px;color:var(--navy);}
+  .sec-head p{margin:0;color:var(--muted);font-size:15px;}
+
+  /* ---------- generic blocks ---------- */
+  .card{background:#fff;border:1px solid var(--line);border-radius:4px;padding:22px 24px;margin-bottom:16px;}
+  .card h3{font-size:19px;margin:0 0 10px;color:var(--navy);}
+  .card p:last-child{margin-bottom:0;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:720px){.grid2{grid-template-columns:1fr;}}
+
+  ul.check{list-style:none;padding:0;margin:0;}
+  ul.check li{position:relative;padding-left:26px;margin-bottom:11px;}
+  ul.check li:before{content:"";position:absolute;left:4px;top:12px;width:8px;height:8px;background:var(--gold);transform:rotate(45deg);}
+  ul.check li b{color:var(--navy);}
+
+  .callout{border-left:4px solid var(--brick);background:#fff5f1;padding:15px 18px;margin:16px 0;border-radius:0 4px 4px 0;font-size:15px;}
+  .callout b{color:var(--brick);}
+  .note{border-left:4px solid var(--gold);background:#fdf8ec;padding:15px 18px;margin:16px 0;border-radius:0 4px 4px 0;font-size:15px;}
+  .note b{color:#8a6415;}
+
+  table{width:100%;border-collapse:collapse;background:#fff;font-size:14.5px;margin:6px 0 4px;}
+  th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;}
+  th{background:var(--navy);color:#fff;font-weight:500;font-size:14px;}
+  tbody tr:nth-child(even){background:#faf7f0;}
+  .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .tscroll table{min-width:560px;}
+
+  /* ---------- timeline ---------- */
+  .tl{position:relative;padding-left:34px;}
+  .tl:before{content:"";position:absolute;left:9px;top:6px;bottom:16px;width:2px;background:var(--line);}
+  .tl-item{position:relative;margin-bottom:22px;}
+  .tl-item:before{content:"";position:absolute;left:-32px;top:6px;width:20px;height:20px;border-radius:50%;
+    background:var(--cream);border:2px solid var(--gold);}
+  .tl-item.key:before{background:var(--gold);}
+  .tl-item h4{margin:0 0 3px;font-size:17px;color:var(--navy);font-weight:700;}
+  .tl-item .when{font-size:12.5px;color:var(--gold);letter-spacing:.1em;font-family:'DM Serif Display',serif;}
+  .tl-item p{margin:5px 0 0;font-size:14.8px;color:var(--muted);}
+
+  /* ---------- calculator ---------- */
+  .calc{background:var(--navy);color:#fff;border-radius:5px;padding:26px 24px;}
+  .calc h3{color:#fff;font-size:21px;margin:0 0 4px;}
+  .calc .sub{color:#a9bccd;font-size:13.5px;margin:0 0 20px;}
+  .field{margin-bottom:15px;}
+  .field label{display:block;font-size:13.5px;color:#d5e0ea;margin-bottom:5px;}
+  .field label span{color:var(--gold);font-size:12px;}
+  .field input[type=number]{width:100%;padding:10px 12px;border-radius:3px;border:1px solid #35597a;
+    background:#0d2033;color:#fff;font-size:16px;font-family:inherit;}
+  .field input[type=range]{width:100%;accent-color:var(--gold);}
+  .field .rngval{float:right;color:var(--gold);font-weight:700;font-size:14px;}
+  .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;}
+  @media(max-width:640px){.calc-grid{grid-template-columns:1fr;}}
+  .result{margin-top:20px;border-top:1px dashed #3d6285;padding-top:18px;}
+  .rrow{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;font-size:14.5px;color:#cbd8e3;border-bottom:1px solid rgba(255,255,255,.07);}
+  .rrow b{font-family:'DM Serif Display',serif;font-size:19px;color:#fff;}
+  .rrow.big{border:none;margin-top:10px;background:rgba(196,146,46,.15);padding:14px 15px;border-radius:4px;}
+  .rrow.big span{color:var(--gold-soft);font-weight:700;}
+  .rrow.big b{font-size:26px;color:var(--gold);}
+  .disclaim{font-size:12px;color:#8ea3b6;margin-top:14px;line-height:1.7;}
+
+  /* ---------- lookup ---------- */
+  .lookup{background:#fff;border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:4px;padding:24px;}
+  .lu-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-bottom:24px;}
+  .lu-step{background:var(--cream);border:1px solid var(--line);border-radius:3px;padding:15px 16px;}
+  .lu-step .n{font-family:'DM Serif Display',serif;color:var(--gold);font-size:13px;letter-spacing:.18em;}
+  .lu-step h4{margin:3px 0 6px;font-size:15.5px;color:var(--navy);}
+  .lu-step p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.75;}
+  .lu-step a{color:var(--navy);text-decoration:underline;text-underline-offset:3px;}
+  .lu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px 16px;}
+  .lu-field label{display:block;font-size:13px;color:var(--muted);margin-bottom:5px;font-weight:500;}
+  .lu-field input,.lu-field select{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:3px;
+    background:var(--cream);color:var(--ink);font-size:15.5px;font-family:inherit;}
+  .lu-field input:focus,.lu-field select:focus{background:#fff;border-color:var(--gold);}
+  .lu-out{margin-top:22px;border-top:1px dashed var(--line);padding-top:20px;
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;}
+  .lu-cell{background:var(--navy);border-radius:3px;padding:14px 15px;color:#fff;}
+  .lu-cell span{display:block;font-size:12.5px;color:#a9bccd;letter-spacing:.05em;margin-bottom:3px;}
+  .lu-cell b{font-family:'DM Serif Display',serif;font-size:24px;color:var(--gold);line-height:1.2;}
+  .lu-cell b i{font-style:normal;font-size:13px;color:#cbd8e3;font-family:'Noto Sans TC',sans-serif;margin-left:3px;}
+  .msgbox{margin-top:20px;background:var(--cream);border:1px dashed var(--line);border-radius:3px;padding:14px 16px;
+    font-size:14px;white-space:pre-wrap;line-height:1.9;color:#3a4049;}
+  .lu-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
+  .lu-actions button,.lu-actions a{font-family:inherit;font-size:14.5px;font-weight:700;border:none;cursor:pointer;
+    padding:11px 22px;border-radius:3px;text-decoration:none;display:inline-block;}
+  .btn-copy{background:var(--navy);color:#fff;}
+  .btn-copy:hover{background:var(--navy-2);}
+  .btn-sm-line{background:#06c755;color:#fff;}
+  .btn-sm-line:hover{background:#05b34c;}
+
+  /* ---------- pros cons ---------- */
+  .pc{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:720px){.pc{grid-template-columns:1fr;}}
+  .pc > div{border-radius:4px;padding:22px 24px;border:1px solid var(--line);background:#fff;}
+  .pc .pros{border-top:4px solid #2f6b4f;}
+  .pc .cons{border-top:4px solid var(--brick);}
+  .pc h3{margin:0 0 12px;font-size:19px;}
+  .pc .pros h3{color:#2f6b4f;}
+  .pc .cons h3{color:var(--brick);}
+  .pc ul{margin:0;padding-left:18px;}
+  .pc li{margin-bottom:9px;font-size:15px;}
+
+  /* ---------- risk grid ---------- */
+  .risks{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;}
+  .risk{background:#fff;border:1px solid var(--line);border-left:3px solid var(--brick);border-radius:3px;padding:15px 16px;}
+  .risk h4{margin:0 0 5px;font-size:15.5px;color:var(--navy);}
+  .risk p{margin:0;font-size:14px;color:var(--muted);line-height:1.7;}
+
+  /* ---------- faq ---------- */
+  details{background:#fff;border:1px solid var(--line);border-radius:4px;margin-bottom:10px;}
+  summary{cursor:pointer;padding:15px 18px;font-weight:700;color:var(--navy);font-size:16px;list-style:none;position:relative;padding-right:44px;}
+  summary::-webkit-details-marker{display:none;}
+  summary:after{content:"＋";position:absolute;right:18px;top:14px;color:var(--gold);font-size:18px;}
+  details[open] summary:after{content:"－";}
+  details .body{padding:0 18px 16px;font-size:15px;color:#41474f;}
+
+  /* ---------- cta ---------- */
+  .cta{background:var(--navy);color:#fff;text-align:center;padding:52px 20px;}
+  .cta h2{color:#fff;font-size:clamp(22px,4.6vw,31px);margin:0 0 12px;}
+  .cta p{color:#bccadb;max-width:560px;margin:0 auto 24px;font-size:15.5px;}
+  .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .btn{display:inline-block;padding:13px 28px;border-radius:3px;text-decoration:none;font-weight:700;font-size:15.5px;}
+  .btn-gold{background:var(--gold);color:#12293f;}
+  .btn-gold:hover{background:#dcaa42;}
+  .btn-line{background:#06c755;color:#fff;}
+  .btn-line:hover{background:#05b34c;}
+  .cta .who{margin-top:24px;font-size:13.5px;color:#9fb1c2;line-height:1.9;}
+  .cta .who b{color:var(--gold);}
+
+  footer{background:#0b1d2e;color:#7f93a6;font-size:12.5px;padding:24px 20px;text-align:center;line-height:1.9;}
+
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*{transition:none!important;}}
+  a:focus-visible,summary:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+</style>
+</head>
+<body>
+<a href="/" style="position:fixed;top:12px;left:12px;z-index:99999;background:#16283f;color:#fff;padding:9px 15px;border-radius:22px;font:600 14px/1 'Microsoft JhengHei',sans-serif;text-decoration:none;box-shadow:0 3px 10px rgba(0,0,0,.3)">← 回首頁</a>
+
+<header>
+  <div class="bar">
+    <div class="brand"><span class="dot"></span><div>海線房仲冠良<small>懂你又懂房</small></div></div>
+    <nav class="navlinks">
+      <a href="#flow">流程</a><a href="#land">買地</a><a href="#check">速查</a><a href="#volume">容積</a><a href="#loan">貸款</a>
+      <a href="#team">工班</a><a href="#watch">監工</a><a href="#cost">追加成本</a><a href="#pros">優缺點</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">自地自建・完整流程指南</div>
+    <h1>買一塊地，<br>把房子<em>從零蓋起來</em>。</h1>
+    <p>自地自建不是「買地＋找人蓋」這麼簡單。從地能不能蓋、銀行肯借多少、建照怎麼下來、工班怎麼盯，每一關都會直接反映在你的總花費上。這一頁把整套流程、關鍵數字和最常見的追加陷阱一次講清楚。</p>
+    <div class="hero-stats">
+      <div class="stat"><b>2～3 年</b><span>從找地到入住的合理時程</span></div>
+      <div class="stat"><b>4～5 成</b><span>自備款佔總投資的起跳比例</span></div>
+      <div class="stat"><b>10～15%</b><span>建議預留的工程預備金</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 1 概念 -->
+<section id="what">
+  <div class="narrow">
+    <div class="sec-head">
+      <span class="num">01 — 先搞懂</span>
+      <h2>自地自建，到底是誰在蓋？</h2>
+      <p>同樣是「蓋自己的房子」，出資與主導權不同，責任和報酬也完全不同。</p>
+    </div>
+    <div class="tscroll">
+    <table>
+      <thead><tr><th style="width:22%">方式</th><th>怎麼運作</th><th style="width:26%">誰承擔風險</th></tr></thead>
+      <tbody>
+        <tr><td><b>自地自建</b></td><td>自己買地、自己出資、自己委託建築師與營造廠，房子登記在自己名下。</td><td>屋主全包：資金、工期、品質、追加。</td></tr>
+        <tr><td><b>委建</b></td><td>地是自己的，整案委託建設公司或統包廠商代為興建，付一筆總價。</td><td>大部分由廠商承擔，但單價較高、彈性較低。</td></tr>
+        <tr><td><b>合建</b></td><td>地主出地、建商出錢蓋，完工後依比例分屋或分錢（分屋／分售／分成）。</td><td>建商承擔營建風險，地主承擔「分回條件是否合理」的風險。</td></tr>
+        <tr><td><b>買成屋／預售</b></td><td>直接跟建商買現成產品。</td><td>幾乎沒有營建風險，但坪效、格局、公設無法自己決定。</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note"><b>一句話判斷：</b>如果你有時間、有現金、對格局有堅持，自地自建划得來；如果你只有地、沒有現金也沒空管，合建或委建才是務實的選擇。</div>
+  </div>
+</section>
+
+<!-- 2 流程 -->
+<section id="flow">
+  <div class="narrow">
+    <div class="sec-head">
+      <span class="num">02 — 時間軸</span>
+      <h2>從找地到搬進去，會經過這 8 關</h2>
+      <p>金色圓點是不可跳過的法定關卡；括號內為一般狀況的參考工期，複雜基地會更久。</p>
+    </div>
+    <div class="tl">
+      <div class="tl-item"><span class="when">STEP 1　（1～6 個月）</span><h4>找地與可行性評估</h4><p>看的不是「這塊地漂不漂亮」，而是「這塊地能不能蓋、能蓋多大」。使用分區、建蔽率容積率、有沒有臨接建築線，決定了一切。</p></div>
+      <div class="tl-item"><span class="when">STEP 2　（1～2 個月）</span><h4>簽約、土地貸款、過戶</h4><p>簽約前先問過銀行能貸多少，別簽完才發現自備款不夠。過戶要繳土地增值稅（賣方）、契稅不課土地、印花稅、代書費、仲介服務費。</p></div>
+      <div class="tl-item"><span class="when">STEP 3　（2～4 個月）</span><h4>建築師規劃設計</h4><p>基地調查、需求訪談、平面配置、立面、結構與水電圖說、預算書。這一階段花的時間，會直接減少施工期的追加。</p></div>
+      <div class="tl-item key"><span class="when">STEP 4　（2～4 個月）</span><h4>指定建築線 → 申請建造執照</h4><p>建築線先確定，建照才送得出去。審查會有補正，來回一兩次是常態。建照核發後才可以合法動工。</p></div>
+      <div class="tl-item"><span class="when">STEP 5　（1～2 個月）</span><h4>發包、選營造廠、簽工程合約</h4><p>拿同一份圖說去比價才有意義。合約要寫清楚工期、付款節點、追加變更程序、逾期罰則與保固。</p></div>
+      <div class="tl-item key"><span class="when">STEP 6　（10～18 個月）</span><h4>開工申報 → 施工</h4><p>整地、基礎、結構體、屋突、防水、泥作、水電、門窗、外牆、內裝。整個過程最需要屋主到場的階段。</p></div>
+      <div class="tl-item key"><span class="when">STEP 7　（2～4 個月）</span><h4>竣工查驗 → 使用執照</h4><p>建築師申報竣工、主管機關勘驗。<b>沒有使照就不能接正式水電、不能辦保存登記、也不能轉一般房貸。</b></p></div>
+      <div class="tl-item"><span class="when">STEP 8　（1～2 個月）</span><h4>接水電 → 建物第一次登記 → 交屋入住</h4><p>取得建物所有權狀後，才算真正有「房子」這項資產，也才具備轉貸自用住宅房貸的條件。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 買地 -->
+<section id="land">
+  <div class="narrow">
+    <div class="sec-head">
+      <span class="num">03 — 第一關</span>
+      <h2>買地：買錯了，後面全部歸零</h2>
+      <p>自地自建八成的失敗都發生在買地這一步。以下是簽約前一定要確認的事。</p>
+    </div>
+
+    <div class="card">
+      <h3>一、這塊地「法律上」能不能蓋</h3>
+      <ul class="check">
+        <li><b>使用分區／地目：</b>都市計畫內的住宅區、商業區，或非都市土地的甲種、乙種、丙種建築用地，才能直接申請建照。農牧用地只能申請農舍，且有面積、農民資格與取得年限限制。</li>
+        <li><b>建蔽率與容積率：</b>決定房子能蓋多大、蓋幾層。同樣 50 坪的地，建蔽率 60% 和 40% 蓋出來差很多。以主管機關核發的分區使用證明為準，不要聽賣方口述。</li>
+        <li><b>有沒有臨接建築線：</b>沒有臨接經指定的建築線，就是俗稱的袋地，發不出建照。買地前先委請建築師事務所申請「指定建築線」，是最保險的做法。</li>
+        <li><b>道路寬度與退縮：</b>臨接的現有巷道未達法定寬度時要退縮，退縮的面積通常不能計入可建築範圍。</li>
+        <li><b>有沒有都市計畫變更、公共設施保留地、道路用地夾雜。</b></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>二、產權與現況</h3>
+      <ul class="check">
+        <li><b>是不是共有土地：</b>共有需依土地法第 34 條之 1 或取得全體同意，處理時間拉長。</li>
+        <li><b>有沒有他項權利：</b>抵押權、地上權、耕地三七五租約、祭祀公業、未辦繼承登記。</li>
+        <li><b>先鑑界：</b>確認實際範圍與面積，看有沒有越界建物、鄰地占用、既成道路穿越。</li>
+        <li><b>地上物：</b>舊屋、圍牆、墳墓、廢棄物、樹木，拆除清運費用要先估進去。</li>
+        <li><b>高低差與擋土：</b>地勢落差大要做擋土牆與回填，這筆錢常常比想像中高。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>三、看不見但很花錢的條件</h3>
+      <ul class="check">
+        <li><b>地質：</b>軟弱地盤要打基樁或做地質改良，一棟透天可能就差好幾十萬到上百萬。建議簽約前做地質鑽探或至少查鄰地施工紀錄。</li>
+        <li><b>管線距離：</b>自來水、電力、電信、污水接管。外接距離越遠，外水外電的費用越可觀。</li>
+        <li><b>淹水潛勢、土壤液化潛勢：</b>海線部分區域要特別留意，可上主管機關的公開圖資查詢。</li>
+        <li><b>周邊環境：</b>嫌惡設施、高壓電塔、既有工廠、未來重劃或道路開闢計畫。</li>
+      </ul>
+    </div>
+
+    <div class="callout"><b>最常見的踩雷：</b>「賣方說這塊地可以蓋」不是依據。買地的斡旋或要約，一定要加註<b>「以能取得建造執照為停止條件」</b>之類的但書，並保留合理的查證期間。</div>
+  </div>
+</section>
+
+<!-- 4 地號速查 -->
+<section id="check">
+  <div class="narrow">
+    <div class="sec-head">
+      <span class="num">04 — 動手查</span>
+      <h2>地號輸入 → 建蔽容積速查</h2>
+      <p>知道地號，就能先抓出這塊地大概能蓋多大。全國各縣市都適用，算完的正式資料再交給我與建築師接手。</p>
+    </div>
+
+    <div class="lookup">
+      <div class="lu-steps">
+        <div class="lu-step">
+          <div class="n">先查這個</div>
+          <h4>地號與土地面積</h4>
+          <p>到內政部<a href="https://easymap.land.moi.gov.tw/" target="_blank" rel="noopener">地籍圖資網路便民服務系統</a>輸入縣市、地段、地號，就能看到位置、形狀與登記面積（平方公尺）。</p>
+        </div>
+        <div class="lu-step">
+          <div class="n">再查這個</div>
+          <h4>使用分區與建蔽容積</h4>
+          <p>都市計畫範圍內，向土地所在地的縣市政府都市發展局或工務局申請「土地使用分區證明」；非都市土地則看土地登記謄本上的使用分區與編定用地別。</p>
+        </div>
+        <div class="lu-step">
+          <div class="n">最後確認</div>
+          <h4>有沒有臨接建築線</h4>
+          <p>這一項線上查不到，須<b>委請建築師事務所</b>向當地建管單位申請「指定建築線」，由建築師簽證認定。沒有建築線，建蔽容積算得再漂亮也發不出建照。</p>
+        </div>
+      </div>
+
+      <div class="lu-grid">
+        <div class="lu-field"><label>縣市</label>
+          <select id="luCity"><option>基隆市</option><option>臺北市</option><option>新北市</option><option>桃園市</option><option>新竹市</option><option>新竹縣</option><option>苗栗縣</option><option selected>臺中市</option><option>彰化縣</option><option>南投縣</option><option>雲林縣</option><option>嘉義市</option><option>嘉義縣</option><option>臺南市</option><option>高雄市</option><option>屏東縣</option><option>宜蘭縣</option><option>花蓮縣</option><option>臺東縣</option><option>澎湖縣</option><option>金門縣</option><option>連江縣</option></select>
+        </div>
+        <div class="lu-field"><label>鄉鎮市區</label><input type="text" id="luDist" placeholder="例：大甲區"></div>
+        <div class="lu-field"><label>段／小段</label><input type="text" id="luSec" placeholder="例：賢仁段"></div>
+        <div class="lu-field"><label>地號</label><input type="text" id="luNo" placeholder="例：123-4"></div>
+        <div class="lu-field"><label>土地面積</label><input type="number" id="luArea" value="60" min="0" step="0.01"></div>
+        <div class="lu-field"><label>面積單位</label>
+          <select id="luUnit"><option value="ping">坪</option><option value="m2">平方公尺</option></select>
+        </div>
+        <div class="lu-field"><label>使用分區（參考值）</label>
+          <select id="luZone">
+            <option value="60,200">都市計畫－住宅區</option>
+            <option value="80,400">都市計畫－商業區</option>
+            <option value="60,240">非都市－甲種建築用地</option>
+            <option value="60,240">非都市－乙種建築用地</option>
+            <option value="40,120">非都市－丙種建築用地</option>
+            <option value="70,300">非都市－丁種建築用地</option>
+            <option value="custom">自行輸入</option>
+          </select>
+        </div>
+        <div class="lu-field"><label>建蔽率 %</label><input type="number" id="luBcr" value="60" min="1" max="100" step="1"></div>
+        <div class="lu-field"><label>容積率 %</label><input type="number" id="luFar" value="200" min="1" step="10"></div>
+      </div>
+
+      <div class="lu-out">
+        <div class="lu-cell"><span>土地面積</span><b id="oArea">—<i>坪</i></b></div>
+        <div class="lu-cell"><span>最大建築面積</span><b id="oFoot">—<i>坪</i></b></div>
+        <div class="lu-cell"><span>法定空地</span><b id="oOpen">—<i>坪</i></b></div>
+        <div class="lu-cell"><span>可建總樓地板</span><b id="oGfa">—<i>坪</i></b></div>
+        <div class="lu-cell"><span>粗估樓層</span><b id="oFloor">—<i>層</i></b></div>
+      </div>
+
+      <div class="note" style="margin-bottom:0"><b>怎麼讀這幾個數字：</b>建蔽率決定「一樓能占多大」，容積率決定「全部樓層加起來能有多少」。上面的樓層數只是把總樓地板除以建築面積的概算，實際還要看該分區的高度限制、退縮規定、以及陽台雨遮與地下室等免計容積項目。</div>
+
+      <p style="margin:22px 0 6px;font-weight:700;color:var(--navy);font-size:15.5px">把這段訊息傳給我，我幫你調正式資料</p>
+      <div class="msgbox" id="luMsg"></div>
+      <div class="lu-actions">
+        <button class="btn-copy" id="luCopy" type="button">複製訊息</button>
+        <a class="btn-sm-line" href="https://lin.ee/QyQmggG" target="_blank" rel="noopener">貼到 LINE 給冠良</a>
+      </div>
+      <p style="font-size:12.5px;color:var(--muted);margin:14px 0 0;line-height:1.75">※ 上表的建蔽率與容積率為法定參考值。都市計畫範圍內各分區數值依各該都市計畫書規定而異，非都市土地另受基地條件與相關法令限制。實際數值請以主管機關核發之土地使用分區證明為準。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5 容積運用 -->
+<section id="volume">
+  <div class="narrow">
+    <div class="sec-head">
+      <span class="num">05 — 容積怎麼用</span>
+      <h2>傳統型透天 vs 新加坡型透天</h2>
+      <p>算出容積之後，下一個問題是：這些樓地板面積要怎麼分配？一樓要給人住，還是給車停？</p>
+    </div>
+
+    <div class="tscroll">
+      <table>
+        <thead><tr><th style="width:20%">比較項目</th><th>傳統型透天</th><th>新加坡型透天</th></tr></thead>
+        <tbody>
+          <tr><td><b>一樓用途</b></td><td>客廳、餐廳、廚房。車子停在前院或側院的退縮空間。</td><td>一樓做開放式車庫、玄關與樓梯，部分會配孝親房與衛浴。</td></tr>
+          <tr><td><b>客餐廳位置</b></td><td>一樓，進門就是家的重心。</td><td>二樓，視野與採光通常較好。</td></tr>
+          <tr><td><b>適合的基地</b></td><td>地坪較大、面寬夠、前院退縮空間足以停車。</td><td>地坪小、面寬有限，前院擠不下車位的基地。</td></tr>
+          <tr><td><b>採光</b></td><td>一樓客廳容易被圍牆、鄰房和停在前面的車擋住。</td><td>客廳拉到二樓，避開車屁股與圍牆，通風採光明顯較好。</td></tr>
+          <tr><td><b>生活動線</b></td><td>進門即客廳，長輩與訪客最友善。</td><td>買菜、倒垃圾、曬衣都要爬樓，<b>沒有電梯會很辛苦</b>。</td></tr>
+          <tr><td><b>容積的用法</b></td><td>一樓是居住空間，會實實在在吃掉容積。</td><td>一樓的法定停車空間有機會不計入容積，等於把容積留給二樓以上的居住樓層。</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note"><b>新加坡型透天真正的邏輯，是「基地不夠大」。</b>當土地面積小、建蔽率又限制一樓只能蓋這麼大時，一樓要嘛給人住、要嘛給車停，二選一。把一樓讓給車，居住空間往上疊，是地價高、地坪小的情況下比較划算的解法。它不是比較高級的房子，而是<b>基地條件逼出來的配置</b>。</div>
+
+    <div class="card">
+      <h3>容積會被什麼吃掉、又能省下什麼</h3>
+      <ul class="check">
+        <li><b>容積＝可蓋的總樓地板面積上限。</b>土地面積 × 容積率，就是你所有樓層加起來的天花板。</li>
+        <li><b>法定停車空間：</b>依建築技術規則，符合規定的停車空間在一定條件下得不計入容積樓地板面積。這是新加坡型透天的核心操作，但各縣市審查認定仍有差異，<b>必須由建築師逐案檢討</b>，不能自己想當然耳。</li>
+        <li><b>陽台、屋頂突出物、機電空間、地下室：</b>各有免計或部分免計容積的規定，設計階段就要一併檢討進去。</li>
+        <li><b>建蔽率才是決定一樓大小的關鍵。</b>容積可以往上疊，建蔽率不行。地坪小的基地，一樓能不能同時容納車位與客廳，答案通常在建蔽率上。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>那「容積移轉」呢？自地自建用得到嗎</h3>
+      <p>容積移轉（TDR）是把一塊地的容積，移到另一塊可建築土地上使用的制度，讓接受基地能蓋得比原本的容積率更多。實務上多半是建商在大樓案使用，自地自建的透天要用，門檻其實不低：</p>
+      <div class="tscroll">
+        <table>
+          <thead><tr><th style="width:26%">規定</th><th>內容</th></tr></thead>
+          <tbody>
+            <tr><td><b>適用範圍</b></td><td>僅限於實施容積率管制的都市計畫地區。<b>非都市土地沒有這套制度</b>，甲乙丙種建築用地想用容積移轉是行不通的。</td></tr>
+            <tr><td><b>送出基地限三類</b></td><td>應予保存或經認定有保存價值之建築所定著的土地、為改善都市環境或景觀而提供作為公共開放空間使用的可建築土地，以及私有的都市計畫公共設施保留地（俗稱的道路用地就屬這類）。</td></tr>
+            <tr><td><b>只能在同一計畫區內移</b></td><td>須移轉至同一主要計畫地區範圍內的其他可建築用地。不是隨便買一塊道路用地都能移到你家。</td></tr>
+            <tr><td><b>移入上限</b></td><td>原則不得超過接受基地基準容積的 30%；位於整體開發地區、實施都市更新地區、面臨永久性空地或其他都市計畫指定範圍內者可酌增，但不得超過 40%。</td></tr>
+            <tr><td><b>怎麼取得</b></td><td>可以買下送出基地的容積後辦理移轉，也可以以折繳代金的方式移入容積，等於用錢換容積。各縣市另訂有審查許可條件，程序與時間都要算進去。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout" style="margin-bottom:0"><b>務實的結論：</b>透天基地通常只有幾十坪，就算移入 30%，實際多出來的樓地板可能只有十幾坪，卻要付出購地或代金的成本、加上冗長的審查程序，多數自建案划不來。<b>真正值得評估的情況有兩種</b>：一是你的基地容積率高、地價也高，多這 30% 有實質效益；二是你本來就持有公共設施保留地。無論哪一種，都要請建築師先算過帳再決定。</div>
+    </div>
+
+    <div class="note"><b>給自建屋主的建議順序：</b>先把免計容積的項目（停車空間、陽台、屋突、地下室）檢討到位，再考慮建築設計上的樓層配置，最後才輪到容積移轉。前兩項幾乎不花額外的錢，最後一項是要真金白銀買的。</div>
+  </div>
+</section>
+
+<!-- 6 貸款 -->
+<section id="loan">
+  <div class="narrow">
+    <div class="sec-head">
+      <span class="num">06 — 錢從哪來</span>
+      <h2>購地貸款與建築融資：成數比你想的低</h2>
+      <p>自地自建最大的門檻不是技術，是現金流。土地貸款不是房貸，條件差很多。</p>
+    </div>
+
+    <div class="tscroll">
+    <table>
+      <thead><tr><th style="width:22%">項目</th><th>土地貸款（土融）</th><th>建築融資（建融）</th></tr></thead>
+      <tbody>
+        <tr><td><b>常見成數</b></td><td>鑑價的 4～6 成。都市計畫內、路寬條件好的建地較高；非都市或偏遠農牧用地明顯較低。</td><td>工程造價的 5 成上下，且銀行是用<b>自己保守估的單價</b>去乘，實拿常低於預期。</td></tr>
+        <tr><td><b>撥款方式</b></td><td>一次撥款。</td><td>依工程進度分期撥款（如基礎、結構、粉刷、完工各一期）。</td></tr>
+        <tr><td><b>利率</b></td><td>普遍高於一般購屋房貸，且多為短年期或先繳息、期滿還本。</td><td>同樣偏高，屬於企業金融性質，會隨進度計息。</td></tr>
+        <tr><td><b>優惠房貸</b></td><td colspan="2">土地與建築階段<b>不適用</b>新青安等自用住宅優惠。要等使照下來、辦好建物第一次登記後，才有機會整合轉為自用住宅房貸。</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="note"><b>兩個容易被忽略的現金支出：</b>一是 2 年施工期間的<b>土建融利息</b>，這段時間沒有租金也沒有房子可住，是純現金流出；二是<b>銀行鑑價低於成交價</b>時，差額全部要自己補。</div>
+
+    <div class="calc" style="margin-top:24px">
+      <h3>自備款試算器</h3>
+      <p class="sub">拉一拉，看看你的口袋要準備多少現金。數字可自行調整。</p>
+      <div class="calc-grid">
+        <div class="field">
+          <label>土地總價（萬元）</label>
+          <input type="number" id="landPrice" value="900" min="0" step="10">
+        </div>
+        <div class="field">
+          <label>總樓地板面積／建坪（坪）</label>
+          <input type="number" id="floorArea" value="80" min="0" step="1">
+        </div>
+        <div class="field">
+          <label>營建單價（萬元／坪）<span id="unitHint"></span></label>
+          <input type="number" id="unitCost" value="18" min="0" step="0.5">
+        </div>
+        <div class="field">
+          <label>設計監造與規費（佔營建費 %）</label>
+          <input type="number" id="softPct" value="10" min="0" step="1">
+        </div>
+        <div class="field">
+          <label>土地貸款成數 <span class="rngval" id="landLtvVal">50%</span></label>
+          <input type="range" id="landLtv" min="0" max="70" value="50" step="5">
+        </div>
+        <div class="field">
+          <label>建築融資成數 <span class="rngval" id="buildLtvVal">40%</span></label>
+          <input type="range" id="buildLtv" min="0" max="60" value="40" step="5">
+        </div>
+      </div>
+
+      <div class="result">
+        <div class="rrow"><span>土地取得</span><b id="rLand">—</b></div>
+        <div class="rrow"><span>營建工程費</span><b id="rBuild">—</b></div>
+        <div class="rrow"><span>設計監造・規費・雜項</span><b id="rSoft">—</b></div>
+        <div class="rrow"><span>建議預備金（工程費 12%）</span><b id="rBuffer">—</b></div>
+        <div class="rrow"><span>總投資</span><b id="rTotal">—</b></div>
+        <div class="rrow"><span>銀行可貸（土融＋建融）</span><b id="rLoan">—</b></div>
+        <div class="rrow big"><span>你要準備的自備現金</span><b id="rCash">—</b></div>
+        <div class="rrow"><span>自備款佔總投資</span><b id="rRatio">—</b></div>
+      </div>
+      <p class="disclaim">※ 本試算僅供概算，未計入施工期利息、外構工程、裝修與家電。實際貸款成數依銀行鑑價、個人信用與擔保品條件核定，請以銀行核貸結果為準。營建單價受結構工法、樓層數、基地條件與建材等級影響甚大。</p>
+    </div>
+
+    <div class="note" style="margin-top:20px"><b>行情參考：</b>2026 年 RC 造透天的主體工程，市場上常見報價大約落在每坪 18～25 萬元；基地單純、規格樸實的案子可能更低，雙北或難施工基地則會更高。看到明顯低於行情的報價，多半不是撿到便宜，而是規格被拿掉了，後面用追加補回來。</div>
+  </div>
+</section>
+
+<!-- 5 建築計畫 -->
+<section id="plan">
+  <div class="narrow">
+    <div class="sec-head">
+      <span class="num">07 — 建築計畫</span>
+      <h2>建築師：這筆錢省不得</h2>
+      <p>依建築法規定，建照的設計與監造必須由開業建築師簽證負責，不是找工班畫一畫就好。</p>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>建築師會做什麼</h3>
+        <ul class="check">
+          <li>基地調查與法規檢討（能蓋多大、退縮多少、幾層）</li>
+          <li>需求訪談與平面配置、立面設計</li>
+          <li>整合結構技師、水電技師的圖說與簽證</li>
+          <li>申請指定建築線、請領建造執照、處理補正</li>
+          <li>施工期間的<b>監造</b>與竣工查驗、請領使用執照</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>費用怎麼算</h3>
+        <p>常見以<b>工程造價的百分比</b>計費，透天住宅約落在 5～8%，另有以建坪單價計價的做法。簽約前要問清楚：</p>
+        <ul class="check">
+          <li>報價是否含結構、水電技師簽證與各項規費</li>
+          <li>設計變更幾次以內不加價</li>
+          <li><b>監造</b>是否包含在內、到場頻率為何</li>
+          <li>付款節點（通常綁在建照、開工、結構、使照）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout"><b>關鍵觀念：</b><b>監造</b>是建築師依法對圖說相符性負責；<b>監工</b>是營造廠的工地管理；而<b>屋主自己的查核</b>是第三層保險。三者不能互相取代。設計階段多花一個月討論，勝過施工階段砸錢改一週。</div>
+  </div>
+</section>
+
+<!-- 6 工班 -->
+<section id="team">
+  <div class="narrow">
+    <div class="sec-head">
+      <span class="num">08 — 找工班</span>
+      <h2>發包模式與營造廠怎麼挑</h2>
+      <p>同一張圖，交給不同的人蓋，價差可以到三成，品質差距更大。</p>
+    </div>
+
+    <div class="tscroll">
+    <table>
+      <thead><tr><th style="width:24%">模式</th><th>特性</th><th style="width:24%">適合誰</th></tr></thead>
+      <tbody>
+        <tr><td><b>統包</b><br>（設計施工一家）</td><td>單一窗口、責任明確、進度好掌握；但價格較高，且設計與施工同一家，缺少互相制衡。</td><td>沒空管、怕麻煩、預算抓得住的人。</td></tr>
+        <tr><td><b>建築師設計監造<br>＋營造廠施工</b></td><td>最常見也最平衡。建築師站在屋主這邊查核營造廠，責任分開。</td><td>大多數自地自建屋主。</td></tr>
+        <tr><td><b>屋主自行分包</b></td><td>模板、鋼筋、水電、泥作各自發包，理論上最省錢；但要自己排工期、調度材料、承擔工安與界面糾紛。</td><td>本身是營建業、有經驗且時間充裕的人。</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="card" style="margin-top:18px">
+      <h3>挑營造廠的六個查核點</h3>
+      <ul class="check">
+        <li><b>有沒有合法牌照：</b>營造業分甲、乙、丙等級與土木包工業，承攬金額與工程規模有法定限制。要求出示營造業登記證書與專任工程人員資格。</li>
+        <li><b>估價單要「數量 × 單價」：</b>只給一個總價的報價單無法比較，也是日後追加的溫床。混凝土強度、鋼筋規格、磁磚等級都要寫在單子上。</li>
+        <li><b>比價要比同一份圖說與施工規範：</b>不同規格的報價根本不能放在一起比。</li>
+        <li><b>看實績：</b>要求看近三年的完工案例，最好能親自去看，並問問前屋主的施工經驗。</li>
+        <li><b>付款綁進度：</b>按基礎、結構、粉刷、完工分期付款，並<b>保留 5～10% 尾款到使照核發與驗收完成後</b>再付。</li>
+        <li><b>合約寫清楚：</b>工期天數、逾期違約金、追加變更必須書面簽認、保固範圍與年限、工程保險與工安責任歸屬。</li>
+      </ul>
+    </div>
+    <div class="callout"><b>務必避免：</b>沒有書面合約、口頭議定追加、預付大額工程款、營造廠要求「先付現金比較便宜」。工程款一旦超付進度，主導權就不在你手上了。</div>
+  </div>
+</section>
+
+<!-- 7 建照使照 -->
+<section id="permit">
+  <div class="narrow">
+    <div class="sec-head">
+      <span class="num">09 — 兩張執照</span>
+      <h2>建造執照與使用執照</h2>
+      <p>一張決定你能不能開工，一張決定你能不能入住。</p>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>建造執照（建照）</h3>
+        <p>由建築師備齊土地權利證明、地籍圖、設計圖說、結構計算書等，向當地建管單位申請。核發前通常會經過一到多次補正。</p>
+        <ul class="check">
+          <li>前置作業：申請<b>指定建築線</b></li>
+          <li>核發後須在期限內<b>申報開工</b>，逾期建照失效</li>
+          <li>施工中如有變更，須辦理<b>變更設計</b>，不能先蓋再說</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>使用執照（使照）</h3>
+        <p>竣工後由建築師申報，主管機關會勘驗現況是否與核准圖說相符。與圖不符就得先改到符合才能核發。</p>
+        <ul class="check">
+          <li>沒有使照＝不能接<b>正式水電</b></li>
+          <li>沒有使照＝不能辦<b>建物第一次登記</b>（保存登記）</li>
+          <li>沒有權狀＝不能<b>轉為自用住宅房貸</b>、不能順利買賣</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note"><b>常見誤解：</b>自地自建的建物是「原始取得」，辦理第一次登記時不課契稅（契稅是移轉才課）。但完工後房屋稅開徵、土地地價稅稅率也可能因地目與使用情形調整，要記得在完工後主動申請自用住宅稅率。</div>
+  </div>
+</section>
+
+<!-- 8 監工 -->
+<section id="watch">
+  <div class="narrow">
+    <div class="sec-head">
+      <span class="num">10 — 施工期</span>
+      <h2>監工：屋主自己該盯的關鍵節點</h2>
+      <p>你不必看懂結構計算，但這幾個節點沒到場，事後很難補救。全程拍照存檔，是最便宜的保險。</p>
+    </div>
+
+    <div class="risks">
+      <div class="risk" style="border-left-color:var(--gold)"><h4>放樣・鑑界</h4><p>確認建物位置、退縮距離與鄰地界線相符。這時候錯了，後面全部要拆。</p></div>
+      <div class="risk" style="border-left-color:var(--gold)"><h4>基礎・地質</h4><p>開挖深度、地質改良或基樁施作、筏基防水。回填前務必拍照。</p></div>
+      <div class="risk" style="border-left-color:var(--gold)"><h4>鋼筋綁紮</h4><p>間距、續接位置、保護層厚度、進場鋼筋標示。<b>灌漿前一定要看，灌完就再也看不到了。</b></p></div>
+      <div class="risk" style="border-left-color:var(--gold)"><h4>模板・支撐</h4><p>垂直度、平整度、支撐是否足夠，關係到結構安全與後續泥作厚度。</p></div>
+      <div class="risk" style="border-left-color:var(--gold)"><h4>混凝土澆置</h4><p>核對出貨磅單的強度與方數、坍度試驗、留置試體，<b>現場嚴禁加水</b>，澆置後要確實養護。</p></div>
+      <div class="risk" style="border-left-color:var(--gold)"><h4>防水工程</h4><p>屋頂、外牆、浴室、陽台、女兒牆收邊。完成後做<b>試水測試</b>，別等交屋才發現漏水。</p></div>
+      <div class="risk" style="border-left-color:var(--gold)"><h4>水電配管</h4><p>管線走向與插座開關位置逐間確認，<b>封牆前把配管位置全部拍照存檔</b>，未來裝修鑽牆保命用。</p></div>
+      <div class="risk" style="border-left-color:var(--gold)"><h4>門窗安裝</h4><p>塞水路是否確實，氣密水密規格是否與合約相符。窗邊滲水多半出在這一關。</p></div>
+      <div class="risk" style="border-left-color:var(--gold)"><h4>外牆・磁磚</h4><p>黏著率、伸縮縫留設、洩水坡度。海線風大鹽分高，外牆材質與收邊要更講究。</p></div>
+      <div class="risk" style="border-left-color:var(--gold)"><h4>竣工驗收</h4><p>逐項檢查抓漏、門窗開闔、迴路測試、給排水、五金。列缺失清單並約定改善期限後再付尾款。</p></div>
+    </div>
+
+    <div class="note"><b>實務建議：</b>每週固定到工地一次、每次拍 20 張照片並註明日期，比事後爭吵有用一百倍。有任何變更，一律用書面或通訊軟體留下文字紀錄並請對方回覆確認。</div>
+  </div>
+</section>
+
+<!-- 9 成本追加 -->
+<section id="cost">
+  <div class="narrow">
+    <div class="sec-head">
+      <span class="num">11 — 預算失控來源</span>
+      <h2>會讓成本暴衝的 12 個因素</h2>
+      <p>幾乎每一件自地自建都會追加。差別只在於，你有沒有事先把它編進預算。</p>
+    </div>
+    <div class="risks">
+      <div class="risk"><h4>1. 地質不良</h4><p>軟弱地盤需打樁或地質改良，是最大也最無法回頭的變數。</p></div>
+      <div class="risk"><h4>2. 整地與擋土</h4><p>高低差、土方外運、擋土牆與回填，土方處理費近年持續上升。</p></div>
+      <div class="risk"><h4>3. 拆除與清運</h4><p>舊屋拆除、廢棄物清運、鄰房保護，老屋重建案特別容易低估。</p></div>
+      <div class="risk"><h4>4. 外水外電接管</h4><p>管線距離遠、需申請電力增設或加設變壓器，動輒數十萬。</p></div>
+      <div class="risk"><h4>5. 開工後改設計</h4><p>最貴的追加。已完成的要打掉重做，還會連帶延誤工期。</p></div>
+      <div class="risk"><h4>6. 建材設備升級</h4><p>逛了一輪建材行之後想換的磁磚、衛浴、門窗、廚具，累積很快。</p></div>
+      <div class="risk"><h4>7. 物價與工資上漲</h4><p>合約若無物價調整條款，鋼筋水泥漲價的爭議會直接卡住工進。</p></div>
+      <div class="risk"><h4>8. 工期延宕的利息</h4><p>土建融利息按天計，多拖半年就是一筆實質支出。</p></div>
+      <div class="risk"><h4>9. 雜項執照</h4><p>圍牆、擋土牆、水塔、招牌等可能需另請雜項執照與規費。</p></div>
+      <div class="risk"><h4>10. 鄰房鑑定與鄰損</h4><p>施工前鑑定的費用，以及萬一造成鄰損的協商賠償。</p></div>
+      <div class="risk"><h4>11. 規費與各項簽證</h4><p>建照使照規費、空污防制費、鑑界、鑽探、營造綜合保險，加起來常是數十萬起跳。</p></div>
+      <div class="risk"><h4>12. 外構與裝修</h4><p>圍牆、大門、車道、庭院、鐵件雨遮，加上室內裝修與家電家具，最常整段被漏掉。</p></div>
+    </div>
+    <div class="callout"><b>唯一有效的防守：</b>在總預算之外，另外準備<b>工程費 10～15% 的預備金</b>，而且這筆錢不要一開始就編進去用掉。沒有預備金的自建案，通常會在結構體完成後開始做痛苦的取捨。</div>
+  </div>
+</section>
+
+<!-- 10 優缺點 -->
+<section id="pros">
+  <div class="narrow">
+    <div class="sec-head">
+      <span class="num">12 — 誠實評估</span>
+      <h2>自地自建的優點與缺點</h2>
+      <p>把兩邊攤開來看，再決定這條路適不適合你。</p>
+    </div>
+    <div class="pc">
+      <div class="pros">
+        <h3>優點</h3>
+        <ul>
+          <li><b>沒有公設，坪效最高。</b>權狀坪數幾乎等於可用坪數，同樣的錢住起來大很多。</li>
+          <li><b>土地持分完整。</b>長期而言土地才是保值的主體，不像大樓只分到一小塊持分。</li>
+          <li><b>格局完全自主。</b>要幾間房、樓梯放哪、要不要留電梯與車位，全部自己決定。</li>
+          <li><b>建材與工法自己把關。</b>結構、防水、水電走線，錢花在哪裡看得見。</li>
+          <li><b>可以配合家庭階段設計。</b>三代同堂、無障礙、居家辦公、寵物空間都能提前規劃。</li>
+          <li><b>總成本有機會低於同區新成屋。</b>省下建商的利潤與銷售費用，但前提是控管得住。</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h3>缺點</h3>
+        <ul>
+          <li><b>自備款門檻高。</b>土地與建築的貸款成數都低，現金要準備總投資的四到五成起跳。</li>
+          <li><b>時間長達 2～3 年。</b>這期間如果還在外面租房或繳原本的房貸，是雙重負擔。</li>
+          <li><b>專業門檻高。</b>法規、圖說、工序、合約，都要花時間學或找到值得信任的人。</li>
+          <li><b>追加風險由你承擔。</b>地質、物價、變更設計，超出的部分沒有人幫你吸收。</li>
+          <li><b>貸款利率較高且無優惠。</b>施工期間不適用新青安等自用住宅優惠方案。</li>
+          <li><b>品質責任在自己。</b>沒有建商的保固窗口，出問題要自己找營造廠處理。</li>
+          <li><b>要花大量心力管理。</b>跑工地、比價、協調、做決定，對上班族是實質負擔。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note" style="margin-top:18px"><b>怎麼判斷適不適合：</b>如果你的現金只夠付土地、沒有預備金，或是完全沒有時間到工地，建議先看成屋，或考慮委建與合建。自地自建最怕的不是花錢，是<b>錢在中途不夠而工程停擺</b>。</div>
+  </div>
+</section>
+
+<!-- 11 FAQ -->
+<section id="faq">
+  <div class="narrow">
+    <div class="sec-head">
+      <span class="num">13 — 常見問題</span>
+      <h2>大家最常問我的幾件事</h2>
+    </div>
+
+    <details><summary>農地可以蓋房子嗎？</summary><div class="body">農牧用地不能直接蓋一般住宅，只能依規定申請<b>農舍</b>，且對申請人的農民身分、土地面積、取得年限、建蔽率與座落位置都有限制，並非買了農地就能蓋。想住透天又想要合法貸款與轉手順利，還是以建築用地為優先。</div></details>
+
+    <details><summary>我可以不找建築師，直接找工班蓋嗎？</summary><div class="body">不行。依建築法規定，建造執照的設計與監造必須由開業建築師簽證。沒有建照就動工屬於違建，不但無法接正式水電、辦不了保存登記，還可能被查報拆除，也完全無法向銀行貸款。</div></details>
+
+    <details><summary>自地自建可以申請新青安嗎？</summary><div class="body">土地與施工階段適用的是土地貸款與建築融資，<b>不適用</b>自用住宅優惠方案。等使用執照核發、辦妥建物第一次登記、取得所有權狀之後，才有機會整合轉為自用住宅房貸，屆時再依當時的方案條件與自身資格評估。</div></details>
+
+    <details><summary>總共要準備多少現金才敢開始？</summary><div class="body">保守抓法是：土地自備款＋營建自備款＋設計監造規費＋10～15% 預備金。以總投資的角度看，多數案子需要準備四到五成的現金。上面的試算器可以先幫你抓一個概數，實際仍要以銀行鑑價與核貸結果為準。</div></details>
+
+    <details><summary>蓋好之後要繳哪些稅？</summary><div class="body">建物第一次登記屬原始取得，不課契稅。完工後開始課徵<b>房屋稅</b>，土地的<b>地價稅</b>也可能因使用情形改變，記得在符合條件時申請自用住宅用地稅率。未來若要出售，還會涉及土地增值稅與房地合一稅，建議在規劃階段就先把持有年限與自用條件一併想清楚。</div></details>
+
+    <details><summary>買地之前，可以先確認能不能蓋嗎？</summary><div class="body">可以，而且強烈建議。可以先申請土地使用分區證明、調地籍圖與地籍謄本，並委請建築師申請<b>指定建築線</b>做初步評估。買地的斡旋書或要約書也可以加註以取得建照為條件的但書，保留自己的退路。</div></details>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2>你手上的那塊地，到底能不能蓋？</h2>
+  <p>把地號給我，我幫你調地籍謄本與土地使用分區、確認建蔽率容積率與周邊行情，並轉介合作的建築師事務所去跑建築線與可建規模評估。想找地的，我也可以依你的預算與需求，在海線幫你物色合適的建地。</p>
+  <div class="btns">
+    <a class="btn btn-line" href="https://lin.ee/QyQmggG" target="_blank" rel="noopener">加 LINE 免費諮詢</a>
+    <a class="btn btn-gold" href="tel:0915295958">撥打 0915-295958</a>
+  </div>
+  <div class="who">
+    <b>海線房仲冠良</b>｜<br>
+    服務區域：沙鹿・清水・梧棲・龍井・大肚・大甲<br>
+    LINE ID：wosawo
+  </div>
+</div>
+
+<footer>
+  本頁內容為一般性資訊整理，法規、稅制、貸款條件與營建行情均可能異動，實際個案請以主管機關函釋、銀行核貸結果及專業人士意見為準。
+</footer>
+
+<script>
+(function(){
+  var P=3.305785;
+  function $(id){return document.getElementById(id);}
+  function n(id){var v=parseFloat($(id).value);return isNaN(v)?0:v;}
+  function set(id,val,unit){
+    $(id).innerHTML=(val>0?val.toLocaleString('zh-TW',{maximumFractionDigits:1}):'—')+'<i>'+unit+'</i>';
+  }
+  function run(){
+    var raw=n('luArea');
+    var ping=$('luUnit').value==='m2'?raw/P:raw;
+    var bcr=n('luBcr'), far=n('luFar');
+    var foot=ping*bcr/100;
+    var open=ping-foot;
+    var gfa=ping*far/100;
+    var floors=foot>0?gfa/foot:0;
+
+    set('oArea',ping,'坪');
+    set('oFoot',foot,'坪');
+    set('oOpen',open,'坪');
+    set('oGfa',gfa,'坪');
+    $('oFloor').innerHTML=(floors>0?floors.toFixed(1):'—')+'<i>層</i>';
+
+    var zoneTxt=$('luZone').options[$('luZone').selectedIndex].text;
+    if(zoneTxt==='自行輸入') zoneTxt='待確認';
+    var msg='冠良您好，我想了解這塊地：\n'
+      +'地號：'+$('luCity').value+($('luDist').value||'____區')+' '+($('luSec').value||'____段')+' '+($('luNo').value||'____')+' 地號\n'
+      +'土地面積：約 '+(ping>0?ping.toFixed(1):'__')+' 坪\n'
+      +'使用分區（我查到的）：'+zoneTxt+'\n'
+      +'想麻煩你幫我調地籍資料與土地使用分區，並協助我找建築師評估建築線與可建規模。';
+    $('luMsg').textContent=msg;
+  }
+  $('luZone').addEventListener('change',function(){
+    var v=this.value;
+    if(v!=='custom'){
+      var p=v.split(',');
+      $('luBcr').value=p[0];
+      $('luFar').value=p[1];
+    }
+    run();
+  });
+  ['luCity','luDist','luSec','luNo','luArea','luUnit','luBcr','luFar'].forEach(function(id){
+    $(id).addEventListener('input',run);
+    $(id).addEventListener('change',run);
+  });
+  $('luCopy').addEventListener('click',function(){
+    var t=$('luMsg').textContent, btn=this;
+    function done(){btn.textContent='已複製 ✓';setTimeout(function(){btn.textContent='複製訊息';},1800);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(done).catch(function(){fallback(t,done);});
+    }else{fallback(t,done);}
+  });
+  function fallback(t,cb){
+    var ta=document.createElement('textarea');
+    ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');cb();}catch(e){}
+    document.body.removeChild(ta);
+  }
+  run();
+})();
+
+(function(){
+  var ids=['landPrice','floorArea','unitCost','softPct','landLtv','buildLtv'];
+  function $(id){return document.getElementById(id);}
+  function num(id){var v=parseFloat($(id).value);return isNaN(v)?0:v;}
+  function fmt(w){
+    if(w>=10000){ return (w/10000).toFixed(2).replace(/\.?0+$/,'')+' 億'; }
+    return Math.round(w).toLocaleString('zh-TW')+' 萬';
+  }
+  function calc(){
+    var land=num('landPrice');
+    var area=num('floorArea');
+    var unit=num('unitCost');
+    var softPct=num('softPct');
+    var landLtv=num('landLtv');
+    var buildLtv=num('buildLtv');
+
+    $('landLtvVal').textContent=landLtv+'%';
+    $('buildLtvVal').textContent=buildLtv+'%';
+
+    var build=area*unit;
+    var soft=build*softPct/100;
+    var buffer=build*0.12;
+    var total=land+build+soft+buffer;
+
+    var loan=land*landLtv/100 + build*buildLtv/100;
+    if(loan>total) loan=total;
+    var cash=total-loan;
+    var ratio=total>0?(cash/total*100):0;
+
+    $('rLand').textContent=fmt(land);
+    $('rBuild').textContent=fmt(build);
+    $('rSoft').textContent=fmt(soft);
+    $('rBuffer').textContent=fmt(buffer);
+    $('rTotal').textContent=fmt(total);
+    $('rLoan').textContent=fmt(loan);
+    $('rCash').textContent=fmt(cash);
+    $('rRatio').textContent=ratio.toFixed(0)+'%';
+
+    var hint=$('unitHint');
+    if(unit>0&&unit<15){hint.textContent='　偏低，留意規格';}
+    else if(unit>28){hint.textContent='　高規格／難施工基地';}
+    else{hint.textContent='　2026 常見 18～25';}
+  }
+  ids.forEach(function(id){
+    var el=$(id);
+    el.addEventListener('input',calc);
+    el.addEventListener('change',calc);
+  });
+  calc();
+})();
+</script>
+</body>
+</html>

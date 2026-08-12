@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>新青安 3.0 試算機｜海線房仲冠良</title>
+<meta name="description" content="新青安 3.0 月付金試算：輸入貸款金額、年限、年齡與身分，算出前 3 年補貼利率下的月付金，並快篩年齡、額度、所得三道門檻是否過關。">
+<meta property="og:title" content="新青安 3.0 試算機｜海線房仲冠良"><meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#f7f3ea;--cream-2:#efe8da;--navy:#16283f;--navy-2:#1f3752;--gold:#c8963e;--gold-soft:#e8c887;--ink:#2b2b2b;--muted:#6f6a60;--line:#ddd2bd;--ok:#3f7a52;--red:#b5482f}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--cream);color:var(--ink);font-family:"Noto Sans TC",system-ui,"Microsoft JhengHei",sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+header{background:var(--navy);color:var(--cream);padding:44px 0 36px;position:relative;overflow:hidden}
+header:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 88% 12%,rgba(200,150,62,.22),transparent 52%)}
+header .wrap{position:relative}
+.eyebrow{font-size:12.5px;letter-spacing:.22em;color:var(--gold-soft);font-weight:500;margin-bottom:10px}
+h1{font-family:"DM Serif Display",Georgia,serif;font-size:clamp(28px,5.5vw,40px);font-weight:400}
+.lede{margin-top:12px;color:#cfd8e2;font-size:15px;max-width:32em}
+section{padding:28px 0}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:16px;box-shadow:0 2px 0 rgba(22,40,63,.05)}
+label{display:block;font-size:14px;font-weight:500;color:var(--navy);margin:14px 0 6px}
+label .hint{font-weight:400;color:var(--muted);font-size:12.5px}
+input,select{width:100%;padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font-size:16px;background:var(--cream);color:var(--ink);font-family:inherit}
+input:focus,select:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:transparent}
+.grid{display:grid;gap:14px;grid-template-columns:1fr 1fr}@media(max-width:520px){.grid{grid-template-columns:1fr}}
+.out{background:var(--navy);color:var(--cream);border-radius:14px;padding:24px;text-align:center;margin-top:4px}
+.out .k{font-size:13px;color:#cfd8e2}
+.out .v{font-family:"DM Serif Display",Georgia,serif;font-size:42px;color:var(--gold-soft);line-height:1.1;margin:4px 0}
+.out .u{font-size:14px;color:#cfd8e2}
+.out .sub{font-size:12.5px;color:#9fb0c4;margin-top:8px}
+.gate{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
+.gate:first-child{border-top:none}
+.gate .b{flex:none;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff}
+.gate.ok .b{background:var(--ok)} .gate.no .b{background:var(--red)}
+.gate .t b{color:var(--navy)}
+h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;font-size:22px;color:var(--navy);margin-bottom:10px}
+.cta{background:var(--gold);border-radius:14px;padding:24px;text-align:center;color:#3a2a0c;margin-top:6px}
+.cta a{display:inline-block;background:var(--navy);color:var(--cream);text-decoration:none;padding:12px 26px;border-radius:999px;font-weight:700;margin-top:10px}
+.note{font-size:12px;color:var(--muted);margin-top:14px;line-height:1.7}
+footer{background:var(--navy);color:#a9b6c4;padding:26px 0;font-size:13px;margin-top:20px}
+footer strong{color:var(--gold-soft);font-weight:500}
+footer .legal{margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.1);color:#7f8d9c;font-size:12px}
+</style>
+</head>
+<body>
+<a href="/" style="position:fixed;top:12px;left:12px;z-index:99999;background:#16283f;color:#fff;padding:9px 15px;border-radius:22px;font:600 14px/1 'Microsoft JhengHei',sans-serif;text-decoration:none;box-shadow:0 3px 10px rgba(0,0,0,.3)">← 回首頁</a>
+<header><div class="wrap">
+  <p class="eyebrow">免費試算 · 不用留資料</p>
+  <h1>新青安 3.0 試算機</h1>
+  <p class="lede">算出前 3 年補貼利率下的月付金，並快篩年齡、額度、所得三道門檻。8/1 起適用新制。</p>
+</div></header>
+<div class="wrap">
+<section>
+  <div class="card">
+    <div class="grid">
+      <div><label>貸款金額（萬）</label><input id="amt" type="number" value="800" min="0"></div>
+      <div><label>貸款年限（年）<span class="hint"> 最長 40</span></label><input id="yr" type="number" value="40" min="1" max="40"></div>
+      <div><label>申請人年齡</label><input id="age" type="number" value="35" min="18" max="80"></div>
+      <div><label>身分</label><select id="id"><option value="1000">一般戶（上限 1000 萬）</option><option value="1200">新婚 2 年內（1200 萬）</option><option value="1500">有未成年子女（1500 萬）</option></select></div>
+    </div>
+  </div>
+
+  <div class="out">
+    <div class="k">前 3 年月付金（利率約 1.775%）</div>
+    <div class="v"><span id="pay">—</span></div>
+    <div class="u">元 / 月</div>
+    <div class="sub" id="paysub">第 4 年起補貼逐年退場、利率調升，月付會往上。</div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h2>三道門檻快篩</h2>
+    <div id="gates"></div>
+  </div>
+
+  <div class="cta">
+    想知道你實際能貸多少、月付多少？<br>
+    <a href="https://lin.ee/QyQmggG" target="_blank" rel="noopener">加 LINE 找冠良試算 →</a>
+  </div>
+  <p class="note">本試算為概算，利率 1.775% 為新青安 3.0 前 3 年補貼後之參考值，實際利率、額度、寬限與核貸條件依承貸銀行與主管機關公告為準。試算結果非承諾，僅供參考。</p>
+</section>
+</div>
+<footer><div class="wrap">
+  <strong>海線房仲冠良｜懂你又懂房</strong><br>
+  ・｜沙鹿・清水・梧棲・龍井・大肚・大甲<br>
+  0915-295-958｜LINE：wosawo
+</div></footer>
+<script>
+function calc(){
+  var amt=+document.getElementById('amt').value||0;
+  var yr=+document.getElementById('yr').value||0;
+  var age=+document.getElementById('age').value||0;
+  var cap=+document.getElementById('id').value;
+  var P=amt*10000, i=0.01775/12, n=yr*12;
+  var pay = (P>0&&n>0)? P*i/(1-Math.pow(1+i,-n)) : 0;
+  document.getElementById('pay').textContent = pay>0? Math.round(pay).toLocaleString() : '—';
+  var maxYr = Math.max(0, 80-age);
+  var g=[
+    {ok: age<50, t:'年齡：申請人須<b>未滿 50 歲</b>（目前 '+age+' 歲）'},
+    {ok: yr<=maxYr, t:'年限：年齡＋貸款年限 ≤ 80，你最多可貸 <b>'+maxYr+' 年</b>（目前設 '+yr+' 年）'},
+    {ok: amt<=cap, t:'額度：不超過身分上限 <b>'+cap+' 萬</b>（目前 '+amt+' 萬）'},
+    {ok: true, t:'排富：主借款人<b>年所得需 ≤ 200 萬</b>（看個人、不看夫妻合計）— 請自行確認'}
+  ];
+  document.getElementById('gates').innerHTML = g.map(function(x){
+    return '<div class="gate '+(x.ok?'ok':'no')+'"><span class="b">'+(x.ok?'✓':'!')+'</span><span class="t">'+x.t+'</span></div>';
+  }).join('');
+}
+['amt','yr','age','id'].forEach(function(id){document.getElementById(id).addEventListener('input',calc);});
+calc();
+</script>
+</body>
+</html>

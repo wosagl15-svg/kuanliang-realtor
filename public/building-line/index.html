@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>申請建築線全攻略｜台中市指定建築線流程、文件、規費、退讓寬度試算</title>
+<meta name="description" content="買地想蓋房，第一步就是指定建築線。台中市申請流程、應備文件、規費 500 元/條、10 日辦竣、現有巷道六種認定、退讓寬度試算，以及袋地通行權與私設通路寬度規定，一頁看懂。海線房仲冠良整理。">
+<meta property="og:title" content="申請建築線全攻略｜台中市指定建築線流程與退讓寬度試算">
+<meta property="og:description" content="沒有建築線，土地就是蓋不了。流程、文件、規費、現有巷道退讓規則一次說清楚，附互動試算。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#f5f0e8; --cream-2:#f7f3ea;
+  --navy:#16233a; --navy-2:#1e2f4d; --navy-line:#2c3f61;
+  --gold:#c8963e; --gold-lt:#e0b45f;
+  --ink:#22262e; --muted:#6d6558;
+  --warn:#a8543f; --ok:#4f7f5f;
+  --rule:#ddd3c2;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:"Noto Sans TC",system-ui,sans-serif;line-height:1.85;-webkit-font-smoothing:antialiased}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+
+/* HERO */
+.hero{background:var(--navy);color:var(--cream);padding:60px 0 48px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;left:0;bottom:0;width:38%;height:6px;background:linear-gradient(90deg,var(--gold),var(--gold-lt))}
+.eyebrow{font-size:.78rem;letter-spacing:.3em;color:var(--gold-lt);font-weight:500;margin-bottom:14px}
+h1{font-family:"Noto Sans TC";font-weight:900;font-size:clamp(1.9rem,5.6vw,2.9rem);line-height:1.25;letter-spacing:-.01em}
+h1 em{font-family:"DM Serif Display",serif;font-style:normal;font-weight:400;color:var(--gold-lt);display:block;font-size:.62em;letter-spacing:.02em;margin-top:10px}
+.hero p{margin-top:20px;max-width:42em;color:#cfd6e2;font-weight:300}
+.hero .pull{
+  margin-top:26px;padding:16px 20px;border-left:3px solid var(--gold);
+  background:rgba(255,255,255,.05);font-size:1.02rem;color:#fff;max-width:40em;
+}
+
+/* TOC */
+.toc{background:var(--navy-2);border-top:1px solid var(--navy-line);padding:14px 0}
+.toc ol{list-style:none;display:flex;gap:6px;overflow-x:auto;counter-reset:t}
+.toc a{
+  flex:0 0 auto;display:block;text-decoration:none;color:#c8d2e2;font-size:.85rem;
+  padding:6px 13px;border:1px solid var(--navy-line);border-radius:100px;white-space:nowrap;
+}
+.toc a:hover{border-color:var(--gold);color:var(--gold-lt)}
+
+/* SECTIONS */
+section{padding:52px 0;border-bottom:1px solid var(--rule)}
+section:last-of-type{border-bottom:none}
+.snum{font-family:"DM Serif Display",serif;font-size:.95rem;color:var(--gold);letter-spacing:.16em;display:block;margin-bottom:6px}
+h2{font-weight:900;font-size:clamp(1.35rem,3.6vw,1.75rem);color:var(--navy);line-height:1.4;margin-bottom:8px}
+.sub{color:var(--muted);font-size:.94rem;margin-bottom:26px}
+h3{font-size:1.05rem;font-weight:700;color:var(--navy);margin:26px 0 8px}
+p{margin-bottom:14px}
+strong{font-weight:700;color:var(--navy)}
+.law{font-size:.8rem;color:var(--muted);letter-spacing:.04em}
+mark{background:linear-gradient(transparent 58%, #f0dcae 58%);padding:0 2px}
+
+ul.plain{list-style:none;margin:0 0 16px}
+ul.plain li{padding-left:22px;position:relative;margin-bottom:8px}
+ul.plain li::before{content:"";position:absolute;left:4px;top:.78em;width:6px;height:6px;background:var(--gold);border-radius:50%}
+
+/* STEPS */
+.steps{counter-reset:s;margin-top:8px}
+.step{
+  position:relative;padding:18px 20px 18px 62px;background:var(--cream-2);
+  border:1px solid var(--rule);border-left:3px solid var(--navy);margin-bottom:10px;
+}
+.step::before{
+  counter-increment:s;content:counter(s);
+  position:absolute;left:18px;top:18px;width:28px;height:28px;line-height:28px;text-align:center;
+  background:var(--navy);color:var(--gold-lt);font-family:"DM Serif Display",serif;font-size:.95rem;border-radius:50%;
+}
+.step b{display:block;color:var(--navy);font-size:1rem;margin-bottom:3px}
+.step span{font-size:.9rem;color:#5b5449}
+
+/* CALLOUT */
+.callout{background:#fdf6e6;border:1px solid #e6d3a5;border-left:4px solid var(--gold);padding:18px 20px;margin:22px 0}
+.callout.warn{background:#fbeee9;border-color:#e3c3b7;border-left-color:var(--warn)}
+.callout b{display:block;margin-bottom:5px;color:var(--navy)}
+.callout p:last-child{margin-bottom:0}
+.callout.warn b{color:var(--warn)}
+
+/* TABLE */
+.tw{overflow-x:auto;margin:18px 0}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.92rem;background:#fffdf8}
+th,td{border:1px solid var(--rule);padding:11px 13px;text-align:left;vertical-align:top}
+th{background:var(--navy);color:var(--cream);font-weight:500;font-size:.86rem;letter-spacing:.04em}
+tbody tr:nth-child(even){background:var(--cream-2)}
+td b{color:var(--navy)}
+
+/* CHECKLIST */
+.check{background:var(--navy);color:#e6e9ef;padding:24px;border-radius:3px}
+.check h3{color:#fff;margin:0 0 4px}
+.check .cn{font-size:.85rem;color:#9fabbf;margin-bottom:16px}
+.check label{
+  display:flex;gap:12px;align-items:flex-start;padding:11px 0;
+  border-bottom:1px solid var(--navy-line);cursor:pointer;font-size:.93rem;
+}
+.check label:last-of-type{border-bottom:none}
+.check input{margin-top:.42em;width:17px;height:17px;accent-color:var(--gold);flex:0 0 auto}
+.check label span small{display:block;color:#93a0b4;font-size:.8rem;font-weight:300;margin-top:2px}
+.check input:checked + span{color:#8fbf9d;text-decoration:line-through;text-decoration-color:#4f7f5f}
+.bar{height:5px;background:var(--navy-line);margin-top:18px;border-radius:100px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--gold);transition:width .25s}
+.bartxt{font-size:.82rem;color:#9fabbf;margin-top:8px}
+
+/* CALC */
+.calc{background:var(--cream-2);border:1px solid var(--rule);border-top:4px solid var(--gold);padding:26px}
+.calc h3{margin-top:0}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin:18px 0}
+.f label{display:block;font-size:.85rem;font-weight:500;color:var(--navy);margin-bottom:6px}
+.f select,.f input{
+  width:100%;padding:10px 12px;border:1.5px solid #d7cbb6;border-radius:2px;
+  background:#fffdf8;font-family:inherit;font-size:.95rem;color:var(--ink);
+}
+.f select:focus,.f input:focus{outline:2px solid var(--gold);outline-offset:1px}
+.cbrow{display:flex;align-items:center;gap:9px;font-size:.9rem;margin-bottom:6px}
+.cbrow input{width:17px;height:17px;accent-color:var(--gold)}
+.result{background:var(--navy);color:#e6e9ef;padding:20px 22px;margin-top:20px;border-left:3px solid var(--gold)}
+.result .big{font-family:"DM Serif Display",serif;font-size:1.6rem;color:var(--gold-lt);line-height:1.3;margin-bottom:8px}
+.result p{font-size:.92rem;color:#c3cbd8;margin-bottom:8px;font-weight:300}
+.result p:last-child{margin-bottom:0}
+.result .flag{color:#dd9c88;font-weight:500}
+
+/* FAQ */
+details{border:1px solid var(--rule);background:#fffdf8;margin-bottom:9px}
+summary{padding:15px 18px;cursor:pointer;font-weight:500;color:var(--navy);list-style:none;position:relative;padding-right:44px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:18px;top:13px;font-size:1.3rem;color:var(--gold);line-height:1}
+details[open] summary::after{content:"–"}
+details .body{padding:0 18px 17px;font-size:.93rem;color:#4d4a44}
+details .body p:last-child{margin-bottom:0}
+
+/* CTA */
+.cta{background:var(--navy);color:var(--cream);padding:54px 0}
+.cta h2{color:#fff;font-size:1.5rem}
+.cta p{color:#c3cbd8;font-weight:300;max-width:40em}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.btn{text-decoration:none;padding:13px 26px;border-radius:2px;font-weight:700;font-size:.95rem}
+.btn-gold{background:var(--gold);color:#16233a}
+.btn-gold:hover{background:var(--gold-lt)}
+.btn-out{border:1.5px solid #7d8ba3;color:#e6e9ef}
+.btn-out:hover{border-color:var(--gold-lt);color:var(--gold-lt)}
+.sig{margin-top:26px;font-size:.82rem;color:#8d9aae;line-height:1.9}
+footer{background:#101a2c;color:#7b879b;font-size:.78rem;padding:24px 0;line-height:1.9}
+footer a{color:#9fb0c8}
+
+/* 兩欄對照 */
+.vs{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--rule);margin:20px 0;background:#fffdf8}
+.vs>div{padding:20px}
+.vs>div:first-child{border-right:1px solid var(--rule);background:var(--cream-2)}
+.vs .who{font-size:.76rem;letter-spacing:.14em;color:var(--gold);display:block;margin-bottom:6px}
+.vs h4{margin:0 0 8px;font-size:1.02rem;color:var(--navy);font-weight:700}
+.vs p{font-size:.9rem;margin:0;color:#5b5449}
+
+/* 四條路 */
+.routes{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:14px;margin:20px 0}
+.route{background:#fffdf8;border:1px solid var(--rule);border-top:3px solid var(--gold);padding:18px}
+.route .rk{font-family:"DM Serif Display",serif;font-size:.82rem;color:var(--gold);letter-spacing:.16em;display:block;margin-bottom:4px}
+.route h4{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:7px}
+.route p{font-size:.88rem;color:#5b5449;margin-bottom:10px;line-height:1.75}
+.rate{font-size:.75rem;letter-spacing:.06em;padding:3px 10px;border-radius:100px;display:inline-block;font-weight:500}
+.rate.a{background:#e4efe6;color:#3d6b4d}
+.rate.b{background:#f7ecd4;color:#8a6a1f}
+.rate.c{background:#f7e2da;color:#a8543f}
+
+@media(max-width:560px){
+  .vs{grid-template-columns:1fr}
+  .vs>div:first-child{border-right:none;border-bottom:1px solid var(--rule)}
+}
+
+a.link{color:#8a6a1f;text-decoration:underline;text-underline-offset:3px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media (max-width:600px){section{padding:40px 0}.calc{padding:20px}.check{padding:20px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<a href="/" style="position:fixed;top:12px;left:12px;z-index:99999;background:#16283f;color:#fff;padding:9px 15px;border-radius:22px;font:600 14px/1 'Microsoft JhengHei',sans-serif;text-decoration:none;box-shadow:0 3px 10px rgba(0,0,0,.3)">← 回首頁</a>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">土地買賣 · 自地自建 · 台中市</div>
+    <h1>申請建築線，是蓋房子的第一步<em>Building Line Designation</em></h1>
+    <p>很多人以為買到「建地」就能蓋。實際上，主管機關要先在圖面上劃出一條線，告訴你哪裡是路、哪裡是你的地、你的房子最多能蓋到哪。這條線沒指定下來，建照根本送不出去。</p>
+    <div class="pull">一句話：<strong style="color:#e0b45f">沒有建築線，這塊地就不能蓋。</strong>買農地、買畸零地、買巷底土地之前，先花 500 元把這件事查清楚，比事後打官司便宜太多。</div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="頁面章節">
+  <div class="wrap">
+    <ol>
+      <li><a href="#s1">建築線是什麼</a></li>
+      <li><a href="#s2">誰要申請</a></li>
+      <li><a href="#s3">申請流程</a></li>
+      <li><a href="#s4">文件清單</a></li>
+      <li><a href="#s5">規費與時程</a></li>
+      <li><a href="#s6">現有巷道</a></li>
+      <li><a href="#s7">退讓試算</a></li>
+      <li><a href="#s8">借道他人土地</a></li>
+      <li><a href="#s9">常見地雷</a></li>
+    </ol>
+  </div>
+</nav>
+
+<section id="s1">
+  <div class="wrap">
+    <span class="snum">01</span>
+    <h2>建築線是什麼？</h2>
+    <p class="sub">白話說，就是「你的地」跟「路」之間那條官方認證的界線</p>
+
+    <p>建築線是主管機關指定的<strong>基地與道路的境界線</strong>。它同時決定三件事：房子不能蓋到線外、退縮從哪裡起算、以及這塊地到底有沒有「合法出入口」。</p>
+
+    <p>法源有兩條。建築法第 42 條規定，建築基地必須與建築線相連接，連接部分的最小寬度由各縣市自己訂。建築法第 48 條則規定，主管機關應以已公告道路的境界線為建築線；如果不是公告道路而是「現有巷道」，主管機關認為有必要時也可以另定建築線。<span class="law">（建築法 §42、§48）</span></p>
+
+    <div class="callout">
+      <b>為什麼房仲和地主一定要懂這件事</b>
+      <p>土地買賣最常見的糾紛，就是買方以為能蓋、賣方也說能蓋，結果送件才發現指不出建築線。一塊臨路寬度不足、或前面那條路根本不被認定為現有巷道的土地，市場價值和「可建地」是兩回事。</p>
+    </div>
+
+    <h3>什麼時候會用到建築線指定圖</h3>
+    <ul class="plain">
+      <li>申請建造執照、雜項執照（<strong>必附文件</strong>，除非在免指定建築線的公告範圍內）<span class="law"> · 台中市建築管理自治條例 §5、§6</span></li>
+      <li>買地前確認這塊地是否真的可建、可建範圍多大</li>
+      <li>畸零地合併、確認面前道路屬性與寬度</li>
+      <li>老屋補辦使用執照（需檢附建築線指定證明）</li>
+    </ul>
+  </div>
+</section>
+
+<section id="s2">
+  <div class="wrap">
+    <span class="snum">02</span>
+    <h2>哪些情況要申請？哪些可以免？</h2>
+    <p class="sub">台中市建築管理自治條例第 10 條把界線畫得很清楚</p>
+
+    <h3>應申請指定建築線</h3>
+    <p>建築基地臨接<strong>計畫道路、廣場、市區道路、公路，或符合規定的現有巷道</strong>者，都要申請指定建築線。</p>
+
+    <h3>可以免申請的三種情形</h3>
+    <div class="tw">
+    <table>
+      <thead><tr><th style="width:32%">情形</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>已在免指定公告範圍</b></td>
+          <td>道路或廣場已開闢完成，且境界線經都發局公告為免申請指定建築線範圍者。都發局網站有「免指定建築線公告」專區可查。</td>
+        </tr>
+        <tr>
+          <td><b>農舍與農業設施</b></td>
+          <td>申請興建農舍，以及農作產銷、林業、水產養殖、畜牧等農業設施的土地，得免臨接道路。</td>
+        </tr>
+        <tr>
+          <td><b>小面積農業區建築</b></td>
+          <td>特定農業區、一般農業區的甲種建築用地，以及都市計畫法台中市施行自治條例第 40 條規定的農業區土地，建築<b>總樓地板面積 660 ㎡ 以下</b>且非供公眾使用者，得免臨接道路。</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="callout warn">
+      <b>免臨接道路 ≠ 有路可走</b>
+      <p>條文寫得很直白：這些基地的<strong>進出通路範圍與通行權利，由土地所有權人、起造人自行協調解決</strong>。政府不會幫你喬。也就是說，你可能拿得到建照，卻在鄰地不讓路的情況下實際進不去。</p>
+      <p>另外要注意，民國 102 年 10 月 16 日之後才分割的基地或增建、改建，樓地板面積必須<strong>合併計算</strong>，不能靠切割土地繞過 660 ㎡ 的門檻。</p>
+    </div>
+
+    <h3>基地和建築線要接多寬才夠？</h3>
+    <ul class="plain">
+      <li>不得小於台中市畸零地使用自治條例規定的基地最小寬度；<strong>位於道路末端者，不得小於 2 公尺</strong></li>
+      <li>畸零地寬度不足、依規定不必補足者，不得小於 2 公尺</li>
+      <li>以私設通路連接建築線者，不得小於建築技術規則所定私設通路最小寬度</li>
+    </ul>
+    <p class="law">（台中市建築管理自治條例 §13）</p>
+  </div>
+</section>
+
+<section id="s3">
+  <div class="wrap">
+    <span class="snum">03</span>
+    <h2>申請流程怎麼跑</h2>
+    <p class="sub">台中市已全面線上化，申請書要從資訊網產出</p>
+
+    <div class="steps">
+      <div class="step"><b>先確認要不要申請</b><span>查都發局「免指定建築線公告」，確認你的基地是否已在免申請範圍內。省下這一步就省下時間與規費。</span></div>
+      <div class="step"><b>委請專業技師或建築師測繪</b><span>現況成果圖、地籍套繪圖必須由專業技師或建築師簽證負責；臨接未開闢計畫道路或分區界線的，還要一併附樁位成果圖。這是整個流程中最花錢也最花時間的一環。</span></div>
+      <div class="step"><b>上系統填申請書</b><span>進入台中市建築線指定案件資訊網，點「建築線指示(定)案件申辦查詢（民眾版）→ 民眾申請案件」，依流程填完後產出申請書。</span></div>
+      <div class="step"><b>備齊書圖送件</b><span>由土地權利關係人填具申請書，檢附文件一式二份向都發局提出（地籍圖正本一份）。也可以向都發局委託的專業公會、團體申請審查。</span></div>
+      <div class="step"><b>審查與現場會勘</b><span>承辦調卷、必要時會同現場勘查。臨接公路或其他須會同、徵詢相關主管機關的案件，時間會拉長。</span></div>
+      <div class="step"><b>繳費領件</b><span>合格後繳納規費、領取建築線指定圖。不合格會通知補正，補正機會只有一次。</span></div>
+    </div>
+
+    <p style="margin-top:18px">線上系統：<a class="link" href="https://urbanline.taichung.gov.tw/tcbguild/" target="_blank" rel="noopener">urbanline.taichung.gov.tw/tcbguild</a>　·　主管機關：台中市政府都市發展局（西屯區文心路二段588號，04-2228-9111）</p>
+  </div>
+</section>
+
+<section id="s4">
+  <div class="wrap">
+    <span class="snum">04</span>
+    <h2>應備文件清單</h2>
+    <p class="sub">勾一勾，確認沒有漏件（一式二份，地籍圖正本一份）</p>
+
+    <div class="check">
+      <h3>台中市指定建築線 送件清單</h3>
+      <div class="cn">依台中市建築管理自治條例第 11 條及都發局公告整理</div>
+
+      <label><input type="checkbox"><span>申請書<small>由資訊網「民眾申請案件」填完後產出，需由土地權利關係人填具</small></span></label>
+      <label><input type="checkbox"><span>地籍圖謄本<small>申請日前三個月內。正本一份，另備影本</small></span></label>
+      <label><input type="checkbox"><span>土地登記簿謄本<small>申請日前三個月內。都市計畫土地免附</small></span></label>
+      <label><input type="checkbox"><span>都市計畫圖（核定版）或行政區域圖／電子地圖<small>都計內附都市計畫圖；非都市土地附行政區域圖或電子地圖，並標明基地位置</small></span></label>
+      <label><input type="checkbox"><span>現況成果圖<small>申請日前三個月內，須由專業技師或建築師簽證。應標示鄰近公共設施、機關學校或明顯建築物、使用分區或編定、基地高程、地形、鄰近建物、道路及溝渠</small></span></label>
+      <label><input type="checkbox"><span>地籍套繪圖<small>應標示基地及周邊土地之地段地號</small></span></label>
+      <label><input type="checkbox"><span>樁位測量成果圖<small>僅限臨接未開闢計畫道路或分區界線者</small></span></label>
+      <label><input type="checkbox"><span>建築線剖面圖及相關圖例標示<small>都市計畫書未規定，或非屬建照申請案者免附</small></span></label>
+      <label><input type="checkbox"><span>現有巷道彩色照片<small>臨接現有巷道、公路者必附</small></span></label>
+      <label><input type="checkbox"><span>其他相關附件<small>相關公文、同意書等</small></span></label>
+
+      <div class="bar"><i id="pbar"></i></div>
+      <div class="bartxt" id="pnum">已備妥 0 / 10 項</div>
+    </div>
+  </div>
+</section>
+
+<section id="s5">
+  <div class="wrap">
+    <span class="snum">05</span>
+    <h2>規費、時程與有效期限</h2>
+    <p class="sub">這三個數字最常被問，也最常被搞混</p>
+
+    <div class="tw">
+    <table>
+      <thead><tr><th style="width:26%">項目</th><th style="width:26%">數字</th><th>備註</th></tr></thead>
+      <tbody>
+        <tr><td><b>規費</b></td><td>500 元 / 條</td><td>依申請指定建築線的條數計算。一塊地臨兩條路，就是兩條。</td></tr>
+        <tr><td><b>辦理天數</b></td><td>收件日起 <b>10 日內</b></td><td>面臨公路或其他須會同、徵詢相關主管機關辦理者，延長為 <b>20 日</b>。不含補正時間。</td></tr>
+        <tr><td><b>補正</b></td><td>以 <b>一次</b> 為限</td><td>不符規定且無法補正者直接駁回；可補正者會詳列理由通知限期補正。</td></tr>
+        <tr><td><b>成果圖有效期</b></td><td><b>1 年</b></td><td>期滿前得申請展延 6 個月，且以一次為限。合計最長 1 年 6 個月。</td></tr>
+        <tr><td><b>失效情形</b></td><td>都市計畫變更</td><td>都市計畫道路或廣場變更時，都發局得函請申請人重新申請指定建築線。</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="law">（台中市建築管理自治條例 §12、§21；規費依都發局公告）</p>
+
+    <div class="callout warn">
+      <b>最容易踩的時間陷阱</b>
+      <p>建築線成果圖只有一年效期。土地買賣簽約到過戶、再到建築師畫完圖送建照，一年很容易就過去。如果你是在議價階段就先指定建築線，記得把<strong>展延</strong>排進時程，否則到要送建照時圖已失效，等於重跑一次。</p>
+    </div>
+  </div>
+</section>
+
+<section id="s6">
+  <div class="wrap">
+    <span class="snum">06</span>
+    <h2>「現有巷道」怎麼認定</h2>
+    <p class="sub">這是海線土地最常卡關的地方——門口那條路，法律上算不算路</p>
+
+    <p>計畫道路好處理，圖上畫得清清楚楚。麻煩的是那種走了幾十年、大家都在用、但地籍上還是私人土地的巷子。台中市自治條例第 19 條列出六種可認定為現有巷道的情形：</p>
+
+    <div class="tw">
+    <table>
+      <thead><tr><th style="width:8%">款</th><th>情形</th></tr></thead>
+      <tbody>
+        <tr><td><b>一</b></td><td>經道路主管機關認定屬<b>既成道路</b>者</td></tr>
+        <tr><td><b>二</b></td><td>經政府部門、道路主管機關或管理機關認定該道路為<b>已興闢、已納入維護或管理</b>之公眾通行市區（或村里）道路者</td></tr>
+        <tr><td><b>三</b></td><td>私人或民間團體自行闢設的通路，申請人無法有效舉證時，得製作路網圖，經都發局<b>公告 30 日</b>徵求異議並通知該巷道土地全部所有權人，公告期滿無人異議者。有異議時提請建築爭議事件評審委員會審議</td></tr>
+        <tr><td><b>四</b></td><td>曾指定建築線且已核准建築完成之巷道、備案道路，或經指定建築線之計畫道路變更為非計畫道路者</td></tr>
+        <tr><td><b>五</b></td><td><b>農地重劃道路</b>現況為道路且供公眾通行使用者</td></tr>
+        <tr><td><b>六</b></td><td>依土地重劃或區段徵收核定增設、依核定開發計畫闢建之道路；或土地所有權人出具經法院公證／認證之供公眾通行同意書、或自行捐贈市府之土地，並開闢為公共使用道路且編定為交通用地者</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>三個關鍵但書</h3>
+    <ul class="plain">
+      <li><strong>建照案內通路、私設通路</strong>原則上不適用上表第二至六款。但若土地所有權人出具經公證人認證的供公眾通行同意書或無償捐地，或在 112 年 3 月 31 日修正施行前已指定建築線且已核准建築完成，仍可認定為現有巷道。</li>
+      <li>民國 <strong>71 年 6 月 15 日</strong>建築技術規則修正前依規定留設的私設通路，得依第二款或準用上述但書認定為現有巷道。</li>
+      <li>基地臨接的若是上述以外的通路，或是<strong>寬度未達 2 公尺</strong>的現有巷道，建築時依現況保留，<strong>不得指定建築線</strong>。</li>
+    </ul>
+
+    <div class="callout">
+      <b>爭議有救濟管道</b>
+      <p>都市計畫地區的現有巷道認定爭議，可以向台中市建築爭議事件評審委員會申請爭議協調。買地前如果對這條路的定性有疑問，這是可以先行釐清的途徑，不必一路走到訴訟。</p>
+    </div>
+  </div>
+</section>
+
+<section id="s7">
+  <div class="wrap">
+    <span class="snum">07</span>
+    <h2>退讓寬度試算</h2>
+    <p class="sub">面臨現有巷道，指定建築線通常要退讓。先算算你會退掉多少</p>
+
+    <p>依自治條例第 20 條，面臨寬 2 公尺以上現有巷道的基地，指定建築線時要以巷道中心線為準、兩旁均等退讓，退到規定寬度為止。退讓多少，取決於巷道<strong>長度、出口型態、使用分區</strong>。</p>
+
+    <div class="calc">
+      <h3>退讓寬度速算</h3>
+      <div class="fields">
+        <div class="f">
+          <label for="zone">使用分區／用地</label>
+          <select id="zone">
+            <option value="normal">一般（住宅區、商業區、農業區等）</option>
+            <option value="ind">工業區或丁種建築用地</option>
+          </select>
+        </div>
+        <div class="f">
+          <label for="width">巷道現況寬度（公尺）</label>
+          <input id="width" type="number" step="0.1" min="0" value="3.5" inputmode="decimal">
+        </div>
+        <div class="f">
+          <label for="exit">出口型態</label>
+          <select id="exit">
+            <option value="one">單向出口（僅一端接通計畫道路）</option>
+            <option value="two">雙向出口</option>
+          </select>
+        </div>
+        <div class="f">
+          <label for="len">巷道長度（公尺）</label>
+          <input id="len" type="number" step="1" min="0" value="35" inputmode="decimal">
+        </div>
+      </div>
+      <label class="cbrow"><input type="checkbox" id="special"> 地形特殊、不能通行車輛（如寬 2m 以上排水明溝、湖泊、山壁、懸崖等）</label>
+
+      <div class="result" id="res" aria-live="polite"></div>
+      <p class="law" style="margin:14px 0 0">試算依台中市建築管理自治條例 §20 第 1、2 項簡化，僅供初步評估。實際指定結果以都發局核發之建築線指定圖為準。</p>
+    </div>
+
+    <h3>退讓的地，能不能算法定空地？</h3>
+    <p>原則上<strong>不能</strong>。依規定退讓成為現有巷道的土地，不得計入法定空地。但有兩種例外：</p>
+    <ul class="plain">
+      <li>基地一側臨接計畫道路或已指定建築線的現有巷道，且臨接長度達 2 公尺以上，他側因而退讓為現有巷道的土地</li>
+      <li>原建照案內通路或私設通路經認定為現有巷道，且原建照內已計入法定空地者</li>
+    </ul>
+
+    <div class="callout">
+      <b>買巷底土地前，先按一次計算機</b>
+      <p>一塊臨 3 公尺巷道、巷長 90 公尺的土地，指定建築線時要退到合計 6 公尺，等於你這側往內縮 1.5 公尺，而且這 1.5 公尺不算法定空地。基地深度本來就不夠的話，可建面積會被吃掉一大塊。這件事應該發生在<strong>出價之前</strong>，不是簽約之後。</p>
+    </div>
+  </div>
+</section>
+
+<section id="s8">
+  <div class="wrap">
+    <span class="snum">08</span>
+    <h2>要通過別人的土地，怎麼辦</h2>
+    <p class="sub">袋地、巷底地、繼承分割後的地——海線最常見，也最容易誤會的一題</p>
+
+    <h3>先把兩件事分開</h3>
+    <p>「能不能走」跟「能不能蓋」是兩套法律、兩個機關在管。搞混這件事的代價非常高。</p>
+
+    <div class="vs">
+      <div>
+        <span class="who">民法 · 法院說了算</span>
+        <h4>能不能走</h4>
+        <p>袋地通行權。土地跟公路沒有適當聯絡、無法正常使用時，地主可以通行周圍土地到公路。爭執時打確認通行權訴訟。</p>
+      </div>
+      <div>
+        <span class="who">建築法 · 都發局說了算</span>
+        <h4>能不能蓋</h4>
+        <p>要指定建築線、要附得出土地權利證明文件、通路寬度要合規。主管機關看的是文件，不是判決書。</p>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <b>打贏通行權官司，不代表能拿到建照</b>
+      <p>法院只判你「可以通行」，沒有判「這條路算路」。實務上很多人拿著勝訴判決去送建照，還是被退件——因為建築主管機關要的是土地權利文件，而那塊地不是你的。</p>
+    </div>
+
+    <h3>民法給你什麼</h3>
+    <ul class="plain">
+      <li><strong>第 787 條</strong>：土地與公路無適宜之聯絡致不能為通常使用者，得通行周圍地至公路。但必須<strong>選擇對周圍地損害最少</strong>的處所及方法，並<strong>支付償金</strong>。</li>
+      <li><strong>第 788 條</strong>：有通行權人必要時得<strong>開設道路</strong>，同樣要付償金。但若因此致通行地損害過鉅，通行地所有人可以反過來<strong>請求你買下該通行地及因而形成的畸零地</strong>；價額協議不成時由法院判定。</li>
+      <li><strong>第 789 條</strong>：如果變成袋地是因為<strong>土地一部讓與或分割</strong>造成的，只能通行當初的受讓人、讓與人或其他分割人的土地——但好處是<strong>無須支付償金</strong>。繼承分割後變袋地的案子先查這一條。</li>
+    </ul>
+
+    <h3>實務上真正走得通的四條路</h3>
+    <div class="routes">
+      <div class="route">
+        <span class="rk">路線 A</span>
+        <h4>爭取認定為現有巷道</h4>
+        <p>最乾淨。一旦認定為現有巷道，可以指定建築線，而且面臨已指定建築線的現有巷道申請建築，<strong>免附該巷道的土地權利文件</strong>，不必每次去求地主。舉證不足時可依第 19 條第 1 項第 3 款製作路網圖，經都發局公告 30 日無異議即可。</p>
+        <span class="rate a">最理想</span>
+      </div>
+      <div class="route">
+        <span class="rk">路線 B</span>
+        <h4>把那塊地買下來</h4>
+        <p>最貴，但一勞永逸。買下後就是你自己的私設通路，權利文件不成問題。談價時可以拿民法 788 條第 2 項當籌碼——對方若損害過鉅，本來就有權要求你買。</p>
+        <span class="rate b">花錢解決</span>
+      </div>
+      <div class="route">
+        <span class="rk">路線 C</span>
+        <h4>設定不動產役權</h4>
+        <p>同意書的升級版。依民法第 851 條設定並<strong>辦理地政登記</strong>，登記之後就算那塊地日後買賣、繼承或遭法拍，新所有權人一樣受拘束。成本遠低於買地，安全性遠高於同意書。</p>
+        <span class="rate a">CP 值高</span>
+      </div>
+      <div class="route">
+        <span class="rk">路線 D</span>
+        <h4>土地使用權同意書</h4>
+        <p>最快、最便宜，也最脆弱。只有債權效力，拘束的是簽字的那個人。地主一換人就可能歸零。若要走這條，務必<strong>經公證人公證或認證</strong>——台中現有巷道認定的多款條文本來就明文要求認證同意書。</p>
+        <span class="rate c">風險最高</span>
+      </div>
+    </div>
+
+    <h3>同意書的三個坑</h3>
+    <ul class="plain">
+      <li><strong>它只是債權。</strong>地主賣地、過世由子女繼承、或土地被法拍，新地主完全可以說「這不是我簽的」。房子蓋好了，路沒了。</li>
+      <li><strong>共有土地要全部同意。</strong>那條路如果是六個兄弟姊妹共有，六個都得簽。而且拖越久人只會越多——一個過世就變一群繼承人。</li>
+      <li><strong>範圍和用途要寫死。</strong>「同意通行」跟「同意作為建築基地之進出通路、供申請建造執照使用、且不得撤回」是兩件事。要有地號、面積、位置圖。</li>
+    </ul>
+
+    <h3>走私設通路，路要留多寬</h3>
+    <p>建築技術規則建築設計施工編第 2 條的數字，直接記起來。另外，基地與建築線相連接的部分，最小長度一律要 <strong>2 公尺以上</strong>。</p>
+
+    <div class="tw">
+    <table>
+      <thead><tr><th style="width:46%">私設通路長度</th><th>最小寬度</th></tr></thead>
+      <tbody>
+        <tr><td>未滿 10 公尺</td><td><b>2 公尺</b></td></tr>
+        <tr><td>10 公尺以上、未滿 20 公尺</td><td><b>3 公尺</b></td></tr>
+        <tr><td>20 公尺以上</td><td><b>5 公尺</b></td></tr>
+        <tr><td>以該通路為進出道路之建築物<b>總樓地板面積合計 1,000 ㎡ 以上</b></td><td><b>6 公尺</b>（不論長度）</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="law">通路長度自建築線起算，量至建築物最遠一處的出入口或共同入口——不是量到基地邊界就好。（建築技術規則建築設計施工編 §2）</p>
+
+    <div class="calc" style="margin-top:22px">
+      <h3>私設通路寬度速查</h3>
+      <div class="fields">
+        <div class="f">
+          <label for="plen">通路長度（公尺）</label>
+          <input id="plen" type="number" step="0.5" min="0" value="15" inputmode="decimal">
+        </div>
+        <div class="f">
+          <label for="parea">建築物總樓地板面積（㎡）</label>
+          <input id="parea" type="number" step="10" min="0" value="300" inputmode="decimal">
+        </div>
+      </div>
+      <div class="result" id="pres" aria-live="polite"></div>
+    </div>
+
+    <h3>農舍與農業設施的但書</h3>
+    <p>蓋農舍、蓋農作產銷／林業／水產養殖／畜牧設施的土地，法規明文<strong>免臨接道路</strong>；特定農業區、一般農業區的甲種建築用地及都市計畫法台中市施行自治條例第 40 條的農業區土地，總樓地板 660 ㎡ 以下且非供公眾使用者，也免臨接道路。</p>
+    <p>聽起來很好，但條文下一句才是重點——<strong>進出通路的範圍與通行權利，由土地所有權人、起造人自行協調解決</strong>。翻成白話就是：建照給你，路自己去喬。所以還是得回頭處理上面那四條路，只是不必卡在「指定建築線」這一關。</p>
+
+    <div class="callout">
+      <b>看地現場的快速判斷</b>
+      <p>走到基地前面，先查那條路的地號屬於誰。是公有、地目為「道」、或明顯有政府在維護的，事情好辦。如果整條路是隔壁一位地主的私有農地，這塊地就<strong>不能用一般建地的行情去估價</strong>——中間的價差，就是你後續要花在買路、設役權、打官司或跑公告程序上的成本。</p>
+    </div>
+
+    <div class="callout warn">
+      <b>一句話講給客戶聽</b>
+      <p>有通行權，不代表能蓋房子。要蓋房子，那條路要嘛被認定成現有巷道，要嘛你得對它有<strong>登記過</strong>的權利。光有一張同意書，地主一換人就變廢紙。</p>
+    </div>
+  </div>
+</section>
+
+<section id="s9">
+  <div class="wrap">
+    <span class="snum">09</span>
+    <h2>常見地雷</h2>
+    <p class="sub">實務上最常被問、也最常出事的幾題</p>
+
+    <details>
+      <summary>買賣還沒成交，我可以先申請建築線嗎？</summary>
+      <div class="body"><p>申請人限「土地權利關係人」。買方在尚未取得所有權前，實務上通常是<strong>取得地主同意</strong>後，以權利關係人身分申請，或直接請地主出面申請。這件事建議寫進斡旋或要約條件裡——「賣方應配合買方申請指定建築線，未能指定者買方得無條件解約」，能省掉非常多後續爭執。</p></div>
+    </details>
+
+    <details>
+      <summary>建築線指定圖上會寫哪些資訊？</summary>
+      <div class="body">
+        <p>依第 14 條，圖說應註明主要計畫及細部計畫（或非都市土地所在區域計畫）的公告實施日期與文號、道路寬度、牆面線及退縮線，以及其他與建築許可有關的事項。</p>
+        <p>基地位於都市計畫範圍內的，還要加註<strong>使用分區、建蔽率、容積率</strong>，以及土地使用分區管制要點與特殊記載事項。換句話說，這張圖不只是一條線，它同時告訴你這塊地能蓋多大。</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>面臨現有巷道要蓋房子，需要拿到巷道地主的同意書嗎？</summary>
+      <div class="body"><p>建築基地面臨<strong>已經指定建築線的現有巷道</strong>申請建築，得免附該巷道的土地權利證明文件。但如果你是以<strong>私設通路或基地內通路</strong>連接建築線，就必須檢附該通路的土地權利證明文件（依法留設的舊私設通路另有例外）。</p></div>
+    </details>
+
+    <details>
+      <summary>巷子太窄不能指定建築線，還有其他辦法嗎？</summary>
+      <div class="body">
+        <p>未達 2 公尺的現有巷道確實不能指定建築線。可能的方向包括：與相鄰土地協議調整或合併、取得鄰地所有權人出具經公證認證的供公眾通行同意書、或依第 22 條申請巷道改道（須公告 30 日、檢附測量成果圖與相關同意書，新巷道寬度仍須符合第 20 條）。</p>
+        <p>這幾條路都不便宜也不快，但比起買了不能蓋的地，仍然值得評估。</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>非都市土地（例如農地、丁建）也要指定建築線嗎？</summary>
+      <div class="body"><p>要。自治條例第 20 條最後一項明定，非都市土地的建築線指定依同條前五項規定辦理；臨接公路者，除依公路法相關規定外，依<strong>規劃寬度</strong>指定建築線。公路的地籍圖若已有明確道路分割界線且為公有土地，則依地籍中心線退縮規劃寬度指定。海線不少甲建、丁建案件卡在這裡。</p></div>
+    </details>
+
+    <details>
+      <summary>可以委託公會辦，還是一定要跑都發局？</summary>
+      <div class="body"><p>兩者皆可。自治條例第 68 條規定，都發局得委託專業公會或團體協助辦理建築線指定的審查，申請人可以向都發局申請，也可以向受委託的公會、團體申請（後者需另繳審查費用）。</p></div>
+    </details>
+
+    <details>
+      <summary>地主已經簽了土地使用權同意書，事後可以反悔嗎？</summary>
+      <div class="body">
+        <p>同意書是<strong>債權</strong>性質，效力原則上只及於簽名的那個人。土地一旦移轉給第三人——買賣、贈與、繼承、法拍都算——新的所有權人並不當然受原同意書拘束，這是實務上最常炸開的一顆雷。</p>
+        <p>降低風險的做法有三層：同意書<strong>經公證人公證或認證</strong>、內容寫明範圍地號與「供申請建造執照使用且不得撤回」、最後也是最有效的一層，依民法第 851 條<strong>設定不動產役權並辦理登記</strong>。有登記才有對抗第三人的效力。</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>臨接道路交叉口，還要再退嗎？</summary>
+      <div class="body"><p>會。沿道路交叉口建築者，除都市計畫另有規定外，須依自治條例第 24 條附表<strong>截角退讓</strong>；截角改為圓弧時，截角長度即為該弧的切線長，交叉角度超過 120 度者免截角。另外，臨接現有巷道及寬度未達 7 公尺的計畫道路、人行步道、廣場而免留設騎樓者，地面層還要自建築線<strong>退縮 50 公分</strong>建築。</p></div>
+    </details>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>不確定這塊地能不能蓋？先問，再出價。</h2>
+    <p>海線的甲建、丁建、農地、畸零地案件，十件裡有三件卡在建築線。我可以先幫你看謄本與地籍位置、判斷面前道路的性質、估算大概要退讓多少，再決定值不值得花錢送件。買地之前的一通電話，通常比買地之後的一場訴訟便宜。</p>
+    <div class="btns">
+      <a class="btn btn-gold" href="https://lin.ee/QyQmggG" target="_blank" rel="noopener">LINE 問冠良</a>
+      <a class="btn btn-out" href="tel:0915295958">撥打 0915-295958</a>
+    </div>
+    <p class="sig">
+      海線房仲冠良｜懂你又懂房<br>
+      服務區域：沙鹿 · 清水 · 梧棲 · 龍井 · 大肚 · 大甲<br>
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    本頁依<strong>台中市建築管理自治條例（112年3月31日修正）</strong>、建築法及台中市政府都市發展局公告資訊整理，內容經簡化，僅供一般性參考，不構成法律或建築專業意見。個案認定權責在主管機關，實際請洽
+    <a href="https://www.ud.taichung.gov.tw/" target="_blank" rel="noopener">台中市政府都市發展局</a>（04-2228-9111）或委由建築師、專業技師辦理。法規可能修正，請以最新公告為準。<br>
+  </div>
+</footer>
+
+<script>
+/* 文件清單進度 */
+(function(){
+  const boxes=[...document.querySelectorAll('.check input[type=checkbox]')];
+  const bar=document.getElementById('pbar'), num=document.getElementById('pnum');
+  function upd(){
+    const n=boxes.filter(b=>b.checked).length;
+    bar.style.width=(n/boxes.length*100)+'%';
+    num.textContent=`已備妥 ${n} / ${boxes.length} 項`+(n===boxes.length?'　—　可以送件了':'');
+  }
+  boxes.forEach(b=>b.addEventListener('change',upd));
+  upd();
+})();
+
+/* 退讓寬度試算 */
+(function(){
+  const $=id=>document.getElementById(id);
+  const res=$('res');
+  function calc(){
+    const zone=$('zone').value;
+    const w=parseFloat($('width').value);
+    const exit=$('exit').value;
+    const len=parseFloat($('len').value);
+    const sp=$('special').checked;
+
+    if(isNaN(w)||isNaN(len)||w<0||len<0){
+      res.innerHTML='<div class="big">請輸入寬度與長度</div><p>兩個欄位都填數字後才能試算。</p>';
+      return;
+    }
+    if(w<2){
+      res.innerHTML='<div class="big">不得指定建築線</div>'+
+        '<p class="flag">現況寬度未達 2 公尺。</p>'+
+        '<p>依自治條例第 19 條第 4 項，寬度未達 2 公尺的現有巷道，建築時依現況保留，不得指定建築線。要讓這塊地可建，通常得走協議合併、取得公證同意書或申請巷道改道。</p>';
+      return;
+    }
+
+    let target, why;
+    if(zone==='ind'){
+      target=8;
+      why='工業區或丁種建築用地，一律以合計達 8 公尺寬度的邊界線作為建築線。';
+    }else{
+      const shortEnough = (exit==='one' && len<=40) || (exit==='two' && len<=80);
+      if(shortEnough){
+        target = sp? 3 : 4;
+        why = `${exit==='one'?'單向出口且長度 40 公尺以下':'雙向出口且長度 80 公尺以下'}，退讓至合計 ${target} 公尺${sp?'（地形特殊，由 4 公尺減為 3 公尺）':''}。`;
+      }else{
+        target = sp? 4 : 6;
+        why = `${exit==='one'?'單向出口且長度超過 40 公尺':'雙向出口且長度超過 80 公尺'}，退讓至合計 ${target} 公尺${sp?'（地形特殊，由 6 公尺減為 4 公尺）':''}。`;
+      }
+    }
+
+    if(w>=target){
+      res.innerHTML=`<div class="big">免退讓</div>`+
+        `<p>${why}</p>`+
+        `<p>現況寬度 ${w} 公尺已達標準，應<strong style="color:#e0b45f">保持原有寬度</strong>，以現有巷道的邊界線作為建築線。</p>`;
+      return;
+    }
+
+    const back=((target-w)/2);
+    res.innerHTML=`<div class="big">單側退讓 ${back.toFixed(2)} 公尺</div>`+
+      `<p>${why}</p>`+
+      `<p>以巷道中心線為準，兩旁<strong style="color:#e0b45f">均等退讓</strong>：現況 ${w} 公尺 → 目標 ${target} 公尺，你這側退 ${back.toFixed(2)} 公尺（約 ${Math.round(back*100)} 公分）。</p>`+
+      `<p class="flag">提醒：退讓的土地原則上不得計入法定空地（第 20 條第 3 項有兩款例外）。</p>`;
+  }
+  ['zone','width','exit','len','special'].forEach(id=>{
+    $(id).addEventListener('input',calc);
+    $(id).addEventListener('change',calc);
+  });
+  calc();
+})();
+
+/* 私設通路寬度速查 */
+(function(){
+  const g=id=>document.getElementById(id);
+  const out=g('pres');
+  function run(){
+    const L=parseFloat(g('plen').value), A=parseFloat(g('parea').value);
+    if(isNaN(L)||isNaN(A)||L<0||A<0){
+      out.innerHTML='<div class="big">請輸入長度與面積</div><p>兩欄都填數字後才能試算。</p>';
+      return;
+    }
+    let w, why;
+    if(A>=1000){
+      w=6; why='以此通路為進出道路的建築物總樓地板面積合計已達 1,000 ㎡ 以上，不論通路長度，一律 6 公尺。';
+    }else if(L<10){
+      w=2; why='通路長度未滿 10 公尺。';
+    }else if(L<20){
+      w=3; why='通路長度 10 公尺以上、未滿 20 公尺。';
+    }else{
+      w=5; why='通路長度 20 公尺以上。';
+    }
+    out.innerHTML=`<div class="big">最小寬度 ${w} 公尺</div>`+
+      `<p>${why}</p>`+
+      `<p>長度自建築線起算，量至建築物最遠一處的出入口或共同入口。基地與建築線相連接部分，另須達 <strong style="color:#e0b45f">2 公尺以上</strong>。</p>`+
+      `<p class="flag">提醒：以私設通路連接建築線者，申請建築時必須檢附該通路的土地權利證明文件。</p>`;
+  }
+  ['plen','parea'].forEach(id=>g(id).addEventListener('input',run));
+  run();
+})();
+</script>
+</body>
+</html>

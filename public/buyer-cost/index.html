@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>買方購屋成本試算｜海線房仲冠良</title>
+<meta name="description" content="買房除了頭期款，還要準備哪些錢？契稅、印花稅、代書費、履保費、火險、貸款開辦與設定規費、仲介費，一次估算你簽約到交屋要準備的現金。">
+<meta property="og:title" content="買方購屋成本試算｜海線房仲冠良"><meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#f7f3ea;--cream-2:#efe8da;--navy:#16283f;--navy-2:#1f3752;--gold:#c8963e;--gold-soft:#e8c887;--ink:#2b2b2b;--muted:#6f6a60;--line:#ddd2bd}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--cream);color:var(--ink);font-family:"Noto Sans TC",system-ui,"Microsoft JhengHei",sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+header{background:var(--navy);color:var(--cream);padding:44px 0 36px;position:relative;overflow:hidden}
+header:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 88% 12%,rgba(200,150,62,.22),transparent 52%)}
+header .wrap{position:relative}
+.eyebrow{font-size:12.5px;letter-spacing:.22em;color:var(--gold-soft);font-weight:500;margin-bottom:10px}
+h1{font-family:"DM Serif Display",Georgia,serif;font-size:clamp(26px,5vw,38px);font-weight:400}
+.lede{margin-top:12px;color:#cfd8e2;font-size:15px;max-width:32em}
+section{padding:28px 0}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:16px;box-shadow:0 2px 0 rgba(22,40,63,.05)}
+label{display:block;font-size:14px;font-weight:500;color:var(--navy);margin:14px 0 6px}
+label .hint{font-weight:400;color:var(--muted);font-size:12.5px}
+input,select{width:100%;padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font-size:16px;background:var(--cream);color:var(--ink);font-family:inherit}
+input:focus,select:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:transparent}
+.grid{display:grid;gap:14px;grid-template-columns:1fr 1fr}@media(max-width:520px){.grid{grid-template-columns:1fr}}
+.row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.row .k{color:var(--muted)} .row .v{font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums}
+.row.big{border-top:2px solid var(--navy);border-bottom:none;padding-top:12px;margin-top:4px}
+.row.big .k{color:var(--navy);font-weight:700} .row.big .v{color:var(--gold);font-size:17px}
+.out{background:var(--navy);color:var(--cream);border-radius:14px;padding:24px;text-align:center}
+.out .k{font-size:13px;color:#cfd8e2}
+.out .v{font-family:"DM Serif Display",Georgia,serif;font-size:38px;color:var(--gold-soft);line-height:1.1;margin:4px 0}
+.out .u{font-size:14px;color:#cfd8e2}
+.cta{background:var(--gold);border-radius:14px;padding:24px;text-align:center;color:#3a2a0c;margin-top:16px}
+.cta a{display:inline-block;background:var(--navy);color:var(--cream);text-decoration:none;padding:12px 26px;border-radius:999px;font-weight:700;margin-top:10px}
+.note{font-size:12px;color:var(--muted);margin-top:14px;line-height:1.7}
+footer{background:var(--navy);color:#a9b6c4;padding:26px 0;font-size:13px;margin-top:20px}
+footer strong{color:var(--gold-soft);font-weight:500}
+footer .legal{margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.1);color:#7f8d9c;font-size:12px}
+</style>
+</head>
+<body>
+<a href="/" style="position:fixed;top:12px;left:12px;z-index:99999;background:#16283f;color:#fff;padding:9px 15px;border-radius:22px;font:600 14px/1 'Microsoft JhengHei',sans-serif;text-decoration:none;box-shadow:0 3px 10px rgba(0,0,0,.3)">← 回首頁</a>
+<header><div class="wrap">
+  <p class="eyebrow">免費試算 · 不用留資料</p>
+  <h1>買方購屋成本試算</h1>
+  <p class="lede">頭期款以外，簽約到交屋還要準備哪些錢？一次估給你看。</p>
+</div></header>
+<div class="wrap">
+<section>
+  <div class="card">
+    <div class="grid">
+      <div><label>房屋總價（萬）</label><input id="price" type="number" value="1000" min="0"></div>
+      <div><label>貸款成數（%）</label><input id="ltv" type="number" value="80" min="0" max="100"></div>
+      <div><label>房屋評定現值（萬）<span class="hint"> 契稅用，通常遠低於市價；不確定就留預設</span></label><input id="assess" type="number" value="150" min="0"></div>
+      <div><label>是否透過仲介</label><select id="agent"><option value="1">是（買方服務費約 2%）</option><option value="0">否</option></select></div>
+    </div>
+  </div>
+
+  <div class="out"><div class="k">簽約到交屋，建議準備現金約</div><div class="v" id="cash">—</div><div class="u">萬元（頭期款 ＋ 過戶雜費）</div></div>
+
+  <div class="card" style="margin-top:16px">
+    <div class="row"><span class="k">頭期款（自備）</span><span class="v" id="down">—</span></div>
+    <div class="row"><span class="k">仲介服務費</span><span class="v" id="fee">—</span></div>
+    <div class="row"><span class="k">契稅（評定現值 × 6%）</span><span class="v" id="deed">—</span></div>
+    <div class="row"><span class="k">印花稅（約 0.1%）</span><span class="v" id="stamp">—</span></div>
+    <div class="row"><span class="k">代書費（簽約＋過戶＋設定，估）</span><span class="v" id="scriv">—</span></div>
+    <div class="row"><span class="k">履約保證費（買方，約萬分之 6）</span><span class="v" id="escrow">—</span></div>
+    <div class="row"><span class="k">火險＋地震險（首年，估）</span><span class="v" id="ins">—</span></div>
+    <div class="row"><span class="k">貸款開辦＋抵押權設定規費（估）</span><span class="v" id="loan">—</span></div>
+    <div class="row big"><span class="k">過戶雜費小計</span><span class="v" id="feesum">—</span></div>
+  </div>
+
+  <div class="cta">
+    想抓更精準的數字、或想知道這間貸得到幾成？<br>
+    <a href="https://lin.ee/QyQmggG" target="_blank" rel="noopener">加 LINE 找冠良算 →</a>
+  </div>
+  <p class="note">本試算為概算，採常見假設；契稅以「房屋評定現值」計，非以成交價；各項規費、保費、代書費依實際案件、地區與銀行而異。結果僅供準備現金參考，非正式報價，實際以各機關、地政士與銀行核算為準。</p>
+</section>
+</div>
+<footer><div class="wrap">
+  <strong>海線房仲冠良｜懂你又懂房</strong><br>
+  ・｜沙鹿・清水・梧棲・龍井・大肚・大甲<br>
+  0915-295-958｜LINE：wosawo
+</div></footer>
+<script>
+function money(y){ return Math.round(y).toLocaleString(); } // 元
+function calc(){
+  var price=(+document.getElementById('price').value||0)*10000; // 元
+  var ltv=(+document.getElementById('ltv').value||0)/100;
+  var assess=(+document.getElementById('assess').value||0)*10000;
+  var agent=+document.getElementById('agent').value;
+  var loanAmt=price*ltv;
+  var down=price*(1-ltv);
+  var fee=agent? price*0.02 : 0;
+  var deed=assess*0.06;
+  var stamp=assess*0.001;
+  var scriv=30000;
+  var escrow=price*0.0006;
+  var ins=4000;
+  var loan=6000 + loanAmt*1.2*0.001; // 開辦 + 設定規費
+  var feesum=fee+deed+stamp+scriv+escrow+ins+loan;
+  var cash=down+feesum;
+  document.getElementById('down').textContent=money(down)+' 元';
+  document.getElementById('fee').textContent=money(fee)+' 元';
+  document.getElementById('deed').textContent=money(deed)+' 元';
+  document.getElementById('stamp').textContent=money(stamp)+' 元';
+  document.getElementById('scriv').textContent=money(scriv)+' 元';
+  document.getElementById('escrow').textContent=money(escrow)+' 元';
+  document.getElementById('ins').textContent=money(ins)+' 元';
+  document.getElementById('loan').textContent=money(loan)+' 元';
+  document.getElementById('feesum').textContent=money(feesum)+' 元';
+  document.getElementById('cash').textContent=(Math.round(cash/10000)).toLocaleString();
+}
+['price','ltv','assess','agent'].forEach(function(id){document.getElementById(id).addEventListener('input',calc);});
+calc();
+</script>
+</body>
+</html>

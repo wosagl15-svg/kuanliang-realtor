@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>長輩福利地圖｜依年齡查您家長輩能領的補助</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Noto+Sans+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f5f0e8;
+    --cream-deep:#ece4d6;
+    --navy:#1b2a44;
+    --navy-deep:#13203650;
+    --amber:#f5a623;
+    --amber-deep:#d6890a;
+    --ink:#2b2620;
+    --ink-soft:#6b6358;
+    --line:#dcd3c2;
+    --cash:#b6531f;
+    --health:#3d7a5c;
+    --care:#2f5d7c;
+    --move:#8a5a9e;
+    --safe:#a14b56;
+    --law:#4a4540;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Noto Sans TC',sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'DM Serif Display','Noto Sans TC',serif;font-weight:400;margin:0;}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:radial-gradient(120% 140% at 80% -10%, #2a3d5c 0%, var(--navy) 55%, #11192b 100%);
+    color:var(--cream);
+    padding:64px 0 0;
+    overflow:hidden;
+  }
+  .hero-inner{max-width:1080px;margin:0 auto;padding:0 24px 40px;}
+  .eyebrow{
+    display:inline-block;
+    font-size:13px;
+    letter-spacing:.12em;
+    color:var(--amber);
+    background:rgba(245,166,35,.12);
+    border:1px solid rgba(245,166,35,.4);
+    padding:5px 12px;
+    border-radius:99px;
+    margin-bottom:20px;
+  }
+  .hero h1{
+    font-size:clamp(30px,5vw,48px);
+    line-height:1.35;
+    max-width:760px;
+    margin-bottom:18px;
+  }
+  .hero .lede{
+    font-size:16px;
+    color:#cdd5e3;
+    max-width:600px;
+    margin-bottom:8px;
+  }
+  .hero .lede strong{color:var(--amber);font-weight:600;}
+
+  /* ---------- AGE PATH (signature element) ---------- */
+  .age-path-section{
+    background:#11192b;
+    padding:36px 0 44px;
+    border-top:1px solid rgba(255,255,255,.08);
+  }
+  .age-path-label{
+    font-size:13px;color:#9aa6bd;letter-spacing:.06em;margin-bottom:18px;
+  }
+  .age-path{
+    display:flex;
+    overflow-x:auto;
+    gap:0;
+    padding-bottom:10px;
+    scrollbar-width:thin;
+  }
+  .age-node{
+    flex:0 0 auto;
+    width:220px;
+    position:relative;
+    padding:0 18px 0 0;
+  }
+  .age-node:not(:last-child)::after{
+    content:'';
+    position:absolute;
+    top:17px;left:46px;right:0;
+    height:2px;
+    background:repeating-linear-gradient(90deg, rgba(245,166,35,.45) 0 6px, transparent 6px 12px);
+  }
+  .age-node .dot{
+    width:34px;height:34px;border-radius:50%;
+    background:var(--navy);
+    border:2px solid var(--amber);
+    color:var(--amber);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:12px;
+    margin-bottom:12px;
+    font-family:'Noto Sans TC',sans-serif;
+  }
+  .age-node .age-tag{
+    color:var(--amber);
+    font-size:13px;font-weight:700;letter-spacing:.04em;
+    margin-bottom:4px;
+  }
+  .age-node .age-desc{
+    color:#c7cfdf;font-size:13px;line-height:1.6;
+    max-width:190px;
+  }
+
+  /* ---------- POLICY CALLOUT ---------- */
+  .callout-wrap{margin:-22px auto 0;max-width:1080px;padding:0 24px;position:relative;z-index:2;}
+  .callout{
+    background:#fff7e8;
+    border:1px solid #ecd49a;
+    border-left:4px solid var(--amber-deep);
+    border-radius:10px;
+    padding:18px 22px;
+    font-size:14px;
+    color:#5c4a1f;
+    box-shadow:0 10px 30px -18px rgba(0,0,0,.25);
+  }
+  .callout b{color:#8a5d0c;}
+
+  /* ---------- FILTER ---------- */
+  .filter-section{padding:48px 0 8px;}
+  .filter-title{font-size:15px;color:var(--ink-soft);margin-bottom:14px;}
+  .filter-buttons{display:flex;flex-wrap:wrap;gap:10px;}
+  .filter-btn{
+    border:1.5px solid var(--navy);
+    background:transparent;
+    color:var(--navy);
+    padding:9px 18px;
+    border-radius:99px;
+    font-family:'Noto Sans TC',sans-serif;
+    font-size:14px;font-weight:600;
+    cursor:pointer;
+    transition:.15s;
+  }
+  .filter-btn:hover{background:rgba(27,42,68,.06);}
+  .filter-btn.active{
+    background:var(--navy);
+    color:var(--cream);
+  }
+
+  /* ---------- CATEGORY SECTIONS ---------- */
+  .category{padding:40px 0 8px;}
+  .cat-head{
+    display:flex;align-items:baseline;gap:12px;
+    border-bottom:2px solid var(--line);
+    padding-bottom:14px;margin-bottom:24px;
+  }
+  .cat-icon{
+    font-size:22px;
+  }
+  .cat-head h2{font-size:24px;color:var(--navy);}
+  .cat-count{font-size:13px;color:var(--ink-soft);margin-left:auto;}
+
+  .card-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+    margin-bottom:8px;
+  }
+  @media (max-width:720px){.card-grid{grid-template-columns:1fr;}}
+
+  .card{
+    background:var(--navy);
+    color:#e7e9ee;
+    border-radius:14px;
+    padding:22px 22px 20px;
+    position:relative;
+    border:1px solid rgba(255,255,255,.06);
+    transition:opacity .2s, transform .2s;
+  }
+  .card.dim{opacity:.32;}
+  .card .age-badge{
+    display:inline-block;
+    font-size:12px;font-weight:700;
+    color:var(--navy);
+    background:var(--amber);
+    padding:3px 10px;
+    border-radius:99px;
+    margin-bottom:12px;
+  }
+  .card h3{
+    font-family:'Noto Sans TC',sans-serif;
+    font-size:17px;font-weight:700;
+    color:#fff;
+    margin-bottom:10px;
+    line-height:1.5;
+  }
+  .card .amount{
+    font-size:15px;
+    color:var(--amber);
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  .card p{
+    font-size:13.5px;
+    color:#c4cad8;
+    margin:0 0 8px;
+  }
+  .card .howto{
+    font-size:13px;
+    color:#9fb0cc;
+    border-top:1px dashed rgba(255,255,255,.15);
+    padding-top:10px;
+    margin-top:10px;
+  }
+  .card .howto b{color:#e7e9ee;}
+  .card .src{
+    font-size:11px;
+    color:#778098;
+    margin-top:10px;
+  }
+
+  /* category color bars */
+  .cat-cash .cat-icon, .cat-cash h2{color:var(--cash);}
+  .cat-health .cat-icon, .cat-health h2{color:var(--health);}
+  .cat-care .cat-icon, .cat-care h2{color:var(--care);}
+  .cat-move .cat-icon, .cat-move h2{color:var(--move);}
+  .cat-safe .cat-icon, .cat-safe h2{color:var(--safe);}
+  .cat-law .cat-icon, .cat-law h2{color:var(--law);}
+
+  .cat-cash .card{border-top:3px solid var(--cash);}
+  .cat-health .card{border-top:3px solid var(--health);}
+  .cat-care .card{border-top:3px solid var(--care);}
+  .cat-move .card{border-top:3px solid var(--move);}
+  .cat-safe .card{border-top:3px solid var(--safe);}
+  .cat-law .card{border-top:3px solid var(--law);}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    margin-top:60px;
+    background:var(--cream-deep);
+    border-top:1px solid var(--line);
+    padding:32px 0 40px;
+  }
+  footer .wrap{font-size:13px;color:var(--ink-soft);}
+  footer .updated{font-weight:700;color:var(--ink);margin-bottom:10px;}
+  footer .brand{
+    margin-top:20px;padding-top:20px;
+    border-top:1px solid var(--line);
+    display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;
+    font-size:12.5px;
+  }
+</style>
+</head>
+<body>
+<a href="/" style="position:fixed;top:12px;left:12px;z-index:99999;background:#16283f;color:#fff;padding:9px 15px;border-radius:22px;font:600 14px/1 'Microsoft JhengHei',sans-serif;text-decoration:none;box-shadow:0 3px 10px rgba(0,0,0,.3)">← 回首頁</a>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">長輩福利地圖・民國 115 年版</span>
+    <h1>長輩的福利，不該再讓人霧裡看花</h1>
+    <p class="lede">每一項補助都有<strong>年齡門檻</strong>、<strong>申請窗口</strong>、<strong>資格條件</strong>，錯過了就只能等明年。這份地圖幫您把現金補助、醫療、長照、交通、安全、法律規劃，依年齡一次理清楚。</p>
+  </div>
+  <div class="age-path-section">
+    <div class="wrap">
+      <p class="age-path-label">▸ 拖曳查看：長輩的福利解鎖時間軸</p>
+      <div class="age-path" id="agePath">
+        <div class="age-node">
+          <div class="dot">55</div>
+          <div class="age-tag">55 歲（原住民）</div>
+          <div class="age-desc">重陽敬老禮金、假牙裝置補助開始適用。</div>
+        </div>
+        <div class="age-node">
+          <div class="dot">65</div>
+          <div class="age-tag">65 歲・福利大門開啟</div>
+          <div class="age-desc">中低收入老人生活津貼、敬老愛心卡、免費成人健檢、公費流感疫苗、長照2.0服務評估、國民年金老年年金，幾乎所有福利的起跑線。</div>
+        </div>
+        <div class="age-node">
+          <div class="dot">75</div>
+          <div class="age-tag">75 歲</div>
+          <div class="age-desc">公費肺炎鏈球菌疫苗開放接種，部分縣市假牙補助加碼。</div>
+        </div>
+        <div class="age-node">
+          <div class="dot">90</div>
+          <div class="age-tag">90 歲</div>
+          <div class="age-desc">台中市重陽敬老禮金提高至每人 3,000 元。</div>
+        </div>
+        <div class="age-node">
+          <div class="dot">100</div>
+          <div class="age-tag">100 歲・人瑞</div>
+          <div class="age-desc">重陽敬老禮金加碼至 1 萬元，多數區公所安排親訪慰問。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="callout-wrap">
+  <div class="callout">
+    <b>政策更新中，金額僅供參考：</b>老農津貼擬由 8,110 元調高至 1 萬元、國民年金老年年金保底擬由 4,049 元調高至 5,000 元，行政院規劃最快 115 年 7 月 1 日上路，但截至本頁更新時（115 年 6 月）尚未完成修法與正式公告。實際金額與生效日期，請以勞動部勞工保險局、衛生福利部最新公告為準。
+  </div>
+</div>
+
+<section class="filter-section">
+  <div class="wrap">
+    <p class="filter-title">想知道家裡長輩現在能用哪些福利？選一個年齡層，馬上篩出來看：</p>
+    <div class="filter-buttons" id="filterButtons">
+      <button class="filter-btn active" data-age="0">全部顯示</button>
+      <button class="filter-btn" data-age="55">55 歲以上（原住民）</button>
+      <button class="filter-btn" data-age="65">65 歲以上</button>
+      <button class="filter-btn" data-age="75">75 歲以上</button>
+      <button class="filter-btn" data-age="90">90 歲以上</button>
+      <button class="filter-btn" data-age="100">100 歲以上</button>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <!-- A. 現金類 -->
+  <section class="category cat-cash">
+    <div class="cat-head">
+      <span class="cat-icon">💰</span>
+      <h2>現金類補助</h2>
+      <span class="cat-count">每月／每年直接入帳</span>
+    </div>
+    <div class="card-grid">
+
+      <div class="card" data-age="65">
+        <span class="age-badge">65 歲以上</span>
+        <h3>中低收入老人生活津貼</h3>
+        <div class="amount">每月 3,879 元 ／ 7,759 元（依收入分兩級）</div>
+        <p>設籍並實際居住，且家庭總收入未超過當年最低生活費 2.5 倍、家庭土地房屋及動產未超過各縣市公告上限者可申請。未達最低生活費 1.5 倍者領較高額，1.5～2.5 倍者領較低額。</p>
+        <div class="howto"><b>怎麼辦：</b>向戶籍地區公所社會課提出申請，每年定期重新審查資格。</div>
+        <div class="src">資料來源：中低收入老人生活津貼發給辦法（每 4 年依消費者物價指數調整一次）</div>
+      </div>
+
+      <div class="card" data-age="55">
+        <span class="age-badge">65歲以上／原住民55歲</span>
+        <h3>台中市重陽節敬老禮金</h3>
+        <div class="amount">2,000 元 → 90歲 3,000元 → 95歲 5,000元 → 100歲以上 1萬元</div>
+        <p>設籍台中市，每年重陽節前由區公所公告發放期間，可選擇現金或匯款，匯款需於期限內至「社福便利站」線上申請或寄送紙本。</p>
+        <div class="howto"><b>怎麼辦：</b>留意每年 8、9 月區公所公告，逾期不予補發。</div>
+        <div class="src">資料來源：臺中市政府社會局年度發放實施計畫（金額逐年公告，以當年版本為準）</div>
+      </div>
+
+      <div class="card" data-age="65">
+        <span class="age-badge">65 歲以上・農保</span>
+        <h3>老年農民福利津貼（老農津貼）</h3>
+        <div class="amount">現行每月 8,110 元（全額）／4,055 元（半額）</div>
+        <p>農保年資滿 15 年領全額，滿 6 個月未滿 15 年領半額。需通過所得與不動產排富審查，且不得同時領取其他社會保險老年給付。</p>
+        <div class="howto"><b>怎麼辦：</b>攜身分證、印章至戶籍地農會或漁會辦理，亦可用自然人憑證線上申請。</div>
+        <div class="src">資料來源：勞動部勞工保險局（修法調高至1萬元案尚未三讀通過）</div>
+      </div>
+
+      <div class="card" data-age="65">
+        <span class="age-badge">65 歲以上</span>
+        <h3>國民年金老年基本保證年金</h3>
+        <div class="amount">現行每月 4,049 元（保底）</div>
+        <p>適用於只投保國民年金、未曾參加勞保、農保、軍公教保的長者，例如全職家庭主婦／主夫。實際年金依投保年資以 A 式或 B 式擇優計給。</p>
+        <div class="howto"><b>怎麼辦：</b>勞保局會於滿65歲前主動寄發申請書，填妥連同存摺影本寄回即可。</div>
+        <div class="src">資料來源：勞動部勞工保險局（保底擬調高至5,000元案尚未正式上路）</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- B. 醫療健康類 -->
+  <section class="category cat-health">
+    <div class="cat-head">
+      <span class="cat-icon">🩺</span>
+      <h2>醫療健康類</h2>
+      <span class="cat-count">假牙・健檢・疫苗</span>
+    </div>
+    <div class="card-grid">
+
+      <div class="card" data-age="55">
+        <span class="age-badge">65歲以上／原住民55歲</span>
+        <h3>台中市銀髮族假牙裝置補助</h3>
+        <div class="amount">依缺牙程度核定補助額度，每顎滿5年可重新申請</div>
+        <p>經醫師評估缺牙需裝置活動假牙，且符合低收入戶、中低收入戶、領有中低收入老人生活津貼或身障生活補助等條件之一者，可申請。</p>
+        <div class="howto"><b>怎麼辦：</b>持證明文件向健保特約合約牙醫診所提出申請，經牙醫師公會審核後製作假牙。</div>
+        <div class="src">資料來源：臺中市政府衛生局115年度假牙裝置補助計畫</div>
+      </div>
+
+      <div class="card" data-age="65">
+        <span class="age-badge">65 歲以上</span>
+        <h3>成人預防保健免費健檢</h3>
+        <div class="amount">每年 1 次，免自付費用</div>
+        <p>內容包含身體理學檢查、血壓、血糖、血脂、肝腎功能、貧血檢查等，可提早發現三高與慢性病。</p>
+        <div class="howto"><b>怎麼辦：</b>持健保卡至合約醫療機構（診所、醫院皆可）直接受檢，無需另外申請。</div>
+        <div class="src">資料來源：衛生福利部國民健康署成人預防保健服務</div>
+      </div>
+
+      <div class="card" data-age="65">
+        <span class="age-badge">65 歲以上</span>
+        <h3>公費流感疫苗接種</h3>
+        <div class="amount">每年 1 劑，免費接種</div>
+        <p>每年秋季開放接種，可降低流感重症與併發肺炎的風險，是長輩冬季保健最基本的一道防線。</p>
+        <div class="howto"><b>怎麼辦：</b>持健保卡至合約診所、衛生所接種，留意每年開打時間。</div>
+        <div class="src">資料來源：衛生福利部疾病管制署公費流感疫苗接種對象</div>
+      </div>
+
+      <div class="card" data-age="75">
+        <span class="age-badge">75 歲以上</span>
+        <h3>公費肺炎鏈球菌疫苗</h3>
+        <div class="amount">公費接種 1 劑</div>
+        <p>肺炎鏈球菌是長者肺炎重要致病原之一，公費接種可降低重症住院風險。</p>
+        <div class="howto"><b>怎麼辦：</b>持健保卡至合約醫療機構接種，部分縣市另有加碼對象，可洽衛生所確認。</div>
+        <div class="src">資料來源：衛生福利部疾病管制署公費接種對象公告</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- C. 長照服務類 -->
+  <section class="category cat-care">
+    <div class="cat-head">
+      <span class="cat-icon">🧑‍🦽</span>
+      <h2>長照服務類（長照 2.0）</h2>
+      <span class="cat-count">居家照顧・喘息・輔具</span>
+    </div>
+    <div class="card-grid">
+
+      <div class="card" data-age="0">
+        <span class="age-badge">經評估失能即可申請</span>
+        <h3>居家服務</h3>
+        <div class="amount">依失能等級核定每月服務額度，依收入分級部分負擔</div>
+        <p>由照顧服務員到府協助身體照顧（如洗澡、翻身）及日常生活照顧（如備餐、陪同就醫）。</p>
+        <div class="howto"><b>怎麼辦：</b>撥打 <b>1966</b> 長照服務專線，由照管專員到府評估失能等級（CMS分級）。</div>
+        <div class="src">資料來源：衛生福利部長期照顧十年計畫2.0</div>
+      </div>
+
+      <div class="card" data-age="0">
+        <span class="age-badge">經評估失能即可申請</span>
+        <h3>喘息服務</h3>
+        <div class="amount">依失能等級每年最高補助天數不同</div>
+        <p>提供家庭照顧者休息的空間，可選擇居家喘息、日間照顧中心喘息或機構住宿喘息，避免照顧者長期負荷過重。</p>
+        <div class="howto"><b>怎麼辦：</b>由長照管理中心依失能等級（CMS 2-8級）核定年度可用天數。</div>
+        <div class="src">資料來源：衛生福利部長期照顧十年計畫2.0</div>
+      </div>
+
+      <div class="card" data-age="0">
+        <span class="age-badge">經評估失能即可申請</span>
+        <h3>輔具及居家無障礙環境改善</h3>
+        <div class="amount">每 3 年最高補助額度依公告，一般戶補助約 7 成</div>
+        <p>補助項目包含輪椅、爬梯機、扶手、防滑措施、簡易斜坡道等，協助長輩在家中安全移動。</p>
+        <div class="howto"><b>怎麼辦：</b>經長照需要評估後，由輔具評估人員到府評估需求項目。</div>
+        <div class="src">資料來源：衛生福利部長期照顧十年計畫2.0輔具補助標準</div>
+      </div>
+
+      <div class="card" data-age="0">
+        <span class="age-badge">經評估失能即可申請</span>
+        <h3>交通接送服務</h3>
+        <div class="amount">依失能等級每月補助趟次</div>
+        <p>針對外出就醫、復健有困難的失能長輩，提供無障礙車輛接送，依收入分級部分負擔車資。</p>
+        <div class="howto"><b>怎麼辦：</b>經照管專員評估外出困難程度後核定使用額度。</div>
+        <div class="src">資料來源：衛生福利部長期照顧十年計畫2.0</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- D. 行動交通類 -->
+  <section class="category cat-move">
+    <div class="cat-head">
+      <span class="cat-icon">🚌</span>
+      <h2>行動交通類</h2>
+      <span class="cat-count">公車・台鐵・高鐵</span>
+    </div>
+    <div class="card-grid">
+
+      <div class="card" data-age="55">
+        <span class="age-badge">65歲以上／原住民55歲</span>
+        <h3>臺中市敬老愛心卡</h3>
+        <div class="amount">每月一定點數內市區公車、捷運優惠搭乘</div>
+        <p>設籍台中市長者可申辦電子票證，搭乘市區公車享有點數補助，超過10公里部分扣抵點數，台鐵每趟次另有補助上限。</p>
+        <div class="howto"><b>怎麼辦：</b>攜身分證至各區公所或指定地點申辦，掛失需重新辦理。</div>
+        <div class="src">資料來源：臺中市政府交通局敬老愛心卡申請說明</div>
+      </div>
+
+      <div class="card" data-age="65">
+        <span class="age-badge">65 歲以上</span>
+        <h3>台鐵／高鐵敬老優惠票</h3>
+        <div class="amount">依各業者規定，多數車種享優惠票價</div>
+        <p>持身分證明文件可購買敬老優惠票，部分對號列車仍須加價或不適用，建議出發前先確認車種規定。</p>
+        <div class="howto"><b>怎麼辦：</b>購票時出示身分證正本，於車站窗口或指定通路購買敬老票。</div>
+        <div class="src">資料來源：台灣鐵路公司、台灣高鐵票價產品公告</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- E. 生活安全類 -->
+  <section class="category cat-safe">
+    <div class="cat-head">
+      <span class="cat-icon">🏠</span>
+      <h2>生活安全類</h2>
+      <span class="cat-count">修繕補助・緊急救援</span>
+    </div>
+    <div class="card-grid">
+
+      <div class="card" data-age="65">
+        <span class="age-badge">列冊低／中低收入戶長者</span>
+        <h3>老人住宅修繕及防跌設施補助</h3>
+        <div class="amount">每戶每 3 年最高補助額度依各區公告</div>
+        <p>協助修繕漏水、電線老舊、地面不平、浴室防滑等居家安全隱患，降低跌倒與意外風險。</p>
+        <div class="howto"><b>怎麼辦：</b>向戶籍地區公所社會課提出申請，由社工到府評估修繕項目。</div>
+        <div class="src">資料來源：臺中市政府社會局老人住宅設施設備補助辦法</div>
+      </div>
+
+      <div class="card" data-age="65">
+        <span class="age-badge">獨居或行動不便長者</span>
+        <h3>緊急救援連線服務（平安鈕）</h3>
+        <div class="amount">列冊低／中低收入戶免費或部分補助</div>
+        <p>於家中安裝緊急救援按鈕，24小時連線救援中心，發生跌倒、身體不適時可一鍵求助，特別適合獨居長輩。</p>
+        <div class="howto"><b>怎麼辦：</b>向戶籍地區公所或社會局洽詢申辦資格與安裝流程。</div>
+        <div class="src">資料來源：臺中市政府社會局獨居老人關懷服務</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- F. 財產與法律規劃類 -->
+  <section class="category cat-law">
+    <div class="cat-head">
+      <span class="cat-icon">📋</span>
+      <h2>財產與法律規劃類</h2>
+      <span class="cat-count">趁長輩意識清楚時先規劃</span>
+    </div>
+    <div class="card-grid">
+
+      <div class="card" data-age="0">
+        <span class="age-badge">建議提早規劃</span>
+        <h3>意定監護</h3>
+        <div class="amount">公證費用依事務所收費，非政府補助項目</div>
+        <p>長輩可在意識清楚時，與信任的人事先以公證方式約定監護人，未來若失能，由約定的人依約定內容代為決策，避免法院依職權指定不熟悉的人。</p>
+        <div class="howto"><b>怎麼辦：</b>與信任人選一同前往公證人事務所辦理公證手續。</div>
+        <div class="src">資料來源：民法意定監護相關規定</div>
+      </div>
+
+      <div class="card" data-age="0">
+        <span class="age-badge">建議提早規劃</span>
+        <h3>安養信託</h3>
+        <div class="amount">依信託契約約定，銀行收取信託管理費</div>
+        <p>將退休金、存款交付銀行信託管理，依約定按月撥付生活費、醫療費，可降低被詐騙或親屬間財產糾紛的風險。</p>
+        <div class="howto"><b>怎麼辦：</b>洽詢各銀行信託部門，依長輩需求設計給付方式與監察人機制。</div>
+        <div class="src">資料來源：信託業法、各銀行安養信託商品說明</div>
+      </div>
+
+      <div class="card" data-age="0">
+        <span class="age-badge">申請津貼前必看</span>
+        <h3>津貼擇優領取原則</h3>
+        <div class="amount">多項資格重疊時，原則上僅能擇一領取</div>
+        <p>中低收入老人生活津貼、老農津貼、國民年金老年年金、身心障礙生活補助若同時符合資格，通常僅能擇優領取一項，無法重複領取。</p>
+        <div class="howto"><b>怎麼辦：</b>申請前先向戶籍地區公所或勞保局確認可領取的組合，避免白跑一趟。</div>
+        <div class="src">資料來源：中低收入老人生活津貼發給辦法</div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="updated">資料整理於民國 115 年（2026 年）6 月，依中央及臺中市政府最新公告為準。</p>
+    <p>各項補助金額、資格條件每年皆可能調整，申請前請務必致電或親洽戶籍地區公所、勞動部勞工保險局、衛生福利部確認最新規定。如遇任何以「社福補助」名義要求提供帳戶、匯款的可疑訊息，請保持冷靜並撥打 <b>165</b> 反詐騙專線查證。長照需求請撥打 <b>1966</b> 長照服務專線。</p>
+    <div class="brand">
+      <span>這份資料由冠良整理製作，如有疑問歡迎詢問</span>
+      <span><a href="https://line.me/ti/p/~wosawo" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:#06C755;color:#fff;font-weight:700;text-decoration:none;padding:7px 16px;border-radius:99px;font-size:13px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2C6.48 2 2 5.84 2 10.6c0 3.07 2.07 5.76 5.18 7.28-.13.46-.84 2.9-.87 3.08 0 0-.02.15.08.21.1.06.21.02.21.02.28-.04 3.24-2.12 3.74-2.48.85.12 1.73.19 2.66.19 5.52 0 10-3.84 10-8.6S17.52 2 12 2z"/></svg>
+        加LINE：wosawo
+      </a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const buttons = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.card');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const selected = parseInt(btn.dataset.age, 10);
+
+      cards.forEach(card => {
+        const cardAge = parseInt(card.dataset.age, 10);
+        if (selected === 0 || cardAge <= selected) {
+          card.classList.remove('dim');
+        } else {
+          card.classList.add('dim');
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

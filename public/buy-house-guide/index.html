@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>買屋注意事項全攻略｜海線房仲冠良</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=DM+Serif+Display:ital@0;1&display=swap');
+
+:root {
+  --cream:   #f7f3ea;
+  --cream2:  #eee8d8;
+  --navy:    #1a2340;
+  --navy2:   #243050;
+  --amber:   #c8860a;
+  --amber-l: #fff4df;
+  --amber-b: #f0a830;
+  --red:     #c0392b;
+  --red-l:   #fdf0ee;
+  --green:   #1e6b3a;
+  --green-l: #e8f5ee;
+  --ink:     #1a1a2e;
+  --ink2:    #4a4a68;
+  --border:  #e0d8c8;
+  --white:   #ffffff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+/* ─── HERO ─── */
+.hero {
+  background: var(--navy);
+  padding: 52px 24px 44px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '買屋';
+  position: absolute;
+  right: -20px;
+  bottom: -30px;
+  font-family: 'DM Serif Display', serif;
+  font-size: 160px;
+  color: rgba(255,255,255,0.03);
+  pointer-events: none;
+  line-height: 1;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--amber);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(32px, 7vw, 58px);
+  color: white;
+  line-height: 1.15;
+  margin-bottom: 6px;
+}
+.hero h1 em {
+  color: var(--amber-b);
+  font-style: italic;
+}
+.hero-sub {
+  color: rgba(255,255,255,0.6);
+  font-size: 13px;
+  margin-bottom: 32px;
+}
+
+/* STEP PILLS */
+.step-pills {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.step-pill {
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.7);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.15);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.step-pill:hover, .step-pill.active {
+  background: var(--amber);
+  color: white;
+  border-color: var(--amber);
+}
+
+/* ─── MAIN ─── */
+.wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 36px 16px 80px;
+}
+
+/* ─── STAGE HEADER ─── */
+.stage {
+  margin-bottom: 36px;
+  scroll-margin-top: 20px;
+}
+.stage-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.stage-num {
+  width: 48px;
+  height: 48px;
+  background: var(--navy);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(26,35,64,0.25);
+}
+.stage-title-wrap {}
+.stage-kw {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--amber);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+.stage-title {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--navy);
+  line-height: 1.2;
+}
+
+/* ─── CARDS ─── */
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.07); }
+
+.card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  cursor: pointer;
+  user-select: none;
+}
+.card-icon { font-size: 20px; flex-shrink: 0; }
+.card-label {
+  flex: 1;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.card-tags { display: flex; gap: 4px; flex-wrap: wrap; }
+.tag {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+.t-warn  { background: #fff3cd; color: #7a5500; }
+.t-law   { background: #e8eeff; color: #2a3a99; }
+.t-money { background: #e8f5ee; color: #1e5a30; }
+.t-check { background: #f0e8ff; color: #5a2a99; }
+.t-trap  { background: #fdecea; color: #8a1a1a; }
+.card-arrow {
+  color: #aaa;
+  font-size: 12px;
+  transition: transform 0.25s;
+  flex-shrink: 0;
+}
+.card.open .card-arrow { transform: rotate(180deg); }
+
+.card-body {
+  display: none;
+  padding: 0 18px 16px 50px;
+  font-size: 13px;
+  color: var(--ink2);
+  line-height: 1.8;
+  border-top: 1px solid var(--cream2);
+}
+.card.open .card-body { display: block; }
+
+.card-body ul {
+  list-style: none;
+  margin-top: 6px;
+}
+.card-body ul li {
+  padding: 4px 0;
+  padding-left: 16px;
+  position: relative;
+}
+.card-body ul li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--amber);
+  font-weight: 700;
+}
+
+/* HIGHLIGHT BOX */
+.hl {
+  background: var(--amber-l);
+  border-left: 3px solid var(--amber);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  margin-top: 10px;
+  font-size: 12.5px;
+  color: #5a3800;
+  line-height: 1.7;
+}
+.hl strong { color: var(--amber); }
+
+.alert {
+  background: var(--red-l);
+  border-left: 3px solid var(--red);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  margin-top: 10px;
+  font-size: 12.5px;
+  color: #6a1a1a;
+  line-height: 1.7;
+}
+
+.ok {
+  background: var(--green-l);
+  border-left: 3px solid var(--green);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  margin-top: 10px;
+  font-size: 12.5px;
+  color: #1a4a2a;
+  line-height: 1.7;
+}
+
+/* ─── DIVIDER ─── */
+.stage-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 28px 0 32px;
+  color: var(--border);
+}
+.stage-divider::before, .stage-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.stage-divider span {
+  font-size: 18px;
+}
+
+/* ─── COST TABLE ─── */
+.cost-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  font-size: 12.5px;
+}
+.cost-table th {
+  background: var(--navy);
+  color: white;
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 12px;
+}
+.cost-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--cream2);
+  vertical-align: top;
+}
+.cost-table tr:last-child td { border-bottom: none; }
+.cost-table tr:nth-child(even) td { background: #fafaf7; }
+.cost-note { color: var(--amber); font-weight: 700; }
+
+/* ─── CHECKLIST STRIP ─── */
+.checklist-strip {
+  background: var(--navy);
+  border-radius: 14px;
+  padding: 24px 24px;
+  margin: 36px 0;
+  color: white;
+}
+.checklist-strip h3 {
+  font-size: 15px;
+  font-weight: 900;
+  margin-bottom: 16px;
+  color: var(--amber-b);
+  letter-spacing: 0.5px;
+}
+.cl-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.cl-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.8);
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 8px;
+  transition: background 0.15s;
+  border: 1px solid transparent;
+}
+.cl-item:hover { background: rgba(255,255,255,0.06); }
+.cl-item.done {
+  color: rgba(255,255,255,0.4);
+  text-decoration: line-through;
+  background: rgba(255,255,255,0.03);
+}
+.cl-box {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  border-radius: 4px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  transition: all 0.15s;
+  font-size: 10px;
+  color: transparent;
+}
+.cl-item.done .cl-box {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: white;
+}
+
+/* ─── AGENT CARD ─── */
+.agent-footer {
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 24px;
+  text-align: center;
+  margin-top: 8px;
+}
+.agent-footer .agent-title {
+  font-size: 13px;
+  color: var(--amber);
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.agent-footer h3 {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.agent-footer .agent-sub {
+  font-size: 12.5px;
+  color: var(--ink2);
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+.agent-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.agent-btn {
+  display: inline-block;
+  padding: 11px 22px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.15s;
+}
+.agent-btn:hover { transform: translateY(-2px); }
+.agent-btn.primary { background: var(--amber); color: white; }
+.agent-btn.secondary { background: var(--navy); color: white; }
+
+/* ─── PROGRESS NAV ─── */
+.progress-nav {
+  position: sticky;
+  top: 0;
+  background: rgba(247,243,234,0.95);
+  backdrop-filter: blur(8px);
+  padding: 10px 16px;
+  z-index: 100;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.progress-nav::-webkit-scrollbar { display: none; }
+.nav-step {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--ink2);
+  white-space: nowrap;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 6px;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+.nav-step:hover { background: var(--cream2); }
+.nav-step .n {
+  width: 20px;
+  height: 20px;
+  background: var(--cream2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: var(--navy);
+}
+
+@media (max-width: 500px) {
+  .cl-grid { grid-template-columns: 1fr; }
+  .card-body { padding-left: 18px; }
+  .agent-btns { flex-direction: column; align-items: stretch; text-align: center; }
+  .hero h1 { font-size: 32px; }
+}
+</style>
+</head>
+<body>
+<a href="/" style="position:fixed;top:12px;left:12px;z-index:99999;background:#16283f;color:#fff;padding:9px 15px;border-radius:22px;font:600 14px/1 'Microsoft JhengHei',sans-serif;text-decoration:none;box-shadow:0 3px 10px rgba(0,0,0,.3)">← 回首頁</a>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">🏠 買屋全攻略</div>
+  <h1>買房<em>前</em>，你該知道的<br>每一件事</h1>
+  <p class="hero-sub">7 大關卡 × 40 個細節 × 台灣法規重點整理</p>
+  <div class="step-pills">
+    <div class="step-pill" onclick="scrollTo('s1')">① 需求確認</div>
+    <div class="step-pill" onclick="scrollTo('s2')">② 看屋調查</div>
+    <div class="step-pill" onclick="scrollTo('s3')">③ 出價議價</div>
+    <div class="step-pill" onclick="scrollTo('s4')">④ 簽約付款</div>
+    <div class="step-pill" onclick="scrollTo('s5')">⑤ 貸款申請</div>
+    <div class="step-pill" onclick="scrollTo('s6')">⑥ 過戶稅費</div>
+    <div class="step-pill" onclick="scrollTo('s7')">⑦ 交屋驗屋</div>
+  </div>
+</div>
+
+<!-- STICKY NAV -->
+<div class="progress-nav">
+  <div class="nav-step" onclick="scrollTo('s1')"><span class="n">1</span> 需求確認</div>
+  <div class="nav-step" onclick="scrollTo('s2')"><span class="n">2</span> 看屋調查</div>
+  <div class="nav-step" onclick="scrollTo('s3')"><span class="n">3</span> 出價議價</div>
+  <div class="nav-step" onclick="scrollTo('s4')"><span class="n">4</span> 簽約付款</div>
+  <div class="nav-step" onclick="scrollTo('s5')"><span class="n">5</span> 貸款申請</div>
+  <div class="nav-step" onclick="scrollTo('s6')"><span class="n">6</span> 過戶稅費</div>
+  <div class="nav-step" onclick="scrollTo('s7')"><span class="n">7</span> 交屋驗屋</div>
+</div>
+
+<div class="wrap">
+
+<!-- ══ STAGE 1 ══ -->
+<div class="stage" id="s1">
+  <div class="stage-header">
+    <div class="stage-num">1</div>
+    <div class="stage-title-wrap">
+      <div class="stage-kw">PLANNING</div>
+      <div class="stage-title">需求確認與預算規劃</div>
+    </div>
+  </div>
+  <div class="cards">
+
+    <div class="card open">
+      <div class="card-head" onclick="toggleCard(this)">
+        <div class="card-icon">💰</div>
+        <div class="card-label">先算「真實總預算」，不只是房價</div>
+        <div class="card-tags"><span class="tag t-money">財務規劃</span></div>
+        <div class="card-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <p>買房的實際花費遠超過成交價。購屋前先把所有費用攤開來算：</p>
+        <ul>
+          <li>仲介服務費（買方 2%）</li>
+          <li>代書費（約 8,000～20,000 元）</li>
+          <li>契稅（建物移轉現值 × 6%）</li>
+          <li>印花稅（0.1%）</li>
+          <li>地政規費（萬元上下）</li>
+          <li>火災強制險、地震基本保險</li>
+          <li>搬家、裝修預備金</li>
+        </ul>
+        <div class="hl">💡 <strong>經驗值：</strong>總購屋成本約比成交價多出 3～5%。一棟 800 萬的房子，備妥 830～840 萬才安全。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head" onclick="toggleCard(this)">
+        <div class="card-icon">🏦</div>
+        <div class="card-label">先查自己的貸款額度，再看房</div>
+        <div class="card-tags"><span class="tag t-warn">重要</span></div>
+        <div class="card-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <p>很多人先看房、再去辦貸款，結果發現貸不到預期金額，造成資金缺口。建議先做以下功課：</p>
+        <ul>
+          <li>向銀行做「貸款試算」或「預審」，了解可貸成數</li>
+          <li>確認自己的年收入、債務比（DTI 控制在 40% 以下為佳）</li>
+          <li>信用卡、信貸、車貸都會影響核貸結果</li>
+          <li>首購族可先了解「青年安心成家貸款」是否符合資格</li>
+        </ul>
+        <div class="hl">💡 一般銀行住宅貸款成數約 7～8 成，精華區或高總價物件有時會降至 6 成。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head" onclick="toggleCard(this)">
+        <div class="card-icon">📍</div>
+        <div class="card-label">釐清「不能妥協」的條件</div>
+        <div class="card-tags"><span class="tag t-check">自我評估</span></div>
+        <div class="card-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <p>買屋是長期決策，把條件分成「必要」與「加分」兩層，避免看到好房就動搖。</p>
+        <ul>
+          <li>通勤距離：上班地點、孩子學校的車程上限</li>
+          <li>格局需求：幾房幾廳、主臥大小、有無車位</li>
+          <li>樓層偏好：有無電梯、低樓層與高樓層的取捨</li>
+          <li>社區型態：公寓、電梯大樓、透天厝</li>
+          <li>未來考量：可能的家庭成員增減、父母同住需求</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="stage-divider"><span>▼</span></div>
+
+<!-- ══ STAGE 2 ══ -->
+<div class="stage" id="s2">
+  <div class="stage-header">
+    <div class="stage-num">2</div>
+    <div class="stage-title-wrap">
+      <div class="stage-kw">INSPECTION</div>
+      <div class="stage-title">看屋調查與產權查核</div>
+    </div>
+  </div>
+  <div class="cards">
+
+    <div class="card open">
+      <div class="card-head" onclick="toggleCard(this)">
+        <div class="card-icon">📋</div>
+        <div class="card-label">調閱謄本，確認產權乾淨</div>
+        <div class="card-tags"><span class="tag t-law">法規</span><span class="tag t-warn">重要</span></div>
+        <div class="card-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <p>簽約前一定要向地政事務所申請「土地登記謄本」與「建物登記謄本」，確認：</p>
+        <ul>
+          <li>所有權人是否就是賣方本人（防止冒名詐騙）</li>
+          <li>有無抵押權設定（銀行貸款債務）</li>
+          <li>有無查封、假扣押、假處分</li>
+          <li>有無地上權、地役權等他項物權</li>
+          <li>共有人是否超過一人（共有出售需土地法 34-1 或全體同意）</li>
+        </ul>
+        <div class="alert">🚨 謄本上出現「查封」或「假扣押」，絕對不可先付定金！</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head" onclick="toggleCard(this)">
+        <div class="card-icon">🏚️</div>
+        <div class="card-label">看屋要帶的問題清單</div>
+        <div class="card-tags"><span class="tag t-check">現場確認</span></div>
+        <div class="card-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <p>看屋不只是「看感覺」，這些細節現場一定要問清楚：</p>
+        <ul>
+          <li>是否曾有漏水、壁癌？（天花板、牆角、窗框周圍重點檢查）</li>
+          <li>管線年份：水管是否已換不鏽鋼、電線是否已更新</li>
+          <li>公設比是多少？（台灣平均約 30～35%）</li>
+          <li>停車位型態：法定停車位、獎勵停車位、空地畫線，性質差很多</li>
+          <li>社區管委會是否正常運作、管理費是否積欠</li>
+          <li>鄰居狀況：頂樓有無違建、隔壁是否出租套房</li>
+          <li>手機訊號、網路是否暢通</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head" onclick="toggleCard(this)">
+        <div class="card-icon">⚠️</div>
+        <div class="card-label">凶宅、海砂屋、輻射屋查詢</div>
+        <div class="card-tags"><span class="tag t-trap">重大風險</span></div>
+        <div class="card-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li><strong>凶宅：</strong>賣方有法定告知義務，但建議另行查詢「凶宅網」或詢問鄰居</li>
+          <li><strong>海砂屋：</strong>建於 1980 年代，可要求賣方提供「氯離子含量檢測報告」</li>
+          <li><strong>輻射屋：</strong>原能會官網可查詢受輻射污染建物清冊</li>
+          <li><strong>土壤液化：</strong>內政部國土測繪中心官網可查各地液化潛勢圖</li>
+        </ul>
+        <div class="alert">🚨 上述任一問題賣方刻意隱瞞，可依民法主張物之瑕疵擔保請求賠償或解除契約。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head" onclick="toggleCard(this)">
+        <div class="card-icon">🌍</div>
+        <div class="card-label">周邊環境與都市計畫查詢</div>
+        <div class="card-tags"><span class="tag t-law">都市計畫</span></div>
+        <div class="card-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>查詢土地使用分區（住宅區、商業區、工業區），直接影響未來使用與轉售</li>
+          <li>確認是否位於道路預定地、公園預定地或捷運用地（有被徵收風險）</li>
+          <li>附近有無嫌惡設施：殯儀館、加油站、高壓電塔、工廠</li>
+          <li>查詢「淹水潛勢圖」，台中海線部分區域有淹水歷史</li>
+          <li>是否臨近重大建設或開發計畫（影響未來增值潛力）</li>
+        </ul>
+        <div class="ok">✅ 都市計畫書圖可至各縣市都發局或內政部國土管理署查詢，免費公開。</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="stage-divider"><span>▼</span></div>
+
+<!-- ══ STAGE 3 ══ -->
+<div class="stage" id="s3">
+  <div class="stage-header">
+    <div class="stage-num">3</div>
+    <div class="stage-title-wrap">
+      <div class="stage-kw">NEGOTIATION</div>
+      <div class="stage-title">出價與議價策略</div>
+    </div>
+  </div>
+  <div class="cards">
+
+    <div class="card open">
+      <div class="card-head" onclick="toggleCard(this)">
+        <div class="card-icon">📊</div>
+        <div class="card-label">出價前先查實價登錄</div>
+        <div class="card-tags"><span class="tag t-money">市場行情</span></div>
+        <div class="card-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <p>內政部「不動產實價登錄」是議價的底氣來源。查詢時注意：</p>
+        <ul>
+          <li>比較同社區、同樓層、近 3～6 個月的成交紀錄</li>
+          <li>注意「成交單價」而非總價，因為坪數差異大</li>
+          <li>車位有無含在內要分開計算</li>
+          <li>裝潢好壞、樓層高低都會影響合理價格區間</li>
+        </ul>
+        <div class="hl">💡 開價通常比行情高 5～15%，有充分資訊才能議出好價格。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head" onclick="toggleCard(this)">
+        <div class="card-icon">🤝</div>
+        <div class="card-label">議價談判注意事項</div>
+        <div class="card-tags"><span class="tag t-warn">談判技巧</span></div>
+        <div class="card-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>不要在屋主或仲介面前表現「太喜歡」，會失去議價空間</li>
+          <li>第一次出價可保守，留下來回空間</li>
+          <li>若屋主開價就是底價，確認是否附帶其他條件（裝潢、傢俱、車位）</li>
+          <li>可請仲介說明屋主急售原因，作為議價參考</li>
+          <li>談不到理想價格時，也可談「付款條件」讓步，如縮短交屋期</li>
+        </ul>
+        <div class="alert">🚨 口頭承諾無法律效力，所有談好的條件都要寫入契約。</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="stage-divider"><span>▼</span></div>
+
+<!-- ══ STAGE 4 ══ -->
+<div class="stage" id="s4">
+  <div class="stage-header">
+    <div class="stage-num">4</div>
+    <div class="stage-title-wrap">
+      <div class="stage-kw">CONTRACT</div>
+      <div class="stage-title">簽約與付款流程</div>
+    </div>
+  </div>
+  <div class="cards">
+
+    <div class="card open">
+      <div class="card-head" onclick="toggleCard(this)">
+        <div class="card-icon">📝</div>
+        <div class="card-label">斡旋金 vs 要約書，差在哪？</div>
+        <div class="card-tags"><span class="tag t-law">法規</span><span class="tag t-warn">重要</span></div>
+        <div class="card-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li><strong>斡旋金：</strong>先交一筆錢給仲介，賣方同意開價即成立契約。退出需賠違約金</li>
+          <li><strong>要約書：</strong>買方開出條件，賣方簽回才成立，不需先付錢。較保護買方</li>
+          <li>斡旋金若仲介同意照你出的價格，但你反悔，可能損失斡旋金</li>
+        </ul>
+        <div class="hl">💡 消費者有權利要求以「要約書」取代斡旋金方式進行，仲介不得拒絕。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head" onclick="toggleCard(this)">
+        <div class="card-icon">📄</div>
+        <div class="card-label">買賣契約簽署重點確認</div>
+        <div class="card-tags"><span class="tag t-law">法規</span><span class="tag t-trap">陷阱</span></div>
+        <div class="card-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <p>簽約前，以下條款必須逐條確認：</p>
+        <ul>
+          <li>標的物詳細描述（地號、建號、面積、停車位）</li>
+          <li>交屋日期與付款時程</li>
+          <li>現況交屋或帶裝潢（傢俱清單要列出）</li>
+          <li>漏水保固條款（成屋至少 7 天，預售屋 1 年保固）</li>
+          <li>違約金計算方式（通常為總價 10～20%）</li>
+          <li>賣方履約保證方式（建議使用履約保證帳戶）</li>
+          <li>產權瑕疵責任歸屬（如有隱藏管線問題）</li>
+        </ul>
+        <div class="alert">🚨 不要只看中文大意就簽字！每一頁都要仔細閱讀，有疑問請仲介解釋或另找律師確認。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head" onclick="toggleCard(this)">
+        <div class="card-icon">🔐</div>
+        <div class="card-label">一定要使用履約保證</div>
+        <div class="card-tags"><span class="tag t-money">資金安全</span></div>
+        <div class="card-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <p>成屋交易建議使用「不動產買賣價金履約保證」服務，透過銀行或代書事務所作為第三方保管：</p>
+        <ul>
+          <li>買方款項存入信託專戶，賣方無法直接提領</li>
+          <li>確認過戶完成後，款項才撥付給賣方</li>
+          <li>避免付了錢但產權卻無法完成移轉的風險</li>
+        </ul>
+        <div class="ok">✅ 台中各大銀行均提供此服務，費用約 5,000～10,000 元，相較保護的資金絕對值得。</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="stage-divider"><span>▼</span></div>
+
+<!-- ══ STAGE 5 ══ -->
+<div class="stage" id="s5">
+  <div class="stage-header">
+    <div class="stage-num">5</div>
+    <div class="stage-title-wrap">
+      <div class="stage-kw">MORTGAGE</div>
+      <div class="stage-title">房貸申請與注意事項</div>
+    </div>
+  </div>
+  <div class="cards">
+
+    <div class="card open">
+      <div class="card-head" onclick="toggleCard(this)">
+        <div class="card-icon">🏦</div>
+        <div class="card-label">多家銀行比較，不要只問一家</div>
+        <div class="card-tags"><span class="tag t-money">省錢</span></div>
+        <div class="card-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <p>房貸利率和條件在各家銀行差異可能超過 0.5%，長期下來差距驚人。比較時確認：</p>
+        <ul>
+          <li>利率類型：固定利率 vs. 機動利率</li>
+          <li>前幾年優惠利率期滿後的調整幅度</li>
+          <li>寬限期（只還利息的期間）長短</li>
+          <li>提前還款的違約條款（是否有手續費）</li>
+          <li>搭配帳戶優惠（薪轉戶、信用卡回饋）</li>
+        </ul>
+        <div class="hl">💡 建議同時向 3～5 家銀行申請，最後再決定選哪家。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head" onclick="toggleCard(this)">
+        <div class="card-icon">🎯</div>
+        <div class="card-label">首購優惠貸款方案整理</div>
+        <div class="card-tags"><span class="tag t-money">補助</span></div>
+        <div class="card-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li><strong>青年安心成家購屋優惠貸款：</strong>首購、40歲以下，最高貸 800 萬，利率較優惠</li>
+          <li><strong>中低收入家庭貸款：</strong>符合資格者另有優惠額度</li>
+          <li><strong>新青安貸款：</strong>視當年度政策方案，可查詢內政部或各銀行最新資訊</li>
+        </ul>
+        <div class="ok">✅ 政策性貸款每年額度有限，建議盡早申請確認資格。</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="stage-divider"><span>▼</span></div>
+
+<!-- ══ STAGE 6 ══ -->
+<div class="stage" id="s6">
+  <div class="stage-header">
+    <div class="stage-num">6</div>
+    <div class="stage-title-wrap">
+      <div class="stage-kw">TAXES & FEES</div>
+      <div class="stage-title">過戶稅費完整試算</div>
+    </div>
+  </div>
+  <div class="cards">
+
+    <div class="card open">
+      <div class="card-head" onclick="toggleCard(this)">
+        <div class="card-icon">🧾</div>
+        <div class="card-label">買方需負擔的稅費一覽</div>
+        <div class="card-tags"><span class="tag t-money">費用</span></div>
+        <div class="card-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <table class="cost-table">
+          <tr>
+            <th>項目</th>
+            <th>計算基礎</th>
+            <th>費率</th>
+          </tr>
+          <tr>
+            <td>契稅</td>
+            <td>核定契價（建物移轉現值）</td>
+            <td class="cost-note">6%</td>
+          </tr>
+          <tr>
+            <td>印花稅</td>
+            <td>合約書金額</td>
+            <td class="cost-note">0.1%</td>
+          </tr>
+          <tr>
+            <td>地政規費</td>
+            <td>公告土地現值</td>
+            <td>約 0.1%</td>
+          </tr>
+          <tr>
+            <td>仲介服務費</td>
+            <td>成交總價</td>
+            <td class="cost-note">2%</td>
+          </tr>
+          <tr>
+            <td>代書費</td>
+            <td>固定費用</td>
+            <td>約 8,000～20,000 元</td>
+          </tr>
+          <tr>
+            <td>貸款手續費</td>
+            <td>貸款金額</td>
+            <td>約 3,000～10,000 元</td>
+          </tr>
+        </table>
+        <div class="hl">💡 以上稅費統一以「公告現值」或「核定契價」為基礎，並非成交總價，實際金額須以代書計算為準。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head" onclick="toggleCard(this)">
+        <div class="card-icon">📅</div>
+        <div class="card-label">房屋稅與地價稅，買完還要繳</div>
+        <div class="card-tags"><span class="tag t-warn">持有成本</span></div>
+        <div class="card-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li><strong>房屋稅：</strong>每年 5 月繳，以房屋評定現值為基礎，自住稅率 1.2%</li>
+          <li><strong>地價稅：</strong>每年 11 月繳，以公告地價為基礎，自用住宅稅率 2‰</li>
+          <li>申報自用住宅優惠稅率需符合條件（本人、配偶或直系親屬居住使用）</li>
+          <li>管理費：社區大樓每月約 2,000～8,000 元不等</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="stage-divider"><span>▼</span></div>
+
+<!-- ══ STAGE 7 ══ -->
+<div class="stage" id="s7">
+  <div class="stage-header">
+    <div class="stage-num">7</div>
+    <div class="stage-title-wrap">
+      <div class="stage-kw">HANDOVER</div>
+      <div class="stage-title">交屋驗屋不能省</div>
+    </div>
+  </div>
+  <div class="cards">
+
+    <div class="card open">
+      <div class="card-head" onclick="toggleCard(this)">
+        <div class="card-icon">🔍</div>
+        <div class="card-label">交屋當天驗屋重點清單</div>
+        <div class="card-tags"><span class="tag t-check">現場確認</span></div>
+        <div class="card-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <p>交屋不等於「鑰匙交接」，以下每一項都要現場確認才能簽收：</p>
+        <ul>
+          <li>全室水、電、瓦斯、電信線路功能正常</li>
+          <li>門窗開關順暢、密封良好</li>
+          <li>廁所、廚房沖水排水正常，無堵塞</li>
+          <li>天花板、牆面、地板無新增裂痕、滲水痕跡</li>
+          <li>合約列明保留之傢俱、設備確實存在</li>
+          <li>鑰匙數量（含大門、信箱、停車場、社區門禁卡）</li>
+          <li>水電瓦斯度數抄表，確認由誰從哪一天起負責帳單</li>
+          <li>向管委會確認前屋主管理費無積欠</li>
+        </ul>
+        <div class="alert">🚨 發現問題請在現場立即提出並拍照存證，簽收後就很難主張責任了。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head" onclick="toggleCard(this)">
+        <div class="card-icon">🛡️</div>
+        <div class="card-label">建議委託專業驗屋公司</div>
+        <div class="card-tags"><span class="tag t-check">專業建議</span></div>
+        <div class="card-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <p>非專業人士很難自行發現結構性問題、隱藏性漏水、電路問題等。</p>
+        <ul>
+          <li>驗屋費用約 5,000～15,000 元，提供詳細報告</li>
+          <li>會使用熱像儀、水分計等專業設備</li>
+          <li>特別推薦：中古屋、超過 20 年老屋務必委託驗屋</li>
+          <li>驗屋報告也是後續與賣方談修繕補償的有力依據</li>
+        </ul>
+        <div class="ok">✅ 花小錢做驗屋，可以避免搬進去後才發現大問題卻求助無門。</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── 交屋前快速確認清單 ── -->
+<div class="checklist-strip">
+  <h3>☑️ 買屋關鍵確認清單（點擊打勾）</h3>
+  <div class="cl-grid">
+    <div class="cl-item" onclick="this.classList.toggle('done')">
+      <div class="cl-box">✓</div><span>已查謄本確認產權無問題</span>
+    </div>
+    <div class="cl-item" onclick="this.classList.toggle('done')">
+      <div class="cl-box">✓</div><span>已查實價登錄確認行情</span>
+    </div>
+    <div class="cl-item" onclick="this.classList.toggle('done')">
+      <div class="cl-box">✓</div><span>已確認貸款可貸額度</span>
+    </div>
+    <div class="cl-item" onclick="this.classList.toggle('done')">
+      <div class="cl-box">✓</div><span>已查凶宅、海砂、輻射</span>
+    </div>
+    <div class="cl-item" onclick="this.classList.toggle('done')">
+      <div class="cl-box">✓</div><span>已確認無查封假扣押</span>
+    </div>
+    <div class="cl-item" onclick="this.classList.toggle('done')">
+      <div class="cl-box">✓</div><span>已確認都市計畫分區</span>
+    </div>
+    <div class="cl-item" onclick="this.classList.toggle('done')">
+      <div class="cl-box">✓</div><span>已確認使用履約保證</span>
+    </div>
+    <div class="cl-item" onclick="this.classList.toggle('done')">
+      <div class="cl-box">✓</div><span>合約所有條款確認完畢</span>
+    </div>
+    <div class="cl-item" onclick="this.classList.toggle('done')">
+      <div class="cl-box">✓</div><span>已比較 3 家以上銀行利率</span>
+    </div>
+    <div class="cl-item" onclick="this.classList.toggle('done')">
+      <div class="cl-box">✓</div><span>水電瓦斯驗收完成</span>
+    </div>
+    <div class="cl-item" onclick="this.classList.toggle('done')">
+      <div class="cl-box">✓</div><span>管理費無積欠確認</span>
+    </div>
+    <div class="cl-item" onclick="this.classList.toggle('done')">
+      <div class="cl-box">✓</div><span>鑰匙門卡完整收到</span>
+    </div>
+  </div>
+</div>
+
+<!-- AGENT FOOTER -->
+<div class="agent-footer">
+  <div class="agent-title">海線房仲冠良｜懂你又懂房</div>
+  <h3>吳冠良 房屋專員</h3>
+  <p class="agent-sub">
+    服務區域：沙鹿、清水、梧棲、龍井、大肚、大甲<br>
+     <br>
+    買屋每個環節我都可以陪你走
+  </p>
+  <div class="agent-btns">
+    <a class="agent-btn primary" href="tel:0915295958">📞 0915-295958</a>
+    <a class="agent-btn secondary" href="https://lin.ee/QyQmggG" target="_blank">💬 LINE：wosawo</a>
+  </div>
+</div>
+
+<p style="text-align:center; font-size:11px; color:#aaa; margin-top:24px; line-height:1.8;">
+  本文件僅供參考，法規條文與補助方案以政府最新公告為準<br>
+</p>
+
+</div><!-- /wrap -->
+
+<script>
+function toggleCard(headEl) {
+  const card = headEl.closest('.card');
+  card.classList.toggle('open');
+}
+function scrollTo(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+</body>
+</html>

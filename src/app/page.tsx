@@ -151,6 +151,15 @@ h1 em{font-style:normal;color:var(--gold-soft)}
 .serv-card p{color:var(--muted);font-size:14.5px}
 .serv-card .tag{display:inline-block;margin-top:12px;font-size:13px;font-weight:700;color:var(--gold)}
 
+/* 免費工具區 */
+.tools{background:var(--cream-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.toolgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:38px}
+.tool{display:block;background:#fff;border:1px solid var(--line);border-radius:13px;padding:19px 20px;
+  transition:transform .14s,box-shadow .14s,border-color .14s}
+.tool:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(22,40,63,.09);border-color:var(--gold)}
+.tool-t{font-weight:700;color:var(--navy);font-size:16px;margin-bottom:3px}
+.tool-d{font-size:13.5px;color:var(--muted);line-height:1.65}
+
 /* 預約區：接到真正的預約系統 */
 .booking{background:var(--navy);color:var(--cream);border-radius:16px;padding:44px 34px;position:relative;overflow:hidden}
 .booking:before{content:"";position:absolute;inset:0;pointer-events:none;
@@ -210,6 +219,18 @@ const SERVICES = [
   { ic: "🌳", h: "土地買賣", p: "建地、農地買賣與委託，含產權、貸款與稅費相關諮詢，複雜地目也幫你講到懂。", tag: "→ 地主・投資都適合" },
 ];
 
+/** 首頁露出的主打工具（完整 40 個在 /tools/） */
+const TOOLS = [
+  { ic: "🏦", name: "青安 3.0 試算機", url: "/qingan3/", desc: "新制三道門檻快篩，加上分段月付金試算。" },
+  { ic: "🧮", name: "買方購屋成本試算", url: "/buyer-cost/", desc: "契稅、規費、代書費逐項列出，算出四階段付款金額。" },
+  { ic: "💰", name: "賣房前必知", url: "/seller-guide/", desc: "開價策略、房地合一與土增稅試算、完整出售流程。" },
+  { ic: "📜", name: "繼承・贈與稅試算", url: "/inheritance/", desc: "依財政部公告金額，算出扣除額與應納稅額。" },
+  { ic: "💧", name: "漏水屋況檢查清單", url: "/leak-check/", desc: "看屋現場逐項打勾，共 32 項必看重點。" },
+  { ic: "🗺️", name: "海線學區地圖", url: "/haixian-school-map/", desc: "查詢海線各區國中小學區範圍。" },
+  { ic: "🏛️", name: "貸款成數與寬限期", url: "/loan-guide/", desc: "能貸幾成看什麼、寬限期的真相與陷阱。" },
+  { ic: "🏗️", name: "自地自建全流程", url: "/self-build-guide/", desc: "買地、貸款、建照、監工到成本控管一次看。" },
+];
+
 const STEPS = [
   { n: "1", t: "選你要談什麼" },
   { n: "2", t: "挑日期時段" },
@@ -231,8 +252,9 @@ export default function Home() {
           </a>
           <div className="navlinks">
             <a href="#area">服務區域</a>
-            <a href="#record">客戶口碑</a>
             <a href="#services">服務項目</a>
+            <a href="/tools/">免費工具</a>
+            <a href="#record">客戶口碑</a>
             <Link href="/card">電子名片</Link>
             <Link className="pill" href="/card/booking">
               線上預約
@@ -340,6 +362,34 @@ export default function Home() {
                 <span className="tag">{s.tag}</span>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 免費工具 —— 購屋攻略站 40 個試算與指南 */}
+      <section className="tools" id="tools">
+        <div className="wrap">
+          <div className="center">
+            <p className="kicker">FREE TOOLS</p>
+            <h2 className="title">免費試算工具 ＆ 房產知識</h2>
+            <p className="lead" style={{ margin: "6px auto 0" }}>
+              買賣之前，先把數字算清楚。共 40 個試算機與完整指南，不用留資料就能用。
+            </p>
+          </div>
+          <div className="toolgrid">
+            {TOOLS.map((t) => (
+              <a className="tool" href={t.url} key={t.url}>
+                <div className="tool-t">
+                  {t.ic} {t.name}
+                </div>
+                <div className="tool-d">{t.desc}</div>
+              </a>
+            ))}
+          </div>
+          <div className="center" style={{ marginTop: 28 }}>
+            <a className="btn gold" href="/tools/">
+              看全部 40 個工具與指南 →
+            </a>
           </div>
         </div>
       </section>

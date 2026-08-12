@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>以房養老怎麼算？｜海線房仲冠良</title>
+<meta name="description" content="以房養老（不動產逆向抵押貸款）條件、額度、月領金額試算。台中海線沙鹿、清水、梧棲、龍井、大肚、大甲。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E2A32;
+    --deep:#14414E;
+    --sea:#1E6E7E;
+    --sea-soft:#D9E7E8;
+    --amber:#B9701A;
+    --amber-soft:#F0DCC2;
+    --mist:#EEF3F2;
+    --paper:#FFFFFF;
+    --line:#CBD8D6;
+    --muted:#5B7078;
+    --serif:"Noto Serif TC",serif;
+    --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--mist);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:18px;
+    line-height:1.85;
+    letter-spacing:.01em;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:0 20px 72px}
+  a{color:var(--sea)}
+
+  /* ---- hero ---- */
+  .hero{
+    background:var(--deep);
+    color:#EAF2F1;
+    padding:52px 0 44px;
+    margin-bottom:36px;
+    border-bottom:6px solid var(--amber);
+  }
+  .hero .wrap{padding-bottom:0}
+  .eyebrow{
+    font-size:15px;letter-spacing:.22em;color:#8FB6BC;
+    margin:0 0 18px;font-weight:500;
+  }
+  h1{
+    font-family:var(--serif);font-weight:900;
+    font-size:clamp(30px,7.4vw,46px);
+    line-height:1.35;margin:0 0 20px;letter-spacing:.02em;
+  }
+  h1 em{font-style:normal;color:#F2C288;}
+  .hero p{font-size:18px;color:#C6DAD9;margin:0;max-width:34em}
+
+  /* ---- sections ---- */
+  section{margin-bottom:44px}
+  h2{
+    font-family:var(--serif);font-weight:700;
+    font-size:clamp(22px,5.2vw,28px);
+    margin:0 0 6px;line-height:1.5;
+  }
+  h2::before{
+    content:"";display:block;width:44px;height:4px;
+    background:var(--amber);margin-bottom:14px;
+  }
+  .lede{color:var(--muted);margin:0 0 22px;font-size:17px}
+  p{margin:0 0 16px}
+
+  .card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:24px 20px;
+  }
+
+  /* ---- calculator ---- */
+  .calc label{
+    display:block;font-weight:700;font-size:16px;
+    margin:0 0 8px;color:var(--deep);
+  }
+  .field{margin-bottom:20px}
+  .field:last-of-type{margin-bottom:8px}
+  input[type=number],select{
+    width:100%;font-family:var(--sans);font-size:20px;font-weight:500;
+    padding:13px 14px;border:2px solid var(--line);border-radius:10px;
+    background:#fff;color:var(--ink);appearance:none;
+  }
+  select{background-image:linear-gradient(45deg,transparent 50%,var(--sea) 50%),linear-gradient(135deg,var(--sea) 50%,transparent 50%);
+    background-position:calc(100% - 20px) 24px,calc(100% - 14px) 24px;
+    background-size:6px 6px,6px 6px;background-repeat:no-repeat}
+  input:focus-visible,select:focus-visible,button:focus-visible{
+    outline:3px solid var(--amber);outline-offset:2px;
+  }
+  .presets{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+  .presets button{
+    font-family:var(--sans);font-size:15px;font-weight:500;
+    padding:8px 14px;border:1.5px solid var(--line);background:#fff;
+    color:var(--sea);border-radius:999px;cursor:pointer;
+  }
+  .presets button:hover{border-color:var(--sea);background:var(--sea-soft)}
+
+  /* ---- result ---- */
+  .result{
+    margin-top:26px;padding-top:24px;border-top:2px dashed var(--line);
+  }
+  .headline{
+    display:flex;gap:14px;flex-wrap:wrap;margin-bottom:24px;
+  }
+  .stat{
+    flex:1 1 150px;background:var(--mist);border-radius:12px;padding:16px 16px 14px;
+  }
+  .stat.now{background:var(--sea-soft)}
+  .stat.late{background:var(--amber-soft)}
+  .stat .k{font-size:14px;color:var(--muted);margin:0 0 2px;font-weight:500}
+  .stat .v{
+    font-family:var(--serif);font-weight:900;
+    font-size:clamp(26px,7vw,34px);line-height:1.2;margin:0;
+    font-variant-numeric:tabular-nums;
+  }
+  .stat .u{font-size:15px;font-family:var(--sans);font-weight:500;margin-left:3px}
+
+  /* ---- signature chart ---- */
+  .chartwrap{margin-top:8px}
+  .chart{
+    display:flex;align-items:flex-end;gap:2px;height:190px;
+    padding:0;border-bottom:2px solid var(--ink);
+  }
+  .bar{flex:1 1 0;display:flex;flex-direction:column;justify-content:flex-end;height:100%;min-width:0}
+  .bar .take{background:var(--sea);border-radius:2px 2px 0 0}
+  .bar .fee{background:var(--amber)}
+  .bar:hover .take{background:var(--deep)}
+  .axis{display:flex;justify-content:space-between;font-size:14px;color:var(--muted);margin-top:8px}
+  .legend{display:flex;gap:18px;font-size:15px;margin-top:14px;flex-wrap:wrap}
+  .legend span{display:flex;align-items:center;gap:7px}
+  .dot{width:13px;height:13px;border-radius:3px;display:inline-block}
+  .note{font-size:15px;color:var(--muted);line-height:1.75;margin-top:18px}
+  .payoff{
+    margin-top:20px;padding:16px;background:var(--deep);color:#EAF2F1;border-radius:12px;
+    font-size:16px;line-height:1.7;
+  }
+  .payoff strong{color:#F2C288;font-size:20px;font-variant-numeric:tabular-nums}
+
+  /* ---- table ---- */
+  table{width:100%;border-collapse:collapse;font-size:16.5px}
+  th,td{text-align:left;padding:13px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{width:33%;color:var(--deep);font-weight:700;white-space:nowrap}
+  tr:last-child th,tr:last-child td{border-bottom:0}
+
+  ul{margin:0 0 16px;padding-left:1.25em}
+  li{margin-bottom:9px}
+
+  .split{display:grid;gap:16px}
+  @media(min-width:620px){.split{grid-template-columns:1fr 1fr}}
+  .split .card h3{margin:0 0 10px;font-family:var(--serif);font-size:19px}
+  .split .card ul{margin:0;padding-left:1.15em;font-size:16.5px}
+
+  blockquote{
+    margin:0;padding:22px 22px 22px 24px;background:var(--paper);
+    border-left:6px solid var(--amber);border-radius:0 12px 12px 0;
+    font-family:var(--serif);font-size:19px;line-height:1.85;
+  }
+
+  /* ---- contact ---- */
+  .contact{
+    background:var(--deep);color:#EAF2F1;border-radius:14px;padding:26px 22px;
+  }
+  .contact h2{color:#fff}
+  .contact h2::before{background:#F2C288}
+  .contact p{color:#C6DAD9;font-size:16.5px}
+  .contact .name{font-family:var(--serif);font-size:22px;font-weight:700;color:#fff;margin-bottom:4px}
+  .cta{
+    display:inline-block;margin-top:10px;margin-right:10px;
+    background:#F2C288;color:#0E2A32;font-weight:700;font-size:17px;
+    padding:13px 24px;border-radius:999px;text-decoration:none;
+  }
+  .cta.line{background:#EAF2F1}
+  footer{margin-top:34px;font-size:14px;color:var(--muted);line-height:1.8}
+
+  @media(prefers-reduced-motion:no-preference){
+    .bar>div{transition:height .35s ease}
+  }
+</style>
+</head>
+<body>
+<a href="/" style="position:fixed;top:12px;left:12px;z-index:99999;background:#16283f;color:#fff;padding:9px 15px;border-radius:22px;font:600 14px/1 'Microsoft JhengHei',sans-serif;text-decoration:none;box-shadow:0 3px 10px rgba(0,0,0,.3)">← 回首頁</a>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">海線房仲冠良｜懂你又懂房</p>
+    <h1>房子還是你的，<br>但它可以先<em>發薪水</em>給你。</h1>
+    <p>「以房養老」不是賣房，也不是社會福利，它是一筆利息會滾、期限會到的貸款。這頁把數字攤開給你看。</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <h2>一句話講清楚</h2>
+    <p>一般房貸是你每月還錢給銀行，房子慢慢變成你的。<strong>以房養老剛好相反</strong>——把房子抵押給銀行，銀行按月撥款給你當退休金。這段期間房子的所有權和居住權都還在你身上，等到契約到期或屋主身故，再由繼承人清償；真的無法清償，銀行才有權拍賣。</p>
+    <p>它的正式名稱是「商業型不動產逆向抵押貸款」。截至 2026 年 3 月底，全台 16 家國銀累積核貸 1 萬 663 件、628 億元。過去主力都在北北基，今年第一季成長最快的區域，換成了中彰投。</p>
+  </section>
+
+  <section>
+    <h2>申請條件</h2>
+    <p class="lede">各家銀行細節不同，以下是最常見的門檻。</p>
+    <div class="card">
+      <table>
+        <tr><th>年齡</th><td>多數要求年滿 60 歲以上、信用良好的本國自然人</td></tr>
+        <tr><th>可貸額度</th><td>最高約鑑價金額的 7～8 成，實務上常落在 5～7 成</td></tr>
+        <tr><th>貸款年限</th><td>多為 20～30 年</td></tr>
+        <tr><th>雙重門檻</th><td>年齡＋貸款年限 ≥ 90，且 屋齡＋貸款年限 ≤ 60</td></tr>
+        <tr><th>房屋條件</th><td>建物用途最好登記為「住」。小套房、工業區住宅核貸機率低，銀行也偏好都會區房屋</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="calc">
+    <h2>月領金額試算</h2>
+    <p class="lede">填三個數字，看看第一年跟最後一年的差距。</p>
+    <div class="card">
+
+      <div class="field">
+        <label for="price">房屋鑑價金額（萬元）</label>
+        <input type="number" id="price" value="1000" min="100" max="20000" step="50" inputmode="numeric">
+        <div class="presets">
+          <button type="button" data-price="600">600 萬</button>
+          <button type="button" data-price="800">800 萬</button>
+          <button type="button" data-price="1000">1000 萬</button>
+          <button type="button" data-price="1500">1500 萬</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="ratio">核貸成數</label>
+        <select id="ratio">
+          <option value="0.5">5 成</option>
+          <option value="0.6" selected>6 成</option>
+          <option value="0.7">7 成</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="years">貸款年限</label>
+        <select id="years">
+          <option value="20">20 年</option>
+          <option value="25">25 年</option>
+          <option value="30" selected>30 年</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="rate">貸款年利率</label>
+        <select id="rate">
+          <option value="0.019">1.9%</option>
+          <option value="0.022" selected>2.2%</option>
+          <option value="0.025">2.5%</option>
+          <option value="0.028">2.8%</option>
+        </select>
+      </div>
+
+      <div class="result">
+        <div class="headline">
+          <div class="stat now">
+            <p class="k">第 1 年 每月實拿</p>
+            <p class="v" id="first">—<span class="u">元</span></p>
+          </div>
+          <div class="stat late">
+            <p class="k">最後一年 每月實拿</p>
+            <p class="v" id="last">—<span class="u">元</span></p>
+          </div>
+        </div>
+
+        <div class="chartwrap">
+          <div class="chart" id="chart" role="img" aria-label="每月實拿金額隨年度變化的長條圖"></div>
+          <div class="axis"><span>第 1 年</span><span id="axisEnd">第 30 年</span></div>
+          <div class="legend">
+            <span><i class="dot" style="background:var(--sea)"></i>實際入帳</span>
+            <span><i class="dot" style="background:var(--amber)"></i>當月扣息</span>
+          </div>
+        </div>
+
+        <div class="payoff">
+          期滿或身故時，繼承人須面對的清償總額約為 <strong id="payoff">—</strong> 萬元<br>
+          （累計撥款 <span id="totalDraw">—</span> 萬 ＋ 累計利息 <span id="totalInt">—</span> 萬）
+        </div>
+
+        <p class="note">
+          利息由銀行直接從每月撥款中扣除，多數銀行規定<strong>扣息不得超過當月給付金額的三分之一</strong>，超過的部分先掛帳，等結案時一併清償。所以越到後期，實際入帳金額越少——這是最多人事後才發現的一件事。<br><br>
+          本試算為簡化模型，僅供理解結構之用，實際額度、利率與撥款方式以各銀行核定為準。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>優點與要提醒的地方</h2>
+    <div class="split">
+      <div class="card">
+        <h3>好處</h3>
+        <ul>
+          <li>有穩定現金流，又能繼續住在自己家</li>
+          <li>不用賣房、不用搬走、不用跟子女開口</li>
+          <li>閒置的不動產被活化成生活費</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>要先想清楚</h3>
+        <ul>
+          <li>額度看地段與屋況，海線部分區域鑑價會比市區保守</li>
+          <li>房子仍帶著負債，繼承人未來要選擇清償或放棄</li>
+          <li>契約期滿而人還健在，是最需要事先規劃的風險</li>
+          <li>提前解約、變更年期通常都有手續費</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>哪些人適合</h2>
+    <ul>
+      <li><strong>有房、現金流不足</strong>——資產都壓在不動產上，帳戶卻很緊</li>
+      <li><strong>子女不需要繼承這間房</strong>，或子女已各自有房</li>
+      <li><strong>無子女、或不想麻煩子女</strong>的長輩</li>
+    </ul>
+    <p>反過來說，如果這間房是家族共識要留給下一代，或子女有能力奉養，那麼<strong>「換屋縮小坪數＋留下現金差價」往往比以房養老更划算</strong>。這是銀行不會告訴你的第三個選項。</p>
+  </section>
+
+  <section>
+    <blockquote>
+      適不適合，取決於三件事：<br>房子的位置、你的年齡，以及家人的共識。
+    </blockquote>
+  </section>
+
+  <section class="contact">
+    <h2>先聊聊，再決定</h2>
+    <p>不論最後是走以房養老、換屋，還是什麼都不做，先把你的房子值多少、能貸多少弄清楚，永遠不吃虧。海線六區免費估價與諮詢。</p>
+    <p class="name">吳冠良</p>
+    <p>・<br>沙鹿・清水・梧棲・龍井・大肚・大甲</p>
+    <a class="cta" href="tel:0915295958">撥打 0915-295958</a>
+    <a class="cta line" href="https://lin.ee/QyQmggG">加 LINE 詢問</a>
+  </section>
+
+  <footer>
+    本頁內容為一般性資訊整理，不構成投資、稅務或法律建議。實際條件依各金融機構核定為準。
+  </footer>
+
+</main>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var price=$("price"),ratio=$("ratio"),years=$("years"),rate=$("rate");
+  var fmt=function(n){return Math.round(n).toLocaleString("en-US")};
+
+  function calc(){
+    var V=Math.max(0,parseFloat(price.value)||0)*10000;
+    var L=V*parseFloat(ratio.value);
+    var n=parseInt(years.value,10);
+    var i=parseFloat(rate.value)/12;
+    var months=n*12;
+    var pay=L/months;
+    var cap=pay/3;
+
+    var bal=0,totalInt=0,yearly=[];
+    for(var y=0;y<n;y++){
+      var take=0,fee=0;
+      for(var m=0;m<12;m++){
+        bal+=pay;
+        var due=bal*i;
+        var ded=Math.min(due,cap);
+        totalInt+=due;
+        fee+=ded;take+=pay-ded;
+      }
+      yearly.push({take:take/12,fee:fee/12});
+    }
+
+    $("first").innerHTML=fmt(yearly[0].take)+'<span class="u">元</span>';
+    $("last").innerHTML=fmt(yearly[n-1].take)+'<span class="u">元</span>';
+    $("axisEnd").textContent="第 "+n+" 年";
+    $("totalDraw").textContent=fmt(L/10000);
+    $("totalInt").textContent=fmt(totalInt/10000);
+    $("payoff").textContent=fmt((L+totalInt)/10000);
+
+    var chart=$("chart");chart.innerHTML="";
+    for(var k=0;k<n;k++){
+      var b=document.createElement("div");b.className="bar";
+      b.title="第 "+(k+1)+" 年：實拿 "+fmt(yearly[k].take)+" 元／扣息 "+fmt(yearly[k].fee)+" 元";
+      var t=document.createElement("div");t.className="take";
+      var f=document.createElement("div");f.className="fee";
+      t.style.height=(yearly[k].take/pay*100)+"%";
+      f.style.height=(yearly[k].fee/pay*100)+"%";
+      b.appendChild(t);b.appendChild(f);chart.appendChild(b);
+    }
+  }
+
+  [price,ratio,years,rate].forEach(function(el){
+    el.addEventListener("input",calc);el.addEventListener("change",calc);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll(".presets button"),function(btn){
+    btn.addEventListener("click",function(){price.value=btn.dataset.price;calc();});
+  });
+  calc();
+})();
+</script>
+</body>
+</html>

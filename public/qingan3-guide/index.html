@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>青安3.0 海線指南｜額度・資格・總價上限・利率・地雷｜海線房仲冠良</title>
+<meta name="description" content="青安3.0（新青安）2026年8月1日上路。台中海線房仲冠良整理財政部官方問答集：額度1000/1200/1500萬、資格五關自我檢核、台中總價上限2000萬、利率階梯1.775%起、貸後出租被追回等地雷。沙鹿、清水、梧棲、龍井、大肚、大甲買房適用。">
+<meta name="keywords" content="青安3.0,新青安,青年安心成家貸款,青安資格,青安利率,青安額度,台中海線房仲,沙鹿買房,清水買房,梧棲買房,龍井買房,大肚買房,大甲買房,海線房仲冠良">
+<meta property="og:title" content="青安3.0 海線指南｜五關自我檢核・台中總價上限 2,000 萬">
+<meta property="og:description" content="財政部官方問答集，冠良整理成海線版：能貸多少、卡在哪一關、利率怎麼走、哪些事做了補貼會被追回。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="海線房仲冠良｜懂你又懂房">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0F262B;        /* 內文墨色 */
+    --deep:#0B3A44;       /* 深海 */
+    --tide:#1F7A8C;       /* 潮線藍綠 */
+    --sun:#E8A33D;        /* 夕陽 */
+    --sand:#F3EEE4;       /* 沙 */
+    --mist:#E4EBEC;       /* 海霧（頁面底色）*/
+    --alert:#B4402C;
+    --ok:#2F7D5B;
+    --hair:#C9D6D8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--mist);color:var(--ink);
+       font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+       font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-feature-settings:"tnum";}
+  a{color:var(--tide);}
+  :focus-visible{outline:3px solid var(--sun);outline-offset:3px;}
+
+  .shell{max-width:780px;margin:0 auto;background:#fff;}
+
+  /* ── 頁首 ───────────────────────────── */
+  .top{background:var(--deep);color:#fff;padding:38px 22px 0;}
+  .kicker{font-size:12px;letter-spacing:.28em;color:var(--sun);}
+  .top h1{font-family:"Noto Serif TC",serif;font-weight:900;
+          font-size:clamp(30px,7.4vw,46px);line-height:1.25;margin:14px 0 6px;}
+  .top h1 em{font-style:normal;color:var(--sun);}
+  .fig{font-family:"IBM Plex Mono",monospace;font-size:clamp(64px,20vw,120px);line-height:.85;
+       color:#17505d;letter-spacing:-.04em;margin-top:6px;user-select:none;}
+  .lede{color:#B7CBCF;font-size:15px;max-width:44em;margin-top:14px;}
+  .where{margin-top:16px;font-size:13px;color:#8FB0B6;letter-spacing:.08em;}
+  .horizon{display:block;width:100%;height:26px;margin-top:22px;}
+
+  /* 資料條 */
+  .strip{display:grid;grid-template-columns:repeat(3,1fr);background:var(--sand);
+         border-bottom:1px solid var(--hair);}
+  .strip div{padding:14px 8px;text-align:center;border-right:1px solid var(--hair);}
+  .strip div:last-child{border-right:0;}
+  .strip dt{font-size:11px;letter-spacing:.16em;color:#6C7F82;}
+  .strip dd{font-size:14.5px;font-weight:600;margin-top:2px;}
+
+  /* 章節導覽 */
+  nav{position:sticky;top:0;z-index:9;background:rgba(255,255,255,.96);
+      backdrop-filter:blur(6px);border-bottom:1px solid var(--hair);
+      display:flex;gap:6px;overflow-x:auto;padding:9px 14px;scrollbar-width:none;}
+  nav::-webkit-scrollbar{display:none;}
+  nav a{flex:none;font-size:13px;text-decoration:none;color:var(--deep);
+        border:1px solid var(--hair);border-radius:3px;padding:4px 11px;white-space:nowrap;}
+  nav a:hover{background:var(--deep);color:#fff;border-color:var(--deep);}
+
+  /* ── 章節 ───────────────────────────── */
+  section{padding:40px 22px;border-bottom:1px solid var(--hair);}
+  .label{display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.22em;color:var(--tide);}
+  .label::after{content:"";flex:1;height:1px;background:var(--hair);}
+  h2{font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(22px,5.4vw,30px);
+     line-height:1.35;margin:10px 0 6px;}
+  .dek{color:#5E7175;font-size:14.5px;margin-bottom:22px;}
+
+  /* 額度：三段水位 */
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;align-items:end;}
+  .tier{background:var(--sand);border:1px solid var(--hair);border-bottom:4px solid var(--tide);
+        padding:14px 10px;text-align:center;}
+  .tier.t2{background:#DCE7E9;border-bottom-color:#166374;}
+  .tier.t3{background:var(--deep);border-bottom-color:var(--sun);color:#fff;}
+  .tier .who{font-size:14px;font-weight:700;}
+  .tier .cond{font-size:11.5px;color:#6C7F82;line-height:1.5;min-height:3em;margin-top:3px;}
+  .tier.t3 .cond{color:#9EBBC0;}
+  .tier .amt{font-size:clamp(18px,5vw,25px);font-weight:600;margin-top:8px;letter-spacing:-.02em;}
+  .tier.t3 .amt{color:var(--sun);}
+  .sp1{height:34px}.sp2{height:60px}.sp3{height:86px}
+  .rule3{display:flex;gap:20px;flex-wrap:wrap;margin-top:18px;padding-top:14px;
+         border-top:1px solid var(--hair);font-size:14px;}
+  .rule3 b{font-weight:600;color:var(--tide);}
+
+  .note{margin-top:16px;background:#FFF6E6;border-left:4px solid var(--sun);
+        padding:12px 15px;font-size:13.5px;color:#4A3C20;}
+
+  /* 五關檢核 */
+  .check{border:1px solid var(--hair);}
+  .check li{list-style:none;display:flex;gap:13px;padding:15px 16px;border-bottom:1px solid var(--hair);}
+  .check li:last-child{border-bottom:0;}
+  .check input{appearance:none;-webkit-appearance:none;flex:none;width:24px;height:24px;margin-top:4px;
+               border:2px solid var(--tide);border-radius:2px;cursor:pointer;position:relative;background:#fff;}
+  .check input:checked{background:var(--tide);}
+  .check input:checked::after{content:"✓";position:absolute;inset:0;color:#fff;
+               font-size:15px;line-height:20px;text-align:center;font-weight:700;}
+  .check label{cursor:pointer;}
+  .check h3{font-size:16px;font-weight:700;}
+  .check p{font-size:13.5px;color:#5E7175;margin-top:2px;}
+  .check .fine{margin-top:8px;background:var(--sand);padding:9px 12px;font-size:12.5px;
+               color:#4E6165;border-left:3px solid var(--hair);}
+  .tally{margin-top:14px;background:var(--deep);color:#fff;padding:13px 16px;font-size:14.5px;}
+  .tally b{color:var(--sun);}
+
+  /* 總價上限：目錄式引導點 */
+  .ledger{border-top:1px solid var(--hair);}
+  .lrow{display:flex;align-items:baseline;gap:8px;padding:14px 2px;border-bottom:1px solid var(--hair);}
+  .lrow .city{font-size:15.5px;font-weight:500;}
+  .lrow .dots{flex:1;border-bottom:1.5px dotted var(--hair);transform:translateY(-4px);}
+  .lrow .cap{font-size:19px;font-weight:600;white-space:nowrap;}
+  .lrow.here{background:#FFF6E6;}
+  .lrow.here .city{font-weight:700;}
+  .lrow.here .cap{color:#9A6A12;}
+  .tagme{font-size:11px;background:var(--sun);color:#3A2A08;padding:2px 7px;
+         margin-left:8px;font-weight:700;white-space:nowrap;}
+  .case{margin-top:16px;border:1px solid var(--hair);padding:15px;font-size:14px;}
+  .case .k{font-size:11.5px;letter-spacing:.16em;color:var(--tide);}
+  .case .eq{margin-top:8px;font-size:15px;line-height:2;}
+  .case .eq s{color:#8A9A9D;text-decoration-color:var(--alert);}
+  .case .out{color:var(--alert);font-weight:700;}
+
+  /* 利率階梯 */
+  .stairs{width:100%;height:auto;margin:6px 0 4px;}
+  .rate-legend{font-size:13.5px;color:#5E7175;}
+  .rate-legend b{color:var(--ink);font-weight:600;}
+
+  /* 對照表 */
+  .cmp{width:100%;border-collapse:collapse;font-size:14px;}
+  .cmp th,.cmp td{padding:12px 8px;text-align:left;vertical-align:top;border-bottom:1px solid var(--hair);}
+  .cmp thead th{font-size:12px;letter-spacing:.1em;color:#6C7F82;border-bottom:2px solid var(--deep);}
+  .cmp td:first-child{font-weight:700;white-space:nowrap;}
+  .cmp td:nth-child(2){color:#8A9A9D;}
+  .cmp td:nth-child(3){color:var(--deep);font-weight:500;}
+
+  /* 海線實戰 */
+  .field{counter-reset:f;}
+  .field article{position:relative;padding:16px 0 16px 46px;border-bottom:1px solid var(--hair);}
+  .field article:last-child{border-bottom:0;}
+  .field article::before{counter-increment:f;content:counter(f,decimal-leading-zero);
+        position:absolute;left:0;top:18px;font-family:"IBM Plex Mono",monospace;
+        font-size:13px;color:var(--sun);font-weight:600;}
+  .field h3{font-size:16.5px;font-weight:700;margin-bottom:3px;}
+  .field p{font-size:14px;color:#4E6165;}
+  .field b{color:var(--deep);}
+
+  /* 換軌 */
+  .switch{background:var(--deep);color:#fff;padding:22px;margin-top:24px;}
+  .switch h3{color:var(--sun);font-family:"Noto Serif TC",serif;font-size:19px;margin-bottom:12px;}
+  .switch ol{margin-left:20px;font-size:14.5px;color:#DCE7E9;}
+  .switch li{margin-bottom:7px;}
+  .switch .warn{margin-top:14px;border:1px solid #2C5D68;padding:11px 14px;font-size:13.5px;color:#B7CBCF;}
+
+  /* 地雷 / 可以 */
+  .split{display:grid;grid-template-columns:1fr;gap:26px;}
+  @media(min-width:680px){.split{grid-template-columns:1fr 1fr;gap:30px;}}
+  .col h3{font-family:"Noto Serif TC",serif;font-size:19px;margin-bottom:4px;}
+  .col .cap2{font-size:13px;color:#5E7175;margin-bottom:12px;}
+  .col ul{list-style:none;}
+  .col li{display:flex;gap:9px;padding:11px 0;border-bottom:1px dotted var(--hair);
+          font-size:14px;line-height:1.65;}
+  .col li:last-child{border-bottom:0;}
+  .col .g{flex:none;width:20px;height:20px;margin-top:3px;display:flex;align-items:center;
+          justify-content:center;font-size:13px;font-weight:700;color:#fff;}
+  .bad .g{background:var(--alert);} .good .g{background:var(--ok);}
+  .bad b{color:var(--alert);} .good b{color:var(--ok);}
+
+  /* CTA */
+  .cta{background:var(--deep);color:#fff;padding:40px 22px;}
+  .cta .kicker{color:var(--sun);}
+  .cta h2{color:#fff;margin:12px 0 6px;}
+  .cta h2 em{font-style:normal;color:var(--sun);}
+  .cta p{color:#B7CBCF;font-size:14.5px;margin-bottom:20px;}
+  .acts{display:grid;gap:10px;}
+  @media(min-width:560px){.acts{grid-template-columns:1fr 1fr;}.acts .wide{grid-column:1/-1;}}
+  .act{display:flex;align-items:center;justify-content:space-between;gap:10px;
+       text-decoration:none;padding:15px 18px;font-size:16px;font-weight:700;}
+  .act .arw{font-family:"IBM Plex Mono",monospace;font-weight:400;opacity:.75;font-size:14px;}
+  .a-sun{background:var(--sun);color:#33260A;}
+  .a-line{background:#06C755;color:#fff;}
+  .a-call{background:#fff;color:var(--deep);}
+  .a-ghost{border:1px solid #2C5D68;color:#B7CBCF;}
+
+  footer{background:#08303A;color:#8FB0B6;font-size:12.5px;line-height:1.9;padding:26px 22px 34px;}
+  footer b{color:#DCE7E9;}
+  footer a{color:#B7CBCF;}
+  footer .fine{display:block;margin-top:12px;color:#6C8B92;}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+<a href="/" style="position:fixed;top:12px;left:12px;z-index:99999;background:#16283f;color:#fff;padding:9px 15px;border-radius:22px;font:600 14px/1 'Microsoft JhengHei',sans-serif;text-decoration:none;box-shadow:0 3px 10px rgba(0,0,0,.3)">← 回首頁</a>
+<div class="shell">
+
+<header class="top">
+  <div class="kicker">115 / 08 / 01 施行　財政部青年安心成家購屋優惠貸款</div>
+  <h1>青安 3.0<br><em>海線買房實用版</em></h1>
+  <div class="fig">3.0</div>
+  <p class="lede">官方問答集講了三十幾題，真正會影響你買不買得成的，其實只有五件事。冠良按海線的實際狀況重新排過一次順序。</p>
+  <div class="where">沙鹿　清水　梧棲　龍井　大肚　大甲</div>
+  <svg class="horizon" viewBox="0 0 780 26" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 16 Q 65 4 130 16 T 260 16 T 390 16 T 520 16 T 650 16 T 780 16" fill="none" stroke="#1F7A8C" stroke-width="2"/>
+    <path d="M0 23 Q 65 11 130 23 T 260 23 T 390 23 T 520 23 T 650 23 T 780 23" fill="none" stroke="#17505d" stroke-width="2"/>
+  </svg>
+</header>
+
+<dl class="strip">
+  <div><dt>申請期間</dt><dd class="mono">115/8/1–118/7/31</dd></div>
+  <div><dt>撥款期限</dt><dd class="mono">118/10/31</dd></div>
+  <div><dt>承辦</dt><dd>八大公股銀行</dd></div>
+</dl>
+
+<nav aria-label="章節">
+  <a href="#quota">額度</a>
+  <a href="#gate">資格五關</a>
+  <a href="#cap">總價上限</a>
+  <a href="#rate">利率</a>
+  <a href="#diff">新舊差異</a>
+  <a href="#local">海線實戰</a>
+  <a href="#risk">地雷</a>
+</nav>
+
+<!-- 額度 -->
+<section id="quota">
+  <div class="label">01　額度</div>
+  <h2>1,500 萬不是人人有</h2>
+  <p class="dek">8/1 起婚育家庭才加碼，而且只有新申請的人適用；舊案不能靠改貸、增貸、轉貸拉高。</p>
+
+  <div class="tiers">
+    <div class="tier t1">
+      <div class="sp1"></div>
+      <div class="who">一般家庭</div>
+      <div class="cond">單身<br>或結婚超過 2 年</div>
+      <div class="amt mono">1,000萬</div>
+    </div>
+    <div class="tier t2">
+      <div class="sp2"></div>
+      <div class="who">新婚家庭</div>
+      <div class="cond">申請日前 2 年內<br>完成結婚登記</div>
+      <div class="amt mono">1,200萬</div>
+    </div>
+    <div class="tier t3">
+      <div class="sp3"></div>
+      <div class="who">育兒家庭</div>
+      <div class="cond">育有<br>未成年子女</div>
+      <div class="amt mono">1,500萬</div>
+    </div>
+  </div>
+
+  <div class="rule3">
+    <span>成數最高 <b>8 成</b></span>
+    <span>年限最長 <b>40 年</b></span>
+    <span>寬限期最長 <b>5 年</b></span>
+  </div>
+
+  <p class="note">懷孕中的胎兒算不算「育兒家庭」拉到 1,500 萬？官方目前把「懷孕」寫在舊案撤案重申的婚育資格裡，沒有明講直接比照育兒家庭額度，實際以承辦銀行認定為準。別先自己算好 1,500 萬就去下斡旋。</p>
+</section>
+
+<!-- 資格五關 -->
+<section id="gate">
+  <div class="label">02　資格</div>
+  <h2>五關全過才辦得成</h2>
+  <p class="dek">一關卡住就整案出局。點一點，看你現在卡在哪。</p>
+
+  <ul class="check" id="gates">
+    <li><input type="checkbox" id="g1"><label for="g1"><h3>年齡：成年 ～ 未滿 50 歲</h3>
+      <p>以申請日年齡為準，而且「年齡＋貸款年限」加起來不能超過 80。45 歲最長只能貸 35 年。</p></label></li>
+    <li><input type="checkbox" id="g2"><label for="g2"><h3>本人年所得 200 萬以下</h3>
+      <p>只看借款人本人，配偶收入不計。攤販、自營商拿不出所得清單，可以用金流、營業資料證明。</p></label></li>
+    <li><input type="checkbox" id="g3"><label for="g3"><h3>全家名下沒有自有住宅</h3>
+      <p>本人＋配偶＋未成年子女，財產清單都要查無建物。</p>
+      <div class="fine">停車位、靈骨塔位不算住宅　·　持分住宅換算面積合計未滿 40 ㎡ 仍可辦　·　繼承的公同共有，8/1 起改用「潛在應有部分」計算，比以前容易過</div></label></li>
+    <li><input type="checkbox" id="g4"><label for="g4"><h3>一生限貸一次</h3>
+      <p>112/8/1 以後領過青安、或領過農業金融機構「農安貸款」的人不能再辦。聯徵有建檔，查得到。</p></label></li>
+    <li><input type="checkbox" id="g5"><label for="g5"><h3>房屋總價在上限內</h3>
+      <p>銀行鑑價與買賣總價「取高的那個」來看，超過就整案不能辦。往下看第 03 節。</p></label></li>
+  </ul>
+  <p class="tally" id="tally">已通過 <b class="mono">0</b> / 5 關</p>
+</section>
+
+<!-- 總價上限 -->
+<section id="cap">
+  <div class="label">03　總價上限</div>
+  <h2>房子太貴，整案出局</h2>
+  <p class="dek">審的是房子的價格，不是你要貸多少。</p>
+
+  <div class="ledger">
+    <div class="lrow"><span class="city">臺北市</span><span class="dots"></span><span class="cap mono">3,500萬</span></div>
+    <div class="lrow"><span class="city">新北市・新竹縣市</span><span class="dots"></span><span class="cap mono">2,500萬</span></div>
+    <div class="lrow here"><span class="city">其他縣市<span class="tagme">臺中海線適用</span></span><span class="dots"></span><span class="cap mono">2,000萬</span></div>
+  </div>
+
+  <div class="case">
+    <div class="k">實際怎麼審</div>
+    <div class="eq">
+      成交總價 <b class="mono">2,100萬</b>　／　銀行鑑價 <s class="mono">1,900萬</s><br>
+      取高的 <b class="mono">2,100萬</b> 來審 → <span class="out">超過 2,000 萬，整案不能辦</span>
+    </div>
+  </div>
+
+  <p class="note">好消息是，海線多數成屋離 2,000 萬還有一段距離。實務上真正把人擋下來的不是這一關，是第 02 節的第 3 關——名下那筆你可能不知道的持分。</p>
+</section>
+
+<!-- 利率 -->
+<section id="rate">
+  <div class="label">04　利率</div>
+  <h2>便宜的是前三年</h2>
+  <p class="dek">補貼採 3＋3：前 3 年給滿 2 碼，第 4 年起每年少半碼，第 7 年回到原利率。</p>
+
+  <svg class="stairs" viewBox="0 0 620 250" role="img" aria-label="青安3.0 利率逐年階梯：前3年1.775%、第4年1.9%、第5年2.025%、第6年2.15%、第7年起2.275%">
+    <path d="M10 190 H130 V166 H250 V142 H370 V118 H490 V94 H610 V225 H10 Z" fill="#1F7A8C" opacity=".08"/>
+    <rect x="10" y="190" width="120" height="35" fill="#E8A33D" opacity=".25"/>
+    <path d="M10 190 H130 V166 H250 V142 H370 V118 H490 V94 H610" fill="none" stroke="#1F7A8C" stroke-width="3"/>
+    <g font-family="IBM Plex Mono, monospace" font-size="15" font-weight="600" fill="#0F262B" text-anchor="middle">
+      <text x="70" y="182">1.775%</text>
+      <text x="190" y="158">1.9%</text>
+      <text x="310" y="134">2.025%</text>
+      <text x="430" y="110">2.15%</text>
+      <text x="550" y="86">2.275%</text>
+    </g>
+    <line x1="10" y1="225" x2="610" y2="225" stroke="#C9D6D8" stroke-width="1"/>
+    <g font-family="Noto Sans TC, sans-serif" font-size="13" fill="#5E7175" text-anchor="middle">
+      <text x="70" y="245">前 3 年</text>
+      <text x="190" y="245">第 4 年</text>
+      <text x="310" y="245">第 5 年</text>
+      <text x="430" y="245">第 6 年</text>
+      <text x="550" y="245">第 7 年起</text>
+    </g>
+  </svg>
+
+  <p class="rate-legend">8/1 起新案<b>只剩一段式機動利率</b>，二段式與混合式固定取消。基準是郵儲 2 年期機動利率 1.72% 加碼 0.555%，前 3 年補貼 2 碼（政府 1.5 碼＋公股銀行減收半碼）。<b>轉貸的人吃不到補貼。</b></p>
+</section>
+
+<!-- 新舊對照 -->
+<section id="diff">
+  <div class="label">05　新舊差異</div>
+  <h2>8/1 到底改了什麼</h2>
+  <p class="dek">以「申請日」區分：7/31 前申請走 2.0，8/1 起申請走 3.0。</p>
+  <table class="cmp">
+    <thead><tr><th>項目</th><th>7/31 以前</th><th>8/1 起</th></tr></thead>
+    <tbody>
+      <tr><td>最高額度</td><td>一律 1,000 萬</td><td>1,000／1,200／1,500 萬 三級</td></tr>
+      <tr><td>計息方式</td><td>一段式、二段式、混合式三選一</td><td>只剩一段式機動</td></tr>
+      <tr><td>繼承公同共有</td><td>持分全額計入面積</td><td>可用「潛在應有部分」換算</td></tr>
+      <tr><td>屋頂租太陽能</td><td>沒有明文</td><td>明文不影響自住，新舊戶都適用</td></tr>
+    </tbody>
+  </table>
+
+  <div class="switch">
+    <h3>7/31 前申請、還沒撥款的人</h3>
+    <ol>
+      <li>你在 7/31 以前申請，銀行還沒撥款</li>
+      <li>你符合婚育資格（結婚 2 年內、本人或配偶懷孕、有未成年子女）</li>
+      <li>撥款前備妥戶籍謄本、媽媽手冊等證明 → 撤案 → 同一天用原房子重新申請 3.0</li>
+    </ol>
+    <p class="warn">一經選擇不能反悔。重新申請日就算超過過戶登記 6 個月，只要原申請日在 6 個月內，一樣可以辦。要不要換軌，帶謄本來算一次就知道。</p>
+  </div>
+</section>
+
+<!-- 海線實戰 -->
+<section id="local">
+  <div class="label">06　海線實戰</div>
+  <h2>同一套政策，海線的卡點不一樣</h2>
+  <p class="dek">這四件事，我在沙鹿、清水、梧棲一路看到大甲。</p>
+  <div class="field">
+    <article>
+      <h3>老家透天有你的持分，先查面積</h3>
+      <p>海線很多人名下掛著祖厝或父母房子的持分，自己不知道。<b>持分換算面積合計未滿 40 ㎡ 還能辦</b>，超過就整案卡死。看房前先調謄本或財產清單算一次。</p>
+    </article>
+    <article>
+      <h3>額度不等於核貸，鑑價才是關鍵</h3>
+      <p>最高 8 成是<b>看銀行鑑價</b>，不是看你買多少。海線透天、老屋鑑價常低於成交價，鑑價一低自備款就得往上加。下斡旋前先用保守鑑價試算月付金。</p>
+    </article>
+    <article>
+      <h3>農舍、工業宅、加蓋，銀行不一定認</h3>
+      <p>青安承作的是自住的住宅。<b>農舍、工業區住宅、未保存登記的加蓋</b>，各家公股銀行認定寬嚴不一，簽約前先問過銀行。</p>
+    </article>
+    <article>
+      <h3>過戶時程要抓好，別讓 6 個月過期</h3>
+      <p>謄本登記日必須落在<b>申請前 6 個月內</b>或<b>核准後 6 個月內</b>。海線常見的繼承案、共有物分割案流程拖得久，簽約時就要把送件時點排進去。</p>
+    </article>
+  </div>
+</section>
+
+<!-- 地雷 / 可以 -->
+<section id="risk">
+  <div class="label">07　該閃與別誤會</div>
+  <h2>會被追回的，跟其實可以的</h2>
+  <p class="dek">青安是自住政策貸款，銀行貸後會查；但也有很多人自己嚇自己。</p>
+
+  <div class="split">
+    <div class="col bad">
+      <h3>做了會被追回</h3>
+      <p class="cap2">停止補貼，已領的還要吐回來</p>
+      <ul>
+        <li><span class="g">✕</span><span><b>貸後出租</b>：分租、整層出租、頂加出租、當公益出租人</span></li>
+        <li><span class="g">✕</span><span><b>新婚額度後離婚</b>（喪偶除外）：超過 1,000 萬的部分，從離婚當天起追回溢領</span></li>
+        <li><span class="g">✕</span><span><b>假結婚衝額度</b>：從撥款日起全部追回，條件重新核定</span></li>
+        <li><span class="g">✕</span><span><b>買到租約未到期的房子</b>：不能享補貼，等租約結束改貸算轉貸，一樣沒有</span></li>
+        <li><span class="g">✕</span><span><b>先申請卡額度再找房</b>：沒有擔保品，銀行不受理</span></li>
+        <li><span class="g">✕</span><span><b>自地自建、一次買二屋、買國外房屋</b>：都不適用</span></li>
+        <li><span class="g">✕</span><span><b>過戶太久才申請</b>：謄本登記日要在申請前 6 個月內</span></li>
+      </ul>
+    </div>
+    <div class="col good">
+      <h3>其實可以</h3>
+      <p class="cap2">官方寫得很清楚，只是很少人看到</p>
+      <ul>
+        <li><span class="g">✓</span><span><b>單身、離婚都能辦</b>，不限首購。以前有房但已賣掉，附謄本證明就可以</span></li>
+        <li><span class="g">✓</span><span><b>名下只有土地</b>、沒有房子</span></li>
+        <li><span class="g">✓</span><span><b>跟別人合買</b>：額度按持分比例算，持分 1/2 等於額度砍半</span></li>
+        <li><span class="g">✓</span><span><b>屋頂租給太陽能業者</b>：不影響自住認定</span></li>
+        <li><span class="g">✓</span><span><b>併用內政部自購住宅貸款利息補貼</b></span></li>
+        <li><span class="g">✓</span><span><b>原房屋領有災損紅單</b>，另購自住可辦</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="kicker">下一步</div>
+  <h2>你到底卡在<em>哪一關</em>？</h2>
+  <p>帶一份謄本，資格、額度、鑑價、自備款，我當場幫你算一遍。不用先決定買不買。</p>
+  <div class="acts">
+    <a class="act a-sun wide" id="lnk-calc" href="#">青安3.0 資格・月付金試算<span class="arw">→</span></a>
+    <a class="act a-line" href="https://lin.ee/QyQmggG" target="_blank" rel="noopener">LINE 問冠良<span class="arw">wosawo</span></a>
+    <a class="act a-call" href="tel:0915295958">打給冠良<span class="arw mono">0915-295958</span></a>
+    <a class="act a-ghost wide" id="lnk-tools" href="#">冠良的免費工具箱：稅費・行情・更多試算<span class="arw">→</span></a>
+  </div>
+</div>
+
+<footer>
+  <b>海線房仲冠良（吳冠良）</b><br>
+  <a href="tel:0915295958">0915-295958</a>　·　LINE <a href="https://lin.ee/QyQmggG" target="_blank" rel="noopener">wosawo</a>
+  <span class="fine">資料依據：財政部「公股銀行辦理青年安心成家購屋優惠貸款問答集」115.7.27 版。本頁為白話整理，實際申貸資格、成數、利率、額度認定與應備文件，以財政部公告及各承辦銀行審核為準。本頁不蒐集任何個人資料。</span>
+</footer>
+
+</div>
+
+<script>
+  /* ─────────────────────────────────────────────
+     連結設定：把網址填進來就會亮起來，留空白該顆按鈕就自動隱藏
+     （試算頁、工具箱還沒上線前，留空就好，不會出現點不動的死連結）
+     例：CALC_URL = "https://你的網域/qingan3-calc.html";
+  ───────────────────────────────────────────── */
+  var CALC_URL  = "";   // 青安3.0 試算頁網址
+  var TOOLS_URL = "";   // 工具箱首頁網址
+
+  (function(){
+    [['lnk-calc', CALC_URL], ['lnk-tools', TOOLS_URL]].forEach(function(p){
+      var el = document.getElementById(p[0]);
+      if (!el) return;
+      if (p[1]) { el.href = p[1]; } else { el.parentNode.removeChild(el); }
+    });
+  })();
+
+  (function(){
+    var boxes = Array.prototype.slice.call(document.querySelectorAll('#gates input'));
+    var tally = document.getElementById('tally');
+    function upd(){
+      var n = 0, first = 0;
+      boxes.forEach(function(b, i){
+        if (b.checked) { n++; } else if (!first) { first = i + 1; }
+      });
+      if (n === 5) {
+        tally.innerHTML = '<b>五關看起來都過了</b>　接下來看鑑價、自備款和送件時點，這部分帶謄本來算最快。';
+      } else {
+        tally.innerHTML = '已通過 <b class="mono">' + n + '</b> / 5 關　·　目前卡在第 <b class="mono">' + first + '</b> 關';
+      }
+    }
+    boxes.forEach(function(b){ b.addEventListener('change', upd); });
+    upd();
+  })();
+</script>
+</body>
+</html>
