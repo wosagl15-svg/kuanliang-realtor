@@ -15,6 +15,7 @@ import {
   sourceLabel,
 } from "@/lib/buyer-constants";
 import { formatPhone } from "@/lib/phone";
+import { build591Url, unmappedCriteria } from "@/lib/external-search";
 import ContactLogForm from "./ContactLogForm";
 
 export const dynamic = "force-dynamic";
@@ -148,6 +149,61 @@ export default async function BuyerDetailPage({ params }: { params: Promise<{ id
             </span>
           )}
         </div>
+
+        {/* 到 591 找符合這位客戶的物件（純連結，不抓取） */}
+        {r && (
+          <div
+            style={{
+              display: "flex",
+              gap: 12,
+              alignItems: "center",
+              flexWrap: "wrap",
+              padding: "12px 15px",
+              background: "rgba(255,255,255,0.03)",
+              border: `1px solid ${CIS.cardBorder}`,
+              borderRadius: CIS.radius,
+              marginBottom: 16,
+            }}
+          >
+            <a
+              href={build591Url({
+                districts: wanted,
+                budgetMin: r.budget_min as number | null,
+                budgetMax: r.budget_max as number | null,
+                roomMin: r.room_min as number | null,
+              })}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                padding: "9px 18px",
+                borderRadius: CIS.radiusSm,
+                border: `1px solid ${CIS.blue}`,
+                background: "rgba(200,150,62,0.14)",
+                color: CIS.blueSoft,
+                fontSize: 13,
+                fontWeight: 700,
+                textDecoration: "none",
+              }}
+            >
+              到 591 找符合的物件 ↗
+            </a>
+            {(() => {
+              const missed = unmappedCriteria({
+                districts: wanted,
+                parking: r.parking as string,
+                elevator: r.elevator as string,
+                ageMax: r.age_max as number | null,
+              });
+              return missed.length ? (
+                <span style={{ fontSize: 11.5, color: CHIP.warn.color }}>
+                  ⚠ 帶不進去、要自己再篩：{missed.join("、")}
+                </span>
+              ) : (
+                <span style={{ fontSize: 11.5, color: CIS.textMute }}>條件已帶入區域、總價、房數</span>
+              );
+            })()}
+          </div>
+        )}
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))", gap: 16 }}>
           {/* 聯絡與狀態 */}

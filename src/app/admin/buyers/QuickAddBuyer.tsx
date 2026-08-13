@@ -19,6 +19,7 @@ import {
   ROOM_OPTIONS,
 } from "@/lib/buyer-constants";
 import { URGENCY_LABELS, type ExtractActionResult } from "@/lib/buyer-action-types";
+import { build591Url, unmappedCriteria } from "@/lib/external-search";
 import { extractBuyerAction, saveBuyerAction } from "@/lib/actions/buyer";
 
 type Extracted = NonNullable<ExtractActionResult["data"]>;
@@ -517,6 +518,73 @@ export default function QuickAddBuyer() {
               </ul>
             </div>
           )}
+
+          {/* 導向 591 找物件 —— 只開連結，不抓取 */}
+          {(() => {
+            const url = build591Url({
+              districts: f.districts,
+              budgetMin: f.budget_min,
+              budgetMax: f.budget_max,
+              roomMin: f.room_min,
+            });
+            const missed = unmappedCriteria({
+              districts: f.districts,
+              parking: f.parking,
+              elevator: f.elevator,
+              ageMax: f.age_max,
+            });
+            return (
+              <div
+                style={{
+                  marginTop: 14,
+                  padding: "13px 15px",
+                  background: "rgba(255,255,255,0.03)",
+                  border: `1px solid ${CIS.cardBorder}`,
+                  borderRadius: CIS.radiusSm,
+                }}
+              >
+                <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      padding: "9px 18px",
+                      borderRadius: CIS.radiusSm,
+                      border: `1px solid ${CIS.blue}`,
+                      background: "rgba(200,150,62,0.14)",
+                      color: CIS.blueSoft,
+                      fontSize: 13,
+                      fontWeight: 700,
+                      textDecoration: "none",
+                    }}
+                  >
+                    到 591 找符合這個客戶的物件 ↗
+                  </a>
+                  <span style={{ fontSize: 11.5, color: CIS.textMute }}>
+                    已帶入：
+                    {[
+                      f.districts.length
+                        ? f.districts.map((k) => DISTRICTS.find((d) => d.key === k)?.label).join("、")
+                        : null,
+                      f.budget_max ? `${f.budget_min ?? 0}–${f.budget_max} 萬` : null,
+                      f.room_min ? `${f.room_min} 房` : null,
+                    ]
+                      .filter(Boolean)
+                      .join("　·　") || "（尚無可帶入的條件）"}
+                  </span>
+                </div>
+                {missed.length > 0 && (
+                  <div style={{ fontSize: 11.5, color: CHIP.warn.color, marginTop: 8, lineHeight: 1.7 }}>
+                    ⚠ 591 連結帶不進去、要在對方站上自己再篩：{missed.join("、")}
+                  </div>
+                )}
+                <div style={{ fontSize: 11, color: CIS.textMute, marginTop: 6, lineHeight: 1.7 }}>
+                  這是純連結，開新分頁到 591 看他們當下最新的物件。系統不抓取也不儲存任何 591 內容。
+                </div>
+              </div>
+            );
+          })()}
 
           {/* 存檔 */}
           <div style={{ marginTop: 16 }}>
