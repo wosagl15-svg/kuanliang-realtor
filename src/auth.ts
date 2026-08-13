@@ -41,5 +41,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       return session;
     },
   },
-  pages: { signIn: "/api/auth/signin" },
+  // ⚠️ 這裡原本有 `pages: { signIn: "/api/auth/signin" }` —— 已於 2026-08-12 移除。
+  //    pages.signIn 是用來指定「自訂登入頁」的，把它指向 Auth.js 內建路由本身，
+  //    等於叫它「別用內建頁，去這個自訂頁」，而那個自訂頁又是它自己 → 畫面全白、登不進去。
+  //    不設這個欄位，Auth.js 就會渲染內建登入頁（含 Google 按鈕），這才是要的行為。
 });
