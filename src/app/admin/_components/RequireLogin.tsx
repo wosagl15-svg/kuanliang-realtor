@@ -44,8 +44,11 @@ export default function RequireLogin({
           這裡有客戶的姓名與電話，需要登入才能查看。
         </p>
 
+        {/* ⚠️ 一定要連「登入頁」而不是 /api/auth/signin/google —— Auth.js v5 的
+            provider 端點只收帶 CSRF token 的 POST，用 <a> 走 GET 會被導到
+            /api/auth/error?error=Configuration，看起來像設定壞掉其實不是。 */}
         <a
-          href={`/api/auth/signin/google?callbackUrl=${encodeURIComponent(callbackUrl)}`}
+          href={`/api/auth/signin?callbackUrl=${encodeURIComponent(callbackUrl)}`}
           style={{
             display: "block",
             padding: "12px 20px",
