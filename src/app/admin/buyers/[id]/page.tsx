@@ -15,7 +15,7 @@ import {
   sourceLabel,
 } from "@/lib/buyer-constants";
 import { formatPhone } from "@/lib/phone";
-import { build591Url, unmappedCriteria } from "@/lib/external-search";
+import { build591Url, mappedSummary, unmappedCriteria } from "@/lib/external-search";
 import ContactLogForm from "./ContactLogForm";
 
 export const dynamic = "force-dynamic";
@@ -93,6 +93,21 @@ export default async function BuyerDetailPage({ params }: { params: Promise<{ id
     : {};
   const unclear: string[] = r?.soft_json ? (JSON.parse(r.soft_json as string).unclear ?? []) : [];
 
+  // 591 連結用的條件。預算是否模糊，用當初抽取的信心度判斷（非 high = 客戶講得含糊）
+  const criteria591 = {
+    districts: wanted,
+    budgetMin: (r?.budget_min as number | null) ?? null,
+    budgetMax: (r?.budget_max as number | null) ?? null,
+    budgetFuzzy: !!meta.budget_max && meta.budget_max.level !== "high",
+    roomMin: (r?.room_min as number | null) ?? null,
+    sizeMin: (r?.size_min as number | null) ?? null,
+    sizeMax: (r?.size_max as number | null) ?? null,
+    parking: (r?.parking as string) ?? null,
+    elevator: (r?.elevator as string) ?? null,
+    ageMax: (r?.age_max as number | null) ?? null,
+    tags: d.tags.map((t) => t.name),
+  };
+
   // 買方 → 找物件（Rita 那個方向的配案）
   const matching = r
     ? await matchListingsForRequirement(
@@ -166,12 +181,7 @@ export default async function BuyerDetailPage({ params }: { params: Promise<{ id
             }}
           >
             <a
-              href={build591Url({
-                districts: wanted,
-                budgetMin: r.budget_min as number | null,
-                budgetMax: r.budget_max as number | null,
-                roomMin: r.room_min as number | null,
-              })}
+              href={build591Url(criteria591)}
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -187,21 +197,14 @@ export default async function BuyerDetailPage({ params }: { params: Promise<{ id
             >
               到 591 找符合的物件 ↗
             </a>
-            {(() => {
-              const missed = unmappedCriteria({
-                districts: wanted,
-                parking: r.parking as string,
-                elevator: r.elevator as string,
-                ageMax: r.age_max as number | null,
-              });
-              return missed.length ? (
-                <span style={{ fontSize: 11.5, color: CHIP.warn.color }}>
-                  ⚠ 帶不進去、要自己再篩：{missed.join("、")}
-                </span>
-              ) : (
-                <span style={{ fontSize: 11.5, color: CIS.textMute }}>條件已帶入區域、總價、房數</span>
-              );
-            })()}
+            <span style={{ fontSize: 11.5, color: CIS.textMute, lineHeight: 1.8 }}>
+              已帶入：{mappedSummary(criteria591).join("　·　") || "（尚無可帶入的條件）"}
+            </span>
+            {unmappedCriteria(criteria591).length > 0 && (
+              <span style={{ fontSize: 11.5, color: CHIP.warn.color, flexBasis: "100%" }}>
+                ⚠ 帶不進去、要在 591 上自己再篩：{unmappedCriteria(criteria591).join("、")}
+              </span>
+            )}
           </div>
         )}
 

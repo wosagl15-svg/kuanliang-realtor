@@ -19,7 +19,7 @@ import {
   ROOM_OPTIONS,
 } from "@/lib/buyer-constants";
 import { URGENCY_LABELS, type ExtractActionResult } from "@/lib/buyer-action-types";
-import { build591Url, unmappedCriteria } from "@/lib/external-search";
+import { build591Url, mappedSummary, unmappedCriteria } from "@/lib/external-search";
 import { extractBuyerAction, saveBuyerAction } from "@/lib/actions/buyer";
 
 type Extracted = NonNullable<ExtractActionResult["data"]>;
@@ -521,18 +521,23 @@ export default function QuickAddBuyer() {
 
           {/* 導向 591 找物件 —— 只開連結，不抓取 */}
           {(() => {
-            const url = build591Url({
+            const criteria = {
               districts: f.districts,
               budgetMin: f.budget_min,
               budgetMax: f.budget_max,
+              // budget_raw 有值 = 原話是「800萬左右」這種模糊表述
+              budgetFuzzy: !!f.budget_raw,
               roomMin: f.room_min,
-            });
-            const missed = unmappedCriteria({
-              districts: f.districts,
+              sizeMin: f.size_min,
+              sizeMax: f.size_max,
               parking: f.parking,
               elevator: f.elevator,
               ageMax: f.age_max,
-            });
+              tags: [...f.tags, ...f.avoid],
+            };
+            const url = build591Url(criteria);
+            const mapped = mappedSummary(criteria);
+            const missed = unmappedCriteria(criteria);
             return (
               <div
                 style={{
@@ -561,17 +566,8 @@ export default function QuickAddBuyer() {
                   >
                     到 591 找符合這個客戶的物件 ↗
                   </a>
-                  <span style={{ fontSize: 11.5, color: CIS.textMute }}>
-                    已帶入：
-                    {[
-                      f.districts.length
-                        ? f.districts.map((k) => DISTRICTS.find((d) => d.key === k)?.label).join("、")
-                        : null,
-                      f.budget_max ? `${f.budget_min ?? 0}–${f.budget_max} 萬` : null,
-                      f.room_min ? `${f.room_min} 房` : null,
-                    ]
-                      .filter(Boolean)
-                      .join("　·　") || "（尚無可帶入的條件）"}
+                  <span style={{ fontSize: 11.5, color: CIS.textMute, lineHeight: 1.8 }}>
+                    已帶入：{mapped.join("　·　") || "（尚無可帶入的條件）"}
                   </span>
                 </div>
                 {missed.length > 0 && (
