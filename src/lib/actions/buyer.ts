@@ -23,6 +23,8 @@ import {
   BuyerPhoneConflictError,
 } from "@/lib/buyer";
 import { extractBuyer, toExtractionMeta, type ExtractedBuyer, type SourceKind } from "@/lib/buyer-extract";
+import { parseBuyerByRules } from "@/lib/buyer-parse-rules";
+import { extractPhones } from "@/lib/phone";
 import type { ExtractActionResult, SaveBuyerInput } from "@/lib/buyer-action-types";
 import { findCommunities, seedDemoCommunities, clearDemoData } from "@/lib/community";
 import { seedDemoListings } from "@/lib/listing";
@@ -35,25 +37,27 @@ async function actor(): Promise<string | null> {
 
 // ---- AI 解析（不寫入，只回傳讓人確認）----
 
+/**
+ * 解析貼上的內容。
+ *
+ * 🔴 沒有 ANTHROPIC_API_KEY 時不再直接報錯 —— 改用規則解析（buyer-parse-rules.ts）。
+ *    原本「沒金鑰就一筆都建不了」等於整套系統被一把鑰匙鎖死，那是設計錯誤。
+ *    AI 是升級（懂上下文、抓得到「太太決定」這種），不是能不能用的前提。
+ */
 export async function extractBuyerAction(text: string, kind: SourceKind): Promise<ExtractActionResult> {
   if (!(await isCurrentUserAdmin())) return { ok: false, error: "權限不足" };
   if (!text?.trim()) return { ok: false, error: "請先貼上內容" };
 
+  const hasKey = !!process.env.ANTHROPIC_API_KEY;
+
+  // 沒金鑰 → 直接走規則，不必先丟一次例外
+  if (!hasKey) return rulesResult(text);
+
   try {
     const result = await extractBuyer(text, kind);
-
-    // 把 AI 抽到的社區名稱去比對主檔（含別名）
-    const communityMatches: ExtractActionResult["communityMatches"] = [];
-    for (const nameRaw of result.data.community_names) {
-      const hits = await findCommunities(nameRaw);
-      communityMatches.push({
-        query: nameRaw,
-        hits: hits.slice(0, 5).map((h) => ({ id: h.id, name: h.name, matchKind: h.matchKind })),
-      });
-    }
-
     return {
       ok: true,
+      engine: "ai",
       data: result.data,
       phonesFound: result.phonesFound,
       usage: {
@@ -61,17 +65,41 @@ export async function extractBuyerAction(text: string, kind: SourceKind): Promis
         outputTokens: result.usage.outputTokens,
         costTwd: result.usage.costTwd,
       },
-      communityMatches,
+      communityMatches: await matchCommunityNames(result.data.community_names),
     };
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);
-    if (msg === "missing_anthropic_api_key")
-      return { ok: false, error: "尚未設定 ANTHROPIC_API_KEY，請先在 .env.local 填入金鑰" };
     if (msg === "text_too_long") return { ok: false, error: "內容太長（超過 12 萬字），請分段貼上" };
-    if (msg === "extraction_refused") return { ok: false, error: "內容被安全機制擋下，請確認貼上的是一般客戶對話" };
-    console.error("[buyer/extract]", e);
-    return { ok: false, error: `解析失敗：${msg}` };
+    if (msg === "extraction_refused")
+      return { ok: false, error: "內容被安全機制擋下，請確認貼上的是一般客戶對話" };
+    // 金鑰失效、額度用完、網路斷線 → 不要讓使用者卡住，降級用規則解析
+    console.error("[buyer/extract] AI 失敗，降級規則解析:", e);
+    return rulesResult(text);
   }
+}
+
+async function rulesResult(text: string): Promise<ExtractActionResult> {
+  const data = parseBuyerByRules(text);
+  return {
+    ok: true,
+    engine: "rules",
+    data,
+    phonesFound: extractPhones(text),
+    communityMatches: await matchCommunityNames(data.community_names),
+  };
+}
+
+/** 抽到的社區名稱去比對主檔（含別名） */
+async function matchCommunityNames(names: string[]): Promise<ExtractActionResult["communityMatches"]> {
+  const out: NonNullable<ExtractActionResult["communityMatches"]> = [];
+  for (const nameRaw of names) {
+    const hits = await findCommunities(nameRaw);
+    out.push({
+      query: nameRaw,
+      hits: hits.slice(0, 5).map((h) => ({ id: h.id, name: h.name, matchKind: h.matchKind })),
+    });
+  }
+  return out;
 }
 
 // ---- 確認後存檔 ----

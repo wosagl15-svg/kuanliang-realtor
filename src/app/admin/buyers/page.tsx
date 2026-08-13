@@ -16,6 +16,7 @@ import {
 } from "@/lib/buyer-constants";
 import { formatPhone } from "@/lib/phone";
 import SeedDemoButton from "./SeedDemoButton";
+import QuickAddBuyer from "./QuickAddBuyer";
 
 export const dynamic = "force-dynamic";
 
@@ -140,41 +141,6 @@ export default async function BuyersPage({ searchParams }: { searchParams: Promi
               篩選出同需求的一批人 → 串聯推播 → 知道誰點了
             </p>
           </div>
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-            {[
-              { href: "/admin/listings", label: "物件庫" },
-              { href: "/admin/communities", label: "社區主檔" },
-            ].map((x) => (
-              <Link
-                key={x.href}
-                href={x.href}
-                style={{
-                  padding: "9px 16px",
-                  borderRadius: CIS.radiusSm,
-                  border: `1px solid ${CIS.cardBorder}`,
-                  color: CIS.textSub,
-                  fontSize: 13,
-                  textDecoration: "none",
-                }}
-              >
-                {x.label}
-              </Link>
-            ))}
-            <Link
-              href="/admin/buyers/new"
-              style={{
-                padding: "9px 18px",
-                borderRadius: CIS.radiusSm,
-                background: CIS.blue,
-                color: "#1a1200",
-                fontSize: 13,
-                fontWeight: 700,
-                textDecoration: "none",
-              }}
-            >
-              + 貼對話建檔
-            </Link>
-          </div>
         </div>
 
         {/* 統計 */}
@@ -195,6 +161,9 @@ export default async function BuyersPage({ searchParams }: { searchParams: Promi
           />
           <StatCard label="在售物件" value={lstats.onsale} hint={lstats.demo > 0 ? `含 ${lstats.demo} 筆示範` : undefined} />
         </div>
+
+        {/* 貼對話建檔 —— 直接做在名單頁上方，存完下方名單就更新 */}
+        <QuickAddBuyer />
 
         {/* 空狀態 */}
         {empty && (

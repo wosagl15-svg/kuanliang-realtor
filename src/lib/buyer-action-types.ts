@@ -11,6 +11,8 @@ export type ExtractActionResult = {
   ok: boolean;
   error?: string;
   data?: ExtractedBuyer;
+  /** 這次是用哪個引擎解析的：ai = Claude（懂上下文）；rules = 規則比對（免費、沒金鑰也能跑） */
+  engine?: "ai" | "rules";
   /** 程式端保險絲撈到的電話（AI 漏抽時的備援） */
   phonesFound?: string[];
   usage?: { inputTokens: number; outputTokens: number; costTwd: number };
