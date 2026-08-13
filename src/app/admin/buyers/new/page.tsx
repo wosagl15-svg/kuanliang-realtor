@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { isCurrentUserAdmin } from "@/lib/admin-check";
+import RequireLogin from "@/app/admin/_components/RequireLogin";
 import { CIS } from "@/app/admin/_components/cis";
 import NewBuyerClient from "./NewBuyerClient";
 
@@ -7,11 +8,7 @@ export const dynamic = "force-dynamic";
 
 export default async function NewBuyerPage() {
   if (!(await isCurrentUserAdmin())) {
-    return (
-      <main style={{ minHeight: "100vh", background: CIS.bg, color: CIS.text, padding: 40, fontFamily: CIS.font }}>
-        <p>需要登入才能使用買方資料庫。</p>
-      </main>
-    );
+    return <RequireLogin title="新增買方" callbackUrl="/admin/buyers/new" />;
   }
 
   return (

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { isCurrentUserAdmin } from "@/lib/admin-check";
+import RequireLogin from "@/app/admin/_components/RequireLogin";
 import { CIS, CHIP, type ChipTone } from "@/app/admin/_components/cis";
 import { listBuyers, buyerStats, type BuyerListItem, parseJsonArray } from "@/lib/buyer";
 import { listingStats } from "@/lib/listing";
@@ -89,11 +90,7 @@ function StatCard({ label, value, hint, tone }: { label: string; value: string |
 
 export default async function BuyersPage({ searchParams }: { searchParams: Promise<SearchParams> }) {
   if (!(await isCurrentUserAdmin())) {
-    return (
-      <main style={{ minHeight: "100vh", background: CIS.bg, color: CIS.text, padding: 40, fontFamily: CIS.font }}>
-        <p>需要登入才能使用買方資料庫。</p>
-      </main>
-    );
+    return <RequireLogin title="買方名單" callbackUrl="/admin/buyers" />;
   }
 
   const sp = await searchParams;

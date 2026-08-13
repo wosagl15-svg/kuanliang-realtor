@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { isCurrentUserAdmin } from "@/lib/admin-check";
+import RequireLogin from "@/app/admin/_components/RequireLogin";
 import { CIS, CHIP, type ChipTone } from "@/app/admin/_components/cis";
 import { getBuyerDetail, parseJsonArray } from "@/lib/buyer";
 import { matchListingsForRequirement, type RequirementLike } from "@/lib/buyer-match";
@@ -75,11 +76,7 @@ function Row({ label, value }: { label: string; value: React.ReactNode }) {
 
 export default async function BuyerDetailPage({ params }: { params: Promise<{ id: string }> }) {
   if (!(await isCurrentUserAdmin())) {
-    return (
-      <main style={{ minHeight: "100vh", background: CIS.bg, color: CIS.text, padding: 40, fontFamily: CIS.font }}>
-        <p>需要登入才能使用買方資料庫。</p>
-      </main>
-    );
+    return <RequireLogin title="買方明細" callbackUrl="/admin/buyers" />;
   }
 
   const { id } = await params;

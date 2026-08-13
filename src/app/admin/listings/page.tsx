@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { isCurrentUserAdmin } from "@/lib/admin-check";
+import RequireLogin from "@/app/admin/_components/RequireLogin";
 import { CIS, CHIP } from "@/app/admin/_components/cis";
 import { listListings } from "@/lib/listing";
 import { matchBuyersForListing } from "@/lib/buyer-match";
@@ -11,11 +12,7 @@ export const dynamic = "force-dynamic";
 
 export default async function ListingsPage() {
   if (!(await isCurrentUserAdmin())) {
-    return (
-      <main style={{ minHeight: "100vh", background: CIS.bg, color: CIS.text, padding: 40, fontFamily: CIS.font }}>
-        <p>需要登入才能使用買方資料庫。</p>
-      </main>
-    );
+    return <RequireLogin title="物件庫" callbackUrl="/admin/listings" />;
   }
 
   const listings = await listListings({ status: "onsale" });
