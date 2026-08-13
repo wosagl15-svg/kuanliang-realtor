@@ -15,9 +15,13 @@
  *                            1=公寓  2=電梯大樓  3=透天厝  4=別墅  5=華廈
  *      area=30_40          權狀坪數區間
  *      label=7             含車位（label=9 是有陽台）
+ *      houseage=0_15       屋齡區間（年）
  *
- *   已確認 591 售屋搜尋**沒有屋齡篩選**（114 個標籤中零個含「年」或「齡」），
- *   所以屋齡永遠帶不進去，介面必須誠實告知。
+ *   ⚠️ 2026-08-13 更正：先前判定「591 沒有屋齡篩選」是**錯的**。
+ *      當時只掃了 label.t5-checkbox，而屋齡選項不是 checkbox 元素所以被漏掉。
+ *      實際上有 5年以下／5-10／10-20／20-30／30-40／40年以上，且支援自訂區間。
+ *      已用 houseage=0_15 實測：列表物件屋齡全部 ≤15 年（最大值正好 15）。
+ *      教訓：判斷「某功能不存在」不能只掃一種元素型別。
  */
 import { DISTRICTS } from "@/lib/buyer-constants";
 
@@ -144,6 +148,9 @@ export function build591Url(c: BuyerCriteria): string {
 
   if (c.parking === "required") p.set("label", String(LABEL.含車位));
 
+  // 屋齡：客戶說「15 年內」＝ 0~15 年
+  if (c.ageMax && c.ageMax > 0 && c.ageMax <= 100) p.set("houseage", `0_${Math.round(c.ageMax)}`);
+
   return `https://sale.591.com.tw/?${p.toString()}`;
 }
 
@@ -178,6 +185,7 @@ export function mappedSummary(c: BuyerCriteria): string[] {
 
   if (c.sizeMin || c.sizeMax) out.push(`${c.sizeMin ?? 0}–${c.sizeMax ?? "不限"} 坪`);
   if (c.parking === "required") out.push("含車位");
+  if (c.ageMax) out.push(`屋齡 ${c.ageMax} 年內`);
 
   return out;
 }
@@ -192,9 +200,6 @@ export function unmappedCriteria(c: BuyerCriteria): string[] {
       `${unknown.map((k) => DISTRICTS.find((d) => d.key === k)?.label ?? k).join("、")}（未建對照，連結只帶到台中市）`,
     );
   }
-
-  // 591 售屋搜尋沒有屋齡篩選（已驗證），永遠帶不進去
-  if (c.ageMax) out.push(`屋齡 ${c.ageMax} 年以內（591 沒有這個篩選）`);
 
   return out;
 }
