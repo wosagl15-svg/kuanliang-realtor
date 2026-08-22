@@ -1,0 +1,467 @@
+<!-- 屋主競品簡報（一次性）。刻意不放在 public/<slug>/index.html，
+     所以不會被 listStaticPages() 掃到 → 不進 rewrite、不進 sitemap、不出現在 /tools。
+     網址：https://kuanhome.com/r/fuyu-central-park-20260822.html -->
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="googlebot" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>富宇中央公園競品分析｜海線房仲冠良</title>
+<meta name="description" content="富宇中央公園社區在售 8 戶競品比較與屋主策略建議。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&display=swap">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   屋主競品簡報 —— 海線房仲冠良
+   讀者是 30~60 歲屋主，多半從 LINE 點開用手機看。三條不破例：
+     1. 內容區一律淺色底深色字，深色只出現在頁首橫幅與頁尾
+     2. 基準字級 17px，不要縮
+     3. 手機把表格拆成一張一張卡片，不要讓他左右拖
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  --ground:#F2F6F3;
+  --surface:#FFFFFF;
+  --surface-2:#F7FAF8;
+  --band:#0E3B4A;
+  --ink:#12241E;
+  --ink-2:#3C534B;
+  --ink-3:#66796F;
+  --line:#DCE6E0;
+  --line-soft:#EAF0EC;
+  --green:#15694A;
+  --green-soft:#E4F2EB;
+  --blue:#1D5F7A;
+  --warm:#8A5D1B;
+  --warm-soft:#F6ECD9;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,-apple-system,sans-serif;
+  font-size:17px;
+  line-height:1.8;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1060px;margin:0 auto;padding:24px 16px 56px;}
+.sheet{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:5px;
+  box-shadow:0 1px 2px rgba(18,36,30,.05),0 14px 34px -22px rgba(18,36,30,.4);
+  overflow:hidden;
+}
+
+/* ---- 品牌列 ---- */
+.brandbar{
+  display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;
+  padding:14px 26px;background:var(--surface-2);border-bottom:1px solid var(--line);
+}
+.mark{display:flex;align-items:center;gap:11px;}
+.mark-badge{
+  width:38px;height:38px;flex:none;border-radius:4px;
+  background:linear-gradient(150deg,var(--blue),var(--green));
+  color:#fff;display:grid;place-items:center;
+  font-family:"Noto Serif TC",serif;font-weight:700;font-size:19px;line-height:1;
+}
+.mark-name{font-weight:700;letter-spacing:.02em;line-height:1.35;}
+.mark-sub{color:var(--ink-3);font-size:14px;line-height:1.4;}
+.brandbar .grow{flex:1 1 auto;}
+.brandbar .tel{font-size:15px;color:var(--ink-2);font-variant-numeric:tabular-nums;}
+
+/* ---- 標題橫幅 ---- */
+.band{background:var(--band);color:#F2F8F6;padding:32px 26px 28px;position:relative;}
+.band .eyebrow{
+  font-size:13px;font-weight:700;letter-spacing:.16em;color:#8FD2B4;margin:0 0 8px;
+}
+.band h1{
+  font-family:"Noto Serif TC","Songti TC",serif;font-weight:700;
+  font-size:clamp(27px,5.2vw,38px);line-height:1.25;margin:0;text-wrap:balance;
+}
+.band .meta{margin:12px 0 0;display:flex;flex-wrap:wrap;gap:4px 22px;color:#A9C6C4;font-size:15px;}
+.band .meta b{color:#DCEDE7;font-weight:500;}
+.chip-role{
+  position:absolute;top:26px;right:26px;
+  background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.24);
+  color:#EAF5F0;border-radius:3px;font-size:14px;padding:4px 12px;
+}
+
+/* ---- 三個數字 ---- */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line);}
+.stat{padding:20px 26px;border-right:1px solid var(--line-soft);}
+.stat:last-child{border-right:0;}
+.stat .k{font-size:14px;color:var(--ink-3);margin-bottom:2px;}
+.stat .v{
+  font-family:"Noto Serif TC",serif;font-weight:700;font-size:31px;line-height:1.2;
+  font-variant-numeric:tabular-nums;
+}
+.stat.is-key .v{color:var(--green);}
+
+/* ---- 區塊 ---- */
+section{padding:26px;border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:0;}
+h2{font-family:"Noto Serif TC",serif;font-weight:700;font-size:21px;line-height:1.45;margin:0 0 4px;}
+.lede{margin:0 0 18px;color:var(--ink-2);font-size:16px;max-width:60ch;}
+
+/* ---- 價格帶 ---- */
+.rail{margin:28px 0 8px;position:relative;height:70px;padding:0 48px;}
+.rail-line{position:absolute;left:48px;right:48px;top:28px;height:2px;background:var(--line);}
+.tick{position:absolute;top:0;transform:translateX(-50%);text-align:center;width:92px;}
+.tick .dot{width:12px;height:12px;border-radius:50%;margin:23px auto 0;background:#fff;border:2px solid var(--ink-3);}
+.tick .lbl{font-size:14px;color:var(--ink-3);margin-top:6px;display:block;font-variant-numeric:tabular-nums;line-height:1.4;}
+.tick .cap{display:block;font-size:13px;color:var(--ink-3);line-height:1.4;}
+.tick.is-self .dot{background:var(--green);border-color:var(--green);width:15px;height:15px;margin-top:21px;}
+.tick.is-self .lbl,.tick.is-self .cap{color:var(--green);font-weight:700;}
+.rail-note{color:var(--ink-3);font-size:14px;margin:12px 0 0;}
+
+/* ---- 比較表（桌機） ---- */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:4px;}
+table{border-collapse:collapse;width:100%;font-size:15.5px;}
+thead th{
+  background:var(--surface-2);text-align:right;font-weight:500;color:var(--ink-2);
+  font-size:14px;padding:11px 13px;border-bottom:1px solid var(--line);white-space:nowrap;
+}
+thead th:first-child{text-align:left;}
+tbody td{
+  padding:13px;border-bottom:1px solid var(--line-soft);text-align:right;
+  font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--ink-2);
+}
+tbody td:first-child{text-align:left;white-space:normal;min-width:270px;color:var(--ink);}
+tbody tr:last-child td{border-bottom:0;}
+tbody tr.self{background:var(--green-soft);}
+tbody tr.self td{color:var(--ink);}
+tbody tr.self .t{font-weight:700;}
+.t{line-height:1.55;display:block;}
+.pill{display:inline-block;font-size:13px;padding:1px 8px;border-radius:3px;font-weight:500;margin-top:5px;}
+.pill-self{background:var(--green);color:#fff;}
+.pill-cut{background:var(--warm-soft);color:var(--warm);border:1px solid var(--warm);}
+.bar{height:4px;background:var(--line);border-radius:2px;overflow:hidden;margin-top:6px;min-width:70px;}
+.bar i{display:block;height:100%;background:var(--blue);}
+tbody tr.self .bar i{background:var(--green);}
+.price{font-weight:700;color:var(--ink);font-size:17px;}
+.sub{color:var(--ink-3);font-size:13.5px;}
+
+/* ---- 比較表（手機：整列變一張卡） ---- */
+@media (max-width:700px){
+  .tablewrap{border:0;overflow:visible;}
+  table,tbody,tr,td{display:block;width:100%;}
+  thead{display:none;}
+  tbody tr{
+    border:1px solid var(--line);border-radius:4px;margin-bottom:12px;
+    padding:14px 16px;background:var(--surface);
+  }
+  tbody tr.self{border-color:var(--green);border-width:2px;background:var(--green-soft);}
+  tbody td{
+    padding:5px 0;border-bottom:0;text-align:right;white-space:normal;
+    display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+  }
+  tbody td:first-child{
+    display:block;min-width:0;padding:0 0 10px;margin-bottom:8px;
+    border-bottom:1px solid var(--line-soft);text-align:left;
+  }
+  tbody td[data-l]::before{
+    content:attr(data-l);color:var(--ink-3);font-size:14.5px;
+    text-align:left;flex:none;
+  }
+  .bar{margin-top:8px;}
+  tbody td.cell-price{display:block;text-align:left;}
+  tbody td.cell-price::before{display:block;margin-bottom:2px;}
+}
+
+/* ---- 瀏覽數 ---- */
+.views{display:flex;flex-direction:column;gap:15px;}
+.viewrow{display:grid;grid-template-columns:minmax(0,1fr) 76px;gap:14px;align-items:center;}
+.viewrow .n{font-size:15.5px;line-height:1.55;}
+.viewrow .track{height:9px;background:var(--line-soft);border-radius:3px;overflow:hidden;margin-top:7px;}
+.viewrow .track i{display:block;height:100%;background:var(--blue);}
+.viewrow.self .track i{background:var(--green);}
+.viewrow .cnt{text-align:right;font-variant-numeric:tabular-nums;font-size:16px;color:var(--ink-2);}
+.viewrow.self .cnt,.viewrow.self .n{color:var(--green);font-weight:700;}
+.why{color:var(--ink-3);font-size:14px;line-height:1.65;margin-top:3px;}
+
+/* ---- 建議 ---- */
+.notes{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-soft);border:1px solid var(--line);border-radius:4px;overflow:hidden;}
+.note{background:var(--surface);padding:20px 22px;}
+.note h3{margin:0 0 6px;font-size:15px;font-weight:700;letter-spacing:.04em;color:var(--green);}
+.note p{margin:0;font-size:16px;color:var(--ink-2);line-height:1.85;}
+.note p b{color:var(--ink);font-weight:700;}
+
+/* ---- 頁尾 ---- */
+.cta{padding:22px 26px;background:var(--surface-2);border-top:1px solid var(--line);}
+.cta p{margin:0 0 12px;font-size:16px;color:var(--ink-2);}
+.btns{display:flex;flex-wrap:wrap;gap:10px;}
+.btn{
+  display:inline-block;padding:11px 22px;border-radius:4px;text-decoration:none;
+  font-size:16.5px;font-weight:700;border:1px solid transparent;
+}
+.btn-line{background:var(--green);color:#fff;}
+.btn-tel{background:#fff;color:var(--blue);border-color:var(--blue);}
+.btn:focus-visible{outline:3px solid var(--warm);outline-offset:2px;}
+.foot{background:var(--band);color:#C6DCD6;padding:22px 26px;font-size:14.5px;line-height:1.75;}
+.foot .who{color:#F2F8F6;font-weight:700;font-size:16.5px;}
+.foot a{color:#8FD2B4;}
+.disclaimer{padding:18px 26px 0;color:var(--ink-3);font-size:14px;line-height:1.7;max-width:70ch;}
+
+@media (max-width:640px){
+  .wrap{padding:14px 12px 40px;}
+  .brandbar,.band,.cta,.foot,.disclaimer{padding-left:18px;padding-right:18px;}
+  section{padding:22px 18px;}
+  .band{padding-top:22px;padding-bottom:22px;}
+  .chip-role{position:static;display:inline-block;margin-bottom:12px;}
+  .stats{grid-template-columns:1fr;}
+  .stat{border-right:0;border-bottom:1px solid var(--line-soft);padding:14px 18px;}
+  .stat .v{font-size:26px;}
+  .notes{grid-template-columns:1fr;}
+  .rail{padding:0 44px;}
+  .rail-line{left:44px;right:44px;}
+  .tick{width:84px;}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<div class="sheet">
+
+  <div class="brandbar">
+    <div class="mark">
+      <div class="mark-badge">冠</div>
+      <div>
+        <div class="mark-name">海線房仲冠良</div>
+        <div class="mark-sub">吳冠良・台中海線房地產</div>
+      </div>
+    </div>
+    <div class="grow"></div>
+    <div class="tel">0915-295958</div>
+  </div>
+
+  <div class="band">
+    <span class="chip-role">屋主簡報</span>
+    <p class="eyebrow">競品分析報告</p>
+    <h1>富宇中央公園競品分析</h1>
+    <p class="meta"><span>社區　<b>富宇中央公園</b></span><span>製表　<b>2026 年 8 月 22 日 12:22</b></span></p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="k">社區在售供給</div><div class="v">8 戶</div></div>
+    <div class="stat is-key"><div class="k">本案價格排名</div><div class="v">第 1 低</div></div>
+    <div class="stat"><div class="k">低於本案</div><div class="v">0 戶</div></div>
+  </div>
+
+  <section>
+    <h2>價格帶位置</h2>
+    <p class="lede">同社區 8 筆在售物件的開價分布。本案落在最左端，另有 2 戶開價與本案相同。</p>
+    <div class="rail" id="rail"><div class="rail-line"></div></div>
+    <p class="rail-note">刻度為各物件開價總價（萬元），同價位物件疊在同一點。</p>
+  </section>
+
+  <section>
+    <h2>價格與物件比較</h2>
+    <p class="lede">本案與 7 戶同社區競品，依總價由低到高排序。</p>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">物件</th><th scope="col">總價</th><th scope="col">坪數</th>
+            <th scope="col">單價</th><th scope="col">樓層／格局</th><th scope="col">屋齡</th><th scope="col">瀏覽</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="self">
+            <td><span class="t">本案</span><span class="pill pill-self">標的物件</span></td>
+            <td class="cell-price" data-l="總價"><span class="price">798 萬</span><div class="bar"><i style="width:12.2%"></i></div></td>
+            <td data-l="坪數">27.5 坪</td>
+            <td data-l="單價">29.1 萬</td>
+            <td data-l="樓層／格局">15F/15F<span class="sub"> · 2房2廳1衛</span></td>
+            <td data-l="屋齡">4 年</td>
+            <td data-l="瀏覽">51</td>
+          </tr>
+          <tr>
+            <td><span class="t">信億成家}富宇中央公園兩房+車位</span></td>
+            <td class="cell-price" data-l="總價"><span class="price">798 萬</span> <span class="pill pill-cut">已降</span><div class="bar"><i style="width:12.2%"></i></div></td>
+            <td data-l="坪數">27.5 坪</td>
+            <td data-l="單價">29 萬</td>
+            <td data-l="樓層／格局">15F/15F<span class="sub"> · 2房2廳1衛</span></td>
+            <td data-l="屋齡">4 年</td>
+            <td data-l="瀏覽">1,102</td>
+          </tr>
+          <tr>
+            <td><span class="t">我叫老葉｜富宇中央公園｜高樓精裝兩房＋車位</span></td>
+            <td class="cell-price" data-l="總價"><span class="price">798 萬</span><div class="bar"><i style="width:12.2%"></i></div></td>
+            <td data-l="坪數">24.5 坪</td>
+            <td data-l="單價">32.6 萬</td>
+            <td data-l="樓層／格局">15F/15F<span class="sub"> · 2房1廳1衛</span></td>
+            <td data-l="屋齡">4 年</td>
+            <td data-l="瀏覽">200</td>
+          </tr>
+          <tr>
+            <td><span class="t">精品/富宇中央公園🌳27.1萬/坪</span></td>
+            <td class="cell-price" data-l="總價"><span class="price">858 萬</span><div class="bar"><i style="width:38.3%"></i></div></td>
+            <td data-l="坪數">31.6 坪</td>
+            <td data-l="單價">27.1 萬</td>
+            <td data-l="樓層／格局">4F/15F<span class="sub"> · 2房2廳1衛</span></td>
+            <td data-l="屋齡">5 年</td>
+            <td data-l="瀏覽">304</td>
+          </tr>
+          <tr>
+            <td><span class="t">富宇中央公園｜高樓層無限視野附精裝含車位</span></td>
+            <td class="cell-price" data-l="總價"><span class="price">888 萬</span><div class="bar"><i style="width:51.3%"></i></div></td>
+            <td data-l="坪數">27.5 坪</td>
+            <td data-l="單價">32.3 萬</td>
+            <td data-l="樓層／格局">15F/15F<span class="sub"> · 2房2廳1衛</span></td>
+            <td data-l="屋齡">4 年</td>
+            <td data-l="瀏覽">170</td>
+          </tr>
+          <tr>
+            <td><span class="t">海線富宇中央公園|兩房有車位|屋況佳</span></td>
+            <td class="cell-price" data-l="總價"><span class="price">888 萬</span><div class="bar"><i style="width:51.3%"></i></div></td>
+            <td data-l="坪數">27.5 坪</td>
+            <td data-l="單價">32.3 萬</td>
+            <td data-l="樓層／格局">6F/15F<span class="sub"> · 2房2廳1衛</span></td>
+            <td data-l="屋齡">4 年</td>
+            <td data-l="瀏覽">139</td>
+          </tr>
+          <tr>
+            <td><span class="t">美涵獨家!富宇建設中央公園!朝南2房+車位</span></td>
+            <td class="cell-price" data-l="總價"><span class="price">950 萬</span><div class="bar"><i style="width:78.3%"></i></div></td>
+            <td data-l="坪數">27.3 坪</td>
+            <td data-l="單價">34.8 萬</td>
+            <td data-l="樓層／格局">3F/15F<span class="sub"> · 2房2廳1衛</span></td>
+            <td data-l="屋齡">0 年</td>
+            <td data-l="瀏覽">8</td>
+          </tr>
+          <tr>
+            <td><span class="t">中央公園🍎稀有朝南視野｜二房+雙衛浴+平車🌈時尚裝潢</span></td>
+            <td class="cell-price" data-l="總價"><span class="price">988 萬</span><div class="bar"><i style="width:94.8%"></i></div></td>
+            <td data-l="坪數">36.7 坪</td>
+            <td data-l="單價">26.9 萬</td>
+            <td data-l="樓層／格局">11F/15F<span class="sub"> · 2房2廳2衛</span></td>
+            <td data-l="屋齡">4 年</td>
+            <td data-l="瀏覽">273</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>瀏覽數解讀</h2>
+    <p class="lede">瀏覽量會受刊登時間長短、開價與曝光方式影響。數字代表線上關注，不等於詢問或成交熱度。同批單價中位為 32.3 萬。</p>
+    <div class="views">
+      <div class="viewrow">
+        <div>
+          <div class="n">信億成家}富宇中央公園兩房+車位</div>
+          <div class="track"><i style="width:100%"></i></div>
+          <div class="why">刊登 103 天、長期累積（平均每日約 10.7 次）；單價 29 萬低於同批中位；有調價紀錄。</div>
+        </div>
+        <div class="cnt">1,102</div>
+      </div>
+      <div class="viewrow">
+        <div>
+          <div class="n">精品/富宇中央公園🌳27.1萬/坪</div>
+          <div class="track"><i style="width:27.6%"></i></div>
+          <div class="why">刊登 44 天、平均每日約 6.9 次；單價 27.1 萬低於同批中位；照片 11 張，圖多吸點擊。</div>
+        </div>
+        <div class="cnt">304</div>
+      </div>
+      <div class="viewrow">
+        <div>
+          <div class="n">中央公園🍎稀有朝南視野｜二房+雙衛浴+平車</div>
+          <div class="track"><i style="width:24.8%"></i></div>
+          <div class="why">刊登 50 天、平均每日約 5.5 次；單價 26.9 萬低於同批中位；照片 22 張，圖多吸點擊。</div>
+        </div>
+        <div class="cnt">273</div>
+      </div>
+      <div class="viewrow">
+        <div><div class="n">我叫老葉｜富宇中央公園｜高樓精裝兩房＋車位</div><div class="track"><i style="width:18.1%"></i></div></div>
+        <div class="cnt">200</div>
+      </div>
+      <div class="viewrow">
+        <div><div class="n">富宇中央公園｜高樓層無限視野附精裝含車位</div><div class="track"><i style="width:15.4%"></i></div></div>
+        <div class="cnt">170</div>
+      </div>
+      <div class="viewrow">
+        <div><div class="n">海線富宇中央公園|兩房有車位|屋況佳</div><div class="track"><i style="width:12.6%"></i></div></div>
+        <div class="cnt">139</div>
+      </div>
+      <div class="viewrow self">
+        <div>
+          <div class="n">本案（標的物件）</div>
+          <div class="track"><i style="width:4.6%"></i></div>
+          <div class="why">本期瀏覽 51 次，本批有 6 戶高於本案；目前沒有前期資料可供比較。</div>
+        </div>
+        <div class="cnt">51</div>
+      </div>
+      <div class="viewrow">
+        <div><div class="n">美涵獨家!富宇建設中央公園!朝南2房+車位</div><div class="track"><i style="width:0.7%"></i></div></div>
+        <div class="cnt">8</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>策略建議</h2>
+    <p class="lede">以下是就目前市場資料整理出的判斷，最終仍以您的想法為主。</p>
+    <div class="notes">
+      <div class="note">
+        <h3>目前市場位置</h3>
+        <p>比較範圍內<b>沒有其他物件開價低於本案</b>，另有 <b>2 戶同價</b>。價格只是其中一項參考，仍需搭配物件條件與買方回饋一起評估。</p>
+      </div>
+      <div class="note">
+        <h3>市場關注</h3>
+        <p>本案本期瀏覽 <b>51 次</b>，目前沒有前期資料可供比較。瀏覽量代表線上關注，<b>不等同詢問、帶看或未來成交結果</b>。</p>
+      </div>
+      <div class="note">
+        <h3>價格已無下修空間可搶</h3>
+        <p>本案已在最低價帶，<b>再降價不會多換到排名</b>。真正拉開差距的是曝光與呈現——高瀏覽的三筆都有「刊登久、照片多」的共同點。</p>
+      </div>
+      <div class="note">
+        <h3>後續觀察</h3>
+        <p>本次共比較 <b>8 戶</b>。建議持續記錄曝光、詢問與帶看回饋，再依最新市場資料和您的意願，一起討論後續策略。</p>
+      </div>
+    </div>
+  </section>
+
+  <p class="disclaimer">本頁為指定收件人的唯讀競品分析，未對外公開索引。市場供給與刊登內容可能隨時間變動，表中資料為 2026 年 8 月 22 日 12:22 擷取之公開刊登資訊，僅供參考，不構成價格保證或成交預測。</p>
+
+  <div class="cta">
+    <p>對這份資料有任何疑問，或想討論下一步怎麼走，隨時找我。</p>
+    <div class="btns">
+      <a class="btn btn-line" href="https://lin.ee/1WlfBub">用 LINE 找冠良</a>
+      <a class="btn btn-tel" href="tel:0915295958">撥打 0915-295958</a>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="who">海線房仲冠良・吳冠良</div>
+    <div>懂你又懂房 🏡　善願必佑，做對的事，站在客戶這一邊。</div>
+    <div><a href="https://kuanhome.com">kuanhome.com</a></div>
+  </div>
+
+</div>
+</div>
+
+<script>
+(function(){
+  var prices=[798,798,798,858,888,888,950,988],uniq=[],seen={};
+  prices.forEach(function(p){ if(!seen[p]){seen[p]=0;uniq.push(p);} seen[p]++; });
+  var min=798,max=988,rail=document.getElementById('rail');
+  uniq.forEach(function(p){
+    var el=document.createElement('div');
+    el.className='tick'+(p===min?' is-self':'');
+    el.style.left='calc(48px + '+((p-min)/(max-min)*100)+'% - '+((p-min)/(max-min)*96)+'px)';
+    var cap = p===min
+      ? (seen[p]>1 ? '本案 · 另 '+(seen[p]-1)+' 戶同價' : '本案 · 最低')
+      : (seen[p]>1 ? seen[p]+' 戶' : '');
+    el.innerHTML='<div class="dot"></div><span class="lbl">'+p+'</span>'+(cap?'<span class="cap">'+cap+'</span>':'');
+    rail.appendChild(el);
+  });
+})();
+</script>
+</body>
+</html>
