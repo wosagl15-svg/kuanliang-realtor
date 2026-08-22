@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026 國旅補助登錄入口｜海線房仲冠良</title>
+<meta name="description" content="2026 國旅補助官方登錄入口與規則整理：平日住宿一般地區最高折 2,000、離島 2,500，生日券再抽 1,200。附身分證末碼分流日期、四個不適用的連假，以及最多人搞錯的「9/8 不是住宿獎助的死線」。">
+<link rel="canonical" href="https://kuanhome.com/travel-subsidy-2026">
+<meta property="og:title" content="2026 國旅補助登錄入口｜海線房仲冠良">
+<meta property="og:description" content="官方登錄連結直接點。平日住宿最高折 2,500，生日券再抽 1,200。附四個不能用的連假，和最多人搞錯的那條死線。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kuanhome.com/travel-subsidy-2026">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+
+<style>
+/* 海線亮橘：深藍錨點 + 珊瑚橘跳色。刻意單一亮色版型（活動頁），
+   所有顏色都寫死，不跟隨系統深色模式。 */
+:root{
+  --navy:#143250;
+  --navy-2:#1E4570;
+  --coral:#FF6B4A;
+  --coral-dk:#E2472A;
+  --coral-lt:#FF8A63;
+  --amber:#FFC24B;
+  --amber-dk:#8A5A00;
+  --teal:#14A08A;
+  --teal-dk:#0B6C5C;
+  --cream:#FDF8F0;
+  --paper:#FFFFFF;
+  --ink:#14202B;
+  --ink-2:#425464;
+  --ink-3:#6E8090;
+  --line:#E6DFD3;
+  --line-2:#F0EAE0;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+body{
+  margin:0;background:var(--cream);color:var(--ink);
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  font-size:17px;line-height:1.8;-webkit-font-smoothing:antialiased;
+}
+.num{font-family:Archivo,"Noto Sans TC",system-ui,sans-serif;font-variant-numeric:tabular-nums;}
+.wrap{max-width:820px;margin:0 auto;padding:0 16px 60px;}
+
+/* ── 品牌條 ── */
+.brandbar{
+  background:var(--navy);color:#EAF1F8;
+  padding:10px 0;font-size:14.5px;
+}
+.brandbar .in{max-width:820px;margin:0 auto;padding:0 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.brandbar b{color:#fff;font-weight:700;}
+.brandbar .sep{color:#6E88A6;}
+
+/* ── HERO：第一眼就是申請入口 ── */
+.hero{
+  background:var(--navy);color:#fff;
+  padding:28px 0 34px;
+  border-bottom:5px solid var(--coral);
+}
+.hero .in{max-width:820px;margin:0 auto;padding:0 16px;}
+.kicker{
+  display:inline-block;background:var(--coral);color:#fff;
+  font-weight:900;font-size:14px;letter-spacing:.08em;
+  padding:4px 12px;border-radius:3px;margin-bottom:14px;
+}
+.hero h1{
+  font-weight:900;font-size:clamp(28px,6.4vw,42px);line-height:1.22;
+  margin:0 0 8px;text-wrap:balance;letter-spacing:-.01em;
+}
+.hero .sub{color:#B9CBDD;font-size:16.5px;margin:0 0 22px;}
+
+.gobox{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:8px;padding:20px;
+}
+.gobox .lbl{
+  font-size:14px;color:#9FB6CC;font-weight:700;letter-spacing:.06em;margin:0 0 12px;
+}
+.gobtn{
+  display:block;width:100%;text-align:center;text-decoration:none;
+  background:var(--coral);color:#fff;font-weight:900;
+  font-size:clamp(19px,4.6vw,23px);line-height:1.3;
+  padding:20px 18px;border-radius:6px;
+  box-shadow:0 4px 0 var(--coral-dk);
+}
+.gobtn:hover{background:var(--coral-lt);}
+.gobtn:active{transform:translateY(2px);box-shadow:0 2px 0 var(--coral-dk);}
+.gobtn:focus-visible{outline:4px solid var(--amber);outline-offset:3px;}
+.gobtn small{display:block;font-weight:500;font-size:14.5px;opacity:.92;margin-top:5px;}
+.urlline{
+  margin:14px 0 0;padding:11px 13px;border-radius:5px;
+  background:rgba(0,0,0,.28);
+  font-size:14.5px;color:#DCE8F2;word-break:break-all;line-height:1.6;
+}
+.urlline b{color:#FFC24B;font-weight:700;}
+.antifraud{
+  margin:12px 0 0;font-size:14.5px;color:#FFD9A0;line-height:1.65;
+}
+.antifraud b{color:#FFC24B;}
+
+/* ── 今天能不能登錄 ── */
+.today{
+  background:var(--paper);border:2px solid var(--navy);border-radius:8px;
+  margin:-18px 0 0;position:relative;z-index:2;
+  padding:18px 20px;box-shadow:0 6px 22px -14px rgba(20,50,80,.55);
+}
+.today .h{font-size:14px;font-weight:700;color:var(--ink-3);letter-spacing:.06em;margin-bottom:4px;}
+.today .big{font-weight:900;font-size:clamp(20px,4.6vw,25px);line-height:1.35;}
+.today .big em{font-style:normal;color:var(--coral-dk);}
+.today .note{font-size:15px;color:var(--ink-2);margin-top:6px;}
+
+/* ── 區塊 ── */
+section{margin:34px 0 0;}
+h2{
+  font-weight:900;font-size:23px;line-height:1.35;margin:0 0 6px;
+  display:flex;align-items:baseline;gap:10px;
+}
+h2 .no{
+  font-family:Archivo,sans-serif;font-size:15px;font-weight:800;color:#fff;
+  background:var(--navy);border-radius:3px;padding:2px 9px;flex:none;
+}
+.lede{margin:0 0 16px;color:var(--ink-2);font-size:16px;}
+
+.card{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:20px;}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.card h3{margin:0 0 2px;font-size:19px;font-weight:900;}
+.card .when{font-size:14.5px;color:var(--ink-3);margin-bottom:12px;}
+.tag{
+  display:inline-block;font-size:13px;font-weight:700;padding:2px 9px;border-radius:3px;
+  margin-bottom:8px;
+}
+.tag-teal{background:#E2F4F0;color:var(--teal-dk);}
+.tag-amber{background:#FFF3D6;color:var(--amber-dk);}
+
+.moneytable{width:100%;border-collapse:collapse;margin-top:4px;font-size:15.5px;}
+.moneytable th{
+  text-align:right;font-weight:500;color:var(--ink-3);font-size:13.5px;
+  padding:6px 8px;border-bottom:1px solid var(--line-2);
+}
+.moneytable th:first-child{text-align:left;}
+.moneytable td{padding:9px 8px;text-align:right;border-bottom:1px solid var(--line-2);}
+.moneytable td:first-child{text-align:left;color:var(--ink-2);font-size:15px;}
+.moneytable tr:last-child td{border-bottom:0;font-weight:900;}
+.moneytable tr:last-child td:first-child{font-weight:700;}
+.amt{font-weight:700;}
+.total{color:var(--coral-dk);}
+
+/* ── 最容易搞錯 ── */
+.traps{display:flex;flex-direction:column;gap:12px;}
+.trap{
+  background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--coral);
+  border-radius:6px;padding:16px 18px;
+}
+.trap.is-ok{border-left-color:var(--teal);}
+.trap h3{margin:0 0 4px;font-size:17.5px;font-weight:900;line-height:1.5;}
+.trap p{margin:0;font-size:16px;color:var(--ink-2);line-height:1.75;}
+.trap p b{color:var(--ink);}
+.trap .quote{
+  display:block;margin-top:8px;padding:9px 12px;background:var(--cream);
+  border-radius:4px;font-size:14.5px;color:var(--ink-2);line-height:1.65;
+}
+
+/* ── 連假 ── */
+.holidays{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.hol{
+  background:#FFEDE8;color:#A8321A;border:1px solid #FFCDBF;
+  border-radius:4px;padding:6px 11px;font-size:14.5px;font-weight:700;
+}
+.hol span{font-weight:500;color:#8A4433;}
+
+/* ── 步驟 ── */
+.steps{display:flex;flex-direction:column;gap:0;counter-reset:s;}
+.step{
+  display:grid;grid-template-columns:38px 1fr;gap:14px;
+  padding:16px 0;border-bottom:1px solid var(--line-2);
+}
+.step:last-child{border-bottom:0;}
+.step .n{
+  width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;
+  display:grid;place-items:center;font-family:Archivo,sans-serif;font-weight:800;font-size:16px;
+}
+.step h3{margin:0 0 2px;font-size:17.5px;font-weight:900;}
+.step p{margin:0;font-size:15.5px;color:var(--ink-2);line-height:1.75;}
+
+/* ── 資格 ── */
+.rules{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;}
+.rules li{display:flex;gap:10px;font-size:15.5px;line-height:1.7;color:var(--ink-2);}
+.rules .m{flex:none;font-weight:900;}
+.rules .no{color:var(--coral-dk);}
+.rules .yes{color:var(--teal-dk);}
+
+/* ── 官方連結 ── */
+.links{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.lnk{
+  display:block;background:var(--paper);border:1px solid var(--line);border-radius:6px;
+  padding:14px 16px;text-decoration:none;color:var(--ink);
+}
+.lnk:hover{border-color:var(--navy);}
+.lnk:focus-visible{outline:3px solid var(--coral);outline-offset:2px;}
+.lnk b{display:block;font-size:16.5px;font-weight:900;}
+.lnk span{display:block;font-size:13.5px;color:var(--ink-3);word-break:break-all;margin-top:2px;}
+
+.src{
+  margin-top:26px;padding:14px 16px;background:#F4EFE6;border-radius:6px;
+  font-size:14px;color:var(--ink-2);line-height:1.7;
+}
+.src a{color:#0F5E86;}
+
+/* ── 頁尾 ── */
+.foot{background:var(--navy);color:#C3D4E5;margin-top:40px;padding:26px 0;}
+.foot .in{max-width:820px;margin:0 auto;padding:0 16px;}
+.foot .who{color:#fff;font-weight:900;font-size:19px;}
+.foot .slogan{color:#FFC24B;font-size:16px;margin:2px 0 14px;}
+.fbtns{display:flex;flex-wrap:wrap;gap:10px;}
+.fbtn{
+  display:inline-block;padding:12px 22px;border-radius:5px;text-decoration:none;
+  font-weight:900;font-size:16.5px;
+}
+.fbtn-line{background:var(--teal);color:#fff;}
+.fbtn-tel{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5);}
+.fbtn:focus-visible{outline:3px solid var(--amber);outline-offset:2px;}
+.foot .fine{margin-top:14px;font-size:13.5px;color:#8FA6BC;line-height:1.7;}
+
+@media (max-width:640px){
+  .cards,.links{grid-template-columns:1fr;}
+  .hero{padding:22px 0 30px;}
+  .gobox{padding:16px;}
+  h2{font-size:21px;}
+  .today{padding:16px;}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*{transition:none!important;}}
+</style>
+</head>
+<body>
+
+<div class="brandbar">
+  <div class="in"><b>海線房仲冠良</b><span class="sep">·</span><span>吳冠良整理</span><span class="sep">·</span><span>2026/08/22</span></div>
+</div>
+
+<div class="hero">
+  <div class="in">
+    <span class="kicker">交通部觀光署・官方系統</span>
+    <h1>2026 國旅補助<br>登錄入口</h1>
+    <p class="sub">平日住宿最高折 <b class="num">2,500</b>，再抽 <b class="num">1,200</b> 生日券。先進去登錄，其他等一下再看。</p>
+
+    <div class="gobox">
+      <p class="lbl">↓ 官方登錄頁，點下去直接開</p>
+      <a class="gobtn" href="https://taiwantravel.tad.gov.tw/web_page/SubsidyApply.jsp" target="_blank" rel="noopener noreferrer">
+        前往官方登錄 →
+        <small>交通部觀光署 國旅補助申請系統</small>
+      </a>
+      <p class="urlline">網址：<b>taiwantravel.tad.gov.tw</b>／web_page/SubsidyApply.jsp</p>
+      <p class="antifraud">⚠️ <b>認明結尾是 <span class="num">.gov.tw</span></b>。這個活動<b>不會</b>用簡訊或 LINE 傳連結叫你填信用卡、匯款或輸入提款卡密碼。要你付錢的，一律是詐騙。</p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="today" id="today">
+    <div class="h">今天可以登錄嗎</div>
+    <div class="big" id="todayBig">載入中…</div>
+    <div class="note" id="todayNote"></div>
+  </div>
+
+  <section>
+    <h2><span class="no">1</span>這次總共兩筆錢</h2>
+    <p class="lede">兩筆是分開的，可以疊在一起用（同一晚可同時折抵）。</p>
+    <div class="cards">
+      <div class="card">
+        <span class="tag tag-teal">不用抽，人人有</span>
+        <h3>平日住宿獎助</h3>
+        <div class="when">使用期間：<b class="num">9/1</b>–<b class="num">11/30</b>（或預算用罄）</div>
+        <table class="moneytable">
+          <thead><tr><th>地區</th><th>第 1 晚</th><th>第 2 晚</th><th>合計</th></tr></thead>
+          <tbody>
+            <tr><td>一般地區</td><td class="num amt">800</td><td class="num amt">1,200</td><td class="num total">2,000</td></tr>
+            <tr><td>離島地區</td><td class="num amt">1,000</td><td class="num amt">1,500</td><td class="num total">2,500</td></tr>
+          </tbody>
+        </table>
+        <p class="lede" style="margin:12px 0 0;font-size:14.5px;">離島指金門、連江、澎湖、屏東琉球鄉、臺東綠島鄉及蘭嶼鄉。第 2 晚要<b>連續入住</b>才算（可以換旅宿）。</p>
+      </div>
+      <div class="card">
+        <span class="tag tag-amber">要抽籤</span>
+        <h3>生日券</h3>
+        <div class="when">使用期間：<b class="num">9/10</b>–<b class="num">12/31</b></div>
+        <table class="moneytable">
+          <thead><tr><th>項目</th><th>金額</th></tr></thead>
+          <tbody>
+            <tr><td>每房每晚最多折抵</td><td class="num amt">1,200</td></tr>
+            <tr><td>中獎名額</td><td class="num amt">每月 1,000 名</td></tr>
+            <tr><td>登錄截止</td><td class="num total">9/8 17:00</td></tr>
+          </tbody>
+        </table>
+        <p class="lede" style="margin:12px 0 0;font-size:14.5px;"><b class="num">9/9</b> 上午 11 點開放查詢中獎。<b>不用在生日當天用</b>，也不限生日當月；限本人，不能轉讓。</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="no">2</span>最多人搞錯的四件事</h2>
+    <p class="lede">這四點官方寫得清楚，但轉傳的版本常常漏掉或講反。</p>
+    <div class="traps">
+
+      <div class="trap is-ok">
+        <h3>✅ 只想要住宿折抵的話，<u>9/8 不是你的死線</u></h3>
+        <p>網路上一直說「<b>9/8 截止</b>」——那是<b>生日券抽籤</b>的截止時間。單純要用平日住宿獎助的人，<b>入住前或入住當天登錄就可以</b>，一路開放到 <b class="num">11/30</b>。
+        <span class="quote">官方原文：「平日住宿獎助活動可於入住前或入住當日完成登錄；惟如欲參與生日券抽籤，請務必於 115 年 8 月 20 日上午 11 時起至同年 9 月 8 日下午 5 時止，完成個人資料登錄」</span></p>
+      </div>
+
+      <div class="trap">
+        <h3>⚠️ 四個連假不能用，安排前先避開</h3>
+        <p>「平日」指<b>週日到週四</b>，而且<b>不含國定假日及其連續假期</b>。以下這幾天訂了也不折：</p>
+        <div class="holidays">
+          <div class="hol">9/25–9/28 <span>中秋</span></div>
+          <div class="hol">10/9–10/11 <span>國慶</span></div>
+          <div class="hol">10/24–10/26 <span>臺灣光復節</span></div>
+          <div class="hol">12/25–12/27 <span>行憲紀念日</span></div>
+        </div>
+      </div>
+
+      <div class="trap">
+        <h3>⚠️ 折抵不能超過你實際付的房價</h3>
+        <p>不是「有登錄就退你 800」。房價 <b class="num">700</b> 元，第一晚就只折 <b class="num">700</b>；房價 <b class="num">1,500</b> 元同時用住宿獎助＋生日券，也只折 <b class="num">1,500</b>。<b>折抵只能抵住宿費，不找現金。</b></p>
+      </div>
+
+      <div class="trap">
+        <h3>⚠️ 一間房一個晚上，各只能折一次</h3>
+        <p>兩個人同住一間房、兩個人都有資格，<b>一晚還是只能折一次住宿獎助 ＋ 一張生日券</b>。想多折就得多開一間房。另外每人身分證字號，兩種獎助各限用一次。</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="no">3</span>三步驟，就這樣</h2>
+    <div class="card">
+      <div class="steps">
+        <div class="step">
+          <div class="n">1</div>
+          <div>
+            <h3>上官方系統登錄</h3>
+            <p>上傳<b>身分證或健保卡正面</b>圖檔，填姓名、身分證字號、出生年月日、手機。這一步只是建檔，<b>不等於一定折得到</b>。一支手機號碼最多只能幫 5 個人登錄。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="n">2</div>
+          <div>
+            <h3>訂「有參加活動」的旅宿</h3>
+            <p>一定要向<b>參與活動的旅宿</b>或<b>觀光署核定的國內訂房平台</b>訂房。<b>國際訂房平台不適用</b>。名單在官方「參與業者及優惠」查。住宿券、禮券不適用。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="n">3</div>
+          <div>
+            <h3>入住時出示證件，現場折抵</h3>
+            <p><b>本人必須入住</b>，並出示身分證或健保卡核對。結帳後記得跟業者<b>索取全額發票或收據</b>留存備查；透過平台訂的，要拿代收轉付收據。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="no">4</span>誰不能用</h2>
+    <div class="card">
+      <ul class="rules">
+        <li><span class="m yes">可</span><span>本國國民，且是<b>個別旅客（散客）</b>。</span></li>
+        <li><span class="m no">不可</span><span><b>團體旅遊</b>：旅行社團體、公司員工旅遊、校外教學、進香團、里民活動、遊覽車團等。</span></li>
+        <li><span class="m no">不可</span><span>非本國國民。</span></li>
+        <li><span class="m no">不可</span><span>參與活動旅宿的<b>負責人／經營者本人入住</b>。</span></li>
+      </ul>
+      <p class="lede" style="margin:14px 0 0;font-size:14.5px;">另外：預算有限，<b>用罄就停</b>。官方說原則會在經費用罄前 2 週公告，所以想用的別拖到最後。</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="no">5</span>官方頁面，自己去核對</h2>
+    <p class="lede">我整理的東西你不用全信，這四個連結是官方的，數字自己對一次最保險。</p>
+    <div class="links">
+      <a class="lnk" href="https://taiwantravel.tad.gov.tw/web_page/SubsidyApply.jsp" target="_blank" rel="noopener noreferrer">
+        <b>活動登錄</b><span>taiwantravel.tad.gov.tw/web_page/SubsidyApply.jsp</span></a>
+      <a class="lnk" href="https://taiwantravel.tad.gov.tw/web_page/Subsidyindustry.jsp" target="_blank" rel="noopener noreferrer">
+        <b>參與業者及優惠</b><span>查哪些旅宿、哪些訂房平台有參加</span></a>
+      <a class="lnk" href="https://taiwantravel.tad.gov.tw/web_page/Subsidyquestion.jsp" target="_blank" rel="noopener noreferrer">
+        <b>官方 Q&amp;A</b><span>本頁所有規則的出處</span></a>
+      <a class="lnk" href="https://taiwantravel.tad.gov.tw/web_page/WinningEmail.jsp" target="_blank" rel="noopener noreferrer">
+        <b>登錄結果查詢</b><span>看登錄成功了沒、生日券中了沒</span></a>
+    </div>
+    <p class="src">
+      資料來源：交通部觀光署「國旅補助申請系統」官方 Q&amp;A 與首頁公告（<a href="https://taiwantravel.tad.gov.tw" target="_blank" rel="noopener noreferrer">taiwantravel.tad.gov.tw</a>），<b>2026 年 8 月 22 日</b>擷取。官方註明 Q&amp;A 會滾動修正、活動至預算用罄為止，<b>實際以官方最新公告為準</b>。本頁為個人整理，非官方頁面，也不代收任何資料或費用。
+    </p>
+  </section>
+
+</div>
+
+<div class="foot">
+  <div class="in">
+    <div class="who">海線房仲冠良・吳冠良</div>
+    <div class="slogan">關注冠良，讓幸福會發光 ✨</div>
+    <div class="fbtns">
+      <a class="fbtn fbtn-line" href="https://lin.ee/1WlfBub">加 LINE 問冠良</a>
+      <a class="fbtn fbtn-tel" href="tel:0915295958">0915-295958</a>
+    </div>
+    <p class="fine">台中海線房地產｜善願必佑，做對的事，站在客戶這一邊。<br>買房、賣房、繼承、土地問題，都可以直接問我。</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var SPLIT = {20:'0、1', 21:'2、3', 22:'4、5', 23:'6、7', 24:'8、9'};
+  var big = document.getElementById('todayBig');
+  var note = document.getElementById('todayNote');
+  var now = new Date();
+  var y = now.getFullYear(), m = now.getMonth() + 1, d = now.getDate();
+  var openAll = new Date(2026, 7, 25);        // 8/25 全面開放
+  var endReg  = new Date(2026, 10, 30, 23, 59); // 11/30 登錄結束（或預算用罄）
+  var birthdayDue = new Date(2026, 8, 8, 17, 0); // 9/8 17:00 生日券截止
+
+  function daysTo(t){ return Math.ceil((t - now) / 86400000); }
+
+  if (now >= openAll && now <= endReg){
+    big.innerHTML = '可以，<em>現在全面開放</em>，任何身分證末碼都能登錄。';
+    var left = daysTo(birthdayDue);
+    note.innerHTML = left > 0
+      ? '還想抽生日券的話，<b>9/8 下午 5 點</b>前要完成登錄，剩 ' + left + ' 天。'
+      : '生日券登錄已截止，但平日住宿獎助還能登錄到 11/30（或預算用罄）。';
+  } else if (y === 2026 && m === 8 && SPLIT[d]){
+    big.innerHTML = '今天（8/' + d + '）輪到身分證末碼 <em>' + SPLIT[d] + '</em>。';
+    note.innerHTML = '不是你的末碼也不用急——<b>8/25 起全面開放</b>，還有 ' + daysTo(openAll) + ' 天。';
+  } else if (now < openAll){
+    big.innerHTML = '登錄自 <em>8/20 上午 11 點</em> 開始，前 5 天依身分證末碼分流。';
+    note.innerHTML = '8/25 起全面開放登錄。';
+  } else {
+    big.innerHTML = '登錄期間已結束，或活動已因預算用罄提前停止。';
+    note.innerHTML = '請以官方公告為準。';
+  }
+})();
+</script>
+
+</body>
+</html>
