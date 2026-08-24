@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>租約到期沒做這件事，定期變不定期｜海線房仲冠良</title>
+<meta name="description" content="租約到期房客沒搬、房東又收了錢，可能就變成不定期租約，之後受土地法第100條限制、六款事由外不得收回房屋。民法451條原文、內政部契約第十五點的關鍵動作，以及房東到期前後的避坑清單。">
+<link rel="canonical" href="https://kuanhome.com/lease-expiry-landlord">
+<meta property="og:title" content="租約到期沒做這件事，定期變不定期｜海線房仲冠良">
+<meta property="og:description" content="不是「多寫幾句」就有效。內政部契約第十五點早就寫好了，關鍵是到期時房東要做的那個動作。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://kuanhome.com/lease-expiry-landlord">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#f7f3ea;--cream-2:#efe8da;--navy:#16283f;--navy-2:#1f3752;--gold:#c8963e;--gold-soft:#e8c887;--ink:#2b2b2b;--muted:#6f6a60;--line:#ddd2bd;--red:#a8321a;--red-soft:#fbeae5;--green:#1c6b4f;--green-soft:#e6f2ec}
+*{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif;font-size:17px;line-height:1.8;-webkit-font-smoothing:antialiased}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+
+header{background:var(--navy);color:var(--cream);padding:48px 0 42px;position:relative;overflow:hidden}
+header:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 88% 12%,rgba(200,150,62,.22),transparent 52%)}
+header .wrap{position:relative}
+.eyebrow{font-size:13px;letter-spacing:.22em;color:var(--gold-soft);font-weight:500;margin:0 0 12px}
+h1{font-family:"DM Serif Display",Georgia,serif;font-size:clamp(30px,6.2vw,48px);line-height:1.18;margin:0 0 14px;font-weight:400}
+h1 em{font-style:normal;color:var(--gold-soft)}
+.lede{margin:0;color:#cfd8e2;font-size:16.5px;max-width:34em}
+.stamp{display:inline-block;margin-top:20px;border:1px solid rgba(232,200,135,.45);border-radius:999px;padding:5px 15px;font-size:13px;color:var(--gold-soft)}
+
+section{padding:38px 0}
+h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;font-size:27px;margin:0 0 6px;color:var(--navy);line-height:1.35}
+h3{font-size:18px;color:var(--navy);margin:0 0 8px;line-height:1.5}
+.sub{margin:0 0 22px;color:var(--muted);font-size:15px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;box-shadow:0 2px 0 rgba(22,40,63,.05)}
+.card+.card{margin-top:18px}
+p{margin:0 0 14px}
+p:last-child{margin-bottom:0}
+b{font-weight:700;color:var(--navy)}
+
+/* 一句話結論 */
+.tldr{background:var(--navy);color:var(--cream);border-radius:14px;padding:26px;margin-top:-22px;position:relative;z-index:2;box-shadow:0 10px 30px -18px rgba(22,40,63,.7)}
+.tldr .t{font-size:13px;letter-spacing:.18em;color:var(--gold-soft);margin:0 0 8px}
+.tldr p{font-size:18.5px;line-height:1.75;margin:0;color:#e9edf2}
+.tldr b{color:var(--gold-soft)}
+
+/* 法條原文 */
+.law{background:var(--cream-2);border-left:5px solid var(--gold);border-radius:0 10px 10px 0;padding:18px 20px;margin:16px 0}
+.law .src{display:block;font-size:13.5px;color:var(--muted);letter-spacing:.04em;margin-bottom:6px}
+.law q{display:block;font-size:16.5px;line-height:1.85;color:var(--navy);quotes:none}
+.law q:before,.law q:after{content:""}
+.law ol{margin:8px 0 0;padding-left:1.4em;font-size:16px;color:var(--navy)}
+.law ol li{margin:3px 0}
+
+/* 對照：做 / 不做 */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+.vs>div{border-radius:12px;padding:18px 20px;border:1px solid var(--line);background:#fff}
+.vs .bad{border-color:#e8c3b8;background:var(--red-soft)}
+.vs .good{border-color:#bcd9cb;background:var(--green-soft)}
+.vs h3{margin-bottom:6px}
+.vs .bad h3{color:var(--red)}
+.vs .good h3{color:var(--green)}
+.vs p{font-size:15.5px;margin:0}
+
+/* 六款 */
+.six{list-style:none;margin:10px 0 0;padding:0;counter-reset:k}
+.six li{display:grid;grid-template-columns:30px 1fr;gap:12px;padding:11px 0;border-bottom:1px solid var(--cream-2);font-size:16px;line-height:1.7}
+.six li:last-child{border-bottom:0}
+.six .n{width:26px;height:26px;border-radius:50%;background:var(--navy);color:var(--cream);display:grid;place-items:center;font-size:14px;font-weight:700;margin-top:4px}
+
+/* 清單 */
+.check{list-style:none;margin:0;padding:0}
+.check li{border-bottom:1px solid var(--cream-2)}
+.check li:last-child{border-bottom:0}
+.check label{display:grid;grid-template-columns:26px 1fr;gap:13px;align-items:start;padding:14px 0;cursor:pointer}
+.check input{width:22px;height:22px;margin:3px 0 0;accent-color:var(--gold);cursor:pointer;flex:none}
+.check input:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
+.check .txt strong{display:block;font-size:16.5px;color:var(--navy);line-height:1.6}
+.check .txt span{display:block;font-size:15px;color:var(--muted);line-height:1.7;margin-top:2px}
+.check input:checked + .txt strong{text-decoration:line-through;color:var(--muted)}
+.progress{display:flex;align-items:center;gap:12px;margin-bottom:14px;font-size:15px;color:var(--muted)}
+.progress .track{flex:1;height:8px;background:var(--cream-2);border-radius:4px;overflow:hidden}
+.progress .track i{display:block;height:100%;width:0;background:var(--gold);transition:width .25s}
+@media (prefers-reduced-motion:reduce){.progress .track i{transition:none}}
+.progress .cnt{font-variant-numeric:tabular-nums;font-weight:700;color:var(--navy);white-space:nowrap}
+
+/* 提醒 */
+.warn{background:var(--red-soft);border:1px solid #e8c3b8;border-radius:12px;padding:18px 20px}
+.warn h3{color:var(--red)}
+.warn p{font-size:15.5px}
+
+/* 出處 */
+.sources{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px}
+.sources ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.sources a{display:block;min-height:44px;padding:10px 14px;background:var(--cream);border:1px solid var(--line);border-radius:10px;color:var(--navy);text-decoration:none;font-size:15.5px;line-height:1.55}
+.sources a:hover{border-color:var(--gold)}
+.sources a:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
+.sources a span{display:block;font-size:13.5px;color:var(--muted);margin-top:2px}
+
+.disclaim{margin-top:20px;font-size:14px;color:var(--muted);line-height:1.75}
+
+.cta{background:var(--gold);border-radius:14px;padding:28px;text-align:center;color:#3a2a0c;margin-top:8px}
+.cta h2{color:#3a2a0c;margin-bottom:4px}
+.cta p{margin:0 0 18px;font-size:15.5px}
+.cta a{display:inline-block;background:var(--navy);color:var(--cream);text-decoration:none;padding:13px 30px;border-radius:999px;font-weight:700;font-size:16.5px}
+.cta a:hover{background:var(--navy-2)}
+.cta a:focus-visible{outline:3px solid #3a2a0c;outline-offset:3px}
+
+footer{background:var(--navy);color:#9fb0c4;padding:26px 0 34px;margin-top:40px;font-size:14.5px;line-height:1.8}
+footer b{color:var(--cream);font-size:17px}
+footer a{color:var(--gold-soft)}
+
+@media(max-width:640px){
+  header{padding:34px 0 30px}
+  section{padding:28px 0}
+  .card,.tldr,.sources,.cta{padding:20px}
+  .vs{grid-template-columns:1fr}
+  h2{font-size:24px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">房東必看・民法 451</p>
+    <h1>租約到期沒做這件事，<br><em>定期租約會變不定期</em></h1>
+    <p class="lede">房客沒搬、你又收了下一筆錢——法院可能認定你同意繼續租。之後想收回房子，就不是你一個人說了算。</p>
+    <span class="stamp">條文與契約條款皆引自官方原文｜2026/08/24 查證</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="tldr">
+    <p class="t">一句話</p>
+    <p>租約到期房客沒搬，房東要做的關鍵動作是<b>「明示不以不定期限繼續契約」</b>——這句話不是我掰的，是<b>內政部契約第十五點第三項的原文</b>。你不用自己在合約多寫，它本來就在裡面。</p>
+  </div>
+
+  <section>
+    <h2>一、為什麼會「自動」變成不定期</h2>
+    <p class="sub">整件事的法源只有一條，而且很短。</p>
+    <div class="card">
+      <div class="law">
+        <span class="src">民法 第 451 條</span>
+        <q>租賃期限屆滿後，承租人仍為租賃物之使用收益，而出租人不即表示反對之意思者，視為以不定期限繼續契約。</q>
+      </div>
+      <p>拆成白話，成立要三件事同時發生：<b>① 租期已經屆滿 ② 房客還在住 ③ 房東沒有「即時表示反對」</b>。</p>
+      <p>注意第三點的重點在<b>「不即表示反對」</b>——法律要看的是你有沒有把反對的意思講出來，不是你有沒有收錢。收租金之所以危險，是因為它在證據上很像「我同意你繼續住」，反過來坐實了「沒有表示反對」。</p>
+      <div class="vs">
+        <div class="bad">
+          <h3>沒表示反對</h3>
+          <p>期滿後照收下一筆、訊息已讀不回、口頭說「再看看」——這些都可能被認為沒有即時反對，視為以不定期限繼續契約。</p>
+        </div>
+        <div class="good">
+          <h3>有表示反對</h3>
+          <p>期滿前後以書面明確通知不續租、要求返還，並且留下紀錄。收到的錢也講清楚性質不是續租的租金。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>二、變成不定期，到底有多麻煩</h2>
+    <p class="sub">你的影片說「沒那麼簡單」——法律上更精確的說法是這一條。</p>
+    <div class="card">
+      <div class="law">
+        <span class="src">土地法 第 100 條</span>
+        <q>出租人非因左列情形之一，不得收回房屋。</q>
+        <ol>
+          <li>出租人收回自住或重新建築時。</li>
+          <li>承租人違反民法第四百四十三條第一項之規定轉租於他人時。</li>
+          <li>承租人積欠租金額，除擔保金抵償外，達二個月以上時。</li>
+          <li>承租人以房屋供違反法令之使用時。</li>
+          <li>承租人違反租賃契約時。</li>
+          <li>承租人損壞出租人之房屋或附著財物，而不為相當之賠償時。</li>
+        </ol>
+      </div>
+      <p>看懂這條，就懂為什麼房東會「趕不走房客」：<b>定期租約期滿就消滅</b>，你本來不需要理由；一旦變成<b>不定期</b>，你要收回房子就得<b>落入這六款其中一款</b>。房客乖乖繳租、乖乖使用，你就沒有現成的理由。</p>
+      <p>這才是那句「你的房子使用權，可能已經不是你一個人說了算」真正的意思。</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>三、關鍵動作，官方契約已經幫你寫好了</h2>
+    <p class="sub">這是多數轉傳版本會講錯的地方。</p>
+    <div class="card">
+      <p>很多人會說「合約裡要自己多寫一段，寫明期滿後收的是占用費不是租金」。方向對，但<b>你多半不用自己寫</b>——內政部公告的住宅租賃契約裡本來就有，而且用詞更嚴謹：</p>
+      <div class="law">
+        <span class="src">住宅租賃定型化契約應記載及不得記載事項　十五、租賃住宅之返還（第三項）</span>
+        <q>承租人未依第一項規定返還租賃住宅時，出租人應即明示不以不定期限繼續契約，並得向承租人請求未返還租賃住宅期間之相當月租金額，及相當月租金額計算之違約金（未足一個月者，以日租金折算）至返還為止。</q>
+      </div>
+      <p>三個重點：</p>
+      <p><b>①「應即明示不以不定期限繼續契約」</b>——這就是民法 451「即表示反對之意思」的具體動作，官方直接寫成房東的義務。做了，才擋得住 451。</p>
+      <p><b>② 官方用詞不是「占用費」</b>，是<b>「未返還期間之相當月租金額」</b>加上<b>「相當月租金額計算之違約金」</b>。白話講就是占用費的意思，但寫進契約、寄存證信函時，<b>照官方用詞寫比較不會有爭議</b>。</p>
+      <p><b>③ 算到返還為止</b>，未滿一個月以日租金折算。也就是拖越久累積越多，這一點對房客本身就有壓力。</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>四、一個很多房東不知道的前提</h2>
+    <div class="warn">
+      <h3>⚠️ 個人房東也受這套規範，不是只有代管公司</h3>
+      <p>《租賃住宅市場發展及管理條例》第 5 條第 1 項原文：<b>「租賃契約出租人及承租人間視為具消費關係，適用消費者保護法相關規定。」</b></p>
+      <p>意思是——就算你只是把自家一戶租出去的個人房東，房東與房客之間<b>一律視為消費關係</b>，內政部那份「應記載及不得記載事項」對你也有效。所以：<b>契約審閱期至少三日不能寫成拋棄</b>、<b>不得記載事項共十款</b>（例如不得寫「廣告僅供參考」、不得寫房客不得遷入戶籍、不得寫房客不得申報租金支出、不得寫房客不得申請租金補貼等），違反的條款會無效。</p>
+      <p>自己在合約亂加條款要小心：加對了是保障，加到踩線那條就是白加。</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>五、房東租約到期避坑清單</h2>
+    <p class="sub">勾一勾，看自己漏了哪幾項。紀錄只留在你這台裝置。</p>
+    <div class="card">
+      <div class="progress">
+        <span>完成度</span>
+        <span class="track"><i id="bar"></i></span>
+        <span class="cnt" id="cnt">0 / 8</span>
+      </div>
+      <ul class="check" id="list">
+        <li><label><input type="checkbox"><span class="txt"><strong>用的是內政部版本的住宅租賃契約</strong><span>不是網路隨便抓的舊範本。裡面已含「返還」與「明示不以不定期限繼續契約」條款。</span></span></label></li>
+        <li><label><input type="checkbox"><span class="txt"><strong>簽約前有給滿三天審閱期，且沒寫「拋棄審閱期」</strong><span>審閱期至少三日，寫拋棄是不得記載事項第一款。</span></span></label></li>
+        <li><label><input type="checkbox"><span class="txt"><strong>到期前已經用書面明確通知續租或不續租</strong><span>口頭不算數。LINE、簡訊、存證信函都可以，重點是留得下紀錄。</span></span></label></li>
+        <li><label><input type="checkbox"><span class="txt"><strong>期滿房客沒搬，第一時間就發出「不以不定期限繼續契約」的書面</strong><span>這是全篇最關鍵的動作。越晚做，被認定「沒有即時反對」的風險越高。</span></span></label></li>
+        <li><label><input type="checkbox"><span class="txt"><strong>期滿後若收到錢，有書面講清楚性質</strong><span>寫明是未返還期間之相當月租金額與違約金，不是續租的租金，也不代表同意續租。</span></span></label></li>
+        <li><label><input type="checkbox"><span class="txt"><strong>所有通知都留有可查證的紀錄</strong><span>存證信函回執、掛號簽收、對話截圖與時間。事後爭執時，證據比道理有用。</span></span></label></li>
+        <li><label><input type="checkbox"><span class="txt"><strong>有完成點交或依約催告後視為完成點交</strong><span>一方不會同點交，經他方定相當期限催告仍不會同者，視為完成點交。</span></span></label></li>
+        <li><label><input type="checkbox"><span class="txt"><strong>知道押金可以抵充，不足還能再請求</strong><span>未返還期間的金額與未繳清費用，可由押金抵充，不足得再向房客請求。</span></span></label></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>六、官方出處，自己去核對</h2>
+    <div class="sources">
+      <ul>
+        <li><a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=451" target="_blank" rel="noopener noreferrer">民法 第 451 條<span>全國法規資料庫</span></a></li>
+        <li><a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060001&flno=100" target="_blank" rel="noopener noreferrer">土地法 第 100 條<span>不定期租約收回房屋的六款事由</span></a></li>
+        <li><a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060125&flno=5" target="_blank" rel="noopener noreferrer">租賃住宅市場發展及管理條例 第 5 條<span>視為具消費關係的依據</span></a></li>
+        <li><a href="https://www.ey.gov.tw/Page/DFB720D019CCCB0A/478917df-7599-418f-8715-fd2716b623b4" target="_blank" rel="noopener noreferrer">住宅租賃定型化契約應記載及不得記載事項<span>行政院全球資訊網・最新為 114 年 4 月 18 日修正應記載事項第 18 點</span></a></li>
+      </ul>
+      <p class="disclaim"><b>要講清楚的是</b>：合約寫得完整、通知留得下紀錄，是把自己從被動變主動，<b>不等於保證不會有爭議</b>。個案事實不同、法院認定也可能不同，金額大或已經僵持的案子，請找律師或各縣市政府的租賃爭議調處。<br>本頁條文與契約條款皆引自上列官方來源，2026 年 8 月 24 日查證；法規可能修正，請以官方最新公告為準。</p>
+    </div>
+  </section>
+
+  <div class="cta">
+    <h2>房子要出租、要收回、還是乾脆賣掉？</h2>
+    <p>台中海線的房東，卡在租約、點交、修繕、房客不搬，都可以先問我一句。</p>
+    <a href="https://lin.ee/1WlfBub">用 LINE 問冠良</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <b>海線房仲冠良・吳冠良</b><br>
+    關注冠良，讓幸福會發光 ✨　善願必佑，做對的事，站在客戶這一邊。<br>
+    <a href="tel:0915295958">0915-295958</a>｜LINE：wosawo｜<a href="https://kuanhome.com">kuanhome.com</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var KEY='lease-expiry-landlord-check';
+  var list=document.getElementById('list');
+  var boxes=[].slice.call(list.querySelectorAll('input[type=checkbox]'));
+  var bar=document.getElementById('bar'), cnt=document.getElementById('cnt');
+
+  var saved=[];
+  try{ saved=JSON.parse(localStorage.getItem(KEY))||[]; }catch(e){}
+  boxes.forEach(function(b,i){ b.checked = saved.indexOf(i)>-1; });
+
+  function render(){
+    var done=boxes.filter(function(b){return b.checked;}).length;
+    bar.style.width=(done/boxes.length*100)+'%';
+    cnt.textContent=done+' / '+boxes.length;
+    try{
+      localStorage.setItem(KEY, JSON.stringify(
+        boxes.map(function(b,i){return b.checked?i:-1;}).filter(function(i){return i>-1;})
+      ));
+    }catch(e){}
+  }
+  boxes.forEach(function(b){ b.addEventListener('change', render); });
+  render();
+})();
+</script>
+</body>
+</html>
