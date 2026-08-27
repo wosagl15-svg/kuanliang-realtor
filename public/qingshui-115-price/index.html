@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>清水區115年成屋成交分析｜94筆實價登錄全紀錄｜海線房仲冠良</title>
+<meta name="description" content="台中清水區115年成屋買賣94筆完整分析：電梯宅中位單價、透天總價帶、屋齡折價曲線、熱門社區與路段，並與沙鹿同基準對照。資料來源內政部實價登錄。">
+<style>
+:root{--cream:#f7f3ea;--navy:#16283f;--gold:#c8963e;--teal:#2f6f6a;--line:#e3dbc9;--muted:#6b7787}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--cream);color:var(--navy);line-height:1.75;
+ font-family:"Microsoft JhengHei","PingFang TC",-apple-system,sans-serif}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header{background:var(--navy);color:var(--cream);padding:56px 0 48px;border-bottom:6px solid var(--teal)}
+header .kicker{color:var(--gold);letter-spacing:.3em;font-size:14px;font-weight:700}
+header h1{font-size:clamp(28px,4.4vw,44px);margin:12px 0 14px;line-height:1.25}
+header p{color:#b9c8dc;font-size:16px}
+header .meta{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px}
+header .meta span{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);
+ border-radius:999px;padding:5px 14px;font-size:14px}
+section{margin:44px 0}
+h2{font-size:26px;margin-bottom:6px;padding-left:14px;border-left:5px solid var(--teal)}
+h2+.lead{color:var(--muted);font-size:15px;margin:0 0 18px 19px}
+h3{font-size:19px;margin:26px 0 10px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:26px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px}
+.kpi .l{font-size:14px;color:var(--muted);font-weight:600}
+.kpi .v{font-size:34px;font-weight:800;margin:4px 0 2px;letter-spacing:-.02em}
+.kpi .v small{font-size:16px;margin-left:3px}
+.kpi .h{font-size:13px;color:#96a0ad}
+.kpi.dark{background:var(--navy);border-color:var(--navy)}
+.kpi.dark .l{color:#9fb3cc}.kpi.dark .v{color:var(--gold)}.kpi.dark .h{color:#8fa3bd}
+.callout{background:#fdf7e8;border-left:5px solid var(--gold);border-radius:0 12px 12px 0;padding:20px 24px;margin:22px 0}
+.callout h3{margin:0 0 8px;font-size:18px}
+.callout ol{margin:0;padding-left:20px}.callout li{margin:7px 0;font-size:15px}
+.cmp{background:var(--teal);color:#eef6f4;border-radius:16px;padding:26px 28px;margin:22px 0}
+.cmp h3{color:#fff;font-size:22px;margin-bottom:4px}
+.cmp .s{color:#bcd8d4;font-size:14px;margin-bottom:18px}
+.cmp table{background:transparent;border:none}
+.cmp th,.cmp td{border-bottom:1px solid rgba(255,255,255,.18);color:#eef6f4;font-size:15px}
+.cmp th{background:transparent;color:#bcd8d4}
+.cmp td b{color:#ffd98a;font-size:17px}
+.cmp .punch{margin-top:16px;font-size:19px;font-weight:800;color:#fff}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);
+ border-radius:12px;overflow:hidden;font-size:15px}
+th,td{padding:9px 12px;border-bottom:1px solid #eee6d6;text-align:left}
+th{background:#efeade;font-weight:700;font-size:14px;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#fbf8f0}
+td.bar{width:34%}td.bar i{display:block;height:12px;border-radius:6px;
+ background:linear-gradient(90deg,var(--teal),#1f524e)}
+.scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.two>*{min-width:0}
+@media(max-width:760px){.two{grid-template-columns:1fr}}
+.tools{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 14px;align-items:center}
+.tools input,.tools select{font:inherit;font-size:15px;padding:9px 13px;border:1px solid var(--line);
+ border-radius:10px;background:#fff;color:var(--navy)}
+.tools input{flex:1;min-width:200px}
+.tools label{font-size:14px;color:var(--muted);display:flex;align-items:center;gap:6px}
+#count{font-size:14px;color:var(--muted);margin-left:auto}
+#tbl{font-size:14px}#tbl th{cursor:pointer;user-select:none}#tbl th:hover{color:var(--teal)}
+#tbl td.num{text-align:right;font-variant-numeric:tabular-nums}
+.tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:999px;
+ background:#efeade;color:#7a6a4a;margin-right:4px;white-space:nowrap}
+.tag.sp{background:#fae2e1;color:#a8433f}.tag.ad{background:#e6efe3;color:#4f7245}
+footer{background:var(--navy);color:var(--cream);margin-top:56px;padding:40px 0 34px}
+footer .bt{font-size:24px;font-weight:800}
+footer .sl{color:var(--gold);font-weight:700;letter-spacing:.12em;margin:6px 0 16px}
+footer a{color:var(--gold)}
+footer .src{color:#8fa3bd;font-size:13px;margin-top:16px;padding-top:16px;
+ border-top:1px solid rgba(255,255,255,.15)}
+.cta{display:inline-block;background:var(--gold);color:var(--navy);font-weight:800;
+ padding:12px 26px;border-radius:999px;text-decoration:none;margin-top:6px}
+</style>
+<!-- SEO:AUTO 由 scripts/seo-build.mjs 產生，不要手改 -->
+<link rel="canonical" href="https://kuanhome.com/qingshui-115-price">
+<meta property="og:url" content="https://kuanhome.com/qingshui-115-price">
+<meta property="og:site_name" content="海線房仲冠良">
+<meta property="og:locale" content="zh_TW">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://kuanhome.com/qingshui-115-price#article","headline":"清水區115年成屋成交分析｜94筆實價登錄全紀錄","description":"台中清水區115年成屋買賣94筆完整分析：電梯宅中位單價、透天總價帶、屋齡折價曲線、熱門社區與路段，並與沙鹿同基準對照。資料來源內政部實價登錄。","url":"https://kuanhome.com/qingshui-115-price","inLanguage":"zh-Hant-TW","dateModified":"2026-08-27T15:13:48.337Z","author":{"@id":"https://kuanhome.com/#wuguanliang"},"publisher":{"@id":"https://kuanhome.com/#agent"},"mainEntityOfPage":{"@id":"https://kuanhome.com/qingshui-115-price"}},{"@type":"RealEstateAgent","@id":"https://kuanhome.com/#agent","name":"海線房仲冠良","alternateName":"吳冠良｜台中海線房地產顧問","description":"台中海線專業房地產仲介，深耕沙鹿、清水、梧棲、龍井、大肚、大甲六區。提供資產配置、稅務諮詢、簡易裝潢，及買賣委託與土地買賣。","slogan":"懂你又懂房","url":"https://kuanhome.com/","image":"https://kuanhome.com/card/owner.webp","telephone":"+886-915-295-958","email":"wosagl15@gmail.com","address":{"@type":"PostalAddress","addressLocality":"沙鹿區","addressRegion":"台中市","postalCode":"433","addressCountry":"TW"},"geo":{"@type":"GeoCoordinates","latitude":24.2340986,"longitude":120.560349},"priceRange":"$$","areaServed":[{"@type":"AdministrativeArea","name":"台中市沙鹿區"},{"@type":"AdministrativeArea","name":"台中市清水區"},{"@type":"AdministrativeArea","name":"台中市梧棲區"},{"@type":"AdministrativeArea","name":"台中市龍井區"},{"@type":"AdministrativeArea","name":"台中市大肚區"},{"@type":"AdministrativeArea","name":"台中市大甲區"}],"sameAs":["https://www.facebook.com/share/14XZ3Wy4nLZ/","https://www.instagram.com/asmile55178/","https://www.youtube.com/@吳冠良-w9v","https://lin.ee/1WlfBub","https://sales.myhomes.com.tw/0915295958"],"employee":{"@type":"Person","@id":"https://kuanhome.com/#wuguanliang","name":"吳冠良","jobTitle":"台中海線專業房地產顧問"}},{"@type":"BreadcrumbList","@id":"https://kuanhome.com/qingshui-115-price#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://kuanhome.com/"},{"@type":"ListItem","position":2,"name":"購屋攻略","item":"https://kuanhome.com/tools"},{"@type":"ListItem","position":3,"name":"清水區115年成屋成交分析｜94筆實價登錄全紀錄","item":"https://kuanhome.com/qingshui-115-price"}]},{"@type":"FAQPage","@id":"https://kuanhome.com/qingshui-115-price#faq","mainEntity":[{"@type":"Question","name":"清水 vs 沙鹿：同樣預算差多少？","acceptedAnswer":{"@type":"Answer","text":"兩區單價都依實價登錄的同一套定義計算（車位有單獨計價時扣除車位價與車位面積， 否則為總價÷總面積），基準一致才有比較的意義。兩區資料期間不同，已標在下方。"}},{"@type":"Question","name":"看完數字，接下來呢？","acceptedAnswer":{"@type":"Answer","text":"行情表只能告訴你「別人成交多少」，沒辦法告訴你「這間值不值得你買」。"}},{"@type":"Question","name":"這些整理，有幫到你嗎？","acceptedAnswer":{"@type":"Answer","text":"留一則 Google 評論，讓其他正在煩惱同樣問題的人，也找得到這裡。 一句話就夠，不用寫長。 去 Google 留評論 會開啟 Google 地圖的評論視窗，需要登入 Google 帳號。"}}],"isPartOf":{"@id":"https://kuanhome.com/qingshui-115-price#article"}}]}</script>
+<!-- /SEO:AUTO -->
+</head>
+<body>
+<header><div class="wrap">
+ <div class="kicker">實 價 登 錄 ・ 誠 實 版</div>
+ <h1>清水區 115 年成屋成交分析</h1>
+ <p>94 筆逐筆清洗，加總對得起來的區域行情</p>
+ <div class="meta">
+  <span>成交日期 115/01/04–115/06/17</span>
+  <span>成交 94 筆</span>
+  <span>已標記特殊關係交易 9 筆</span>
+  <span>來源：內政部實價登錄</span>
+ </div>
+</div></header>
+<div class="wrap">
+
+<section>
+ <h2>一分鐘看懂清水行情</h2>
+ <p class="lead">以下數字皆已剔除「親友、員工、共有人等特殊關係交易」，並排除 15 坪以下微型物件。</p>
+ <div class="kpis">
+  <div class="kpi dark"><div class="l">電梯宅中位單價</div>
+   <div class="v">19.68<small>萬/坪</small></div>
+   <div class="h">住宅大樓＋華廈，區間 17.7–22.4 萬</div></div>
+  <div class="kpi"><div class="l">透天厝中位總價</div>
+   <div class="v">1,194<small>萬</small></div>
+   <div class="h">中位建坪 49.7 坪，區間 650–1,520 萬</div></div>
+  <div class="kpi"><div class="l">最大宗總價帶</div>
+   <div class="v">500~800<small>萬</small></div>
+   <div class="h">29 筆，佔 34%</div></div>
+  <div class="kpi"><div class="l">屋齡 2 年內新成屋</div>
+   <div class="v">17<small>筆</small></div>
+   <div class="h">佔全區 18%</div></div>
+ </div>
+</section>
+
+<section>
+ <h2>清水 vs 沙鹿：同樣預算差多少？</h2>
+ <p class="lead">兩區單價都依實價登錄的同一套定義計算（車位有單獨計價時扣除車位價與車位面積，
+  否則為總價÷總面積），基準一致才有比較的意義。兩區資料期間不同，已標在下方。</p>
+ <div class="cmp">
+  <h3>同一把尺量出來的差距</h3>
+  <div class="s">沙鹿 218 筆（115/01/01–07/02）　vs　清水 94 筆（115/01/04–115/06/17）</div>
+  <div class="scroll"><table><thead><tr><th>項目</th><th>沙鹿</th><th>清水</th><th>差距</th></tr></thead>
+  <tbody>
+   <tr><td>電梯宅中位單價</td><td>27.62 萬/坪</td><td><b>19.68 萬/坪</b></td><td>清水低 29%</td></tr>
+   <tr><td>透天中位總價</td><td>1,590 萬</td><td><b>1,194 萬</b></td><td>清水低 25%</td></tr>
+   <tr><td>透天中位建坪</td><td>54.8 坪</td><td><b>49.7 坪</b></td><td>—</td></tr>
+  </tbody></table></div>
+  <div class="punch">同樣 1,000 萬：沙鹿買 36.2 坪，清水買 50.8 坪 —— 多出 14.6 坪</div>
+ </div>
+ <p class="lead" style="margin-left:0">
+  想看沙鹿的完整版 👉 <a href="/shalu-115-price/">沙鹿區 115 年成交分析（218 筆）</a></p>
+</section>
+
+<section>
+ <h2>看數字前，先看這四件事</h2>
+ <p class="lead">不先講清楚限制，任何行情表都會誤導人。</p>
+ <div class="callout"><h3>資料的四個真相</h3><ol>
+  <li><b>最後一筆成交是 115/06/17。</b>成交後 30 日內申報、再分批公布，實務落後約 1.5–2 個月。<b>越接近擷取日的月份件數越少，那是還沒補齊，不是市場轉冷。</b></li>
+  <li><b>特殊關係交易要排除。</b>全區 9 筆備註為「親友、員工、共有人或其他特殊關係間之交易」，價格不代表市場行情。本頁所有中位數與排行榜皆已剔除，但仍保留在下方明細並標記。</li>
+  <li><b>透天沒有單價可比。</b>實價登錄對透天不提供每坪單價——因為總價含土地持分，且全區 28 筆有頂樓加蓋／陽台外推／其他增建等未登記面積。<b>看總價與建坪區間</b>才對。</li>
+  <li><b>一件不等於一戶。</b>備註出現「建物第一次登記後移轉」「土地及建物分件登記案件」時，同一交易可能拆成多筆登記。</li>
+ </ol></div>
+ <div class="callout"><h3>樣本太少的，我直接講</h3><ol><li><b>華廈 只有 4 筆。</b>本期成交極少，任何「清水華廈行情」的說法都不可靠，本頁不單獨提供該型態中位數。</li><li>與其湊一個看起來很專業的數字，不如老實說「這個我不敢講」。</li></ol></div>
+</section>
+
+<section>
+ <h2>型態分布</h2>
+ <p class="lead">各型態加總 94 筆，與總成交件數完全相符——這是驗算一份行情表是否可信最快的方法。</p>
+ <div class="two">
+  <table><thead><tr><th>建物型態</th><th>件數</th><th>佔比</th></tr></thead><tbody><tr><td>住宅大樓</td><td>48</td><td>51.1%</td></tr><tr><td>透天厝</td><td>42</td><td>44.7%</td></tr><tr><td>華廈</td><td>4</td><td>4.3%</td></tr></tbody></table>
+  <div class="callout"><h3>型態怎麼分？（官方定義）</h3><ol>
+   <li><b>住宅大樓</b>：11 層以上，有電梯</li>
+   <li><b>華廈</b>：10 層以下，有電梯</li>
+   <li><b>公寓</b>：5 樓以下，無電梯</li>
+   <li><b>透天厝</b>：獨門獨戶、含土地持分</li>
+  </ol></div>
+ </div>
+</section>
+
+<section>
+ <h2>屋齡對單價的影響</h2>
+ <p class="lead">電梯宅各屋齡層的中位成交單價。想議價、想估未來賣相，看這條線。</p>
+ <table><thead><tr><th>屋齡</th><th>中位單價</th><th>樣本</th><th>視覺比較</th></tr></thead>
+  <tbody><tr><td>1~5年</td><td><b>21.65</b> 萬/坪</td><td>26 筆</td><td class="bar"><i style="width:100%"></i></td></tr><tr><td>6~10年</td><td><b>18.03</b> 萬/坪</td><td>17 筆</td><td class="bar"><i style="width:83%"></i></td></tr><tr><td>21~30年</td><td><b>15.35</b> 萬/坪</td><td>3 筆</td><td class="bar"><i style="width:71%"></i></td></tr></tbody></table>
+ <div class="callout"><h3>這條線怎麼用</h3><ol>
+  <li><b>11~20年 這幾個屋齡層本期成交不足 3 筆。</b>中古屋想在本區找可比行情，樣本很少，議價時建議一併參考鄰近行政區。</li>
+  <li>買中古電梯宅議價時，拿這張表當依據，而不是憑感覺喊。</li>
+  <li>反過來看，新成屋的溢價是真的存在的——但你要問自己：這筆溢價，五年後還在不在。</li>
+  <li>樣本不足 3 筆的屋齡層，<b>我沒有畫進這條線</b>——一兩個個案不能代表行情。</li>
+ </ol></div>
+</section>
+
+
+
+<section>
+ <h2>屋齡分布（分型態）</h2>
+ <p class="lead">每一列的橫向加總＝該型態總件數，全部對得起來。</p>
+ <div class="scroll"><table><thead><tr><th>型態</th><th>1~5年</th><th>6~10年</th><th>11~20年</th><th>21~30年</th><th>31~40年</th><th>40年以上</th><th>未載</th><th>合計</th></tr></thead>
+  <tbody><tr><td>住宅大樓</td><td>25</td><td>15</td><td>1</td><td>3</td><td>–</td><td>1</td><td>3</td><td><b>48</b></td></tr><tr><td>透天厝</td><td>2</td><td>9</td><td>2</td><td>7</td><td>10</td><td>10</td><td>2</td><td><b>42</b></td></tr><tr><td>華廈</td><td>2</td><td>2</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td><b>4</b></td></tr></tbody></table></div>
+</section>
+
+<section>
+ <h2>成交總價帶</h2>
+ <p class="lead">已剔除特殊關係交易，共 85 筆。想知道「我的預算在清水買得到什麼」，先看自己落在哪一段。</p>
+ <table><thead><tr><th>總價帶</th><th>件數</th><th>分布</th><th>佔比</th></tr></thead><tbody><tr><td>500萬以下</td><td>6</td><td class="bar"><i style="width:21%"></i></td><td>7.1%</td></tr><tr><td>500~800萬</td><td>29</td><td class="bar"><i style="width:100%"></i></td><td>34.1%</td></tr><tr><td>800~1000萬</td><td>20</td><td class="bar"><i style="width:69%"></i></td><td>23.5%</td></tr><tr><td>1000~1500萬</td><td>20</td><td class="bar"><i style="width:69%"></i></td><td>23.5%</td></tr><tr><td>1500~2000萬</td><td>5</td><td class="bar"><i style="width:17%"></i></td><td>5.9%</td></tr><tr><td>2000~3000萬</td><td>3</td><td class="bar"><i style="width:10%"></i></td><td>3.5%</td></tr><tr><td>3000萬以上</td><td>2</td><td class="bar"><i style="width:7%"></i></td><td>2.4%</td></tr></tbody></table>
+</section>
+
+<section>
+ <h2>逐月成交量</h2>
+ <p class="lead">再次提醒：越接近資料擷取日的月份，件數越是「還沒補齊」，不是行情。</p>
+ <table><thead><tr><th>月份</th><th>件數</th><th>分布</th></tr></thead><tbody><tr><td>1 月</td><td>26</td><td class="bar"><i style="width:100%"></i></td></tr><tr><td>2 月</td><td>12</td><td class="bar"><i style="width:46%"></i></td></tr><tr><td>3 月</td><td>21</td><td class="bar"><i style="width:81%"></i></td></tr><tr><td>4 月</td><td>22</td><td class="bar"><i style="width:85%"></i></td></tr><tr><td>5 月</td><td>12</td><td class="bar"><i style="width:46%"></i></td></tr><tr><td>6 月</td><td>1</td><td class="bar"><i style="width:4%"></i></td></tr></tbody></table>
+</section>
+
+<section>
+ <h2>熱門社區與路段</h2>
+ <p class="lead">同一社區在半年內多筆成交，代表兩件事：流通性好，而且行情有比較基準。</p>
+ <div class="two">
+  <div><h3>成交最多的社區</h3><table><thead><tr><th>#</th><th>社區</th><th>件數</th></tr></thead><tbody><tr><td>1</td><td>遠雄之星6期</td><td>7</td></tr><tr><td>2</td><td>協和豐馥</td><td>4</td></tr><tr><td>3</td><td>聯悦馥</td><td>3</td></tr><tr><td>4</td><td>長虹天韻</td><td>3</td></tr><tr><td>5</td><td>遠雄之星8期</td><td>3</td></tr><tr><td>6</td><td>遠雄之星</td><td>3</td></tr><tr><td>7</td><td>聯悅聚</td><td>3</td></tr><tr><td>8</td><td>協和丰景</td><td>3</td></tr><tr><td>9</td><td>櫻花市鎮之櫻</td><td>3</td></tr><tr><td>10</td><td>佳鋐晴灣</td><td>2</td></tr></tbody></table></div>
+  <div><h3>成交最多的路段</h3>
+   <table><thead><tr><th>#</th><th>路段</th><th>件數</th></tr></thead><tbody><tr><td>1</td><td>港新五路</td><td>11</td></tr><tr><td>2</td><td>港都路</td><td>10</td></tr><tr><td>3</td><td>港新三路</td><td>6</td></tr><tr><td>4</td><td>民族路</td><td>6</td></tr><tr><td>5</td><td>港都五路</td><td>5</td></tr><tr><td>6</td><td>中山路</td><td>5</td></tr><tr><td>7</td><td>建國路</td><td>3</td></tr><tr><td>8</td><td>大勇路</td><td>3</td></tr><tr><td>9</td><td>中華路</td><td>3</td></tr><tr><td>10</td><td>吳厝六街</td><td>2</td></tr></tbody></table></div>
+ </div>
+</section>
+
+<section>
+ <h2>排行榜（已剔除特殊關係交易）</h2>
+ <p class="lead">榜單只是「有這麼一筆」，不代表你家值這個價。</p>
+ <h3>透天厝總價 TOP 6</h3>
+ <div class="scroll"><table><thead><tr><th>#</th><th>總價</th><th>建坪</th><th>格局</th><th>屋齡</th><th>地址</th></tr></thead>
+  <tbody><tr><td>1</td><td>12,800 萬</td><td>783.75 坪</td><td>—</td><td>32.0</td><td>神清路１３之８號</td></tr><tr><td>2</td><td>3,000 萬</td><td>104.83 坪</td><td>5房2廳5衛</td><td>—</td><td>信義路１１１號</td></tr><tr><td>3</td><td>2,800 萬</td><td>74.69 坪</td><td>4房3廳5衛</td><td>1.0</td><td>忠孝路３９號</td></tr><tr><td>4</td><td>2,000 萬</td><td>64.98 坪</td><td>6房3廳4衛</td><td>41.0</td><td>文昌街１之１５號</td></tr><tr><td>5</td><td>2,000 萬</td><td>59.73 坪</td><td>2房4衛</td><td>32.0</td><td>中山路７７號</td></tr><tr><td>6</td><td>1,800 萬</td><td>68.68 坪</td><td>5房3廳3衛</td><td>9.0</td><td>五權路３７９號</td></tr></tbody></table></div>
+ <div class="two" style="margin-top:26px">
+  <div><h3>電梯宅單價最高 TOP 6</h3>
+   <div class="scroll"><table><thead><tr><th>#</th><th>單價</th><th>總價</th><th>坪數</th><th>社區</th><th>地址</th></tr></thead>
+    <tbody><tr><td>1</td><td>28.24 萬/坪</td><td>1,360 萬</td><td>48.16 坪</td><td>聯悦馥</td><td>港都路７號二十四樓之８</td></tr><tr><td>2</td><td>27.11 萬/坪</td><td>1,546 萬</td><td>60.69 坪</td><td>聯悦馥</td><td>港都路７號三樓之１</td></tr><tr><td>3</td><td>26.52 萬/坪</td><td>860 萬</td><td>32.43 坪</td><td>—</td><td>中山路１９號十三樓之３</td></tr><tr><td>4</td><td>25.44 萬/坪</td><td>500 萬</td><td>19.65 坪</td><td>遠雄之星5期</td><td>港新五路２３９號七樓之７</td></tr><tr><td>5</td><td>25.14 萬/坪</td><td>595 萬</td><td>23.67 坪</td><td>協和豐馥</td><td>港新五路１６６號十一樓之１</td></tr><tr><td>6</td><td>25.01 萬/坪</td><td>858 萬</td><td>34.3 坪</td><td>致富好好(透天)</td><td>中清路九段５３８巷２號九樓之７</td></tr></tbody></table></div></div>
+  <div><h3>電梯宅單價最低 TOP 6</h3>
+   <div class="scroll"><table><thead><tr><th>#</th><th>單價</th><th>總價</th><th>坪數</th><th>屋齡</th><th>社區／地址</th></tr></thead>
+    <tbody><tr><td>1</td><td>12.61 萬/坪</td><td>260 萬</td><td>20.62 坪</td><td>42.0</td><td>天寶商業大樓</td></tr><tr><td>2</td><td>13.79 萬/坪</td><td>750 萬</td><td>54.39 坪</td><td>21.0</td><td>果貿陽明新村B區</td></tr><tr><td>3</td><td>15.35 萬/坪</td><td>920 萬</td><td>59.92 坪</td><td>3.0</td><td>遠雄之星8期</td></tr><tr><td>4</td><td>15.35 萬/坪</td><td>973 萬</td><td>63.39 坪</td><td>21.0</td><td>果貿陽明新村A區</td></tr><tr><td>5</td><td>15.63 萬/坪</td><td>850 萬</td><td>54.39 坪</td><td>21.0</td><td>果貿陽明新村B區</td></tr><tr><td>6</td><td>15.69 萬/坪</td><td>1,110 萬</td><td>70.75 坪</td><td>6.0</td><td>遠雄之星6期</td></tr></tbody></table></div></div>
+ </div>
+</section>
+
+<section>
+ <h2>全部 94 筆成交明細</h2>
+ <p class="lead">可搜尋地址、社區；可依型態篩選；點欄位標題可排序。<span class="tag sp">特殊關係</span> 與 <span class="tag ad">有增建</span> 已標記出來。</p>
+ <div class="tools">
+  <input id="qq" placeholder="搜尋地址或社區名">
+  <select id="ft"><option value="">全部型態</option><option value="住宅大樓">住宅大樓</option><option value="透天厝">透天厝</option><option value="華廈">華廈</option></select>
+  <label><input type="checkbox" id="hs">隱藏特殊關係交易</label>
+  <span id="count"></span>
+ </div>
+ <div class="scroll"><table id="tbl"><thead><tr>
+  <th data-k="d">交易日期</th><th data-k="a">地址</th><th data-k="c">社區</th><th data-k="t">型態</th>
+  <th data-k="p">總價(萬)</th><th data-k="u">單價(萬/坪)</th><th data-k="s">總坪數</th>
+  <th data-k="g">屋齡</th><th data-k="l">格局</th><th data-k="e">電梯</th><th>備註</th>
+ </tr></thead><tbody id="tb"></tbody></table></div>
+</section>
+
+<section>
+ <h2>看完數字，接下來呢？</h2>
+ <p class="lead">行情表只能告訴你「別人成交多少」，沒辦法告訴你「這間值不值得你買」。</p>
+ <div class="callout">
+  <h3>你可以直接問我這些</h3><ol>
+  <li>我看上的這間，跟同社區近期成交比起來合不合理？</li>
+  <li>預算固定，我該買清水還是隔壁區？各有什麼取捨？</li>
+  <li>屋齡 20 年的電梯宅，議價空間該抓多少？</li>
+  <li>備註寫「有增建」的房子，貸款和未來轉手會不會有問題？</li>
+  </ol>
+  <a class="cta" href="https://lin.ee/1WlfBub">加 LINE 問冠良（免費，不推銷）</a>
+ </div>
+</section>
+</div>
+<footer><div class="wrap">
+ <div class="bt">海線房仲冠良</div>
+ <div class="sl">讓你幸福會發光</div>
+ <div>吳冠良　<a href="tel:0915295958">0915-295958</a>　·　LINE：<a href="https://lin.ee/1WlfBub">wosawo</a></div>
+ <div class="src">
+  資料來源：內政部不動產交易實價查詢服務網（lvr.land.moi.gov.tw），查詢條件為臺中市清水區
+  「房地(土地+建物)」及「房地(土地+建物)+車位」買賣案件，實際涵蓋成交日 115/01/04–115/06/17。
+  單價依實價登錄定義計算：車位有單獨計價時扣除車位價與車位面積，否則為總價÷總面積。<br>
+  實價登錄有申報與公布落差，個案交易條件不同，數據僅供參考，不構成任何買賣或投資建議。
+  實際交易請以主管機關查詢結果與現場查證為準。
+ </div>
+</div></footer>
+<script>
+const DATA=[{"a":"港新五路２３９號七樓之７","c":"遠雄之星5期","d":"115/01/04","p":500.0,"u":25.44,"s":19.65,"t":"住宅大樓","g":7.0,"l":"2房2廳1衛","e":"有","k":"","sp":0,"ad":0},{"a":"民權一街７６之３號","c":"","d":"115/01/04","p":1200.0,"u":null,"s":41.88,"t":"透天厝","g":28.0,"l":"4房3廳3衛","e":"無","k":"其他增建;","sp":0,"ad":1},{"a":"鎮新南路１０９巷２８號","c":"","d":"115/01/04","p":625.2,"u":null,"s":55.18,"t":"透天厝","g":44.0,"l":"4房3廳3衛","e":"無","k":"含土地增值稅或其他稅費252,429元;親友、員工、共有人或其他特殊關係間之交易;","sp":1,"ad":0},{"a":"吳厝六街５８巷３弄２６號","c":"","d":"115/01/05","p":310.0,"u":null,"s":17.76,"t":"透天厝","g":46.0,"l":"3房2廳1衛","e":"無","k":"其他增建;未登記建物;","sp":0,"ad":1},{"a":"新南路１１６巷５２號","c":"","d":"115/01/05","p":643.0,"u":null,"s":28.72,"t":"透天厝","g":6.0,"l":"6房2廳3衛","e":"無","k":"親友、員工、共有人或其他特殊關係間之交易;未登記建物;","sp":1,"ad":0},{"a":"港都路７號三樓之１","c":"聯悦馥","d":"115/01/05","p":1546.0,"u":27.11,"s":60.69,"t":"住宅大樓","g":2.0,"l":"3房2廳2衛","e":"有","k":"","sp":0,"ad":0},{"a":"港都五路２５號九樓之２","c":"佳鋐晴灣","d":"115/01/07","p":725.0,"u":19.68,"s":36.84,"t":"住宅大樓","g":5.0,"l":"2房2廳1衛","e":"有","k":"","sp":0,"ad":0},{"a":"建國路９８號十三樓之二","c":"果貿陽明新村C區","d":"115/01/07","p":850.0,"u":15.75,"s":53.96,"t":"住宅大樓","g":20.0,"l":"3房2廳2衛","e":"有","k":"陽台外推;","sp":0,"ad":1},{"a":"和睦路二段１１５巷９號","c":"","d":"115/01/09","p":640.0,"u":null,"s":33.16,"t":"透天厝","g":46.0,"l":"5房2廳3衛","e":"無","k":"其他增建:頂樓、廚房其他增建;","sp":0,"ad":1},{"a":"港新五路１６６號十一樓之１","c":"協和豐馥","d":"115/01/11","p":573.0,"u":24.21,"s":23.67,"t":"住宅大樓","g":null,"l":"2房2廳1衛","e":"有","k":"","sp":0,"ad":0},{"a":"八德路四段８８巷２之５號","c":"","d":"115/01/12","p":1108.0,"u":null,"s":40.33,"t":"透天厝","g":6.0,"l":"4房2廳3衛","e":"無","k":"其他增建;","sp":0,"ad":1},{"a":"港都五路２６號八樓之８","c":"長虹天韻","d":"115/01/12","p":775.0,"u":22.99,"s":33.72,"t":"住宅大樓","g":1.0,"l":"2房2廳1衛","e":"有","k":"","sp":0,"ad":0},{"a":"大勇路１２６號十樓之６","c":"遠雄之星8期","d":"115/01/14","p":920.0,"u":15.35,"s":59.92,"t":"住宅大樓","g":3.0,"l":"4房2廳2衛","e":"有","k":"","sp":0,"ad":0},{"a":"港都路１５９號五樓之１","c":"遠雄之星6期","d":"115/01/14","p":936.0,"u":19.02,"s":49.2,"t":"住宅大樓","g":5.0,"l":"3房2廳2衛","e":"有","k":"","sp":0,"ad":0},{"a":"港都路１６３號九樓之２","c":"遠雄之星6期","d":"115/01/15","p":1250.0,"u":20.39,"s":61.3,"t":"住宅大樓","g":5.0,"l":"4房2廳2衛","e":"有","k":"","sp":0,"ad":0},{"a":"港新五路１６６號八樓之５","c":"協和豐馥","d":"115/01/15","p":982.0,"u":23.17,"s":45.57,"t":"住宅大樓","g":null,"l":"3房2廳2衛","e":"有","k":"建物第一次登記後移轉 預售屋、或土地及建物分件登記案件;","sp":0,"ad":0},{"a":"吳厝六街５８巷８弄１５號","c":"","d":"115/01/17","p":650.0,"u":null,"s":18.68,"t":"透天厝","g":46.0,"l":"5房3廳3衛","e":"無","k":"其他增建:頂樓(貳樓)其他增建;","sp":0,"ad":1},{"a":"中山路３３９之１０號九樓","c":"天寶商業大樓","d":"115/01/17","p":260.0,"u":12.61,"s":20.62,"t":"住宅大樓","g":42.0,"l":"2房2廳1衛","e":"有","k":"","sp":0,"ad":0},{"a":"大勇路１３０號三樓之６","c":"遠雄之星8期","d":"115/01/18","p":1090.0,"u":18.22,"s":59.83,"t":"住宅大樓","g":3.0,"l":"4房2廳2衛","e":"有","k":"","sp":0,"ad":0},{"a":"中山路１９號十三樓之３","c":"","d":"115/01/22","p":860.0,"u":26.52,"s":32.43,"t":"住宅大樓","g":4.0,"l":"2房2廳2衛","e":"有","k":"","sp":0,"ad":0},{"a":"中清路九段１２１０號","c":"","d":"115/01/22","p":845.0,"u":null,"s":45.33,"t":"透天厝","g":30.0,"l":"3房1廳3衛","e":"無","k":"本件買賣契稅新台幣16908元整由賣方負擔。其他增建;","sp":0,"ad":1},{"a":"甲南路３之２號","c":"","d":"115/01/26","p":300.0,"u":null,"s":77.22,"t":"透天厝","g":37.0,"l":"8房2廳6衛","e":"無","k":"含未辦保存房屋(門牌：清水區頂湳路71號)持分1/3親友、員工、共有人或其他特殊關係間之交易;","sp":1,"ad":0},{"a":"神清路１５之５號","c":"","d":"115/01/26","p":780.0,"u":null,"s":53.38,"t":"透天厝","g":26.0,"l":"6房3廳3衛","e":"無","k":"其他增建;未登記建物;","sp":0,"ad":1},{"a":"港都路７號二十四樓之８","c":"聯悦馥","d":"115/01/27","p":1360.0,"u":28.24,"s":48.16,"t":"住宅大樓","g":2.0,"l":"3房2廳2衛","e":"有","k":"","sp":0,"ad":0},{"a":"信義三街３８號","c":"","d":"115/01/28","p":620.0,"u":null,"s":54.75,"t":"透天厝","g":26.0,"l":"5房2廳3衛","e":"無","k":"親友、員工、共有人或其他特殊關係間之交易;","sp":1,"ad":0},{"a":"港新三路２６號七樓之２","c":"遠雄之星3期","d":"115/01/30","p":850.0,"u":16.66,"s":51.01,"t":"住宅大樓","g":7.0,"l":"3房2廳2衛","e":"有","k":"","sp":0,"ad":0},{"a":"港新三路２６號五樓之５","c":"遠雄之星3期","d":"115/02/01","p":777.0,"u":18.73,"s":41.48,"t":"住宅大樓","g":7.0,"l":"2房2廳1衛","e":"有","k":"","sp":0,"ad":0},{"a":"中華路１７６號六樓之１","c":"青雲賦","d":"115/02/01","p":790.0,"u":22.03,"s":35.85,"t":"華廈","g":2.0,"l":"2房1廳2衛","e":"有","k":"","sp":0,"ad":0},{"a":"港新五路２１５號七樓之１","c":"遠雄之星","d":"115/02/02","p":650.0,"u":20.55,"s":31.64,"t":"住宅大樓","g":8.0,"l":"2房2廳1衛","e":"有","k":"","sp":0,"ad":0},{"a":"臨港路五段８０８號","c":"","d":"115/02/05","p":1520.0,"u":null,"s":76.27,"t":"透天厝","g":35.0,"l":"5房3廳3衛","e":"無","k":"1.海濱段2187-14、2187-15二筆地號及236建號總價1320萬元正。2.海濱段2187-19、2187-3二筆地號總價200萬元正。其他增建;","sp":0,"ad":1},{"a":"忠孝路１７８巷６號二樓","c":"欣願大樓","d":"115/02/05","p":600.0,"u":23.06,"s":26.02,"t":"華廈","g":6.0,"l":"2房2廳1衛","e":"有","k":"","sp":0,"ad":0},{"a":"清海街１３１號","c":"","d":"115/02/06","p":1730.0,"u":null,"s":55.54,"t":"透天厝","g":1.0,"l":"3房3廳5衛","e":"無","k":"","sp":0,"ad":0},{"a":"民族路三段１２１號十五樓之２","c":"聯悅聚","d":"115/02/07","p":1350.0,"u":18.39,"s":73.41,"t":"住宅大樓","g":5.0,"l":"4房2廳2衛","e":"有","k":"","sp":0,"ad":0},{"a":"和平路２２０巷１８之８號","c":"","d":"115/02/07","p":1300.0,"u":null,"s":41.33,"t":"透天厝","g":24.0,"l":"4房3廳3衛","e":"無","k":"壹樓空地、採光罩、車庫牌樓、圍牆陽台外推;其他增建;","sp":0,"ad":1},{"a":"信義路１１１號","c":"","d":"115/02/09","p":3000.0,"u":null,"s":104.83,"t":"透天厝","g":null,"l":"5房2廳5衛","e":"有","k":"建物第一次登記後移轉","sp":0,"ad":0},{"a":"港都五路３８號七樓之２","c":"長虹天韻","d":"115/02/10","p":870.0,"u":22.37,"s":38.89,"t":"住宅大樓","g":1.0,"l":"2房2廳1衛","e":"有","k":"","sp":0,"ad":0},{"a":"客庄路８５巷４１號","c":"","d":"115/02/10","p":150.0,"u":null,"s":36.69,"t":"透天厝","g":31.0,"l":"6房3廳3衛","e":"無","k":"親友、員工、共有人或其他特殊關係間之交易;","sp":1,"ad":0},{"a":"港都路１５５號二樓之２","c":"遠雄之星6期","d":"115/02/25","p":1110.0,"u":15.69,"s":70.75,"t":"住宅大樓","g":6.0,"l":"3房2廳2衛","e":"有","k":"其他增建;","sp":0,"ad":1},{"a":"民族路三段１２３號十三樓之７","c":"聯悅聚","d":"115/03/01","p":920.0,"u":18.53,"s":49.65,"t":"住宅大樓","g":5.0,"l":"3房2廳2衛","e":"有","k":"","sp":0,"ad":0},{"a":"港新三路３７號四樓之５","c":"遠雄之星7期","d":"115/03/01","p":630.0,"u":21.41,"s":29.43,"t":"住宅大樓","g":4.0,"l":"2房2廳1衛","e":"有","k":"","sp":0,"ad":0},{"a":"民族路三段１１７號十四樓之６","c":"聯悅聚","d":"115/03/01","p":840.0,"u":21.89,"s":38.37,"t":"住宅大樓","g":5.0,"l":"2房2廳1衛","e":"有","k":"","sp":0,"ad":0},{"a":"文昌街１之１５號","c":"","d":"115/03/01","p":2000.0,"u":null,"s":64.98,"t":"透天厝","g":41.0,"l":"6房3廳4衛","e":"無","k":"其他增建;","sp":0,"ad":1},{"a":"南華路９０巷３８號","c":"","d":"115/03/03","p":1450.0,"u":null,"s":58.79,"t":"透天厝","g":24.0,"l":"4房3廳3衛","e":"無","k":"其他增建;","sp":0,"ad":1},{"a":"中山路７７號","c":"","d":"115/03/06","p":2000.0,"u":null,"s":59.73,"t":"透天厝","g":32.0,"l":"2房4衛","e":"無","k":"","sp":0,"ad":0},{"a":"五權路３７９號","c":"","d":"115/03/06","p":1800.0,"u":null,"s":68.68,"t":"透天厝","g":9.0,"l":"5房3廳3衛","e":"無","k":"","sp":0,"ad":0},{"a":"大勇路１３０號八樓之３","c":"遠雄之星8期","d":"115/03/08","p":1000.0,"u":18.68,"s":53.54,"t":"住宅大樓","g":3.0,"l":"3房2廳2衛","e":"有","k":"","sp":0,"ad":0},{"a":"港都路１６１號十一樓之３","c":"遠雄之星6期","d":"115/03/08","p":758.0,"u":18.14,"s":41.79,"t":"住宅大樓","g":6.0,"l":"2房2廳1衛","e":"有","k":"","sp":0,"ad":0},{"a":"海濱路２５７之１９號","c":"","d":"115/03/10","p":650.0,"u":null,"s":28.63,"t":"透天厝","g":37.0,"l":"4房2廳4衛","e":"無","k":"其他增建;","sp":0,"ad":1},{"a":"港都路１６５號二樓之５","c":"遠雄之星6期","d":"115/03/10","p":1258.0,"u":19.85,"s":70.46,"t":"住宅大樓","g":6.0,"l":"3房2廳2衛","e":"有","k":"其他增建;","sp":0,"ad":1},{"a":"港新五路１５２號二樓之２","c":"協和丰景","d":"115/03/14","p":830.0,"u":17.84,"s":46.53,"t":"住宅大樓","g":2.0,"l":"3房2廳2衛","e":"有","k":"","sp":0,"ad":0},{"a":"忠貞東街６６號十樓","c":"果貿陽明新村A區","d":"115/03/21","p":973.0,"u":15.35,"s":63.39,"t":"住宅大樓","g":21.0,"l":"4房2廳2衛","e":"有","k":"","sp":0,"ad":0},{"a":"中央路４１巷４號","c":"","d":"115/03/21","p":500.0,"u":null,"s":34.32,"t":"透天厝","g":41.0,"l":"6房2廳3衛","e":"無","k":"其他增建;","sp":0,"ad":1},{"a":"神清路１３之８號","c":"","d":"115/03/23","p":12800.0,"u":null,"s":783.75,"t":"透天厝","g":32.0,"l":"","e":"無","k":"頂樓加蓋;其他增建;","sp":0,"ad":1},{"a":"中華路１７２號八樓之５","c":"青雲賦","d":"115/03/23","p":765.0,"u":22.41,"s":34.13,"t":"華廈","g":2.0,"l":"2房2廳1衛","e":"有","k":"","sp":0,"ad":0},{"a":"港都五路２６號六樓之７","c":"長虹天韻","d":"115/03/24","p":740.0,"u":21.91,"s":33.78,"t":"住宅大樓","g":1.0,"l":"2房1廳1衛","e":"有","k":"","sp":0,"ad":0},{"a":"鎮新一街６０號","c":"","d":"115/03/28","p":750.0,"u":null,"s":36.61,"t":"透天厝","g":42.0,"l":"4房3廳2衛","e":"無","k":"其他增建：空地增建、２樓增設陽台、騎樓二側通道封牆其他增建;","sp":0,"ad":1},{"a":"港都路７號二十二樓之８","c":"聯悦馥","d":"115/03/28","p":800.0,"u":16.61,"s":48.16,"t":"住宅大樓","g":2.0,"l":"3房2廳2衛","e":"有","k":"親友、員工、共有人或其他特殊關係間之交易;","sp":1,"ad":0},{"a":"港新五路１５２號十四樓之１","c":"協和丰景","d":"115/03/29","p":967.0,"u":20.78,"s":46.53,"t":"住宅大樓","g":2.0,"l":"3房2廳2衛","e":"有","k":"","sp":0,"ad":0},{"a":"民族路二段３７１巷５號","c":".","d":"115/03/30","p":1350.0,"u":null,"s":70.9,"t":"透天厝","g":21.0,"l":"3房3廳3衛","e":"無","k":"其他增建;","sp":0,"ad":1},{"a":"港新三路７號四樓之１０","c":"櫻花市鎮之櫻","d":"115/04/01","p":728.0,"u":21.93,"s":33.2,"t":"住宅大樓","g":null,"l":"2房2廳1衛","e":"有","k":"","sp":0,"ad":0},{"a":"港埠路三段２１１號七樓之５","c":"勝美新橫濱","d":"115/04/01","p":795.0,"u":17.67,"s":44.99,"t":"住宅大樓","g":8.0,"l":"3房2廳2衛","e":"有","k":"","sp":0,"ad":0},{"a":"民有路１９０巷９１之７號","c":"","d":"115/04/06","p":1225.0,"u":null,"s":50.62,"t":"透天厝","g":7.0,"l":"3房3廳3衛","e":"無","k":"","sp":0,"ad":0},{"a":"自立路６８號","c":"","d":"115/04/07","p":838.0,"u":null,"s":41.9,"t":"透天厝","g":37.0,"l":"5房3廳3衛","e":"無","k":"頂樓加蓋;其他增建;","sp":0,"ad":1},{"a":"南社路３０１巷８８之９號","c":"","d":"115/04/08","p":1350.0,"u":null,"s":44.88,"t":"透天厝","g":6.0,"l":"4房2廳4衛","e":"無","k":"其他增建：壹樓空地、4樓2作陽台採光罩其他增建;","sp":0,"ad":1},{"a":"港新五路１５６號十三樓之１","c":"協和丰景","d":"115/04/09","p":895.0,"u":19.23,"s":46.53,"t":"住宅大樓","g":2.0,"l":"3房2廳2衛","e":"有","k":"","sp":0,"ad":0},{"a":"港新五路１６６號十一樓之１","c":"協和豐馥","d":"115/04/09","p":595.0,"u":25.14,"s":23.67,"t":"住宅大樓","g":1.0,"l":"2房2廳1衛","e":"有","k":"","sp":0,"ad":0},{"a":"仁愛路８５巷１６之２０號","c":"","d":"115/04/11","p":1240.0,"u":null,"s":53.25,"t":"透天厝","g":14.0,"l":"4房2廳3衛","e":"無","k":"陽台外推;其他增建;","sp":0,"ad":1},{"a":"民族路三段５７號十四樓之１","c":"鯨天下","d":"115/04/13","p":840.0,"u":16.76,"s":50.12,"t":"住宅大樓","g":6.0,"l":"3房2廳2衛","e":"有","k":"","sp":0,"ad":0},{"a":"中山路５９９之７號","c":"","d":"115/04/14","p":420.0,"u":null,"s":43.71,"t":"透天厝","g":null,"l":"5房2廳2衛","e":"無","k":"頂樓加蓋;其他增建;","sp":0,"ad":1},{"a":"忠孝路３９號","c":"","d":"115/04/14","p":2800.0,"u":null,"s":74.69,"t":"透天厝","g":1.0,"l":"4房3廳5衛","e":"有","k":"其他增建;","sp":0,"ad":1},{"a":"港新三路１號八樓之１","c":"櫻花市鎮之櫻","d":"115/04/15","p":1081.0,"u":23.44,"s":46.11,"t":"住宅大樓","g":1.0,"l":"3房2廳2衛","e":"有","k":"","sp":0,"ad":0},{"a":"港新五路２１７號十樓之２","c":"遠雄之星","d":"115/04/15","p":1008.0,"u":18.46,"s":54.6,"t":"住宅大樓","g":9.0,"l":"3房2廳2衛","e":"有","k":"","sp":0,"ad":0},{"a":"高美路１６０巷７之５號","c":"","d":"115/04/17","p":1150.0,"u":null,"s":52.27,"t":"透天厝","g":7.0,"l":"5房2廳3衛","e":"無","k":"","sp":0,"ad":0},{"a":"港都路１５９號二樓之３","c":"遠雄之星6期","d":"115/04/18","p":710.0,"u":16.67,"s":42.6,"t":"住宅大樓","g":6.0,"l":"2房2廳1衛","e":"有","k":"","sp":0,"ad":0},{"a":"港都路１６３號二樓之３","c":"遠雄之星6期","d":"115/04/20","p":600.0,"u":17.74,"s":33.83,"t":"住宅大樓","g":6.0,"l":"2房2廳1衛","e":"有","k":"","sp":0,"ad":0},{"a":"新北路１６之５號","c":"","d":"115/04/21","p":1000.0,"u":null,"s":41.33,"t":"透天厝","g":7.0,"l":"4房2廳5衛","e":"無","k":"親友、員工、共有人或其他特殊關係間之交易;","sp":1,"ad":0},{"a":"中華路３３２號","c":"","d":"115/04/21","p":1750.0,"u":null,"s":82.08,"t":"透天厝","g":32.0,"l":"8房2廳5衛","e":"無","k":"其他增建;","sp":0,"ad":1},{"a":"民族路三段５５號七樓之１","c":"鯨天下","d":"115/04/25","p":627.0,"u":16.28,"s":38.51,"t":"住宅大樓","g":6.0,"l":"2房2廳1衛","e":"有","k":"","sp":0,"ad":0},{"a":"中清路九段５３８巷２號九樓之７","c":"致富好好(透天)","d":"115/04/26","p":858.0,"u":25.01,"s":34.3,"t":"住宅大樓","g":3.0,"l":"2房2廳1衛","e":"有","k":"","sp":0,"ad":0},{"a":"港都五路２７號九樓之１","c":"佳鋐晴灣","d":"115/04/26","p":883.0,"u":18.03,"s":48.98,"t":"住宅大樓","g":6.0,"l":"3房2廳2衛","e":"有","k":"","sp":0,"ad":0},{"a":"港新五路２１７號五樓之１","c":"遠雄之星","d":"115/04/28","p":750.0,"u":15.83,"s":47.38,"t":"住宅大樓","g":9.0,"l":"2房2廳1衛","e":"有","k":"","sp":0,"ad":0},{"a":"建國路１２８號十樓之一","c":"果貿陽明新村B區","d":"115/05/01","p":850.0,"u":15.63,"s":54.39,"t":"住宅大樓","g":21.0,"l":"3房2廳2衛","e":"有","k":"陽台外推;其他增建;","sp":0,"ad":1},{"a":"港新五路１６２號五樓之５","c":"協和豐馥","d":"115/05/03","p":668.0,"u":20.82,"s":32.08,"t":"住宅大樓","g":1.0,"l":"2房2廳1衛","e":"有","k":"","sp":0,"ad":0},{"a":"三田路３之１４號","c":"","d":"115/05/04","p":500.0,"u":null,"s":80.86,"t":"透天厝","g":39.0,"l":"3房1廳3衛","e":"無","k":"親友、員工、共有人或其他特殊關係間之交易;","sp":1,"ad":0},{"a":"鰲新三街８８之１號","c":"","d":"115/05/04","p":1248.0,"u":null,"s":52.61,"t":"透天厝","g":14.0,"l":"4房2廳3衛","e":"無","k":"其他增建;","sp":0,"ad":1},{"a":"五權路２６１號","c":"","d":"115/05/06","p":160.0,"u":null,"s":10.63,"t":"透天厝","g":49.0,"l":"3房2廳1衛","e":"無","k":"","sp":0,"ad":0},{"a":"鰲峰路６２１號三樓之３","c":"","d":"115/05/07","p":570.0,"u":23.17,"s":24.6,"t":"華廈","g":6.0,"l":"2房2廳1衛","e":"有","k":"","sp":0,"ad":0},{"a":"華江北街１７１號","c":"","d":"115/05/08","p":3000.0,"u":null,"s":126.42,"t":"透天厝","g":6.0,"l":"5房5廳7衛","e":"無","k":"親友、員工、共有人或其他特殊關係間之交易;","sp":1,"ad":0},{"a":"中山路３７巷１３號","c":"","d":"115/05/13","p":700.0,"u":null,"s":32.65,"t":"透天厝","g":58.0,"l":"4房2廳4衛","e":"無","k":"其他增建;","sp":0,"ad":1},{"a":"護岸路３５之２號","c":"","d":"115/05/15","p":475.0,"u":null,"s":54.14,"t":"透天厝","g":31.0,"l":"5房2廳5衛","e":"無","k":"","sp":0,"ad":0},{"a":"文興路３０１巷２９號","c":"","d":"115/05/18","p":420.0,"u":null,"s":48.79,"t":"透天厝","g":50.0,"l":"5房3廳3衛","e":"無","k":"","sp":0,"ad":0},{"a":"仁愛路８３巷１９之９號","c":"","d":"115/05/19","p":1188.0,"u":null,"s":43.22,"t":"透天厝","g":7.0,"l":"4房2廳5衛","e":"無","k":"","sp":0,"ad":0},{"a":"港新三路５號十一樓之８","c":"櫻花市鎮之櫻","d":"115/05/27","p":991.0,"u":22.41,"s":44.23,"t":"住宅大樓","g":1.0,"l":"3房2廳2衛","e":"有","k":"","sp":0,"ad":0},{"a":"建國路１３０號九樓之二","c":"果貿陽明新村B區","d":"115/06/17","p":750.0,"u":13.79,"s":54.39,"t":"住宅大樓","g":21.0,"l":"3房2廳2衛","e":"有","k":"坡道平面式,地下一層,編號84車位","sp":0,"ad":0}];
+const tb=document.getElementById('tb'),qq=document.getElementById('qq'),
+ ft=document.getElementById('ft'),hs=document.getElementById('hs'),ct=document.getElementById('count');
+let sk='d',sd=-1;
+function esc(s){return (s==null?'':String(s)).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+function render(){
+ const q=qq.value.trim(),t=ft.value,h=hs.checked;
+ let list=DATA.filter(r=>(!q||(r.a+r.c).includes(q))&&(!t||r.t===t)&&(!h||!r.sp));
+ list.sort((x,y)=>{let a=x[sk],b=y[sk];
+  if(a==null)a=sd>0?Infinity:-Infinity; if(b==null)b=sd>0?Infinity:-Infinity;
+  return (typeof a==='number'?a-b:String(a).localeCompare(String(b),'zh-Hant'))*sd});
+ tb.innerHTML=list.map(r=>`<tr><td>${r.d}</td><td>${esc(r.a)}</td><td>${esc(r.c)||'—'}</td>
+  <td>${r.t}</td><td class="num">${r.p.toLocaleString()}</td>
+  <td class="num">${r.u!=null?r.u:'—'}</td><td class="num">${r.s!=null?r.s:'—'}</td>
+  <td class="num">${r.g!=null?r.g:'—'}</td><td>${esc(r.l)||'—'}</td><td>${r.e||'—'}</td>
+  <td>${r.sp?'<span class="tag sp">特殊關係</span>':''}${r.ad?'<span class="tag ad">有增建</span>':''}
+  ${esc(r.k).replace(/親友、員工、共有人或其他特殊關係間之交易;?/,'')}</td></tr>`).join('');
+ ct.textContent=`顯示 ${list.length} / ${DATA.length} 筆`;
+}
+document.querySelectorAll('#tbl th[data-k]').forEach(th=>th.onclick=()=>{
+ const k=th.dataset.k; sd=(sk===k)?-sd:1; sk=k; render();});
+[qq,ft].forEach(el=>el.oninput=render); hs.onchange=render; render();
+</script>
+
+<!-- REVIEW:AUTO 由 scripts/review-cta.mjs 產生，不要手改 -->
+<section class="gr-cta" aria-labelledby="gr-cta-h">
+  <div class="gr-inner">
+    <p class="gr-eyebrow">GOOGLE 評論</p>
+    <h2 id="gr-cta-h">這些整理，有幫到你嗎？</h2>
+    <p class="gr-lede">留一則 Google 評論，讓其他正在煩惱同樣問題的人，也找得到這裡。<br>一句話就夠，不用寫長。</p>
+    <a class="gr-btn" href="https://g.page/r/Cc3MaJq-9w1REAE/review" target="_blank" rel="noopener noreferrer">
+      <svg class="gr-star" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l2.9 6.6 7.1.7-5.3 4.8 1.5 7-6.2-3.6L5.8 21l1.5-7L2 9.3l7.1-.7z"/></svg>
+      去 Google 留評論
+    </a>
+    <p class="gr-note">會開啟 Google 地圖的評論視窗，需要登入 Google 帳號。</p>
+  </div>
+</section>
+<style>
+.gr-cta{max-width:820px;margin:34px auto 40px;padding:26px 24px;
+ background:#16283f;border-radius:16px;color:#e9edf2;
+ font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif;
+ text-align:center;box-sizing:border-box}
+.gr-cta *{box-sizing:border-box}
+.gr-inner{max-width:34em;margin:0 auto}
+.gr-cta .gr-eyebrow{margin:0 0 8px;font-size:12.5px;letter-spacing:.2em;color:#e8c887;font-weight:500}
+.gr-cta h2{margin:0 0 10px;font-size:23px;line-height:1.4;color:#fff;font-weight:700;
+ font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif}
+.gr-cta .gr-lede{margin:0 0 20px;font-size:16px;line-height:1.8;color:#cfd8e2}
+.gr-cta .gr-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+ min-height:52px;padding:13px 30px;border-radius:999px;
+ background:#c8963e;color:#20180a;text-decoration:none;
+ font-size:17px;font-weight:700;line-height:1.4}
+.gr-cta .gr-btn:hover{background:#dcae5c}
+.gr-cta .gr-btn:focus-visible{outline:3px solid #e8c887;outline-offset:3px}
+.gr-cta .gr-star{width:20px;height:20px;fill:#20180a;flex:none}
+.gr-cta .gr-note{margin:14px 0 0;font-size:13.5px;color:#9fb0c4;line-height:1.65}
+@media(max-width:640px){
+  .gr-cta{margin:26px 16px 32px;padding:22px 18px}
+  .gr-cta h2{font-size:20px}
+  .gr-cta .gr-btn{width:100%}
+}
+</style>
+<!-- /REVIEW:AUTO -->
+<!-- CLUSTER:AUTO 由 scripts/seo-build.mjs 產生，不要手改 -->
+<section class="seo-cluster">
+<h2>海線在地・延伸閱讀</h2>
+<p>想知道住在哪一區比較適合你：</p>
+<ul><li><a href="/shalu-life">沙鹿在地生活指南</a></li><li><a href="/qingshui-life">清水在地生活指南</a></li><li><a href="/wuqi-life">梧棲在地生活指南</a></li><li><a href="/longjing-life">龍井在地生活指南</a></li><li><a href="/dadu-life">大肚在地生活指南</a></li><li><a href="/dajia-life">大甲在地生活指南</a></li><li><a href="/shalu-115-price">沙鹿 115 年成交分析</a></li><li><a href="/wuqi-115-price">梧棲 115 年成交分析</a></li><li><a href="/longjing-115-price">龍井 115 年成交分析</a></li><li><a href="/haixian-school-map">海線學區地圖</a></li><li><a href="/shalu-food-map">靜宜大學美食地圖</a></li></ul>
+</section>
+<style>
+.seo-cluster{max-width:820px;margin:34px auto 40px;padding:24px;background:#fff;
+ border:1px solid #ddd2bd;border-radius:16px;
+ font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif}
+.seo-cluster h2{font-size:20px;color:#16283f;margin:0 0 8px;line-height:1.4}
+.seo-cluster p{font-size:15px;color:#6f6a60;margin:0 0 14px;line-height:1.7}
+.seo-cluster ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.seo-cluster a{display:flex;align-items:center;min-height:44px;padding:8px 14px;
+ background:#f7f3ea;border:1px solid #ddd2bd;border-radius:10px;
+ color:#16283f;text-decoration:none;font-size:15.5px;line-height:1.5}
+.seo-cluster a:hover{border-color:#c8963e}
+@media(max-width:520px){.seo-cluster{margin:24px 16px 32px;padding:18px}}
+</style>
+<!-- /CLUSTER:AUTO -->
+</body>
+</html>

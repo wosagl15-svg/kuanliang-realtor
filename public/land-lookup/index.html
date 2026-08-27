@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>海線地主土地查詢懶人包｜航照圖・使用分區・環境限制怎麼查</title>
+<meta name="description" content="8 個免費政府查詢網站，一頁查完自己土地的使用分區、歷年航照圖、環境敏感區與淹水潛勢。海線房仲冠良整理，沙鹿清水梧棲龍井大肚大甲。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#e8e7dd;
+  --paper-2:#f2f1e9;
+  --card:#fbfaf5;
+  --ink:#1a231c;
+  --pine:#2f4a37;
+  --pine-2:#3f6049;
+  --moss:#7d8b6a;
+  --mark:#b4372a;
+  --muted:#666b60;
+  --rule:#c9c8ba;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Noto Sans TC",system-ui,sans-serif;
+  color:var(--ink);line-height:1.85;font-size:16px;
+  background:var(--paper);
+  background-image:
+    linear-gradient(rgba(47,74,55,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47,74,55,.055) 1px, transparent 1px);
+  background-size:34px 34px;
+}
+.wrap{max-width:780px;margin:0 auto;padding:0 18px}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+
+/* header */
+header{background:var(--pine);color:var(--paper-2);padding:46px 0 40px;position:relative;overflow:hidden}
+header::before{
+  content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(232,231,221,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232,231,221,.07) 1px, transparent 1px);
+  background-size:34px 34px;
+}
+header .wrap{position:relative}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.24em;color:#a9bfa5;margin-bottom:16px}
+h1{font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(27px,6.4vw,40px);line-height:1.35;letter-spacing:.01em}
+h1 span{color:#a9bfa5}
+.lead{margin-top:16px;color:#c5d2c0;font-size:15.5px;max-width:33em}
+
+/* flow */
+.flow{background:var(--card);border:1px solid var(--rule);border-radius:2px;padding:22px 20px;margin:30px 0}
+.flow h2{font-family:"Noto Serif TC",serif;font-weight:900;font-size:17px;color:var(--pine);margin-bottom:4px}
+.flow p.k{font-size:13.5px;color:var(--muted);margin-bottom:16px}
+.steps{display:grid;gap:12px}
+.step{display:flex;gap:13px;align-items:flex-start}
+.step .n{
+  font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;
+  color:var(--mark);border:1px solid var(--mark);border-radius:50%;
+  width:24px;height:24px;flex-shrink:0;display:grid;place-items:center;margin-top:3px;
+}
+.step .b{font-size:15px}
+.step .b em{font-style:normal;color:var(--muted);font-size:13.5px;display:block;line-height:1.7}
+
+/* section rule */
+.srule{display:flex;align-items:center;gap:12px;margin:42px 0 20px}
+.srule h2{font-family:"Noto Serif TC",serif;font-weight:900;font-size:20px;color:var(--pine);white-space:nowrap}
+.srule::after{content:"";flex:1;height:1px;background:var(--rule)}
+
+/* site cards */
+.site{
+  background:var(--card);border:1px solid var(--rule);border-radius:2px;
+  padding:20px 20px 18px;margin-bottom:14px;position:relative;
+}
+.site::before,.site::after{
+  content:"";position:absolute;width:9px;height:9px;border:1px solid var(--moss);
+}
+.site::before{top:6px;left:6px;border-right:none;border-bottom:none}
+.site::after{bottom:6px;right:6px;border-left:none;border-top:none}
+.site .head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:3px}
+.site .no{font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:600;color:var(--mark);letter-spacing:.05em}
+.site h3{font-family:"Noto Serif TC",serif;font-weight:900;font-size:18.5px;color:var(--ink);line-height:1.4}
+.site .org{font-size:12.5px;color:var(--muted)}
+.site .use{font-size:14.5px;color:var(--muted);margin:8px 0 12px}
+.site ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.site ul li{
+  font-size:12.5px;color:var(--pine-2);background:#e6eae0;
+  border:1px solid #d3dbcd;border-radius:2px;padding:3px 9px;
+}
+.site .why{
+  font-size:14.5px;background:#f0efe6;border-left:3px solid var(--moss);
+  padding:11px 13px;margin-bottom:14px;color:#3d4438;
+}
+.site .why b{color:var(--pine)}
+.go{
+  display:inline-flex;align-items:center;gap:9px;text-decoration:none;
+  background:var(--pine);color:var(--paper-2);border-radius:2px;
+  padding:10px 16px;font-size:14.5px;font-weight:500;transition:.15s;
+}
+.go:hover{background:var(--pine-2)}
+.go:focus-visible{outline:2px solid var(--mark);outline-offset:2px}
+.go .u{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:#a9bfa5;word-break:break-all}
+.go .arw{color:#a9bfa5}
+
+/* five things */
+.five{counter-reset:f}
+.f{background:var(--card);border:1px solid var(--rule);border-top:none;padding:17px 19px}
+.f:first-child{border-top:1px solid var(--rule)}
+.f h4{font-family:"Noto Serif TC",serif;font-weight:900;font-size:16.5px;color:var(--pine);margin-bottom:5px}
+.f h4::before{
+  counter-increment:f;content:counter(f);
+  font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--mark);
+  margin-right:9px;vertical-align:1px;
+}
+.f p{font-size:14.5px;color:#3d4438}
+.f p+p{margin-top:7px}
+.f b{color:var(--pine)}
+
+/* warn */
+.warn{background:var(--pine);color:var(--paper-2);border-radius:2px;padding:24px 22px;margin:34px 0}
+.warn h3{font-family:"Noto Serif TC",serif;font-weight:900;font-size:20px;color:#e9c96b;margin-bottom:12px}
+.warn p{font-size:14.5px;color:#c5d2c0;margin-bottom:11px}
+.warn strong{color:#fff}
+.warn .grid{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
+.warn .grid span{font-size:13px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:2px;padding:4px 10px}
+.warn a{color:#e9c96b;font-family:"IBM Plex Mono",monospace;font-size:13px;word-break:break-all}
+
+/* quote */
+.quote{margin:38px 0;padding:26px 4px;text-align:center;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.quote p{font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(19px,4.6vw,25px);color:var(--pine);line-height:1.7}
+.quote small{display:block;margin-top:14px;font-family:"Noto Sans TC",sans-serif;font-weight:400;font-size:14.5px;color:var(--muted);line-height:1.9}
+
+/* cta */
+.cta{background:var(--card);border:1px solid var(--rule);border-top:3px solid var(--mark);border-radius:2px;padding:26px 22px;text-align:center;margin-bottom:14px}
+.cta h3{font-family:"Noto Serif TC",serif;font-weight:900;font-size:21px;color:var(--pine);margin-bottom:7px}
+.cta p{font-size:14.5px;color:var(--muted);margin-bottom:17px}
+.cta a{display:inline-block;text-decoration:none;font-weight:500;font-size:15px;padding:12px 26px;border-radius:2px;margin:5px 4px;transition:.15s}
+.cta a.p{background:var(--mark);color:#fff}
+.cta a.s{background:var(--pine);color:var(--paper-2)}
+.cta a:hover{transform:translateY(-1px)}
+.foot{text-align:center;font-size:12.5px;color:var(--muted);padding:20px 0 34px;line-height:1.95}
+
+@media (max-width:520px){
+  .go{width:100%;flex-direction:column;align-items:flex-start;gap:4px}
+  .site h3{font-size:17px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+@media print{
+  body{background:#fff}
+  header{background:#fff;color:#000;padding:14px 0}
+  header::before{display:none}
+  .eyebrow,h1 span,.lead{color:#555}
+  .site,.f,.flow{break-inside:avoid;border-color:#bbb}
+  .go{background:#fff;color:#000;border:1px solid #999}
+  .go .u,.go .arw{color:#000}
+  .warn{background:#fff;color:#000;border:1px solid #999}
+  .warn h3,.warn p,.warn strong,.warn a{color:#000}
+  .cta{display:none}
+}
+</style>
+<!-- SEO:AUTO 由 scripts/seo-build.mjs 產生，不要手改 -->
+<link rel="canonical" href="https://kuanhome.com/land-lookup">
+<meta property="og:url" content="https://kuanhome.com/land-lookup">
+<meta property="og:site_name" content="海線房仲冠良">
+<meta property="og:locale" content="zh_TW">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://kuanhome.com/land-lookup#article","headline":"海線地主土地查詢懶人包｜航照圖・使用分區・環境限制怎麼查","description":"8 個免費政府查詢網站，一頁查完自己土地的使用分區、歷年航照圖、環境敏感區與淹水潛勢。海線房仲冠良整理，沙鹿清水梧棲龍井大肚大甲。","url":"https://kuanhome.com/land-lookup","inLanguage":"zh-Hant-TW","dateModified":"2026-08-27T15:13:48.333Z","author":{"@id":"https://kuanhome.com/#wuguanliang"},"publisher":{"@id":"https://kuanhome.com/#agent"},"mainEntityOfPage":{"@id":"https://kuanhome.com/land-lookup"}},{"@type":"RealEstateAgent","@id":"https://kuanhome.com/#agent","name":"海線房仲冠良","alternateName":"吳冠良｜台中海線房地產顧問","description":"台中海線專業房地產仲介，深耕沙鹿、清水、梧棲、龍井、大肚、大甲六區。提供資產配置、稅務諮詢、簡易裝潢，及買賣委託與土地買賣。","slogan":"懂你又懂房","url":"https://kuanhome.com/","image":"https://kuanhome.com/card/owner.webp","telephone":"+886-915-295-958","email":"wosagl15@gmail.com","address":{"@type":"PostalAddress","addressLocality":"沙鹿區","addressRegion":"台中市","postalCode":"433","addressCountry":"TW"},"geo":{"@type":"GeoCoordinates","latitude":24.2340986,"longitude":120.560349},"priceRange":"$$","areaServed":[{"@type":"AdministrativeArea","name":"台中市沙鹿區"},{"@type":"AdministrativeArea","name":"台中市清水區"},{"@type":"AdministrativeArea","name":"台中市梧棲區"},{"@type":"AdministrativeArea","name":"台中市龍井區"},{"@type":"AdministrativeArea","name":"台中市大肚區"},{"@type":"AdministrativeArea","name":"台中市大甲區"}],"sameAs":["https://www.facebook.com/share/14XZ3Wy4nLZ/","https://www.instagram.com/asmile55178/","https://www.youtube.com/@吳冠良-w9v","https://lin.ee/1WlfBub","https://sales.myhomes.com.tw/0915295958"],"employee":{"@type":"Person","@id":"https://kuanhome.com/#wuguanliang","name":"吳冠良","jobTitle":"台中海線專業房地產顧問"}},{"@type":"BreadcrumbList","@id":"https://kuanhome.com/land-lookup#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://kuanhome.com/"},{"@type":"ListItem","position":2,"name":"購屋攻略","item":"https://kuanhome.com/tools"},{"@type":"ListItem","position":3,"name":"海線地主土地查詢懶人包｜航照圖・使用分區・環境限制怎麼查","item":"https://kuanhome.com/land-lookup"}]}]}</script>
+<!-- /SEO:AUTO -->
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">海線地主・土地查詢懶人包</div>
+    <h1>你不查，不代表沒事。<br><span>只代表問題還沒輪到你面對。</span></h1>
+    <p class="lead">八個免費的政府查詢網站，全部可以直接點開。花十分鐘，把自己那塊地的分區、過去、限制一次摸清楚。</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="flow">
+    <h2>十分鐘查詢動線</h2>
+    <p class="k">照順序走，前一步的結果是後一步的輸入值。</p>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><div class="b">先拿到地號<em>權狀第一頁、地價稅單、房屋稅單上都有。格式像「沙鹿區○○段 123-4 地號」。</em></div></div>
+      <div class="step"><span class="n">2</span><div class="b">查使用分區與使用地類別<em>這是所有判斷的基礎。分區錯了，後面全部白算。</em></div></div>
+      <div class="step"><span class="n">3</span><div class="b">拉歷年航照圖看過去<em>以前有沒有建物、有沒有路，決定老屋能不能保留、能不能就地合法。</em></div></div>
+      <div class="step"><span class="n">4</span><div class="b">套疊環境限制圖層排雷<em>環境敏感、地質敏感、河川區域、山坡地、淹水潛勢。</em></div></div>
+      <div class="step"><span class="n">5</span><div class="b">要動真的，就申請正式文件<em>網路查詢一律「僅供參考」，不能當證明用。</em></div></div>
+    </div>
+  </div>
+
+  <div class="srule"><h2>核心三站</h2></div>
+
+  <div class="site">
+    <div class="head"><span class="no">01</span><h3>國土測繪圖資服務雲</h3></div>
+    <div class="org">內政部國土測繪中心</div>
+    <p class="use">查航照圖、地籍圖、正射影像、地形圖，免申請、免登入、免費。</p>
+    <ul><li>歷年航照圖</li><li>地籍圖</li><li>正射影像</li><li>地形圖</li><li>地號定位</li><li>圖層套疊</li></ul>
+    <div class="why"><b>最好用的是「歷年航照圖」。</b>把時間軸往回拉，你會看到自己那塊地以前長什麼樣子——有沒有建物、有沒有路、三合院是哪一年出現的。海線很多老房子的合法性爭議，第一步就是從航照圖去追它到底幾年蓋的。</div>
+    <a class="go" href="https://maps.nlsc.gov.tw/" target="_blank" rel="noopener"><span>開啟圖資服務雲</span><span class="u">maps.nlsc.gov.tw</span><span class="arw">↗</span></a>
+  </div>
+
+  <div class="site">
+    <div class="head"><span class="no">02</span><h3>全國土地使用分區資料查詢系統</h3></div>
+    <div class="org">內政部國土管理署城鄉發展分署</div>
+    <p class="use">輸入地號或地址，查都市計畫分區、非都市土地分區、使用地類別。</p>
+    <ul><li>都市計畫使用分區</li><li>非都市土地分區</li><li>使用地類別</li><li>國家公園分區</li><li>面積量測</li></ul>
+    <div class="why"><b>重點是要看「兩層」。</b>第一層是分區——特定農業區、一般農業區、鄉村區、工業區；第二層是使用地類別——農牧用地，還是甲種、乙種、丙種、丁種建築用地。同樣被叫做「農地」，特定農業區的農牧用地跟一般農業區的甲種建築用地，能做的事、能賣的價差非常多。<br><br>海線還有一個要留意的：<b>台中港特定區計畫</b>。梧棲、清水、沙鹿有不小面積在這個計畫範圍內，管制邏輯跟一般都市計畫區不太一樣。</div>
+    <a class="go" href="https://luz.tcd.gov.tw/WEB/" target="_blank" rel="noopener"><span>開啟分區查詢系統</span><span class="u">luz.tcd.gov.tw/WEB/</span><span class="arw">↗</span></a>
+  </div>
+
+  <div class="site">
+    <div class="head"><span class="no">03</span><h3>國土規劃地理資訊圖台</h3></div>
+    <div class="org">內政部國土管理署城鄉發展分署</div>
+    <p class="use">套疊各類限制圖層，看你的地踩到了什麼。</p>
+    <ul><li>國土功能分區</li><li>環境敏感區</li><li>地質敏感區</li><li>河川區域</li><li>水源保護區</li><li>自訂圖層套疊</li></ul>
+    <div class="why"><b>這站是拿來排雷的。</b>圖層一層一層疊上去，看有沒有踩到環境敏感區、地質敏感區、河川區域、水源保護區。大肚、龍井靠大肚山那一側，多留意山坡地範圍；大甲、大安溪沿線的，要看河川區域線。</div>
+    <a class="go" href="https://nsp.nlma.gov.tw/ngis/" target="_blank" rel="noopener"><span>開啟國土規劃圖台</span><span class="u">nsp.nlma.gov.tw/ngis/</span><span class="arw">↗</span></a>
+  </div>
+
+  <div class="srule"><h2>海線加碼五站</h2></div>
+
+  <div class="site">
+    <div class="head"><span class="no">04</span><h3>3D 災害潛勢地圖</h3></div>
+    <div class="org">國家災害防救科技中心 NCDR</div>
+    <p class="use">輸入地址，一鍵產生該位置的災害潛勢分析報告。</p>
+    <ul><li>淹水潛勢</li><li>土壤液化</li><li>坡地災害</li><li>土石流</li><li>斷層</li></ul>
+    <div class="why">海線地勢低平、臨海，<b>淹水潛勢與土壤液化</b>特別值得查一次。系統會告訴你是「直接位於潛勢區」還是「鄰近 500 公尺內有」，兩者意義不同。</div>
+    <a class="go" href="https://dmap.ncdr.nat.gov.tw/" target="_blank" rel="noopener"><span>開啟災害潛勢地圖</span><span class="u">dmap.ncdr.nat.gov.tw</span><span class="arw">↗</span></a>
+  </div>
+
+  <div class="site">
+    <div class="head"><span class="no">05</span><h3>農業及農地資源盤查結果查詢圖台</h3></div>
+    <div class="org">農業部</div>
+    <p class="use">看農地的實際使用現況判釋結果。</p>
+    <ul><li>農地現況判釋</li><li>農業設施</li><li>農地圖資</li></ul>
+    <div class="why">政府眼中你這塊地「現在正在做什麼用」，這裡看得到。<b>要申請農業用地作農業使用證明、農舍，先看這個。</b>如果判釋結果跟你認知的不一樣，那就是要先處理的第一件事。</div>
+    <a class="go" href="https://map.moa.gov.tw/" target="_blank" rel="noopener"><span>開啟農地盤查圖台</span><span class="u">map.moa.gov.tw</span><span class="arw">↗</span></a>
+  </div>
+
+  <div class="site">
+    <div class="head"><span class="no">06</span><h3>地籍圖資網路便民服務系統</h3></div>
+    <div class="org">內政部地政司</div>
+    <p class="use">查地號位置、地籍圖，找地界很方便。</p>
+    <ul><li>地號定位</li><li>地籍圖</li><li>門牌查詢</li><li>使用分區</li></ul>
+    <div class="why">只知道地號、不知道地在哪裡的時候，先用這個把它定位出來。<b>老一輩留下的地，常常連自己都找不到實際位置。</b></div>
+    <a class="go" href="https://easymap.land.moi.gov.tw/" target="_blank" rel="noopener"><span>開啟地籍圖資系統</span><span class="u">easymap.land.moi.gov.tw</span><span class="arw">↗</span></a>
+  </div>
+
+  <div class="site">
+    <div class="head"><span class="no">07</span><h3>臺灣早期舊航照影像查詢系統</h3></div>
+    <div class="org">中央研究院</div>
+    <p class="use">比國土測繪圖資服務雲更早期的空照影像。</p>
+    <ul><li>早期空照</li><li>歷史影像</li></ul>
+    <div class="why">當你要證明一棟老房子「在特定年份之前就存在」，<b>年代越早的影像越有價值</b>。這是圖資服務雲之外的補充來源。</div>
+    <a class="go" href="https://webgis.sinica.edu.tw/website/aerialphoto/" target="_blank" rel="noopener"><span>開啟早期航照系統</span><span class="u">webgis.sinica.edu.tw/website/aerialphoto/</span><span class="arw">↗</span></a>
+  </div>
+
+  <div class="site">
+    <div class="head"><span class="no">08</span><h3>臺中市都市計畫土地使用分區線上申請</h3></div>
+    <div class="org">臺中市政府都市發展局</div>
+    <p class="use">申請正式的土地使用分區證明書。這才是有效力的文件。</p>
+    <ul><li>線上申辦</li><li>線上繳費</li><li>部分區域可線上領件</li></ul>
+    <div class="why">前面七站查到的都只是參考。<b>要辦買賣、更正編定、建照、農舍，需要的是這份證明書。</b>線上申請、線上繳費，海線各區完成繳費後依通知領件；規費每筆地號 20 元。</div>
+    <a class="go" href="https://urbanland.taichung.gov.tw/" target="_blank" rel="noopener"><span>開啟線上申請系統</span><span class="u">urbanland.taichung.gov.tw</span><span class="arw">↗</span></a>
+  </div>
+
+  <div class="srule"><h2>地主一定要知道的五件事</h2></div>
+
+  <div class="five">
+    <div class="f">
+      <h4>分區要查到「兩層」</h4>
+      <p>不要停在「農地」兩個字。<b>分區是一層，使用地類別是另一層</b>，兩層都要知道，才算真的知道自己有什麼。</p>
+    </div>
+    <div class="f">
+      <h4>有沒有臨路，決定價值</h4>
+      <p>袋地跟有六米路的地，價差可以到好幾倍。</p>
+      <p>而且臨的是<b>計畫道路、現有巷道，還是私設通路</b>，法律意義完全不同——能不能申請建照，這一項就先卡住一半的人。</p>
+    </div>
+    <div class="f">
+      <h4>航照圖是老屋的身分證</h4>
+      <p>海線很多三合院、鐵皮、增建。到底合不合法、能不能保留、有沒有機會處理，都要從歷年航照回推它是哪一年出現的。</p>
+    </div>
+    <div class="f">
+      <h4>看限制，不要只看容積</h4>
+      <p>保護區、山坡地、河川區域、地質敏感區、淹水潛勢——<b>這些不會寫在權狀上</b>，但每一項都可能讓你將來蓋不了、貸不到、賣不掉。</p>
+    </div>
+    <div class="f">
+      <h4>網路查詢是初步參考，不是證明文件</h4>
+      <p>這點最重要，也最常被忽略。上面每一個網站的首頁都寫了同一句話：僅供參考，不作為任何形式證明或主張。</p>
+    </div>
+  </div>
+
+  <div class="warn">
+    <h3>這些事，一定要正式資料</h3>
+    <p>網路上查到的圖資與分區資料，是幫你「先有概念」用的。以下這些程序，全部都要向主管機關申請正式文件才算數：</p>
+    <div class="grid">
+      <span>土地買賣過戶</span><span>更正編定</span><span>建築執照申請</span>
+      <span>農舍申請</span><span>繼承</span><span>贈與</span><span>抵押設定貸款</span>
+    </div>
+    <p>臺中市的土地使用分區證明，可線上申辦：<br><a href="https://urbanland.taichung.gov.tw/" target="_blank" rel="noopener">urbanland.taichung.gov.tw ↗</a></p>
+    <p>地籍謄本、地籍圖謄本，可到各地政事務所臨櫃或線上申請，海線範圍屬<strong>臺中市沙鹿地政事務所</strong>與<strong>大甲地政事務所</strong>轄區。</p>
+  </div>
+
+  <div class="quote">
+    <p>你不查，不代表沒事。<br>只代表問題還沒輪到你面對。</p>
+    <small>繼承的時候會面對。要貸款的時候會面對。<br>兒子想蓋房子的時候會面對。<br>想賣的時候，買方的代書會幫你面對。<br><br>差別只在於，是你有時間慢慢處理，<br>還是被時間追著跑。</small>
+  </div>
+
+  <div class="cta">
+    <h3>查完有疑問，找我聊聊</h3>
+    <p>海線的地，我看得比較多。<br>沙鹿・清水・梧棲・龍井・大肚・大甲<br>土地、農地、建地、老宅，都可以問。</p>
+    <a class="p" href="https://lin.ee/QyQmggG">加 LINE 問冠良</a>
+    <a class="s" href="tel:0915295958">撥 0915-295958</a>
+  </div>
+
+  <p class="foot">
+    海線房仲冠良｜懂你又懂房・太平洋房屋 海線幸福房仲團隊<br>
+    立羽不動產經紀有限公司　經紀人 鄭瑋仁　(102)中市經紀字第01101號<br>
+    台中市沙鹿區四平街58號<br><br>
+    本頁整理之查詢管道與說明僅供一般參考，各系統資料以主管機關公告為準；<br>個案土地權利、分區認定與開發可行性，仍應以正式核發文件及專業意見為據。
+  </p>
+</div>
+
+<!-- REVIEW:AUTO 由 scripts/review-cta.mjs 產生，不要手改 -->
+<section class="gr-cta" aria-labelledby="gr-cta-h">
+  <div class="gr-inner">
+    <p class="gr-eyebrow">GOOGLE 評論</p>
+    <h2 id="gr-cta-h">這些整理，有幫到你嗎？</h2>
+    <p class="gr-lede">留一則 Google 評論，讓其他正在煩惱同樣問題的人，也找得到這裡。<br>一句話就夠，不用寫長。</p>
+    <a class="gr-btn" href="https://g.page/r/Cc3MaJq-9w1REAE/review" target="_blank" rel="noopener noreferrer">
+      <svg class="gr-star" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l2.9 6.6 7.1.7-5.3 4.8 1.5 7-6.2-3.6L5.8 21l1.5-7L2 9.3l7.1-.7z"/></svg>
+      去 Google 留評論
+    </a>
+    <p class="gr-note">會開啟 Google 地圖的評論視窗，需要登入 Google 帳號。</p>
+  </div>
+</section>
+<style>
+.gr-cta{max-width:820px;margin:34px auto 40px;padding:26px 24px;
+ background:#16283f;border-radius:16px;color:#e9edf2;
+ font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif;
+ text-align:center;box-sizing:border-box}
+.gr-cta *{box-sizing:border-box}
+.gr-inner{max-width:34em;margin:0 auto}
+.gr-cta .gr-eyebrow{margin:0 0 8px;font-size:12.5px;letter-spacing:.2em;color:#e8c887;font-weight:500}
+.gr-cta h2{margin:0 0 10px;font-size:23px;line-height:1.4;color:#fff;font-weight:700;
+ font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif}
+.gr-cta .gr-lede{margin:0 0 20px;font-size:16px;line-height:1.8;color:#cfd8e2}
+.gr-cta .gr-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+ min-height:52px;padding:13px 30px;border-radius:999px;
+ background:#c8963e;color:#20180a;text-decoration:none;
+ font-size:17px;font-weight:700;line-height:1.4}
+.gr-cta .gr-btn:hover{background:#dcae5c}
+.gr-cta .gr-btn:focus-visible{outline:3px solid #e8c887;outline-offset:3px}
+.gr-cta .gr-star{width:20px;height:20px;fill:#20180a;flex:none}
+.gr-cta .gr-note{margin:14px 0 0;font-size:13.5px;color:#9fb0c4;line-height:1.65}
+@media(max-width:640px){
+  .gr-cta{margin:26px 16px 32px;padding:22px 18px}
+  .gr-cta h2{font-size:20px}
+  .gr-cta .gr-btn{width:100%}
+}
+</style>
+<!-- /REVIEW:AUTO -->
+<!-- CLUSTER:AUTO 由 scripts/seo-build.mjs 產生，不要手改 -->
+<section class="seo-cluster">
+<h2>土地與自地自建・延伸閱讀</h2>
+<p>買地、蓋房子這條路上會遇到的問題，這幾頁是一整組的：</p>
+<ul><li><a href="/building-line">能不能蓋：申請建築線全攻略</a></li><li><a href="/existing-road-faq">進得去嗎：既成道路常見問題</a></li><li><a href="/road-access">路是誰的：路權與封路攻略</a></li><li><a href="/easement">謄本上的他項權利：地役權（不動產役權）</a></li><li><a href="/coowned-land">地不只你一個人的：土地法第 34 條之 1</a></li><li><a href="/farmhouse">農地能不能蓋：老農配蓋農舍</a></li><li><a href="/self-build-guide">決定要蓋了：自地自建全流程</a></li><li><a href="/land-tax">賣地要繳多少：土地增值稅試算</a></li><li><a href="/blog/self-build-cash-flow">錢夠不夠：買地自建的資金缺口</a></li></ul>
+</section>
+<style>
+.seo-cluster{max-width:820px;margin:34px auto 40px;padding:24px;background:#fff;
+ border:1px solid #ddd2bd;border-radius:16px;
+ font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif}
+.seo-cluster h2{font-size:20px;color:#16283f;margin:0 0 8px;line-height:1.4}
+.seo-cluster p{font-size:15px;color:#6f6a60;margin:0 0 14px;line-height:1.7}
+.seo-cluster ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.seo-cluster a{display:flex;align-items:center;min-height:44px;padding:8px 14px;
+ background:#f7f3ea;border:1px solid #ddd2bd;border-radius:10px;
+ color:#16283f;text-decoration:none;font-size:15.5px;line-height:1.5}
+.seo-cluster a:hover{border-color:#c8963e}
+@media(max-width:520px){.seo-cluster{margin:24px 16px 32px;padding:18px}}
+</style>
+<!-- /CLUSTER:AUTO -->
+</body>
+</html>

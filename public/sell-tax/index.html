@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>賣屋稅費總表｜土地增值稅＋房地合一稅一次算｜海線房仲冠良</title>
+<meta name="description" content="賣房子到底要繳多少稅？土地增值稅與房地合一稅一頁算完，含自用優惠、長期持有減徵、自住400萬免稅額、重購退稅與免徵不課徵情形對照。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#f7f3ea;--paper:#fffdf8;--navy:#1c2b3a;--navy-deep:#132030;--gold:#c8952c;
+--amber:#e3ab3f;--ink:#241f19;--muted:#6d6456;--line:#ddd2bd;--danger:#a8402f;--ok:#3d6b4c;}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:"Noto Sans TC",system-ui,sans-serif;
+line-height:1.8;letter-spacing:.02em;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:800px;margin:0 auto;padding:0 20px;}
+header.hero{background:var(--navy);color:#f4efe4;padding:50px 0 56px;position:relative;overflow:hidden;}
+header.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:12px;
+background:repeating-linear-gradient(90deg,var(--amber) 0 42px,transparent 42px 78px);opacity:.6;}
+.eyebrow{font-size:.74rem;letter-spacing:.32em;color:var(--amber);margin:0 0 16px;font-weight:500;}
+h1{font-family:"DM Serif Display","Noto Sans TC",serif;font-size:clamp(1.8rem,5.6vw,2.6rem);
+line-height:1.3;margin:0 0 14px;font-weight:400;}
+.hero p{color:#c3bcae;font-size:.97rem;margin:0;max-width:34em;}
+.byline{margin-top:20px;font-size:.81rem;color:#8f8878;letter-spacing:.08em;}
+.lane{height:6px;margin:44px 0 30px;border-radius:3px;
+background:repeating-linear-gradient(90deg,var(--gold) 0 32px,transparent 32px 58px);opacity:.5;}
+.sec-tag{display:block;font-size:.7rem;letter-spacing:.3em;color:var(--gold);font-weight:500;margin-bottom:10px;}
+h2{font-family:"DM Serif Display","Noto Sans TC",serif;font-size:clamp(1.38rem,4.2vw,1.85rem);
+margin:0 0 12px;font-weight:400;line-height:1.4;}
+h3{font-size:1rem;font-weight:700;margin:24px 0 8px;}
+p{margin:0 0 14px;}
+strong{font-weight:700;color:var(--navy-deep);}
+.hint{font-size:.82rem;color:var(--muted);line-height:1.7;}
+
+/* tabs */
+.tabs{display:flex;gap:6px;background:#e8e0cd;padding:5px;border-radius:12px;margin:22px 0 18px;}
+.tab{flex:1;padding:12px 6px;border:none;border-radius:8px;background:transparent;font-family:inherit;
+font-size:.88rem;font-weight:700;color:var(--muted);cursor:pointer;transition:all .2s;letter-spacing:.02em;}
+.tab.on{background:var(--navy);color:#f4efe4;}
+.pane{display:none;}
+.pane.on{display:block;}
+
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 20px;margin:16px 0;}
+.field{margin-bottom:19px;}
+.field:last-child{margin-bottom:0;}
+label.lbl{display:block;font-weight:700;font-size:.92rem;margin-bottom:6px;}
+label.lbl .req{color:var(--danger);font-size:.78rem;margin-left:4px;}
+.sub{font-size:.78rem;color:var(--muted);margin:0 0 8px;line-height:1.65;}
+input[type=number],select{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:9px;
+font-family:inherit;font-size:1rem;background:#fff;color:var(--ink);}
+input:focus,select:focus{outline:2px solid var(--amber);outline-offset:1px;border-color:var(--amber);}
+.row.two{display:grid;grid-template-columns:1fr;gap:15px;}
+@media(min-width:560px){.row.two{grid-template-columns:1fr 1fr;}}
+.chk{display:flex;gap:11px;align-items:flex-start;padding:10px 0;font-size:.92rem;line-height:1.6;cursor:pointer;}
+.chk input{appearance:none;width:20px;height:20px;min-width:20px;margin-top:3px;border:1.5px solid var(--gold);
+border-radius:5px;background:transparent;cursor:pointer;position:relative;}
+.chk input:checked{background:var(--gold);}
+.chk input:checked::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;
+border:solid var(--paper);border-width:0 2px 2px 0;transform:rotate(42deg);}
+.btn{display:block;width:100%;padding:15px;border:none;border-radius:10px;background:var(--navy);
+color:#f4efe4;font-family:inherit;font-size:1.01rem;font-weight:700;letter-spacing:.08em;cursor:pointer;margin-top:8px;}
+.btn:hover{opacity:.9;}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--muted);font-weight:500;font-size:.89rem;margin-top:10px;}
+
+.result{background:var(--navy-deep);color:#e9e3d6;border-radius:16px;padding:25px 21px;margin:18px 0;display:none;}
+.result.on{display:block;}
+.result .cap{font-size:.73rem;letter-spacing:.26em;color:var(--amber);margin:0 0 8px;}
+.big{font-family:"DM Serif Display",serif;font-size:clamp(1.9rem,7.6vw,2.7rem);line-height:1.1;color:#fff;margin:0 0 4px;}
+.big small{font-size:1rem;font-family:"Noto Sans TC",sans-serif;color:#9aa4ae;margin-left:6px;}
+.rate-line{color:var(--amber);font-size:.9rem;margin:0 0 18px;line-height:1.6;}
+.brk{border-top:1px solid rgba(255,255,255,.12);padding-top:15px;}
+.brk-row{display:flex;justify-content:space-between;gap:14px;font-size:.89rem;padding:5px 0;color:#b9c1c9;}
+.brk-row b{color:#f4efe4;font-weight:500;text-align:right;white-space:nowrap;}
+.brk-row.total{border-top:1px dashed rgba(255,255,255,.2);margin-top:9px;padding-top:11px;font-weight:700;}
+.brk-row.total b{color:var(--amber);}
+.warnbox{background:rgba(227,171,63,.13);border:1px solid rgba(227,171,63,.35);border-radius:9px;
+padding:13px 15px;margin-top:16px;font-size:.85rem;color:#e0d8c8;line-height:1.7;}
+.errbox{background:rgba(168,64,47,.18);border:1px solid rgba(240,150,138,.4);border-radius:9px;
+padding:13px 15px;margin-top:14px;font-size:.87rem;color:#f0b9b0;}
+
+.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:16px 0;}
+table{border-collapse:collapse;width:100%;min-width:500px;font-size:.86rem;background:var(--paper);}
+th,td{padding:11px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
+th{background:var(--navy);color:#f0eadd;font-weight:500;font-size:.79rem;letter-spacing:.05em;}
+td:first-child{font-weight:700;color:var(--navy-deep);}
+.tag-free{color:var(--ok);font-weight:700;}
+.tag-def{color:var(--gold);font-weight:700;}
+.tag-tax{color:var(--danger);font-weight:700;}
+.note{background:#efe7d5;border:1px dashed var(--gold);border-radius:10px;padding:16px 18px;margin:18px 0;font-size:.89rem;}
+.calcHelp{background:#f2ead8;border:1px solid var(--gold);border-radius:11px;padding:18px 16px;margin-bottom:22px;}
+.helpTitle{font-weight:700;font-size:.93rem;margin:0 0 4px;color:var(--navy-deep);letter-spacing:.03em;}
+.readout{background:var(--navy);color:#e9e3d6;border-radius:8px;padding:12px 14px;font-size:.86rem;line-height:1.75;margin-top:4px;}
+.readout b{color:var(--amber);font-weight:700;}
+details{border-bottom:1px solid var(--line);}
+summary{cursor:pointer;padding:14px 30px 14px 0;font-weight:500;list-style:none;position:relative;font-size:.97rem;}
+summary::-webkit-details-marker{display:none;}
+summary::after{content:"+";position:absolute;right:4px;top:12px;color:var(--gold);font-size:1.25rem;font-weight:300;transition:transform .2s;}
+details[open] summary::after{transform:rotate(45deg);}
+details .body{padding:0 0 15px;font-size:.9rem;color:#453e34;}
+ul{padding-left:1.2em;margin:0 0 14px;}li{margin-bottom:7px;}
+.cta{background:var(--navy);color:#e9e3d6;border-radius:16px;padding:30px 24px;text-align:center;margin:24px 0 0;}
+.cta h2{color:#f4efe4;}.cta p{color:#a8b0ba;font-size:.92rem;}
+.btns{display:flex;flex-direction:column;gap:10px;margin-top:18px;}
+.lnk{display:block;padding:14px;border-radius:10px;text-decoration:none;font-weight:700;letter-spacing:.06em;}
+.lnk.gold{background:var(--amber);color:var(--navy-deep);}
+.lnk.ghost{border:1px solid rgba(255,255,255,.28);color:#e9e3d6;}
+@media(min-width:600px){.btns{flex-direction:row;justify-content:center;}.lnk{min-width:190px;}}
+footer{padding:34px 0 54px;font-size:.78rem;color:var(--muted);line-height:1.8;}
+</style>
+<!-- SEO:AUTO 由 scripts/seo-build.mjs 產生，不要手改 -->
+<link rel="canonical" href="https://kuanhome.com/sell-tax">
+<meta property="og:url" content="https://kuanhome.com/sell-tax">
+<meta property="og:site_name" content="海線房仲冠良">
+<meta property="og:locale" content="zh_TW">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://kuanhome.com/sell-tax#article","headline":"賣屋稅費總表｜土地增值稅＋房地合一稅一次算","description":"賣房子到底要繳多少稅？土地增值稅與房地合一稅一頁算完，含自用優惠、長期持有減徵、自住400萬免稅額、重購退稅與免徵不課徵情形對照。","url":"https://kuanhome.com/sell-tax","inLanguage":"zh-Hant-TW","dateModified":"2026-08-27T15:13:48.341Z","author":{"@id":"https://kuanhome.com/#wuguanliang"},"publisher":{"@id":"https://kuanhome.com/#agent"},"mainEntityOfPage":{"@id":"https://kuanhome.com/sell-tax"}},{"@type":"RealEstateAgent","@id":"https://kuanhome.com/#agent","name":"海線房仲冠良","alternateName":"吳冠良｜台中海線房地產顧問","description":"台中海線專業房地產仲介，深耕沙鹿、清水、梧棲、龍井、大肚、大甲六區。提供資產配置、稅務諮詢、簡易裝潢，及買賣委託與土地買賣。","slogan":"懂你又懂房","url":"https://kuanhome.com/","image":"https://kuanhome.com/card/owner.webp","telephone":"+886-915-295-958","email":"wosagl15@gmail.com","address":{"@type":"PostalAddress","addressLocality":"沙鹿區","addressRegion":"台中市","postalCode":"433","addressCountry":"TW"},"geo":{"@type":"GeoCoordinates","latitude":24.2340986,"longitude":120.560349},"priceRange":"$$","areaServed":[{"@type":"AdministrativeArea","name":"台中市沙鹿區"},{"@type":"AdministrativeArea","name":"台中市清水區"},{"@type":"AdministrativeArea","name":"台中市梧棲區"},{"@type":"AdministrativeArea","name":"台中市龍井區"},{"@type":"AdministrativeArea","name":"台中市大肚區"},{"@type":"AdministrativeArea","name":"台中市大甲區"}],"sameAs":["https://www.facebook.com/share/14XZ3Wy4nLZ/","https://www.instagram.com/asmile55178/","https://www.youtube.com/@吳冠良-w9v","https://lin.ee/1WlfBub","https://sales.myhomes.com.tw/0915295958"],"employee":{"@type":"Person","@id":"https://kuanhome.com/#wuguanliang","name":"吳冠良","jobTitle":"台中海線專業房地產顧問"}},{"@type":"BreadcrumbList","@id":"https://kuanhome.com/sell-tax#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://kuanhome.com/"},{"@type":"ListItem","position":2,"name":"購屋攻略","item":"https://kuanhome.com/tools"},{"@type":"ListItem","position":3,"name":"賣屋稅費總表｜土地增值稅＋房地合一稅一次算","item":"https://kuanhome.com/sell-tax"}]},{"@type":"FAQPage","@id":"https://kuanhome.com/sell-tax#faq","mainEntity":[{"@type":"Question","name":"這筆移轉要不要課？","acceptedAnswer":{"@type":"Answer","text":"命中下表就不用算了。 情形 結果 重點 因繼承而移轉 免徵 原地價沿用被繼承人死亡當期公告現值 配偶相互贈與 不課徵 須申請，原地價延續，稅是遞延不是免掉 農地移轉給自然人 不課徵 須附作農業使用證明；移轉給法人不適用 公設保留地徵收前移轉 免徵 須為都市計畫公共設施保留地 被徵收／區段徵收抵價地 免徵 抵價地日後第一次移轉可減徵 40% 信託形式移轉 不課徵 實質受益移轉時仍課 共有物分割、土地交換 等值不課徵 有找補者就找補部分課 一般買賣、非配偶贈與 要課 用下面計算機 「免徵」和「不課徵」不一樣。 免徵是稅消失；不課徵是遞延到下一手，原地價繼續沿用——受贈人日後出售會一次補回這段漲幅。談贈與節稅時最常被誤導的就是這裡。 計算"}},{"@type":"Question","name":"要算實際案件？","acceptedAnswer":{"@type":"Answer","text":"謄本和買賣契約傳給我，我把土增稅、房地合一稅、服務費、規費一次算清楚再談價。 海線六區：沙鹿・清水・梧棲・龍井・大肚・大甲 加 LINE 傳資料 撥打 0915-295958 本工具依土地稅法、平均地權條例及所得稅法房地合一相關規定製作，計算結果僅供評估參考，不作為報稅依據，亦不構成稅務或法律意見。實際應納稅額以主管稽徵機關核定為準；個案涉及減免、拆分、推計或特殊情形，請洽地方稅捐稽徵處、國稅局、地政士或會計師。 海線房仲冠良｜太平洋房屋・沙鹿特三加盟店（勝元不動產經紀股份有限公司） GOOGLE 評論"}},{"@type":"Question","name":"這些整理，有幫到你嗎？","acceptedAnswer":{"@type":"Answer","text":"留一則 Google 評論，讓其他正在煩惱同樣問題的人，也找得到這裡。 一句話就夠，不用寫長。 去 Google 留評論 會開啟 Google 地圖的評論視窗，需要登入 Google 帳號。"}}],"isPartOf":{"@id":"https://kuanhome.com/sell-tax#article"}}]}</script>
+<!-- /SEO:AUTO -->
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">海線房仲工具</p>
+    <h1>賣屋稅費總表</h1>
+    <p>土地增值稅看公告現值，房地合一稅看成交價——兩條完全不同的線。這裡一次算完，並把兩者串起來。</p>
+    <p class="byline">海線房仲冠良｜懂你又懂房</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="tabs" role="tablist">
+  <button class="tab on" data-p="p1" type="button">土地增值稅</button>
+  <button class="tab" data-p="p2" type="button">房地合一稅</button>
+  <button class="tab" data-p="p3" type="button">稅費總表</button>
+</div>
+
+<!-- ============ PANE 1 ============ -->
+<div class="pane on" id="p1">
+
+<section>
+  <span class="sec-tag">先確認</span>
+  <h2>這筆移轉要不要課？</h2>
+  <p>命中下表就不用算了。</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>情形</th><th>結果</th><th>重點</th></tr></thead>
+    <tbody>
+      <tr><td>因繼承而移轉</td><td class="tag-free">免徵</td><td>原地價沿用被繼承人死亡當期公告現值</td></tr>
+      <tr><td>配偶相互贈與</td><td class="tag-def">不課徵</td><td>須申請，原地價延續，稅是遞延不是免掉</td></tr>
+      <tr><td>農地移轉給自然人</td><td class="tag-def">不課徵</td><td>須附作農業使用證明；移轉給法人不適用</td></tr>
+      <tr><td>公設保留地徵收前移轉</td><td class="tag-free">免徵</td><td>須為都市計畫公共設施保留地</td></tr>
+      <tr><td>被徵收／區段徵收抵價地</td><td class="tag-free">免徵</td><td>抵價地日後第一次移轉可減徵 40%</td></tr>
+      <tr><td>信託形式移轉</td><td class="tag-def">不課徵</td><td>實質受益移轉時仍課</td></tr>
+      <tr><td>共有物分割、土地交換</td><td class="tag-def">等值不課徵</td><td>有找補者就找補部分課</td></tr>
+      <tr><td>一般買賣、非配偶贈與</td><td class="tag-tax">要課</td><td>用下面計算機</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note"><strong>「免徵」和「不課徵」不一樣。</strong>免徵是稅消失；不課徵是遞延到下一手，原地價繼續沿用——受贈人日後出售會一次補回這段漲幅。談贈與節稅時最常被誤導的就是這裡。</div>
+</section>
+
+<section>
+  <div class="lane"></div>
+  <span class="sec-tag">計算</span>
+  <h2>土地增值稅</h2>
+  <div class="panel">
+    <div class="calcHelp">
+      <p class="helpTitle">由公告現值換算（選填）</p>
+      <p class="sub">填了這三欄，下面的現值總額與面積會自動帶入；要手動輸入總額就跳過這一區。</p>
+      <div class="row two">
+        <div class="field">
+          <label class="lbl" for="c-unit">本次公告土地現值（元／平方公尺）</label>
+          <input type="number" id="c-unit" placeholder="例：42000" min="0" step="1">
+        </div>
+        <div class="field">
+          <label class="lbl" for="c-prev">前次移轉現值（元／平方公尺）</label>
+          <p class="sub">謄本上的前次移轉現值單價</p>
+          <input type="number" id="c-prev" placeholder="例：8500" min="0" step="1">
+        </div>
+      </div>
+      <div class="row two">
+        <div class="field">
+          <label class="lbl" for="c-area">土地面積（平方公尺）</label>
+          <input type="number" id="c-area" placeholder="例：132.5" min="0" step="0.01">
+        </div>
+        <div class="field">
+          <label class="lbl" for="c-share">權利範圍（持分）</label>
+          <p class="sub">全部填 1；四分之一填 0.25</p>
+          <input type="number" id="c-share" value="1" min="0" max="1" step="0.0001">
+        </div>
+      </div>
+      <div class="readout" id="c-readout">填入上方欄位後，這裡會顯示換算結果。</div>
+    </div>
+
+    <div class="field">
+      <label class="lbl" for="f-now">申報移轉現值總額（萬元）<span class="req">必填</span></label>
+      <p class="sub">上方換算會自動帶入；也可直接手填。申報高於公告現值時以申報值為準。</p>
+      <input type="number" id="f-now" placeholder="例：600" min="0" step="0.01">
+    </div>
+    <div class="field">
+      <label class="lbl" for="f-org">原規定地價／前次移轉現值總額（萬元）<span class="req">必填</span></label>
+      <p class="sub">土地登記謄本上的「前次移轉現值」。</p>
+      <input type="number" id="f-org" placeholder="例：120" min="0" step="0.01">
+    </div>
+    <div class="row two">
+      <div class="field">
+        <label class="lbl" for="f-cpi">消費者物價總指數（%）</label>
+        <p class="sub">以前次移轉當期為 100，向稅捐處查對照表</p>
+        <input type="number" id="f-cpi" value="100" min="1" step="0.01">
+      </div>
+      <div class="field">
+        <label class="lbl" for="f-years">持有年數<span class="req">必填</span></label>
+        <p class="sub">滿 20/30/40 年可再減徵</p>
+        <input type="number" id="f-years" placeholder="例：22" min="0" step="0.1">
+      </div>
+    </div>
+    <div class="field">
+      <label class="lbl" for="f-imp">得扣除之土地改良費用合計（萬元）</label>
+      <p class="sub">改良土地費用＋工程受益費＋重劃負擔總額＋捐贈公設用地現值，須有證明文件。</p>
+      <input type="number" id="f-imp" value="0" min="0">
+    </div>
+    <div class="field">
+      <label class="lbl" for="f-mode">課稅身分</label>
+      <select id="f-mode">
+        <option value="general">一般用地（累進 20/30/40%）</option>
+        <option value="once">自用住宅・一生一次（10%）</option>
+        <option value="oneHouse">自用住宅・一生一屋（10%，可重複）</option>
+      </select>
+    </div>
+    <div id="selfBox" style="display:none">
+      <div class="row two">
+        <div class="field">
+          <label class="lbl" for="f-urban">土地所在</label>
+          <select id="f-urban"><option value="urban">都市土地</option><option value="rural">非都市土地</option></select>
+        </div>
+        <div class="field">
+          <label class="lbl" for="f-area">移轉土地面積（坪）</label>
+          <input type="number" id="f-area" placeholder="例：40" min="0" step="0.01">
+        </div>
+      </div>
+      <p class="sub" id="areaCap"></p>
+    </div>
+    <div class="field">
+      <label class="chk"><input type="checkbox" id="f-cut40">
+        <span><strong>重劃、都更權利變換、或區段徵收抵價地後之第一次移轉</strong>（依法減徵 40%）</span></label>
+    </div>
+    <button class="btn" id="calcBtn" type="button">試算土地增值稅</button>
+    <button class="btn ghost" id="clearBtn" type="button">清除重填</button>
+  </div>
+  <div class="result" id="result"></div>
+</section>
+
+<section>
+  <div class="lane"></div>
+  <span class="sec-tag">速查</span>
+  <h2>稅率對照</h2>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>漲價倍數</th><th>基本</th><th>20年↑</th><th>30年↑</th><th>40年↑</th></tr></thead>
+    <tbody>
+      <tr><td>未達 1 倍</td><td>20%</td><td>20%</td><td>20%</td><td>20%</td></tr>
+      <tr><td>1～2 倍</td><td>30%</td><td>28%</td><td>27%</td><td>26%</td></tr>
+      <tr><td>超過 2 倍</td><td>40%</td><td>36%</td><td>34%</td><td>32%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="hint">長期持有只減「超過第一級距」的部分，第一級距永遠 20%。</p>
+
+  <h3>自用住宅 10%：兩種身分</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>要件</th><th>一生一次</th><th>一生一屋</th></tr></thead>
+    <tbody>
+      <tr><td>次數</td><td>一生僅一次</td><td>用過後符合要件可重複</td></tr>
+      <tr><td>都市土地上限</td><td>3 公畝（約 90.75 坪）</td><td>1.5 公畝（約 45.375 坪）</td></tr>
+      <tr><td>非都市土地上限</td><td>7 公畝（約 211.75 坪）</td><td>3.5 公畝（約 105.875 坪）</td></tr>
+      <tr><td>持有／設籍</td><td>無年限</td><td>持有並設籍連續滿 6 年</td></tr>
+      <tr><td>出租營業</td><td>售前 1 年內無</td><td>售前 5 年內無</td></tr>
+      <tr><td>其他房屋</td><td>無限制</td><td>本人、配偶及未成年子女名下無其他房屋</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+</div>
+
+<!-- ============ PANE 2 ============ -->
+<div class="pane" id="p2">
+<section>
+  <span class="sec-tag">計算</span>
+  <h2>房地合一稅</h2>
+  <p>適用於 <strong>105 年 1 月 1 日以後取得</strong>之房地。在此之前取得的舊制房地，走財產交易所得併入綜所稅，不用這張表。</p>
+
+  <div class="panel">
+    <div class="field">
+      <label class="lbl" for="h-id">納稅義務人身分</label>
+      <select id="h-id">
+        <option value="resident">個人・境內居住者</option>
+        <option value="nonres">個人・非境內居住者</option>
+        <option value="corp">營利事業（境內）</option>
+      </select>
+    </div>
+    <div class="field">
+      <label class="lbl" for="h-years">持有期間（年）<span class="req">必填</span></label>
+      <p class="sub">自取得之日至出售之日。繼承或受遺贈取得者，可併計被繼承人持有期間。</p>
+      <input type="number" id="h-years" placeholder="例：3.5" min="0" step="0.1">
+    </div>
+    <div class="field">
+      <label class="lbl" for="h-price">成交價額（萬元）<span class="req">必填</span></label>
+      <input type="number" id="h-price" placeholder="例：1300" min="0" step="0.01">
+    </div>
+    <div class="field">
+      <label class="lbl" for="h-cost">原始取得成本（萬元）<span class="req">必填</span></label>
+      <p class="sub">買入價金＋契稅、印花稅、代書費、規費、仲介費，以及能增加價值或效能的改良裝修費（非 2 年內耗竭者）。<strong>房貸利息、房屋稅、地價稅、管理費不可列。</strong></p>
+      <input type="number" id="h-cost" placeholder="例：1000" min="0" step="0.01">
+    </div>
+    <div class="field">
+      <label class="chk"><input type="checkbox" id="h-est">
+        <span><strong>無費用證明，按成交價額 3% 推計（上限 30 萬元）</strong></span></label>
+      <div id="feeBox">
+        <label class="lbl" for="h-fee" style="margin-top:8px">移轉費用（核實列報，萬元）</label>
+        <p class="sub">仲介費、廣告費、清潔費、搬運費、代書費、規費等。</p>
+        <input type="number" id="h-fee" value="0" min="0">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="lbl" for="h-gain">土地漲價總數額（萬元）</label>
+      <p class="sub">可從左邊土增稅頁自動帶入。</p>
+      <input type="number" id="h-gain" value="0" min="0">
+      <button class="btn ghost" id="pullBtn" type="button" style="margin-top:8px">← 帶入土增稅試算結果</button>
+    </div>
+    <div class="field">
+      <label class="lbl" for="h-cap">土地漲價總數額減除上限（萬元）</label>
+      <p class="sub">＝交易當年度公告土地現值總額 − 前次移轉現值總額。填 0 代表不設限（僅供快速估算）。超過上限的部分不得減除。</p>
+      <input type="number" id="h-cap" value="0" min="0">
+    </div>
+
+    <div class="field">
+      <label class="lbl" for="h-special">特殊情形</label>
+      <select id="h-special">
+        <option value="none">無（按持有期間適用稅率）</option>
+        <option value="self">自住優惠：設籍並實際居住連續滿 6 年（400 萬免稅額＋10%）</option>
+        <option value="s20">非自願因素出售（20%）</option>
+        <option value="s20b">合建分屋、都更或危老重建取得後 2 年內出售（20%）</option>
+      </select>
+    </div>
+    <div class="field">
+      <label class="lbl" for="h-loss">前 3 年內房地交易損失可扣除額（萬元）</label>
+      <input type="number" id="h-loss" value="0" min="0">
+    </div>
+
+    <button class="btn" id="hCalcBtn" type="button">試算房地合一稅</button>
+    <button class="btn ghost" id="hClearBtn" type="button">清除重填</button>
+  </div>
+  <div class="result" id="hResult"></div>
+</section>
+
+<section>
+  <div class="lane"></div>
+  <span class="sec-tag">速查</span>
+  <h2>稅率對照</h2>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>持有期間</th><th>境內個人</th><th>非居住者</th><th>營利事業</th></tr></thead>
+    <tbody>
+      <tr><td>2 年以內</td><td>45%</td><td>45%</td><td>45%</td></tr>
+      <tr><td>逾 2 年～5 年</td><td>35%</td><td>35%</td><td>35%</td></tr>
+      <tr><td>逾 5 年～10 年</td><td>20%</td><td>35%</td><td>20%</td></tr>
+      <tr><td>逾 10 年</td><td>15%</td><td>35%</td><td>20%</td></tr>
+      <tr><td>自住滿 6 年</td><td colspan="3">課稅所得減 400 萬免稅額，超過部分 10%（僅境內個人）</td></tr>
+      <tr><td>非自願／合建／都更危老</td><td colspan="3">20%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note"><strong>自住 400 萬免稅額是「一人一次、六年一輪」。</strong>個人與配偶及未成年子女於交易前 6 年內未曾適用過，才能再用。夫妻不是各有一份。</div>
+</section>
+</div>
+
+<!-- ============ PANE 3 ============ -->
+<div class="pane" id="p3">
+<section>
+  <span class="sec-tag">合併</span>
+  <h2>稅費總表</h2>
+  <p>先在前兩頁各算一次，這裡會自動合併，並加上其他過戶成本估算。</p>
+
+  <div class="panel">
+    <div class="field">
+      <label class="lbl" for="s-price">成交價額（萬元）<span class="req">必填</span></label>
+      <input type="number" id="s-price" placeholder="例：1300" min="0" step="0.01">
+    </div>
+
+    <h3>按比例計算</h3>
+    <div class="row two">
+      <div class="field">
+        <label class="lbl" for="s-brk">仲介服務費率（%）</label>
+        <p class="sub">賣方一般 1～4%，法定買賣雙方合計上限 6%</p>
+        <input type="number" id="s-brk" value="4" min="0" step="0.1">
+      </div>
+      <div class="field">
+        <label class="lbl" for="s-esc">履約保證費率（%）</label>
+        <p class="sub">業界通行萬分之六（0.06%）</p>
+        <input type="number" id="s-esc" value="0.06" min="0" step="0.01">
+      </div>
+    </div>
+    <label class="chk"><input type="checkbox" id="s-escHalf" checked>
+      <span>履約保證費由<strong>買賣雙方各負擔一半</strong>（多數建經公司的預設）</span></label>
+
+    <h3>地政士（代書）相關</h3>
+    <p class="sub" style="color:var(--danger);font-weight:700">以下小額項目單位為「元」，不是萬元。</p>
+    <p class="sub">以下為海線一般行情區間，各家事務所報價不同，簽約前先確認由誰負擔。</p>
+    <div class="row two">
+      <div class="field">
+        <label class="lbl" for="s-sign">簽約費</label>
+        <p class="sub">行情約 2,000～4,000 元</p>
+        <input type="number" id="s-sign" value="4000" min="0">
+      </div>
+      <div class="field">
+        <label class="lbl" for="s-lvt">土地增值稅申報費</label>
+        <p class="sub">行情約 2,000～4,000 元</p>
+        <input type="number" id="s-lvt" value="3000" min="0">
+      </div>
+    </div>
+    <label class="chk"><input type="checkbox" id="s-signHalf" checked>
+      <span>簽約費由<strong>買賣雙方各半</strong></span></label>
+
+    <div class="row two">
+      <div class="field">
+        <label class="lbl" for="s-lvr">實價登錄申報費</label>
+        <p class="sub">行情約 1,000～2,000 元，部分仲介免費代辦</p>
+        <input type="number" id="s-lvr" value="1500" min="0">
+      </div>
+      <div class="field">
+        <label class="lbl" for="s-cancel">抵押權塗銷（件數）</label>
+        <p class="sub">每件約 2,000～3,000 元，含規費與書狀費</p>
+        <input type="number" id="s-cancel" value="1" min="0" step="1">
+      </div>
+    </div>
+
+    <h3>貸款與其他</h3>
+    <div class="row two">
+      <div class="field">
+        <label class="lbl" for="s-redeem">代償手續費</label>
+        <p class="sub">銀行收取，約 1,000～3,000 元；無貸款填 0</p>
+        <input type="number" id="s-redeem" value="0" min="0">
+      </div>
+      <div class="field">
+        <label class="lbl" for="s-penalty">提前清償違約金</label>
+        <p class="sub">綁約期內解約，常見剩餘本金 1～2%</p>
+        <input type="number" id="s-penalty" value="0" min="0">
+      </div>
+    </div>
+    <div class="row two">
+      <div class="field">
+        <label class="lbl" for="s-survey">鑑界／土地複丈費</label>
+        <p class="sub">地政事務所規費約 4,000 元／筆，土地案件常見</p>
+        <input type="number" id="s-survey" value="0" min="0">
+      </div>
+      <div class="field">
+        <label class="lbl" for="s-holding">房屋稅、地價稅分算</label>
+        <p class="sub">按持有天數分擔至交屋日</p>
+        <input type="number" id="s-holding" value="0" min="0">
+      </div>
+    </div>
+    <div class="field">
+      <label class="lbl" for="s-other">其他（謄本、公證、搬遷、清潔等）</label>
+      <input type="number" id="s-other" value="0" min="0">
+    </div>
+
+    <button class="btn" id="sumBtn" type="button">產生總表</button>
+    <button class="btn ghost" id="sumClear" type="button">回復預設值</button>
+  </div>
+  <div class="result" id="sumResult"></div>
+
+  <h3>誰負擔什麼：完整對照</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>項目</th><th>負擔方</th><th>金額或計算方式</th></tr></thead>
+    <tbody>
+      <tr><td>土地增值稅</td><td class="tag-tax">賣方</td><td>依漲價總數額累進，見第一頁</td></tr>
+      <tr><td>房地合一稅</td><td class="tag-tax">賣方</td><td>依課稅所得與持有期間，見第二頁</td></tr>
+      <tr><td>契稅</td><td class="tag-free">買方</td><td>房屋評定現值 × 6%</td></tr>
+      <tr><td>印花稅</td><td class="tag-free">買方</td><td>公契上房屋契價＋土地申報現值 × 0.1%</td></tr>
+      <tr><td>所有權移轉登記規費</td><td class="tag-free">買方</td><td>申報地價與房屋現值 × 0.1%＋書狀費每張 80 元</td></tr>
+      <tr><td>抵押權設定規費</td><td class="tag-free">買方</td><td>設定金額（通常為貸款額 1.2 倍）× 0.1%</td></tr>
+      <tr><td>過戶代書費</td><td class="tag-free">買方</td><td>約 15,000～25,000 元</td></tr>
+      <tr><td>設定代書費</td><td class="tag-free">買方</td><td>約 4,000～6,000 元</td></tr>
+      <tr><td>銀行開辦／徵信手續費</td><td class="tag-free">買方</td><td>約 5,000～10,000 元</td></tr>
+      <tr><td>火險、地震險</td><td class="tag-free">買方</td><td>年繳約 3,000～5,000 元，貸款必備</td></tr>
+      <tr><td>仲介服務費</td><td class="tag-def">雙方</td><td>賣方 1～4%、買方 1～2%，合計不得逾 6%</td></tr>
+      <tr><td>履約保證費</td><td class="tag-def">雙方各半</td><td>成交總價 0.06%，各付一半</td></tr>
+      <tr><td>簽約費</td><td class="tag-def">雙方各半</td><td>約 2,000～4,000 元</td></tr>
+      <tr><td>土增稅申報費</td><td class="tag-tax">賣方</td><td>約 2,000～4,000 元</td></tr>
+      <tr><td>實價登錄申報費</td><td class="tag-def">可協商</td><td>約 1,000～2,000 元，部分仲介免費代辦</td></tr>
+      <tr><td>抵押權塗銷</td><td class="tag-tax">賣方</td><td>每件約 2,000～3,000 元</td></tr>
+      <tr><td>代償手續費</td><td class="tag-tax">賣方</td><td>銀行收，約 1,000～3,000 元</td></tr>
+      <tr><td>提前清償違約金</td><td class="tag-tax">賣方</td><td>綁約期內，常見剩餘本金 1～2%</td></tr>
+      <tr><td>鑑界／土地複丈</td><td class="tag-def">可協商</td><td>地政規費約 4,000 元／筆</td></tr>
+      <tr><td>房屋稅、地價稅</td><td class="tag-def">按天數分算</td><td>以交屋日為界，各自負擔持有期間</td></tr>
+      <tr><td>公證費（如約定）</td><td class="tag-def">可協商</td><td>依法院或民間公證人收費標準</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note">
+    <strong>「可協商」那幾項，才是簽委託書時真正要講清楚的地方。</strong>實價登錄申報費、鑑界費、簽約費由誰出，金額不大但最容易在交屋前一天吵起來。委託階段就白紙黑字寫進去，比事後各說各話省事。
+  </div>
+</section>
+
+<section>
+  <div class="lane"></div>
+  <span class="sec-tag">換屋</span>
+  <h2>重購退稅</h2>
+  <p>兩種稅各有一套重購退稅，<strong>要件與計算方式不同，可以同時申請。</strong></p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th></th><th>土地增值稅</th><th>房地合一稅</th></tr></thead>
+    <tbody>
+      <tr><td>期限</td><td colspan="2">出售與重購須在 2 年內（先售後購、先購後售皆可）</td></tr>
+      <tr><td>退稅方式</td><td>新購地價超過「原出售地價−已納稅額」的差額範圍內退還</td><td>換大屋全額退；換小屋按「重購價÷出售價」比例退</td></tr>
+      <tr><td>要件</td><td>自用住宅用地，面積不超過上限</td><td>本人或配偶、未成年子女設籍並實際居住，且無出租營業</td></tr>
+      <tr><td>列管</td><td colspan="2">重購後 <strong>5 年內</strong>不得改作他用或再行移轉，否則追繳</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="panel">
+    <h3 style="margin-top:0">土增稅重購退稅</h3>
+    <div class="row two">
+      <div class="field"><label class="lbl" for="r-old">原出售土地地價（萬元）</label><input type="number" id="r-old" min="0" step="0.01" placeholder="申報移轉現值"></div>
+      <div class="field"><label class="lbl" for="r-paid">已繳土地增值稅（萬元）</label><input type="number" id="r-paid" min="0" step="0.01"></div>
+    </div>
+    <div class="field"><label class="lbl" for="r-new">新購土地地價（萬元）</label><input type="number" id="r-new" min="0" step="0.01" placeholder="申報移轉現值"></div>
+    <button class="btn" id="reBtn" type="button">試算可退稅額</button>
+  </div>
+  <div class="result" id="reResult"></div>
+
+  <div class="panel">
+    <h3 style="margin-top:0">房地合一重購退稅</h3>
+    <div class="row two">
+      <div class="field"><label class="lbl" for="hr-old">原出售房地成交價（萬元）</label><input type="number" id="hr-old" min="0" step="0.01"></div>
+      <div class="field"><label class="lbl" for="hr-tax">已繳／應繳房地合一稅（萬元）</label><input type="number" id="hr-tax" min="0" step="0.01"></div>
+    </div>
+    <div class="field"><label class="lbl" for="hr-new">新購房地價額（萬元）</label><input type="number" id="hr-new" min="0" step="0.01"></div>
+    <button class="btn" id="hreBtn" type="button">試算可退稅額</button>
+  </div>
+  <div class="result" id="hreResult"></div>
+</section>
+
+<section>
+  <div class="lane"></div>
+  <span class="sec-tag">實務提醒</span>
+  <h2>最常出錯的地方</h2>
+  <details><summary>兩種稅的基礎完全不同</summary><div class="body">土增稅算<strong>公告土地現值</strong>的漲幅，賣價再高也不會變多；房地合一算<strong>成交價</strong>減成本的實際獲利。客戶問「賣貴一點稅會不會爆增」，答案是土增稅不會、房地合一會。</div></details>
+  <details><summary>已繳的土增稅不能當房地合一的費用</summary><div class="body">原則上不行。唯一例外是「當次交易未從所得額減除的土地漲價總數額」所對應的那部分稅額，按〔(申報移轉現值−公告土地現值)÷土地漲價總數額〕×已納土增稅 計算。申報現值等於公告現值時，這個數字是零。</div></details>
+  <details><summary>土地漲價總數額的減除有上限</summary><div class="body">房地合一 2.0 特別限制：可減除金額不得超過「交易當年度公告土地現值 − 前次移轉現值」。超過的部分既不能減除，也不能列成本費用——這是當年堵漏的重點條文。</div></details>
+  <details><summary>房貸利息不能列成本</summary><div class="body">取得房地後支付的房貸利息、房屋稅、地價稅、管理費、清潔費，全部不得列為成本或費用。很多客戶會自己加進去，記得先擋掉。</div></details>
+  <details><summary>裝潢費要分清楚</summary><div class="body">能增加房屋價值或效能、且非 2 年內耗竭的改良裝修費可列成本；一般修繕、家電家具、窗簾則不行。憑證要留，發票抬頭要對。</div></details>
+  <details><summary>申報期限：30 天，沒稅也要報</summary><div class="body">房地合一自完成所有權移轉登記日之次日起 30 日內申報，<strong>不論有無應納稅額都要申報</strong>。預售屋換約則自簽約日次日起算。土增稅則是訂約日起 30 日內申報移轉現值。</div></details>
+  <details><summary>自住 6 年是「設籍且實際居住」</summary><div class="body">只設籍沒住不算，實務上會查水電用量、就學就醫紀錄。且交易前 6 年內不得出租、供營業或執行業務使用。</div></details>
+  <details><summary>持有期間怎麼算才對</summary><div class="body">房地合一從取得登記日到訂約日；繼承或受遺贈取得可併計被繼承人持有期間；配偶贈與取得可併計配偶持有期間。這幾條常常能把稅率從 45% 拉到 20%。</div></details>
+</section>
+
+<section>
+  <div class="cta">
+    <h2>要算實際案件？</h2>
+    <p>謄本和買賣契約傳給我，我把土增稅、房地合一稅、服務費、規費一次算清楚再談價。<br>海線六區：沙鹿・清水・梧棲・龍井・大肚・大甲</p>
+    <div class="btns">
+      <a class="lnk gold" href="https://lin.ee/QyQmggG">加 LINE 傳資料</a>
+      <a class="lnk ghost" href="tel:0915295958">撥打 0915-295958</a>
+    </div>
+  </div>
+</section>
+</div>
+
+<footer>
+  <p>本工具依土地稅法、平均地權條例及所得稅法房地合一相關規定製作，計算結果僅供評估參考，不作為報稅依據，亦不構成稅務或法律意見。實際應納稅額以主管稽徵機關核定為準；個案涉及減免、拆分、推計或特殊情形，請洽地方稅捐稽徵處、國稅局、地政士或會計師。</p>
+  <p>海線房仲冠良｜太平洋房屋・沙鹿特三加盟店（勝元不動產經紀股份有限公司）</p>
+</footer>
+
+</div>
+
+<script>
+(function(){
+var $=function(i){return document.getElementById(i);};
+var PING=3.305785, CAPS={once:{urban:300,rural:700},oneHouse:{urban:150,rural:350}};
+var STATE={landTax:null, landGain:null, houseTax:null};
+
+function money(n){return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");}
+function num(i){var v=parseFloat($(i).value);return isNaN(v)?0:v;}
+function numW(i){return num(i)*10000;}
+function wan(n){var v=Math.round(n/100)/100,s=v.toFixed(2).replace(/\.?0+$/,""),a=s.split(".");a[0]=a[0].replace(/\B(?=(\d{3})+(?!\d))/g,",");return a.join(".");}
+
+/* tabs */
+Array.prototype.forEach.call(document.querySelectorAll(".tab"),function(t){
+  t.addEventListener("click",function(){
+    document.querySelectorAll(".tab").forEach(function(x){x.classList.remove("on");});
+    document.querySelectorAll(".pane").forEach(function(x){x.classList.remove("on");});
+    t.classList.add("on"); $(t.dataset.p).classList.add("on");
+    window.scrollTo({top:0,behavior:"smooth"});
+  });
+});
+
+/* ---------- 土增稅 ---------- */
+function longCut(y){return y>=40?.4:y>=30?.3:y>=20?.2:0;}
+function generalTax(gain,base,w){
+  if(base<=0) return {tax:gain*.2,tier:1,rate:20};
+  var m=gain/base;
+  if(m<=1) return {tax:gain*.2,tier:1,rate:20};
+  if(m<=2){var r=.30-.10*w;return {tax:gain*r-base*(.10*(1-w)),tier:2,rate:+(r*100).toFixed(1)};}
+  var r3=.40-.20*w;return {tax:gain*r3-base*(.30*(1-w)),tier:3,rate:+(r3*100).toFixed(1)};
+}
+function syncMode(){
+  var m=$("f-mode").value;
+  $("selfBox").style.display=(m==="general")?"none":"block";
+  if(m!=="general"){
+    var cap=CAPS[m][$("f-urban").value];
+    $("areaCap").textContent="本身分上限："+cap+" 平方公尺（約 "+(cap/PING).toFixed(2)+" 坪）。超過部分自動改用一般累進稅率。";
+  }
+}
+$("f-mode").addEventListener("change",syncMode);
+$("f-urban").addEventListener("change",syncMode);
+
+/* 公告現值換算 */
+function syncHelper(){
+  var unit=num("c-unit"), prev=num("c-prev"), area=num("c-area"), share=num("c-share");
+  if(share<=0) share=1;
+  var effArea=area*share;
+  var out=$("c-readout");
+  if(area<=0||(unit<=0&&prev<=0)){
+    out.innerHTML="填入上方欄位後，這裡會顯示換算結果。";return;
+  }
+  var nowVal=unit*effArea, orgVal=prev*effArea;
+  if(unit>0) $("f-now").value=Math.round(nowVal/100)/100;
+  if(prev>0) $("f-org").value=Math.round(orgVal/100)/100;
+  if(effArea>0) $("f-area").value=(effArea/PING).toFixed(2);
+  var s='移轉持分面積：<b>'+effArea.toFixed(2)+' ㎡</b>（約 '+(effArea/PING).toFixed(2)+' 坪）';
+  if(unit>0) s+='<br>申報移轉現值總額：<b>'+wan(nowVal)+' 萬元</b>（'+money(nowVal)+' 元）';
+  if(prev>0) s+='<br>前次移轉現值總額：<b>'+wan(orgVal)+' 萬元</b>（'+money(orgVal)+' 元）';
+  out.innerHTML=s;
+}
+["c-unit","c-prev","c-area","c-share"].forEach(function(i){
+  $(i).addEventListener("input",syncHelper);
+});
+
+$("calcBtn").addEventListener("click",function(){
+  var now=numW("f-now"),org=numW("f-org"),cpi=num("f-cpi"),imp=numW("f-imp"),years=num("f-years"),
+      mode=$("f-mode").value,cut40=$("f-cut40").checked,box=$("result");
+  if(now<=0||org<=0||cpi<=0){
+    box.className="result on";
+    box.innerHTML='<div class="errbox">請填入申報移轉現值、原地價與物價指數。</div>';return;
+  }
+  var base=org*cpi/100, gain=now-base-imp;
+  if(gain<=0){
+    STATE.landTax=0; STATE.landGain=0;
+    box.className="result on";
+    box.innerHTML='<p class="cap">試算結果</p><p class="big">0 <small>萬元</small></p>'+
+      '<p class="rate-line">無土地漲價，不課徵土地增值稅</p>'+
+      '<div class="brk"><div class="brk-row"><span>調整後原地價</span><b>'+money(base)+' 元</b></div>'+
+      '<div class="brk-row"><span>土地漲價總數額</span><b>'+money(gain)+' 元</b></div></div>'+
+      '<div class="warnbox">漲價總數額為零或負數時無稅可課，但仍須依規定申報。</div>';
+    return;
+  }
+  var w=longCut(years), mult=gain/base, gen=generalTax(gain,base,w), rows=[], tax=0, label="";
+  if(mode==="general"){
+    tax=gen.tax;
+    label="一般用地 第 "+gen.tier+" 級距　稅率 "+gen.rate+"%"+(w>0?"（含長期持有減徵 "+(w*100)+"%）":"");
+    rows.push(["一般累進稅額",money(gen.tax)+" 元"]);
+  }else{
+    var area=num("f-area"), cap=CAPS[mode][$("f-urban").value], m2=area*PING, ratio=1;
+    if(m2>0) ratio=Math.min(cap,m2)/m2;
+    var sg=gain*ratio, og=gain*(1-ratio), st=sg*.10, ot=gen.tax*(1-ratio);
+    tax=st+ot;
+    label=(mode==="once"?"自用住宅・一生一次":"自用住宅・一生一屋")+"　優惠稅率 10%";
+    rows.push(["自用部分漲價額（"+(ratio*100).toFixed(1)+"%）",money(sg)+" 元"]);
+    rows.push(["　└ 按 10% 計",money(st)+" 元"]);
+    if(og>0.5){
+      rows.push(["超限部分漲價額",money(og)+" 元"]);
+      rows.push(["　└ 按一般稅率 "+gen.rate+"% 計",money(ot)+" 元"]);
+      label+="（面積超限，超出部分改按一般稅率）";
+    }
+  }
+  var before=tax; if(cut40) tax=tax*0.6;
+  STATE.landTax=tax; STATE.landGain=gain;
+
+  var h='<p class="cap">應納土地增值稅（試算）</p><p class="big">'+wan(tax)+' <small>萬元</small></p>'+
+    '<p class="rate-line">'+label+'</p><div class="brk">'+
+    '<div class="brk-row"><span>申報移轉現值總額</span><b>'+money(now)+' 元</b></div>'+
+    '<div class="brk-row"><span>原地價 × 物價指數 '+cpi+'%</span><b>'+money(base)+' 元</b></div>'+
+    (imp>0?'<div class="brk-row"><span>扣除土地改良費用</span><b>−'+money(imp)+' 元</b></div>':'')+
+    '<div class="brk-row"><span>土地漲價總數額</span><b>'+money(gain)+' 元</b></div>'+
+    '<div class="brk-row"><span>漲價倍數</span><b>'+mult.toFixed(2)+' 倍</b></div>'+
+    '<div class="brk-row"><span>持有年數</span><b>'+years+' 年'+(w>0?'（減徵 '+(w*100)+'%）':'')+'</b></div>';
+  rows.forEach(function(r){h+='<div class="brk-row"><span>'+r[0]+'</span><b>'+r[1]+'</b></div>';});
+  if(cut40) h+='<div class="brk-row"><span>減徵前稅額</span><b>'+money(before)+' 元</b></div>'+
+    '<div class="brk-row"><span>減徵 40%</span><b>−'+money(before*0.4)+' 元</b></div>';
+  h+='<div class="brk-row total"><span>應納稅額</span><b>'+money(tax)+' 元</b></div></div>';
+
+  var wn=[];
+  if(mode!=="general") wn.push("自用優惠須符合戶籍、建物所有權、售前未出租未營業等全部要件，申報時一併提出。");
+  if(mode==="once") wn.push("一生一次以「人」計算，夫妻各有一次。");
+  if(mode==="oneHouse") wn.push("一生一屋另需持有並設籍連續滿 6 年、名下無其他房屋、售前 5 年未出租未營業。");
+  if(cut40) wn.push("減徵 40% 與自用優惠可否併用，各地稽徵機關認定不一，送件前先向稅捐處確認。");
+  if(cpi===100) wn.push("物價指數維持 100；前次移轉年代久遠時實際指數通常大於 100，會墊高原地價、降低稅額。");
+  wn.push("本結果不含房地合一稅，請切換至第二頁計算。");
+  h+='<div class="warnbox">'+wn.map(function(t){return "・"+t;}).join("<br>")+'</div>';
+  box.className="result on"; box.innerHTML=h;
+});
+
+$("clearBtn").addEventListener("click",function(){
+  ["f-now","f-org","f-imp","f-years","f-area","c-unit","c-prev","c-area"].forEach(function(i){$(i).value="";});
+  $("c-share").value=1;
+  $("f-cpi").value=100;$("f-mode").value="general";$("f-cut40").checked=false;
+  STATE.landTax=null;STATE.landGain=null;syncMode();syncHelper();$("result").className="result";
+});
+
+/* ---------- 房地合一 ---------- */
+$("h-est").addEventListener("change",function(){
+  $("feeBox").style.display=this.checked?"none":"block";
+});
+$("pullBtn").addEventListener("click",function(){
+  if(STATE.landGain===null){alert("請先到第一頁完成土地增值稅試算。");return;}
+  $("h-gain").value=Math.round(STATE.landGain/100)/100;
+});
+
+function houseRate(id,years){
+  if(years<=2) return 45;
+  if(years<=5) return 35;
+  if(id==="nonres") return 35;
+  if(id==="corp") return 20;
+  return years<=10?20:15;
+}
+
+$("hCalcBtn").addEventListener("click",function(){
+  var id=$("h-id").value, years=num("h-years"), price=numW("h-price"), cost=numW("h-cost"),
+      est=$("h-est").checked, fee=numW("h-fee"), gain=numW("h-gain"), cap=numW("h-cap"),
+      sp=$("h-special").value, loss=numW("h-loss"), box=$("hResult");
+  if(price<=0||years<=0){
+    box.className="result on";
+    box.innerHTML='<div class="errbox">請填入成交價額與持有期間。</div>';return;
+  }
+  if(est) fee=Math.min(price*0.03,300000);
+  var deductGain = cap>0 ? Math.min(gain,cap) : gain;
+  var income = price - cost - fee - deductGain - loss;
+  var label="", rate=0, taxable=income, tax=0, exempt=0;
+
+  if(income<=0){
+    STATE.houseTax=0;
+    box.className="result on";
+    box.innerHTML='<p class="cap">試算結果</p><p class="big">0 <small>萬元</small></p>'+
+      '<p class="rate-line">課稅所得為零或虧損，無應納稅額</p><div class="brk">'+
+      '<div class="brk-row"><span>成交價額</span><b>'+money(price)+' 元</b></div>'+
+      '<div class="brk-row"><span>取得成本</span><b>−'+money(cost)+' 元</b></div>'+
+      '<div class="brk-row"><span>移轉費用'+(est?'（推計 3%，上限 30 萬）':'')+'</span><b>−'+money(fee)+' 元</b></div>'+
+      '<div class="brk-row"><span>土地漲價總數額</span><b>−'+money(deductGain)+' 元</b></div>'+
+      '<div class="brk-row total"><span>課稅所得</span><b>'+money(income)+' 元</b></div></div>'+
+      '<div class="warnbox">・交易損失可自交易日以後 <b>3 年內</b>的房地交易所得中扣除。<br>・無應納稅額仍須於期限內申報。</div>';
+    return;
+  }
+
+  if(sp==="self"){
+    if(id!=="resident"){
+      box.className="result on";
+      box.innerHTML='<div class="errbox">自住優惠僅適用於境內居住之個人，請調整身分別。</div>';return;
+    }
+    exempt=Math.min(4000000,income); taxable=income-exempt; rate=10;
+    label="自住滿 6 年　免稅額 400 萬＋稅率 10%";
+  }else if(sp==="s20"||sp==="s20b"){
+    rate=20; taxable=income;
+    label=(sp==="s20"?"非自願因素出售":"合建分屋／都更危老 2 年內出售")+"　稅率 20%";
+  }else{
+    rate=houseRate(id,years); taxable=income;
+    var idName=id==="resident"?"境內個人":(id==="nonres"?"非境內居住者":"營利事業");
+    label=idName+"　持有 "+years+" 年　稅率 "+rate+"%";
+  }
+  tax=taxable*rate/100;
+  STATE.houseTax=tax;
+
+  var h='<p class="cap">應納房地合一稅（試算）</p><p class="big">'+wan(tax)+' <small>萬元</small></p>'+
+    '<p class="rate-line">'+label+'</p><div class="brk">'+
+    '<div class="brk-row"><span>成交價額</span><b>'+money(price)+' 元</b></div>'+
+    '<div class="brk-row"><span>原始取得成本</span><b>−'+money(cost)+' 元</b></div>'+
+    '<div class="brk-row"><span>移轉費用'+(est?'（推計 3%）':'')+'</span><b>−'+money(fee)+' 元</b></div>'+
+    '<div class="brk-row"><span>土地漲價總數額</span><b>−'+money(deductGain)+' 元</b></div>'+
+    (cap>0&&gain>cap?'<div class="brk-row"><span>　（超過上限不得減除）</span><b>'+money(gain-cap)+' 元</b></div>':'')+
+    (loss>0?'<div class="brk-row"><span>前 3 年損失扣除</span><b>−'+money(loss)+' 元</b></div>':'')+
+    '<div class="brk-row"><span>課稅所得</span><b>'+money(income)+' 元</b></div>'+
+    (exempt>0?'<div class="brk-row"><span>自住免稅額</span><b>−'+money(exempt)+' 元</b></div>':'')+
+    '<div class="brk-row"><span>稅基 × 稅率 '+rate+'%</span><b>'+money(taxable)+' 元</b></div>'+
+    '<div class="brk-row total"><span>應納稅額</span><b>'+money(tax)+' 元</b></div></div>';
+
+  var wn=[];
+  if(sp==="self") wn.push("自住優惠須設籍並實際居住連續滿 6 年、售前 6 年內無出租營業，且本人與配偶及未成年子女於 6 年內未曾適用過。");
+  if(cap===0&&gain>0) wn.push("未設定減除上限。實務上土地漲價總數額之減除不得超過「交易當年度公告土地現值−前次移轉現值」，超出部分不得減除也不得列成本。");
+  if(est) wn.push("推計費用按成交價 3%、上限 30 萬元。若實際費用較高，務必核實列報並保留憑證。");
+  if(years<=2) wn.push("持有 2 年內適用最高稅率 45%，若接近 2 年，延後訂約日可能大幅降低稅負。");
+  wn.push("房貸利息、房屋稅、地價稅、管理費不得列為成本或費用。");
+  wn.push("自完成所有權移轉登記日之次日起 30 日內申報，無稅額也要申報。");
+  h+='<div class="warnbox">'+wn.map(function(t){return "・"+t;}).join("<br>")+'</div>';
+  box.className="result on"; box.innerHTML=h;
+});
+
+$("hClearBtn").addEventListener("click",function(){
+  ["h-years","h-price","h-cost"].forEach(function(i){$(i).value="";});
+  ["h-fee","h-gain","h-cap","h-loss"].forEach(function(i){$(i).value=0;});
+  $("h-est").checked=false;$("feeBox").style.display="block";
+  $("h-id").value="resident";$("h-special").value="none";
+  STATE.houseTax=null;$("hResult").className="result";
+});
+
+/* ---------- 總表 ---------- */
+$("sumBtn").addEventListener("click",function(){
+  var box=$("sumResult"), price=numW("s-price");
+  if(price<=0){
+    box.className="result on";
+    box.innerHTML='<div class="errbox">請先填入成交價額。</div>';return;
+  }
+  var lt=STATE.landTax, ht=STATE.houseTax;
+  var brkRate=num("s-brk"), escRate=num("s-esc");
+  var brk=price*brkRate/100;
+  var esc=price*escRate/100; if($("s-escHalf").checked) esc=esc/2;
+  var sign=num("s-sign"); if($("s-signHalf").checked) sign=sign/2;
+  var lvt=num("s-lvt"), lvr=num("s-lvr"), cancel=num("s-cancel")*2500,
+      redeem=num("s-redeem"), pen=num("s-penalty"), survey=num("s-survey"),
+      holding=num("s-holding"), other=num("s-other");
+
+  var taxSum=(lt||0)+(ht||0);
+  var feeSum=brk+esc+sign+lvt+lvr+cancel+redeem+pen+survey+holding+other;
+  var total=taxSum+feeSum;
+
+  function row(name,val,cls){
+    return '<div class="brk-row'+(cls||'')+'"><span>'+name+'</span><b>'+val+'</b></div>';
+  }
+  function fee(name,v){ return v>0 ? row(name,money(v)+' 元') : ''; }
+
+  var h='<p class="cap">賣方應負擔合計（試算）</p><p class="big">'+wan(total)+' <small>萬元</small></p>'+
+    '<p class="rate-line">約占成交價 '+((total/price)*100).toFixed(2)+'%　｜　實拿約 '+money(price-total)+' 元</p>'+
+    '<div class="brk">'+
+    row('<b style="color:var(--amber)">稅</b>','') +
+    row('土地增值稅',(lt===null?'未試算':money(lt)+' 元'))+
+    row('房地合一稅',(ht===null?'未試算':money(ht)+' 元'))+
+    row('小計',money(taxSum)+' 元','')+
+    '</div><div class="brk">'+
+    row('<b style="color:var(--amber)">費用</b>','')+
+    fee('仲介服務費（'+brkRate+'%）',brk)+
+    fee('履約保證費（'+escRate+'%'+($("s-escHalf").checked?'，各半':'')+'）',esc)+
+    fee('地政士簽約費'+($("s-signHalf").checked?'（各半）':''),sign)+
+    fee('土地增值稅申報費',lvt)+
+    fee('實價登錄申報費',lvr)+
+    fee('抵押權塗銷（'+num("s-cancel")+' 件 × 2,500）',cancel)+
+    fee('代償手續費',redeem)+
+    fee('提前清償違約金',pen)+
+    fee('鑑界／複丈費',survey)+
+    fee('房屋稅、地價稅分算',holding)+
+    fee('其他',other)+
+    row('小計',money(feeSum)+' 元')+
+    '</div><div class="brk">'+
+    row('合計負擔',money(total)+' 元','total')+
+    row('成交價扣除後實拿',money(price-total)+' 元','total')+
+    '</div>';
+
+  var wn=[];
+  if(lt===null) wn.push("土地增值稅尚未試算，總額未含此項。");
+  if(ht===null) wn.push("房地合一稅尚未試算；若房地為 105 年後取得，務必補算。");
+  wn.push("抵押權塗銷以每件 2,500 元估算，實際依代書報價與地政規費為準。");
+  wn.push("若符合重購要件，土增稅與房地合一稅可各自申請退稅，實際負擔會低於本表。");
+  wn.push("本表為賣方立場。買方負擔之契稅、印花稅、登記規費、設定費不在此表內，見下方對照。");
+  wn.push("未計入貸款本金清償。實拿金額尚須扣除尚欠銀行的本金餘額。");
+  h+='<div class="warnbox">'+wn.map(function(t){return "・"+t;}).join("<br>")+'</div>';
+  box.className="result on"; box.innerHTML=h;
+});
+
+$("sumClear").addEventListener("click",function(){
+  $("s-brk").value=4;$("s-esc").value=0.06;$("s-sign").value=4000;$("s-lvt").value=3000;
+  $("s-lvr").value=1500;$("s-cancel").value=1;
+  ["s-redeem","s-penalty","s-survey","s-holding","s-other"].forEach(function(i){$(i).value=0;});
+  $("s-escHalf").checked=true;$("s-signHalf").checked=true;
+  $("sumResult").className="result";
+});
+
+/* ---------- 重購退稅 ---------- */
+$("reBtn").addEventListener("click",function(){
+  var o=numW("r-old"),p=numW("r-paid"),n=numW("r-new"),box=$("reResult");
+  if(o<=0||n<=0){box.className="result on";box.innerHTML='<div class="errbox">請填入原出售與新購地價。</div>';return;}
+  var th=o-p, refund=0;
+  if(n>=o) refund=p; else if(n>th) refund=n-th;
+  var msg=refund>=p&&p>0?"新購地價已高於原出售地價，已納稅額可全額申請退還。"
+    :(refund>0?"新購地價低於原出售地價，僅就超過「原地價扣除已納稅額」的差額範圍內退還。"
+              :"新購地價未超過退稅門檻，不符合退稅要件。");
+  box.className="result on";
+  box.innerHTML='<p class="cap">土增稅可退還（試算）</p><p class="big">'+wan(refund)+' <small>萬元</small></p>'+
+    '<p class="rate-line">'+msg+'</p><div class="brk">'+
+    '<div class="brk-row"><span>原出售土地地價</span><b>'+money(o)+' 元</b></div>'+
+    '<div class="brk-row"><span>已繳土地增值稅</span><b>'+money(p)+' 元</b></div>'+
+    '<div class="brk-row"><span>退稅門檻（地價−已納稅額）</span><b>'+money(th)+' 元</b></div>'+
+    '<div class="brk-row"><span>新購土地地價</span><b>'+money(n)+' 元</b></div>'+
+    '<div class="brk-row total"><span>可退稅額</span><b>'+money(refund)+' 元</b></div></div>'+
+    '<div class="warnbox">・出售與重購須在 2 年內。<br>・新購土地須同符合自用住宅用地要件與面積上限。<br>・退稅後 5 年內不得改作他用或再移轉，否則追繳。</div>';
+});
+
+$("hreBtn").addEventListener("click",function(){
+  var o=numW("hr-old"),t=numW("hr-tax"),n=numW("hr-new"),box=$("hreResult");
+  if(o<=0||n<=0||t<=0){box.className="result on";box.innerHTML='<div class="errbox">請填入原出售價、應納稅額與新購價額。</div>';return;}
+  var refund, msg;
+  if(n>=o){refund=t;msg="換大屋（新購價額不低於出售價額），已納稅額可全額退還或免納。";}
+  else{refund=t*(n/o);msg="換小屋，按「新購價額 ÷ 出售價額」＝ "+((n/o)*100).toFixed(1)+"% 的比例退還。";}
+  box.className="result on";
+  box.innerHTML='<p class="cap">房地合一可退還（試算）</p><p class="big">'+wan(refund)+' <small>萬元</small></p>'+
+    '<p class="rate-line">'+msg+'</p><div class="brk">'+
+    '<div class="brk-row"><span>原出售房地成交價</span><b>'+money(o)+' 元</b></div>'+
+    '<div class="brk-row"><span>已繳／應繳稅額</span><b>'+money(t)+' 元</b></div>'+
+    '<div class="brk-row"><span>新購房地價額</span><b>'+money(n)+' 元</b></div>'+
+    '<div class="brk-row total"><span>可退稅額</span><b>'+money(refund)+' 元</b></div></div>'+
+    '<div class="warnbox">・出售與重購須在 2 年內，且本人或配偶、未成年子女於新舊房地均須設籍並實際居住。<br>'+
+    '・重購後 5 年內不得改作他用或再行移轉，否則追繳。<br>'+
+    '・自住 400 萬免稅額與重購退稅可併用，但需分別符合各自要件。</div>';
+});
+
+syncMode();
+})();
+</script>
+<!-- REVIEW:AUTO 由 scripts/review-cta.mjs 產生，不要手改 -->
+<section class="gr-cta" aria-labelledby="gr-cta-h">
+  <div class="gr-inner">
+    <p class="gr-eyebrow">GOOGLE 評論</p>
+    <h2 id="gr-cta-h">這些整理，有幫到你嗎？</h2>
+    <p class="gr-lede">留一則 Google 評論，讓其他正在煩惱同樣問題的人，也找得到這裡。<br>一句話就夠，不用寫長。</p>
+    <a class="gr-btn" href="https://g.page/r/Cc3MaJq-9w1REAE/review" target="_blank" rel="noopener noreferrer">
+      <svg class="gr-star" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l2.9 6.6 7.1.7-5.3 4.8 1.5 7-6.2-3.6L5.8 21l1.5-7L2 9.3l7.1-.7z"/></svg>
+      去 Google 留評論
+    </a>
+    <p class="gr-note">會開啟 Google 地圖的評論視窗，需要登入 Google 帳號。</p>
+  </div>
+</section>
+<style>
+.gr-cta{max-width:820px;margin:34px auto 40px;padding:26px 24px;
+ background:#16283f;border-radius:16px;color:#e9edf2;
+ font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif;
+ text-align:center;box-sizing:border-box}
+.gr-cta *{box-sizing:border-box}
+.gr-inner{max-width:34em;margin:0 auto}
+.gr-cta .gr-eyebrow{margin:0 0 8px;font-size:12.5px;letter-spacing:.2em;color:#e8c887;font-weight:500}
+.gr-cta h2{margin:0 0 10px;font-size:23px;line-height:1.4;color:#fff;font-weight:700;
+ font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif}
+.gr-cta .gr-lede{margin:0 0 20px;font-size:16px;line-height:1.8;color:#cfd8e2}
+.gr-cta .gr-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+ min-height:52px;padding:13px 30px;border-radius:999px;
+ background:#c8963e;color:#20180a;text-decoration:none;
+ font-size:17px;font-weight:700;line-height:1.4}
+.gr-cta .gr-btn:hover{background:#dcae5c}
+.gr-cta .gr-btn:focus-visible{outline:3px solid #e8c887;outline-offset:3px}
+.gr-cta .gr-star{width:20px;height:20px;fill:#20180a;flex:none}
+.gr-cta .gr-note{margin:14px 0 0;font-size:13.5px;color:#9fb0c4;line-height:1.65}
+@media(max-width:640px){
+  .gr-cta{margin:26px 16px 32px;padding:22px 18px}
+  .gr-cta h2{font-size:20px}
+  .gr-cta .gr-btn{width:100%}
+}
+</style>
+<!-- /REVIEW:AUTO -->
+<!-- CLUSTER:AUTO 由 scripts/seo-build.mjs 產生，不要手改 -->
+<section class="seo-cluster">
+<h2>賣屋・延伸閱讀</h2>
+<p>準備賣房子，這幾頁一起看：</p>
+<ul><li><a href="/seller-guide">賣房前你必須知道的事</a></li><li><a href="/selfuse-tax">房地合一稅・自用優惠 400 萬</a></li><li><a href="/repurchase-tax">換屋重購退稅怎麼用</a></li><li><a href="/self-sale-vs-agent">自售還是找仲介</a></li><li><a href="/actual-price">實價登錄怎麼查才不會被當肥羊</a></li></ul>
+</section>
+<style>
+.seo-cluster{max-width:820px;margin:34px auto 40px;padding:24px;background:#fff;
+ border:1px solid #ddd2bd;border-radius:16px;
+ font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif}
+.seo-cluster h2{font-size:20px;color:#16283f;margin:0 0 8px;line-height:1.4}
+.seo-cluster p{font-size:15px;color:#6f6a60;margin:0 0 14px;line-height:1.7}
+.seo-cluster ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.seo-cluster a{display:flex;align-items:center;min-height:44px;padding:8px 14px;
+ background:#f7f3ea;border:1px solid #ddd2bd;border-radius:10px;
+ color:#16283f;text-decoration:none;font-size:15.5px;line-height:1.5}
+.seo-cluster a:hover{border-color:#c8963e}
+@media(max-width:520px){.seo-cluster{margin:24px 16px 32px;padding:18px}}
+</style>
+<!-- /CLUSTER:AUTO -->
+</body>
+</html>

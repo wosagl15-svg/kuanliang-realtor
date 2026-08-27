@@ -1,0 +1,696 @@
+<!-- 自動產生，請勿手動編輯。內部工具頁，未對外索引。 -->
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="googlebot" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>591 拋轉 · 型錄一鍵送上 591</title>
+<meta name="description" content="貼上電子型錄內容與實際地址，產生 591 刊登資料，核對無誤後一鍵送出。">
+<style>
+/* ↓ 內嵌自 assets/theme.css，正本仍是那個檔 ↓ */
+/* ═══════════════════════════════════════════════════════════════
+   工具站配色 —— 改配色只改這一個檔（BOSS 鐵律）
+   用法：<body data-theme="gundam">  或  <body data-theme="dragonball">
+
+   ⚠️ 兩組共同遵守的規矩（使用者 30~60 歲，別破例）：
+      1. 內容區一律淺色底深色字。深色只准用在頁首橫幅與頁尾。
+      2. 基準字級 17px，不要縮。
+      3. 主色只拿來做「行動點」（按鈕、目前步驟），不要整片鋪。
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── 鋼彈 Freedom 白底版（591 拋轉用）───────────────────────────
+   🔴 色碼對齊買方系統後台 cis.ts 的**現行版本**。
+      ⚠️ 2026-08-20 更正過一次：先前的「深底＋大面積黃」已作廢，不要再抄。
+         理由是 BOSS 指正 —— Freedom Gundam 是**白色佔絕大面積**、
+         藍是塊面、紅只是胸口點綴、黃只有 V 字天線一小塊。
+         大面積鋪黃會變成「金色招牌」，不像鋼彈。
+   用色比例照機體來：白最多 → 藍當主行動色 → 紅只給警示 → 黃只做小標記。
+   字級基準 17px，不要縮（使用者 30~60 歲）。 */
+[data-theme="gundam"]{
+  --bg:#eaeef5;        /* 機體白（微冷灰，長時間看不刺眼） */
+  --bg2:#ffffff;       /* 卡片 */
+  --line:#ccd6e6;      /* 裝甲分模線 */
+  --tx:#16203a;        /* 內文 */
+  --sub:#5a6b8a;       /* 次要文字 */
+  --ac:#1e5bc6;        /* 主強調藍 —— 主要按鈕（藍底白字） */
+  --ac2:#123f96;       /* 深藍（按鈕陰影／hover） */
+  --navy:#123f96;      /* 頁首橫幅 */
+  --navy2:#0e2f73;     /* 頁尾更深 */
+  --red:#d9333f;       /* 胸口紅 —— 只給必填與警示，小面積 */
+  --gold:#f5c518;      /* V字天線黃 —— 只做小標記，不鋪大面積 */
+  --blue:#1e5bc6;      /* 資訊藍＝主色 */
+  --steel:#5a6b8a;
+  --glow:#1e5bc6;      /* focus ring */
+  --green:#1f8a5b;     /* 成功（白底要夠深才看得清） */
+  --ink:#16203a;       /* 黃底上的字色 */
+  --btn-tx:#ffffff;    /* 主按鈕字色：藍底配白字 */
+  /* 小字專用的深色版：--red / --green 拿去畫框線夠了，但當「小字的顏色」
+     對比只有 3.9，達不到 4.5。小字一律用下面這兩個。 */
+  --red-tx:#a81c26;
+  --green-tx:#136647;
+}
+
+/* ── 七龍珠Z（我家網那條沿用，不要動）────────────────────────── */
+[data-theme="dragonball"]{
+  --bg:#FDF4E3; --bg2:#FFFFFF; --line:#E6D3A8; --tx:#241C12; --sub:#6E5D46;
+  --ac:#EE7A1E; --ac2:#C25406; --navy:#1B3A8C; --navy2:#102456;
+  --red:#E8402A; --gold:#F5A623; --steel:#6E5D46; --glow:#F5A623; --green:#5A9E3D;
+  --blue:#1B54A0; --ink:#241C12; --btn-tx:#FFFFFF;
+}
+
+/* ── 共用骨架 ─────────────────────────────────────────────── */
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);
+     font:17px/1.8 "Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif}
+
+.topbar{height:14px;background:var(--ac)}
+.hero{position:relative;overflow:hidden;padding:34px 18px 30px;
+      background:radial-gradient(circle at 50% 40%,#24499F 0%,var(--navy) 45%,var(--navy2) 100%);
+      border-bottom:6px solid var(--gold);color:#fff}
+.hero .inner{max-width:1060px;margin:0 auto;position:relative;z-index:2}
+
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:20px 22px}
+.req{color:var(--red)}                    /* 必填星號 */
+.muted{color:var(--sub)}
+
+button,.btn{font:inherit;font-size:17px;background:var(--ac);color:var(--btn-tx);border:0;
+     border-radius:10px;padding:12px 22px;cursor:pointer;font-weight:700;
+     box-shadow:0 3px 0 var(--ac2)}
+button:hover,.btn:hover{filter:brightness(1.12)}
+button:active,.btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--ac2)}
+button:focus-visible,.btn:focus-visible,input:focus-visible,textarea:focus-visible{
+     outline:3px solid var(--glow);outline-offset:2px}
+.btn-ghost{background:transparent;color:var(--ac);border:2px solid var(--ac);box-shadow:none}
+
+input,textarea,select{font:inherit;background:var(--bg2);color:var(--tx);
+     border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+
+/* 步驟條：目前這步用天線黃，做完的用資訊藍 */
+.steps{display:flex;gap:6px;list-style:none;padding:0;margin:0 0 22px;flex-wrap:wrap}
+.steps li{padding:8px 16px;border-radius:8px;background:var(--bg2);
+          border:1px solid var(--line);color:var(--sub);font-size:15px}
+.steps li.done{background:var(--blue);border-color:var(--blue);color:#fff}
+.steps li.now{background:var(--ac);border-color:var(--ac);color:var(--ink);font-weight:700}
+
+/* 鋼彈三色條：跟買方系統的 cisGundamBar 同一個語彙，放在標題下方 */
+.gbar{height:5px;border-radius:3px;margin:10px 0 22px;
+      background:linear-gradient(90deg,
+        var(--blue) 0 34%, var(--red) 34% 60%, var(--ac) 60% 100%)}
+
+</style>
+<style>
+/* 只放這一頁專屬的東西。配色一律走 theme.css 的 token，這裡不寫死色碼。 */
+.wrap{max-width:1060px;margin:0 auto;padding:0 18px 80px}
+.hero h1{margin:0;font-size:clamp(24px,4vw,34px);letter-spacing:1px}
+.hero p{margin:6px 0 0;color:#cfdcf5;font-size:15.5px}
+/* 頁首是深藍塊面，標籤用 V 字天線黃 —— 全頁唯一一處用黃，就這麼一小塊 */
+.hero .tag{display:inline-block;background:var(--gold);color:#16203a;
+  font-size:13px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:10px}
+
+section.card{margin-bottom:18px}
+h2{font-size:19px;margin:0 0 4px;display:flex;align-items:center;gap:9px}
+h2 .n{display:inline-flex;align-items:center;justify-content:center;
+  width:26px;height:26px;border-radius:50%;background:var(--ac);color:#fff;
+  font-size:15px;font-weight:800;flex:0 0 26px}
+h2 small{font-weight:400;color:var(--sub);font-size:14px}
+
+label.f{display:block;margin:14px 0 5px;font-size:15.5px;color:var(--sub)}
+label.f b{color:var(--tx);font-weight:600}
+input[type=text],input[type=number],textarea{width:100%}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:700px){.row2{grid-template-columns:1fr}}
+
+.count{float:right;font-size:13.5px;color:var(--sub)}
+.count.bad{color:var(--red-tx);font-weight:700}
+.count.ok{color:var(--green-tx)}
+
+/* 核對表 */
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:6px}
+th{text-align:left;color:var(--sub);font-weight:500;font-size:13.5px;
+   border-bottom:1px solid var(--line);padding:7px 8px}
+td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+td.k{font-family:ui-monospace,Consolas,monospace;font-size:13px;color:var(--blue);white-space:nowrap}
+td.v{font-weight:600}
+.lv{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 7px;
+    border-radius:4px;white-space:nowrap}
+.lv.m{background:#e2f3ea;color:var(--green-tx)}   /* 實測 */
+.lv.c{background:#e3ecfc;color:var(--blue)}    /* 程式碼 */
+.lv.u{background:#fbe6e8;color:var(--red-tx)}     /* 未驗證 */
+tr.dim td{opacity:.55}
+
+/* 待辦 */
+ul.todo{list-style:none;padding:0;margin:8px 0 0}
+ul.todo li{display:flex;gap:10px;align-items:flex-start;padding:9px 0;
+  border-bottom:1px solid var(--line);font-size:15px;line-height:1.65}
+ul.todo li:last-child{border-bottom:0}
+ul.todo input{margin-top:5px;width:17px;height:17px;flex:0 0 17px;accent-color:var(--ac)}
+ul.todo li.hot{color:var(--tx)}
+ul.todo li.hot b{color:var(--red-tx)}
+ul.todo li.done{opacity:.45;text-decoration:line-through}
+
+pre{background:#f2f5fa;border:1px solid var(--line);border-radius:10px;
+  padding:16px;overflow:auto;max-height:420px;font-size:13px;line-height:1.6;
+  color:#16203a;font-family:ui-monospace,Consolas,monospace}
+
+.bar{position:sticky;bottom:0;background:var(--bg2);border-top:2px solid var(--ac);
+  padding:14px 18px;display:flex;gap:12px;align-items:center;justify-content:flex-end;
+  flex-wrap:wrap;margin-top:24px;box-shadow:0 -4px 16px rgba(22,32,58,.08)}
+.bar .msg{margin-right:auto;font-size:14.5px;color:var(--sub)}
+button[disabled]{opacity:.45;cursor:not-allowed;box-shadow:none}
+.note{background:#fbe6e8;border:1px solid var(--red);border-radius:10px;
+  padding:12px 15px;font-size:14.5px;line-height:1.7;margin-top:14px}
+.note b{color:var(--red-tx)}
+</style>
+<!-- SEO:AUTO 由 scripts/seo-build.mjs 產生，不要手改 -->
+<link rel="canonical" href="https://kuanhome.com/591">
+<meta property="og:url" content="https://kuanhome.com/591">
+<meta property="og:site_name" content="海線房仲冠良">
+<meta property="og:locale" content="zh_TW">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://kuanhome.com/591#article","headline":"591 拋轉 · 型錄一鍵送上 591","description":"貼上電子型錄內容與實際地址，產生 591 刊登資料，核對無誤後一鍵送出。","url":"https://kuanhome.com/591","inLanguage":"zh-Hant-TW","dateModified":"2026-08-27T15:10:41.958Z","author":{"@id":"https://kuanhome.com/#wuguanliang"},"publisher":{"@id":"https://kuanhome.com/#agent"},"mainEntityOfPage":{"@id":"https://kuanhome.com/591"}},{"@type":"RealEstateAgent","@id":"https://kuanhome.com/#agent","name":"海線房仲冠良","alternateName":"吳冠良｜台中海線房地產顧問","description":"台中海線專業房地產仲介，深耕沙鹿、清水、梧棲、龍井、大肚、大甲六區。提供資產配置、稅務諮詢、簡易裝潢，及買賣委託與土地買賣。","slogan":"懂你又懂房","url":"https://kuanhome.com/","image":"https://kuanhome.com/card/owner.webp","telephone":"+886-915-295-958","email":"wosagl15@gmail.com","address":{"@type":"PostalAddress","addressLocality":"沙鹿區","addressRegion":"台中市","postalCode":"433","addressCountry":"TW"},"geo":{"@type":"GeoCoordinates","latitude":24.2340986,"longitude":120.560349},"priceRange":"$$","areaServed":[{"@type":"AdministrativeArea","name":"台中市沙鹿區"},{"@type":"AdministrativeArea","name":"台中市清水區"},{"@type":"AdministrativeArea","name":"台中市梧棲區"},{"@type":"AdministrativeArea","name":"台中市龍井區"},{"@type":"AdministrativeArea","name":"台中市大肚區"},{"@type":"AdministrativeArea","name":"台中市大甲區"}],"sameAs":["https://www.facebook.com/share/14XZ3Wy4nLZ/","https://www.instagram.com/asmile55178/","https://www.youtube.com/@吳冠良-w9v","https://lin.ee/1WlfBub","https://sales.myhomes.com.tw/0915295958"],"employee":{"@type":"Person","@id":"https://kuanhome.com/#wuguanliang","name":"吳冠良","jobTitle":"台中海線專業房地產顧問"}},{"@type":"BreadcrumbList","@id":"https://kuanhome.com/591#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://kuanhome.com/"},{"@type":"ListItem","position":2,"name":"購屋攻略","item":"https://kuanhome.com/tools"},{"@type":"ListItem","position":3,"name":"591 拋轉 · 型錄一鍵送上 591","item":"https://kuanhome.com/591"}]}]}</script>
+<!-- /SEO:AUTO -->
+</head>
+<body data-theme="gundam">
+
+<div class="topbar"></div>
+<div class="hero">
+  <div class="inner">
+    <span class="tag">RX-78-2</span>
+    <h1>591 拋轉</h1>
+    <p>貼上型錄內容和實際地址 → 產生 591 刊登資料 → 核對無誤才送出</p>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="gbar"></div>
+
+  <ul class="steps" id="steps">
+    <li class="now">① 貼型錄</li>
+    <li>② 核對資料</li>
+    <li>③ 補必填</li>
+    <li>④ 送到 591</li>
+  </ul>
+
+  <!-- ① -->
+  <section class="card">
+    <h2><span class="n">1</span> 型錄來源 <small>資料全部來自電子型錄，這裡不推算、不補寫</small></h2>
+
+    <div class="note" style="background:#e3ecfc;border-color:var(--blue);margin-top:0">
+      <b style="color:var(--blue)">要貼「文字」，不是貼網址</b><br>
+      型錄站要登入，外部伺服器連不進去，所以<b>丟網址一定失敗</b>。<br>
+      正確做法：<b>在型錄頁按 Ctrl+A 全選 → Ctrl+C 複製 → 貼到下面</b>。
+      整段貼進來就好，多餘的字不用刪。
+    </div>
+
+    <label class="f"><b>型錄內容</b>（在型錄頁 Ctrl+A → Ctrl+C 貼過來）</label>
+    <textarea id="cat" rows="6" placeholder="把整頁型錄文字貼在這裡…"></textarea>
+
+    <label class="f"><b>實際地址</b>（含門牌）
+      <span style="color:var(--red)">← 型錄只給到路街道，門牌一定要自己補</span></label>
+    <input type="text" id="addr" placeholder="例：台中市梧棲區臨港路四段123號">
+    <div style="margin-top:16px">
+      <button id="btnBuild">產生 591 資料</button>
+      <button class="btn-ghost" id="btnDemo">載入範例（聯悦臻）</button>
+    </div>
+    <p id="parseMsg" style="font-size:14px;margin:12px 0 0"></p>
+  </section>
+
+  <!-- ② -->
+  <section class="card">
+    <h2><span class="n">2</span> 核對表 <small>每一欄都看得到來源，以及這個欄位有多可信</small></h2>
+    <p style="font-size:14px;color:var(--sub);margin:8px 0 0">
+      <span class="lv m">實測</span> 從真實送出封包攔到的，確定正確
+      <span class="lv c">程式碼</span> 欄位名確定、巢狀結構未驗證
+      <span class="lv u">未驗證</span> 表單上有但 payload 欄位名未知 → <b>一律不填</b>
+    </p>
+    <table id="tbl"><thead><tr>
+      <th style="width:96px">可信度</th><th style="width:180px">payload 欄位</th>
+      <th style="width:120px">說明</th><th style="width:150px">型錄原文</th><th>填入值</th>
+    </tr></thead><tbody><tr><td colspan="5" style="color:var(--sub)">
+      還沒產生資料。貼型錄內容按「產生 591 資料」，或按「載入範例」看看長什麼樣。</td></tr></tbody></table>
+  </section>
+
+  <!-- ③ -->
+  <section class="card">
+    <h2><span class="n">3</span> 補必填 <small>型錄給不了、或法律上必須你自己決定的</small></h2>
+
+    <label class="f"><b>廣告標題</b>
+      <span class="count" id="cnt">0 / 6~30 字</span></label>
+    <input type="text" id="title" maxlength="30" placeholder="地點 × 買方最有感的特色，不要堆規格">
+
+    <div class="row2">
+      <div>
+        <label class="f"><b>自備款</b>（%）</label>
+        <input type="number" id="down" min="0" max="100" placeholder="例：50">
+      </div>
+      <div>
+        <label class="f"><b>委託書</b></label>
+        <select id="entrust" style="width:100%">
+          <option value="">請選擇</option>
+          <option value="1">有簽訂</option>
+          <option value="3">有簽訂專任約</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row2">
+      <div>
+        <label class="f"><b>服務費</b></label>
+        <select id="fee" style="width:100%">
+          <option value="">請選擇</option>
+          <option value="1">收取服務費</option>
+          <option value="2">不須服務費</option>
+        </select>
+      </div>
+      <div>
+        <label class="f"><b>現況特色描述</b>（上限 2500 字）</label>
+        <textarea id="remark" rows="3" placeholder="型錄整段可直接帶入"></textarea>
+      </div>
+    </div>
+
+    <div class="note">
+      <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer">
+        <input type="checkbox" id="econ" style="margin-top:5px;width:17px;height:17px;flex:0 0 17px;accent-color:var(--ac)">
+        <span><b>我已閱讀並確認經紀業資料無誤</b><br>
+        這牽涉《不動產經紀業管理條例》，<b>程式不會替你自動勾</b>——必須你自己按。
+        沒勾就不會送出。</span>
+      </label>
+    </div>
+  </section>
+
+  <!-- 待辦 -->
+  <section class="card">
+    <h2><span class="n">!</span> 送出前必處理 <small id="todoCnt"></small></h2>
+    <ul class="todo" id="todo"><li style="color:var(--sub)">還沒產生資料。</li></ul>
+  </section>
+
+  <!-- ④ -->
+  <section class="card">
+    <h2><span class="n">4</span> 送出封包 <small>POST 591 刊登 API</small></h2>
+    <pre id="json">（還沒產生）</pre>
+  </section>
+</div>
+
+<div class="bar">
+  <span class="msg" id="msg">⛔ 尚未產生資料</span>
+  <button class="btn-ghost" id="btnCopy" disabled>複製 payload</button>
+  <button id="btnSend" disabled>送到 591</button>
+</div>
+
+<script>
+/* ─────────────────────────────────────────────────────────────
+   這一版是介面原型：資料用 builder591.py 對聯悦臻跑出來的真實結果。
+   「送到 591」目前**故意鎖死**，接上 API 之前不會有任何送出行為。
+   ───────────────────────────────────────────────────────────── */
+var DEMO = {
+  addr: '台中市梧棲區臨港路四段',
+  trace: [
+    ['實測','kind','物件種類','電梯大樓/空屋','9'],
+    ['實測','purpose','法定用途','住家/集合住宅','3'],
+    ['實測','shape','房屋型態','電梯大樓/空屋','2（電梯大樓）'],
+    ['實測','address.region_id','縣市','—','8（台中市）'],
+    ['實測','address.section_id','行政區','梧棲區','122（梧棲區）'],
+    ['實測','address.street_name','路街道','臨港路四段','臨港路四段'],
+    ['實測','address.address_number','門牌','—','（空，必填）'],
+    ['實測','price','售價(萬)','1158','1158'],
+    ['實測','unit_price','單價(萬/坪)','—','23.21'],
+    ['實測','house_area.area','權狀坪數','49.9','49.9'],
+    ['程式碼','price_has_carport','售價含車位','公設車位/B3-411','1'],
+    ['程式碼','room_num','格局-房','3/1/2','3'],
+    ['程式碼','total_floor','總樓層','10樓/24樓','24'],
+    ['程式碼','community_name','社區名稱','聯悦臻','聯悦臻'],
+    ['程式碼','community_id','社區ID','—','null（要打 API 換）'],
+    ['程式碼','house_age','屋齡','1.7','1.7'],
+    ['實測','pictures','房屋照片','13 張','13 張（id 待上傳）'],
+    ['實測','is_confirmed_economy','確認經紀業資料','—','0'],
+    ['未驗證','（欄位名未知）','管理費','6678元/雙月繳','未填入'],
+    ['未驗證','（欄位名未知）','車位型式','坡道平面','未填入'],
+    ['未驗證','（欄位名未知）','車位編號','公設車位/B3-411','未填入'],
+    ['未驗證','（欄位名未知）','主建物坪數','24.266','未填入'],
+    ['未驗證','（欄位名未知）','附屬建物坪數','4.15','未填入'],
+    ['未驗證','（欄位名未知）','共有部分坪數','13.58','未填入'],
+    ['未驗證','（欄位名未知）','土地坪數','4.05','未填入'],
+    ['未驗證','（欄位名未知）','朝向','—','未填入']
+  ],
+  todo: [
+    [1,'型錄只給到路街道、<b>沒有門牌號</b>，而 591 地址是必填 —— 送出前一定要補'],
+    [1,'廣告標題留白待填（591 限 <b>6~30 字，有下限</b>）'],
+    [1,'委託書與服務費是<b>法定必填</b>，不能由程式決定 —— 一定要人自己選'],
+    [1,'<b>確認經紀業資料無誤</b>必須人工勾選，程式不自動勾'],
+    [0,'street_id 要呼叫 街道查詢 API 換取'],
+    [0,'community_id 要打 社區比對 API 用社區名「聯悦臻」換'],
+    [0,'自備款是必填、型錄沒給'],
+    [0,'has_carport 的 1/2 語意（含／不含車位面積）還沒對照過'],
+    [0,'廳(1)／衛(2)／陽台 的 payload 欄位名還沒確認，這次沒有硬塞'],
+    [0,'所在樓層(10樓) 的欄位名未確認'],
+    [0,'竣工日期 2024/12/16 的欄位名未確認'],
+    [0,'照片要先走 AWS S3 預簽名上傳拿到 id 才能帶進 payload'],
+    [0,'管理費／車位／朝向／各項坪數：payload 欄位名未確認，一律沒填']
+  ],
+  payload: {
+    device:'pc', deviceid:'<執行時由頁面帶入>',
+    kind:9, purpose:3, purpose_custom:'', shape:2,
+    address:{region_id:8, region_name:'台中市', section_id:122, section_name:'梧棲區',
+             street_id:null, street_name:'臨港路四段', lane:'', alley:'',
+             address_number:'', address_number_two:'', hide_address_number:0},
+    title:'', house_area:{area:49.9, unit:1, has_carport:1},
+    price:1158, unit_price:23.21, price_has_carport:1,
+    un_mortgage:0, first_payment_ratio:null,
+    room_num:3, total_floor:24,
+    community_name:'聯悦臻', community_id:null, house_age:1.7,
+    remark:'',
+    pictures:['…13 張，id 待上傳後回填…'], terrain_photos:[],
+    video:{type:3,id:null,url:'',cover:0},
+    contact:{link_role:3, link_name:'吳冠良', area_code:'04',
+             has_appointment:null, has_service_fee:null},
+    is_confirmed_economy:0
+  }
+};
+
+var $ = function(id){ return document.getElementById(id) };
+var loaded = false;
+var CUR = DEMO;          // 目前畫面上這一筆（範例或真的解析出來的）
+
+/* ═══════════════════════════════════════════════════════════════
+   型錄文字解析器
+   型錄頁 Ctrl+A 複製出來是「標籤 + 值」交錯的純文字，欄位順序不固定、
+   中間夾雜空白與換行。策略：**只認識已知標籤**，抓「這個標籤之後、
+   下一個已知標籤之前」那一段當值。不做通用 pattern，因為型錄裡
+   到處都是冒號和數字，通用規則一定誤判。
+   🔴 抓不到就是沒有 —— 一律留空並寫進待辦，不從別的欄位推算。
+   ═══════════════════════════════════════════════════════════════ */
+var LABELS = ['物件編號','委託總價','登記坪數','含車位坪','房/廳/衛','格局',
+  '樓別/樓高','屋齡','竣工日期','主建物坪','附屬建物','公設建坪','土地登記',
+  '車位型式','車位/編號','公設車位','管理費','車位管理費','物件座向','使用分區',
+  '類別/謄本用途','類型/現況','面臨路寬','鄰近學校','鄰近市場','鄰近公園',
+  '社區名稱','建物結構','建物外觀','總基地坪','建物面積'];
+
+function parseCatalog(text){
+  var t = String(text || '').replace(/\r/g, '');
+  // 全形→半形（門牌「１２３」不等於「123」，這條跟我家網那邊同一個坑）
+  t = t.replace(/[！-～]/g, function(c){
+        return String.fromCharCode(c.charCodeAt(0) - 0xFEE0) })
+       .replace(/　/g, ' ');
+
+  // 找出每個已知標籤在文字裡的位置
+  var hits = [];
+  LABELS.forEach(function(lab){
+    var i = t.indexOf(lab);
+    while (i >= 0) { hits.push({lab: lab, at: i, end: i + lab.length}); i = t.indexOf(lab, i + 1) }
+  });
+  hits.sort(function(a, b){ return a.at - b.at });
+
+  var out = {}, n = 0;
+  hits.forEach(function(h, idx){
+    var stop = idx + 1 < hits.length ? hits[idx + 1].at : t.length;
+    var val = t.slice(h.end, stop).replace(/^[\s:：\-–—|｜\t]+/, '').trim();
+    val = val.split('\n')[0].trim();          // 只取同一列
+    if (val && !out[h.lab]) { out[h.lab] = val; n++ }
+  });
+
+  // 社區名：型錄的物件名稱通常自己一行，抓不到就留空
+  if (!out['社區名稱']) {
+    var m = t.match(/社區\s*[:：]?\s*([^\s\n]{2,12})/);
+    if (m) out['社區名稱'] = m[1];
+  }
+  out.__count = n;
+  return out;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   payload 產生器（builder591.py 的前端版，規則完全一致）
+   欄位可信度分三級，未驗證的一律不填、只寫進待辦。
+   ═══════════════════════════════════════════════════════════════ */
+var SECTION_TAICHUNG = {'梧棲區':122,'大甲區':124,'神岡區':118,'霧峰區':108,
+  '大肚區':119,'后里區':111,'東區':99};
+var SHAPE = {'電梯大樓':2,'大樓':2};
+
+function num(s){
+  if (s == null) return null;
+  var m = String(s).replace(/,/g, '').match(/(\d+(?:\.\d+)?)/);
+  if (!m) return null;
+  var v = parseFloat(m[1]);
+  return v % 1 === 0 ? v : Math.round(v * 100) / 100;
+}
+function layout(s){
+  if (!s) return [null, null, null];
+  var m = String(s).match(/(\d+)\s*房.*?(\d+)\s*廳.*?(\d+)\s*衛/);
+  if (m) return [+m[1], +m[2], +m[3]];
+  m = String(s).match(/^\s*(\d+)\s*\/\s*(\d+)\s*\/\s*(\d+)/);
+  return m ? [+m[1], +m[2], +m[3]] : [null, null, null];
+}
+function floors(s){
+  if (!s) return [null, null];
+  var m = String(s).match(/(-?\d+)\D+(\d+)/);
+  return m ? [+m[1], +m[2]] : [null, null];
+}
+function parseAddr(s){
+  var t = String(s || '').replace(/[！-～]/g, function(c){
+    return String.fromCharCode(c.charCodeAt(0) - 0xFEE0) }).replace(/臺/g, '台').trim();
+  var o = {city:null, area:null, road:null, lane:'', alley:'', no:''};
+  var mc = t.match(/^(台北市|基隆市|新北市|宜蘭縣|桃園市|新竹市|新竹縣|苗栗縣|台中市|彰化縣|南投縣|雲林縣|嘉義市|嘉義縣|台南市|高雄市|澎湖縣|屏東縣|台東縣|花蓮縣)/);
+  if (mc) { o.city = mc[1]; t = t.slice(mc[1].length) }
+  var ma = t.match(/^([一-龥]{1,4}[區鄉鎮市])/);
+  if (ma) { o.area = ma[1]; t = t.slice(ma[1].length) }
+  var ml = t.match(/(\d+)\s*巷/); if (ml) o.lane = ml[1];
+  var my = t.match(/(\d+)\s*弄/); if (my) o.alley = my[1];
+  var mn = t.match(/(\d+(?:\s*[-之]\s*\d+)?)\s*號/);
+  if (mn) o.no = mn[1].replace(/\s|之/g, function(c){ return c === '之' ? '-' : '' });
+  var cut = t.length;
+  ['巷','弄','號'].forEach(function(k){
+    var i = t.indexOf(k);
+    if (i > -1) { var j = i; while (j > 0 && /[\d\-之\s]/.test(t[j-1])) j--; cut = Math.min(cut, j) }
+  });
+  o.road = t.slice(0, cut).replace(/\s+/g, '') || null;
+  return o;
+}
+
+var CITY_ID = {'台北市':0,'基隆市':1,'新北市':2,'宜蘭縣':3,'桃園市':4,'新竹市':5,
+  '新竹縣':6,'苗栗縣':7,'台中市':8,'彰化縣':9,'南投縣':10,'雲林縣':11,'嘉義市':12,
+  '嘉義縣':13,'台南市':14,'高雄市':15,'澎湖縣':16,'屏東縣':17,'台東縣':18,'花蓮縣':19};
+
+function buildPayload(cat, addrText){
+  var trace = [], todo = [], p = {};
+  function put(lv, field, label, raw, val){
+    p[field] = val;
+    trace.push([lv, field, label, raw || '—',
+      (val === null || val === '') ? '（空）' : String(val)]);
+  }
+  var g = function(k){ return cat[k] };
+
+  put('實測','kind','物件種類', g('類型/現況'), 9);
+  put('實測','purpose','法定用途', g('類別/謄本用途'), 3);
+  var ctype = String(g('類型/現況') || '').split('/')[0].trim();
+  var shape = SHAPE[ctype] || null;
+  put('實測','shape','房屋型態', g('類型/現況'), shape);
+  if (!shape) todo.push([1,'房屋型態「<b>' + (ctype || '沒抓到') + '</b>」的 591 代碼還沒實測過（只驗過電梯大樓=2）']);
+
+  var a = parseAddr(addrText);
+  var sec = SECTION_TAICHUNG[a.area] || null;
+  if (!a.city && sec) { a.city = '台中市'; todo.push([0,'型錄地址沒有縣市，依行政區「' + a.area + '」回推為台中市']) }
+  p.address = {region_id: CITY_ID[a.city] != null ? CITY_ID[a.city] : null,
+    region_name: a.city || '', section_id: sec, section_name: a.area || '',
+    street_id: null, street_name: a.road || '', lane: a.lane, alley: a.alley,
+    address_number: a.no, address_number_two: '', hide_address_number: 0};
+  trace.push(['實測','address.region_id','縣市', a.city || '—', p.address.region_id]);
+  trace.push(['實測','address.section_id','行政區', a.area || '—', sec]);
+  trace.push(['實測','address.street_name','路街道', a.road || '—', a.road || '（空）']);
+  trace.push(['實測','address.address_number','門牌', a.no || '—', a.no || '（空，必填）']);
+  if (!sec) todo.push([1,'行政區「' + (a.area || '?') + '」不在已實測的代碼表裡，要先查']);
+  if (!a.no) todo.push([1,'型錄只給到路街道、<b>沒有門牌號</b>，591 地址是必填 —— 一定要補']);
+  todo.push([0,'street_id 要呼叫街道查詢 API 換取']);
+
+  var area = num(g('登記坪數')), park = num(g('含車位坪')), price = num(g('委託總價'));
+  p.house_area = {area: area, unit: 1, has_carport: park ? 1 : 2};
+  trace.push(['實測','house_area','權狀坪數', g('登記坪數') || '—', JSON.stringify(p.house_area)]);
+  put('實測','price','售價(萬)', g('委託總價'), price);
+  put('實測','unit_price','單價(萬/坪)','—', (price && area) ? Math.round(price / area * 100) / 100 : null);
+  put('程式碼','price_has_carport','售價含車位', g('車位/編號') || g('公設車位'), park ? 1 : null);
+  put('實測','un_mortgage','無法申請貸款','—', 0);
+  put('實測','first_payment_ratio','自備款%','—', null);
+  todo.push([0,'自備款是必填、型錄沒給']);
+  if (!price) todo.push([1,'<b>沒抓到委託總價</b> —— 確認型錄文字有整段貼進來']);
+  if (!area) todo.push([1,'<b>沒抓到登記坪數</b> —— 確認型錄文字有整段貼進來']);
+
+  var L = layout(g('房/廳/衛') || g('格局')), F = floors(g('樓別/樓高'));
+  put('程式碼','room_num','格局-房', g('房/廳/衛') || g('格局'), L[0]);
+  put('程式碼','total_floor','總樓層', g('樓別/樓高'), F[1]);
+  var comm = g('社區名稱') || '';
+  put('程式碼','community_name','社區名稱', comm, comm);
+  put('程式碼','community_id','社區ID','—', null);
+  if (comm) todo.push([0,'community_id 要打社區比對 API 用「' + comm + '」換']);
+  todo.push([0,'廳(' + L[1] + ')／衛(' + L[2] + ')／陽台 的欄位名還沒確認，這次沒有硬塞']);
+  todo.push([0,'所在樓層(' + F[0] + '樓) 的欄位名未確認']);
+  put('程式碼','house_age','屋齡', g('屋齡'), num(g('屋齡')));
+  if (g('竣工日期')) todo.push([0,'竣工日期「' + g('竣工日期') + '」的欄位名未確認']);
+
+  put('實測','title','廣告標題','—','');
+  todo.push([1,'<b>廣告標題</b>留白待填（591 限 6~30 字，有下限）']);
+  put('實測','remark','現況特色描述','（型錄整段）','');
+  todo.push([0,'現況特色描述留白待填（上限 2500 字）']);
+
+  p.pictures = []; p.terrain_photos = [];
+  trace.push(['實測','pictures','房屋照片','（貼文字抓不到圖）','0 張']);
+  todo.push([1,'<b>照片抓不到</b> —— 貼文字只拿得到文字，照片要另外處理']);
+  p.video = {type:3, id:null, url:'', cover:0};
+  p.contact = {link_role:3, link_name:'', mobile:'', area_code:'04', tel:'',
+    is_hide_tel:0, is_hide_tel_agree:0, email:'', line_net:'', line_net_status:1,
+    has_appointment:null, has_service_fee:null, un_disturb:null};
+  trace.push(['實測','contact','聯絡資料','—','（下面補）']);
+  todo.push([1,'<b>委託書</b>與<b>服務費</b>是法定必填，不能由程式決定']);
+  p.is_confirmed_economy = 0;
+  trace.push(['實測','is_confirmed_economy','確認經紀業資料','—', 0]);
+  todo.push([1,'<b>確認經紀業資料無誤</b>必須人工勾選，程式不自動勾']);
+
+  [['管理費', g('管理費') || g('車位管理費')], ['車位型式', g('車位型式')],
+   ['車位編號', g('車位/編號') || g('公設車位')], ['朝向', g('物件座向')],
+   ['主建物坪數', g('主建物坪')], ['附屬建物坪數', g('附屬建物')],
+   ['共有部分坪數', g('公設建坪')], ['土地坪數', g('土地登記')],
+   ['裝潢程度／帶租約／生活機能／特色標籤', null]
+  ].forEach(function(x){ trace.push(['未驗證','（欄位名未知）', x[0], x[1] || '—','未填入']) });
+  todo.push([0,'管理費／車位／朝向／各項坪數：591 的欄位名未確認，一律沒填']);
+
+  return {trace: trace, todo: todo, payload: p, addr: addrText};
+}
+
+function levelCls(l){ return l==='實測'?'m':(l==='程式碼'?'c':'u') }
+
+function render(d){
+  CUR = d || DEMO;
+  // 核對表
+  $('tbl').querySelector('tbody').innerHTML = CUR.trace.map(function(r){
+    var dim = r[0]==='未驗證' ? ' class="dim"' : '';
+    return '<tr'+dim+'><td><span class="lv '+levelCls(r[0])+'">'+r[0]+'</span></td>'+
+           '<td class="k">'+r[1]+'</td><td>'+r[2]+'</td>'+
+           '<td style="color:var(--sub)">'+r[3]+'</td><td class="v">'+r[4]+'</td></tr>';
+  }).join('');
+
+  // 待辦
+  $('todo').innerHTML = CUR.todo.map(function(t,i){
+    return '<li class="'+(t[0]?'hot':'')+'" data-i="'+i+'">'+
+           '<input type="checkbox" data-i="'+i+'">'+
+           '<span>'+(t[0]?'🔴 ':'')+t[1]+'</span></li>';
+  }).join('');
+  $('todoCnt').textContent = CUR.todo.length + ' 件，其中 ' +
+    CUR.todo.filter(function(t){return t[0]}).length + ' 件必須先解決';
+
+  $('addr').value = CUR.addr;
+  $('json').textContent = JSON.stringify(CUR.payload, null, 1);
+  $('steps').children[0].className = 'done';
+  $('steps').children[1].className = 'now';
+  loaded = true;
+  check();
+}
+
+/* 送出條件：四個法定/必填項目都齊了才解鎖。
+   注意：即使全部解鎖，這一版仍然不會真的送出。 */
+function check(){
+  var t = $('title').value.trim();
+  var need = [];
+  if(!loaded) { $('msg').textContent = '⛔ 尚未產生資料'; lock(true); return; }
+  // 🔴 地址只由 parseAddr 解析，這裡不要自己再寫一條正規表達式。
+  //    先前這裡用 /\d+\s*號/ 直接對原字串比對，遇到全形門牌「１２３號」
+  //    比不到，還把 parseAddr 已經算對的值蓋成空字串。
+  var A = parseAddr($('addr').value);
+  if(!A.no) need.push('門牌');
+  if(t.length < 6 || t.length > 30) need.push('標題6~30字');
+  if(!$('down').value) need.push('自備款');
+  if(!$('entrust').value) need.push('委託書');
+  if(!$('fee').value) need.push('服務費');
+  if(!$('econ').checked) need.push('確認經紀業資料');
+
+  if(need.length){
+    $('msg').innerHTML = '⛔ 還缺：<b style="color:var(--red)">'+need.join('、')+'</b>';
+    lock(true);
+  }else{
+    $('msg').innerHTML = '✅ 必填都齊了（送出功能尚未接上，這一版只會產生資料）';
+    lock(false);
+    $('steps').children[2].className = 'done';
+    $('steps').children[3].className = 'now';
+  }
+  // 同步 payload 預覽
+  CUR.payload.title = t;
+  CUR.payload.first_payment_ratio = $('down').value ? Number($('down').value) : null;
+  CUR.payload.remark = $('remark').value;
+  CUR.payload.contact.has_appointment = $('entrust').value ? Number($('entrust').value) : null;
+  CUR.payload.contact.has_service_fee = $('fee').value ? Number($('fee').value) : null;
+  CUR.payload.is_confirmed_economy = $('econ').checked ? 1 : 0;
+  CUR.payload.address.address_number = A.no;
+  if (A.lane) CUR.payload.address.lane = A.lane;
+  if (A.alley) CUR.payload.address.alley = A.alley;
+  $('json').textContent = JSON.stringify(CUR.payload, null, 1);
+}
+
+function lock(on){
+  $('btnSend').disabled = on;
+  $('btnCopy').disabled = !loaded;
+}
+
+// 標題字數（6~30，有下限）
+$('title').addEventListener('input', function(){
+  var n = this.value.trim().length, c = $('cnt');
+  c.textContent = n + ' / 6~30 字';
+  c.className = 'count ' + (n===0 ? '' : (n<6||n>30 ? 'bad' : 'ok'));
+  check();
+});
+['addr','down','entrust','fee','remark','econ'].forEach(function(id){
+  $(id).addEventListener('input', check);
+  $(id).addEventListener('change', check);
+});
+
+$('btnDemo').onclick = function(){ render(DEMO) };
+
+$('btnBuild').onclick = function(){
+  var txt = $('cat').value.trim();
+  var msg = $('parseMsg');
+
+  if(!txt){
+    msg.innerHTML = '<span style="color:var(--red-tx)">⛔ 型錄內容是空的。'
+      + '請到型錄頁 Ctrl+A → Ctrl+C，再貼過來。</span>';
+    return;
+  }
+  // 貼到網址而不是內容 —— 這是最常見的誤用，直接講清楚，不要回「解析失敗」
+  if(/^https?:\/\/\S+$/.test(txt)){
+    msg.innerHTML = '<span style="color:var(--red-tx)">⛔ 你貼的是<b>網址</b>，不是型錄內容。'
+      + '型錄站要登入，這裡打不開它。<br>請先在瀏覽器打開型錄頁，'
+      + '<b>Ctrl+A 全選 → Ctrl+C 複製</b>，再把文字貼進來。</span>';
+    return;
+  }
+
+  var cat = parseCatalog(txt);
+  if(cat.__count < 3){
+    msg.innerHTML = '<span style="color:var(--red-tx)">⛔ 只認得出 ' + cat.__count
+      + ' 個欄位，看起來不像型錄內容。<br>確認是不是整頁都複製到了'
+      + '（型錄頁 Ctrl+A → Ctrl+C）。</span>';
+    return;
+  }
+
+  var d = buildPayload(cat, $('addr').value.trim());
+  render(d);
+  var hot = d.todo.filter(function(t){ return t[0] }).length;
+  msg.innerHTML = '<span style="color:var(--green-tx)">✅ 認出 <b>' + cat.__count
+    + '</b> 個型錄欄位，已產生資料。</span> '
+    + '<span style="color:var(--sub)">下面核對表逐欄核對，'
+    + hot + ' 件紅色待辦要先處理。</span>';
+};
+$('btnCopy').onclick = function(){
+  navigator.clipboard.writeText(JSON.stringify(CUR.payload, null, 2))
+    .then(function(){ $('msg').textContent = '✅ payload 已複製到剪貼簿' });
+};
+$('btnSend').onclick = function(){
+  alert('⛔ 送出功能尚未接上。\n\n接上之後，這顆按鈕會：\n' +
+        '① 打 社區比對 API 換社區 id\n' +
+        '② 打 街道查詢 API 換街道 id\n' +
+        '③ 照片走 S3 預簽名上傳拿 id\n' +
+        '④ POST 591 刊登 API\n\n' +
+        '而且必須在「已登入 591 的分頁」裡跑才拿得到 token。');
+};
+
+// 待辦勾選
+$('todo').addEventListener('change', function(e){
+  if(e.target.type==='checkbox') e.target.closest('li').classList.toggle('done', e.target.checked);
+});
+</script>
+</body>
+</html>

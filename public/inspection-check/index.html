@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中古屋交屋驗屋清單 2026｜海線房仲冠良</title>
+<meta name="description" content="中古屋交屋前驗屋逐項檢查清單，可勾選、可記錄缺失、一鍵產生缺失摘要傳給屋主與代書。海線房仲冠良整理。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#f5f0e8;
+  --cream-2:#f7f3ea;
+  --navy:#12263f;
+  --navy-2:#1b3557;
+  --gold:#c8952f;
+  --gold-soft:#e8c87a;
+  --ink:#2a2a28;
+  --muted:#6f6a60;
+  --line:#ddd4c4;
+  --red:#a63b2c;
+  --green:#4a7a4e;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Noto Sans TC",system-ui,sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.75;
+  font-size:16px;
+  padding-bottom:96px;
+}
+.wrap{max-width:820px;margin:0 auto;padding:0 18px}
+
+/* ── header ── */
+header{
+  background:var(--navy);
+  color:var(--cream);
+  padding:44px 0 38px;
+  position:relative;
+  overflow:hidden;
+}
+header::after{
+  content:"";position:absolute;left:0;right:0;bottom:-1px;height:26px;
+  background:radial-gradient(ellipse at 50% 100%, var(--cream) 60%, transparent 61%) repeat-x;
+  background-size:52px 26px;opacity:.9;
+}
+.eyebrow{
+  font-size:12px;letter-spacing:.28em;color:var(--gold-soft);
+  font-weight:500;margin-bottom:14px;
+}
+h1{
+  font-family:"DM Serif Display","Noto Sans TC",serif;
+  font-size:clamp(30px,7vw,44px);
+  line-height:1.25;font-weight:400;letter-spacing:.01em;
+}
+h1 em{font-style:normal;color:var(--gold-soft)}
+.sub{margin-top:14px;color:#c9d2dd;font-size:15px;max-width:34em}
+
+/* ── progress bar ── */
+.statusbar{
+  position:sticky;top:0;z-index:50;
+  background:rgba(245,240,232,.94);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+  padding:10px 0;
+}
+.statusbar .wrap{display:flex;align-items:center;gap:14px}
+.bar{flex:1;height:8px;background:#e4dccd;border-radius:99px;overflow:hidden}
+.bar span{display:block;height:100%;width:0;background:var(--gold);transition:width .35s ease}
+.count{font-size:13px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.count b{color:var(--navy);font-size:15px}
+.count .bad{color:var(--red)}
+
+/* ── intro cards ── */
+.note{
+  background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);
+  border-radius:4px;padding:18px 20px;margin:26px 0;
+}
+.note h3{font-size:16px;color:var(--navy);margin-bottom:8px;font-weight:700}
+.note p{font-size:14.5px;color:#4a4640}
+.note ul{margin:8px 0 0 18px;font-size:14.5px;color:#4a4640}
+.note li{margin-bottom:4px}
+
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tools span{
+  background:var(--navy);color:var(--cream-2);font-size:13px;
+  padding:5px 11px;border-radius:99px;
+}
+
+/* ── sections ── */
+section.block{margin:34px 0}
+.block-head{
+  display:flex;align-items:baseline;gap:12px;
+  padding-bottom:10px;border-bottom:2px solid var(--navy);margin-bottom:4px;
+}
+.block-head .idx{
+  font-family:"DM Serif Display",serif;font-size:26px;color:var(--gold);line-height:1;
+}
+.block-head h2{font-size:19px;color:var(--navy);font-weight:700;letter-spacing:.01em}
+.block-head .tag{
+  margin-left:auto;font-size:11.5px;color:#fff;background:var(--red);
+  padding:3px 9px;border-radius:99px;letter-spacing:.05em;white-space:nowrap;
+}
+.block-head .tag.calm{background:var(--navy-2)}
+
+.item{
+  background:#fff;border:1px solid var(--line);border-top:none;
+  padding:14px 16px;
+}
+.item:first-of-type{border-top:1px solid var(--line)}
+.item .q{display:flex;gap:11px;align-items:flex-start}
+.item .q .t{flex:1;font-size:15.5px;font-weight:500;color:var(--ink)}
+.item .hint{font-size:13.5px;color:var(--muted);margin-top:5px;padding-left:0}
+.marks{display:flex;gap:6px;flex-shrink:0}
+.marks button{
+  font-family:inherit;font-size:13px;cursor:pointer;
+  border:1px solid var(--line);background:var(--cream-2);color:var(--muted);
+  border-radius:4px;padding:5px 10px;transition:.15s;
+}
+.marks button:hover{border-color:var(--navy)}
+.marks button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.item[data-state="ok"]{background:#fbfdfa;border-left:3px solid var(--green)}
+.item[data-state="ok"] .m-ok{background:var(--green);color:#fff;border-color:var(--green)}
+.item[data-state="bad"]{background:#fdf8f7;border-left:3px solid var(--red)}
+.item[data-state="bad"] .m-bad{background:var(--red);color:#fff;border-color:var(--red)}
+.item[data-state="na"]{opacity:.55}
+.item[data-state="na"] .m-na{background:var(--muted);color:#fff;border-color:var(--muted)}
+.item textarea{
+  display:none;width:100%;margin-top:10px;font-family:inherit;font-size:14px;
+  border:1px solid var(--line);border-radius:4px;padding:8px 10px;resize:vertical;
+  min-height:56px;background:#fff;color:var(--ink);
+}
+.item textarea:focus{outline:2px solid var(--gold);outline-offset:-1px;border-color:var(--gold)}
+.item[data-state="bad"] textarea{display:block}
+
+/* ── law box ── */
+.law{background:var(--navy);color:var(--cream-2);border-radius:4px;padding:24px 22px;margin:34px 0}
+.law h3{font-family:"DM Serif Display",serif;font-size:22px;color:var(--gold-soft);margin-bottom:12px;font-weight:400}
+.law p{font-size:14.5px;color:#cfd7e0;margin-bottom:10px}
+.law ol{margin:10px 0 0 20px;font-size:14.5px;color:#cfd7e0}
+.law li{margin-bottom:7px}
+.law strong{color:#fff}
+
+/* ── footer cta ── */
+.cta{
+  background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);
+  border-radius:4px;padding:26px 22px;margin:34px 0 10px;text-align:center;
+}
+.cta h3{font-family:"DM Serif Display",serif;font-size:23px;color:var(--navy);font-weight:400;margin-bottom:8px}
+.cta p{font-size:14.5px;color:var(--muted);margin-bottom:18px}
+.cta a{
+  display:inline-block;background:var(--navy);color:var(--cream-2);
+  text-decoration:none;font-weight:500;font-size:15px;
+  padding:12px 26px;border-radius:4px;margin:5px 4px;transition:.15s;
+}
+.cta a.gold{background:var(--gold);color:#241a06}
+.cta a:hover{transform:translateY(-1px)}
+.foot{text-align:center;font-size:12.5px;color:var(--muted);padding:20px 0 6px;line-height:1.9}
+
+/* ── sticky action ── */
+.actionbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;
+  background:rgba(18,38,63,.97);backdrop-filter:blur(8px);
+  padding:11px 0;
+}
+.actionbar .wrap{display:flex;gap:9px}
+.actionbar button{
+  flex:1;font-family:inherit;font-size:14.5px;font-weight:500;cursor:pointer;
+  border:1px solid rgba(232,200,122,.5);background:transparent;color:var(--gold-soft);
+  border-radius:4px;padding:11px 6px;transition:.15s;
+}
+.actionbar button.primary{background:var(--gold);color:#241a06;border-color:var(--gold)}
+.actionbar button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+
+/* ── modal ── */
+.modal{
+  display:none;position:fixed;inset:0;z-index:100;
+  background:rgba(18,38,63,.6);padding:20px;overflow-y:auto;
+}
+.modal.on{display:flex;align-items:flex-start;justify-content:center}
+.modal-in{
+  background:var(--cream-2);border-radius:6px;max-width:640px;width:100%;
+  margin:auto;padding:24px 22px;
+}
+.modal-in h3{font-family:"DM Serif Display",serif;font-size:23px;color:var(--navy);font-weight:400;margin-bottom:6px}
+.modal-in p.tip{font-size:13.5px;color:var(--muted);margin-bottom:14px}
+.modal-in textarea{
+  width:100%;min-height:280px;font-family:ui-monospace,"Noto Sans TC",monospace;
+  font-size:13.5px;line-height:1.8;border:1px solid var(--line);border-radius:4px;
+  padding:12px;background:#fff;color:var(--ink);resize:vertical;
+}
+.modal-btns{display:flex;gap:9px;margin-top:14px}
+.modal-btns button{
+  flex:1;font-family:inherit;font-size:14.5px;cursor:pointer;border-radius:4px;
+  padding:11px 6px;border:1px solid var(--line);background:#fff;color:var(--navy);
+}
+.modal-btns button.primary{background:var(--navy);color:var(--cream-2);border-color:var(--navy)}
+
+@media (max-width:520px){
+  .item .q{flex-wrap:wrap}
+  .marks{width:100%;margin-top:9px}
+  .marks button{flex:1}
+  .block-head .tag{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+  html{scroll-behavior:auto}
+}
+@media print{
+  .actionbar,.statusbar,.modal,.cta{display:none!important}
+  body{background:#fff;padding-bottom:0}
+  header{background:#fff;color:#000;padding:16px 0}
+  header::after{display:none}
+  .eyebrow,h1 em{color:#666}
+  .sub{color:#444}
+  .item{break-inside:avoid;border-color:#bbb}
+  .item textarea{display:block!important;min-height:38px}
+  .law{background:#fff;color:#000;border:1px solid #bbb}
+  .law h3,.law p,.law ol,.law strong{color:#000}
+}
+</style>
+<!-- SEO:AUTO 由 scripts/seo-build.mjs 產生，不要手改 -->
+<link rel="canonical" href="https://kuanhome.com/inspection-check">
+<meta property="og:url" content="https://kuanhome.com/inspection-check">
+<meta property="og:site_name" content="海線房仲冠良">
+<meta property="og:locale" content="zh_TW">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://kuanhome.com/inspection-check#article","headline":"中古屋交屋驗屋清單 2026","description":"中古屋交屋前驗屋逐項檢查清單，可勾選、可記錄缺失、一鍵產生缺失摘要傳給屋主與代書。海線房仲冠良整理。","url":"https://kuanhome.com/inspection-check","inLanguage":"zh-Hant-TW","dateModified":"2026-08-27T15:13:48.331Z","author":{"@id":"https://kuanhome.com/#wuguanliang"},"publisher":{"@id":"https://kuanhome.com/#agent"},"mainEntityOfPage":{"@id":"https://kuanhome.com/inspection-check"}},{"@type":"RealEstateAgent","@id":"https://kuanhome.com/#agent","name":"海線房仲冠良","alternateName":"吳冠良｜台中海線房地產顧問","description":"台中海線專業房地產仲介，深耕沙鹿、清水、梧棲、龍井、大肚、大甲六區。提供資產配置、稅務諮詢、簡易裝潢，及買賣委託與土地買賣。","slogan":"懂你又懂房","url":"https://kuanhome.com/","image":"https://kuanhome.com/card/owner.webp","telephone":"+886-915-295-958","email":"wosagl15@gmail.com","address":{"@type":"PostalAddress","addressLocality":"沙鹿區","addressRegion":"台中市","postalCode":"433","addressCountry":"TW"},"geo":{"@type":"GeoCoordinates","latitude":24.2340986,"longitude":120.560349},"priceRange":"$$","areaServed":[{"@type":"AdministrativeArea","name":"台中市沙鹿區"},{"@type":"AdministrativeArea","name":"台中市清水區"},{"@type":"AdministrativeArea","name":"台中市梧棲區"},{"@type":"AdministrativeArea","name":"台中市龍井區"},{"@type":"AdministrativeArea","name":"台中市大肚區"},{"@type":"AdministrativeArea","name":"台中市大甲區"}],"sameAs":["https://www.facebook.com/share/14XZ3Wy4nLZ/","https://www.instagram.com/asmile55178/","https://www.youtube.com/@吳冠良-w9v","https://lin.ee/1WlfBub","https://sales.myhomes.com.tw/0915295958"],"employee":{"@type":"Person","@id":"https://kuanhome.com/#wuguanliang","name":"吳冠良","jobTitle":"台中海線專業房地產顧問"}},{"@type":"BreadcrumbList","@id":"https://kuanhome.com/inspection-check#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://kuanhome.com/"},{"@type":"ListItem","position":2,"name":"購屋攻略","item":"https://kuanhome.com/tools"},{"@type":"ListItem","position":3,"name":"中古屋交屋驗屋清單 2026","item":"https://kuanhome.com/inspection-check"}]}]}</script>
+<!-- /SEO:AUTO -->
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">交屋前的最後一道關卡</div>
+    <h1>中古屋<em>交屋驗屋</em>清單</h1>
+    <p class="sub">現況交屋不等於認賠。這份清單陪你把屋況一項一項走完，發現問題當場記下來，尾款還沒付之前就談清楚。</p>
+  </div>
+</header>
+
+<div class="statusbar">
+  <div class="wrap">
+    <div class="bar"><span id="barFill"></span></div>
+    <div class="count">已檢查 <b id="cDone">0</b>/<span id="cAll">0</span>　缺失 <b class="bad" id="cBad">0</b></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="note">
+    <h3>什麼時候驗？</h3>
+    <p>最佳時機是<strong>代書送件過戶後、尾款撥付前</strong>這段空窗期。這時候屋主通常已搬空，屋況看得最清楚，而你手上還握著尾款這張牌。等交屋後才驗，賣方常常就聯絡不上了。</p>
+    <ul>
+      <li>盡量約<strong>空屋</strong>看，家具擋住的地方就是最容易藏問題的地方</li>
+      <li>最好挑<strong>雨天或雨後兩天內</strong>再回訪一次，漏水這種事晴天看不出來</li>
+      <li>屋齡超過 25 年、或總價高、或你完全沒經驗，建議直接花錢請專業驗屋公司</li>
+    </ul>
+  </div>
+
+  <div class="note">
+    <h3>出發前先帶這些</h3>
+    <div class="tools">
+      <span>手機（手電筒＋水平儀 App）</span>
+      <span>行動電源或小夜燈（測插座）</span>
+      <span>50 元硬幣（敲地磚）</span>
+      <span>衛生紙</span>
+      <span>寶特瓶裝水（測排水）</span>
+      <span>捲尺</span>
+      <span>濕紙巾（擦看牆面）</span>
+      <span>不動產現況說明書</span>
+      <span>建物平面圖</span>
+    </div>
+  </div>
+
+  <div id="list"></div>
+
+  <div class="law">
+    <h3>發現問題了，然後呢</h3>
+    <p>「現況交屋」四個字<strong>不等於</strong>賣方完全免責。依民法第 366 條，如果賣方是<strong>故意隱瞞</strong>瑕疵，免除瑕疵擔保責任的特約無效。天花板裡的漏水、剛油漆蓋掉的壁癌、管線內部鏽蝕，這些看不出來的隱藏瑕疵仍有主張空間。</p>
+    <p><strong>兩個時效同時跑，哪個先到就先失效：</strong>發現瑕疵起算 <strong>6 個月</strong>內要請求（民法 365）、房屋交付起算 <strong>5 年</strong>內。</p>
+    <ol>
+      <li><strong>拍照＋錄影存證</strong>：漏水是動態的，錄影比照片有用，記得入鏡當天日期時間</li>
+      <li><strong>同時通知仲介與前屋主</strong>：用 LINE 或簡訊留下文字紀錄，這就是 6 個月的起算點</li>
+      <li><strong>先別急著施工</strong>：請水電或抓漏師傅開立原因鑑定與修繕估價單，釐清是外牆還是管線</li>
+      <li><strong>對方不理再發存證信函</strong>：依估價金額催告限期修繕或減少價金</li>
+    </ol>
+  </div>
+
+  <div class="cta">
+    <h3>驗完有疑問，找我聊聊</h3>
+    <p>海線六區買賣、屋況判斷、交屋流程，都可以問。<br>沙鹿・清水・梧棲・龍井・大肚・大甲</p>
+    <a class="gold" href="https://lin.ee/QyQmggG">加 LINE 問冠良</a>
+    <a href="tel:0915295958">撥 0915-295958</a>
+  </div>
+
+  <p class="foot">
+    海線房仲冠良｜懂你又懂房・太平洋房屋 海線幸福房仲團隊<br>
+    立羽不動產經紀有限公司　經紀人 鄭瑋仁　(102)中市經紀字第01101號<br>
+    台中市沙鹿區四平街58號<br>
+    本清單為一般性參考，個案屋況與法律責任仍以現場勘驗、契約約定及專業意見為準。
+  </p>
+</div>
+
+<div class="actionbar">
+  <div class="wrap">
+    <button id="btnReport" class="primary">產生缺失摘要</button>
+    <button onclick="window.print()">列印 / 存 PDF</button>
+    <button id="btnReset">全部清除</button>
+  </div>
+</div>
+
+<div class="modal" id="modal">
+  <div class="modal-in">
+    <h3>缺失摘要</h3>
+    <p class="tip">複製後直接貼到 LINE 群組，同時傳給仲介與屋主，留下時間紀錄。</p>
+    <textarea id="reportText" readonly></textarea>
+    <div class="modal-btns">
+      <button class="primary" id="btnCopy">複製全部</button>
+      <button id="btnClose">關閉</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const DATA = [
+{ title:"文件與現況核對", tag:"最先做", calm:true, items:[
+  ["不動產現況說明書逐項對照實際屋況","說明書沒寫、現場卻有的缺失，交屋前發現就能談減價或求償。"],
+  ["建物平面圖 vs 現場隔間","有沒有加蓋、外推、二次施工？違建部分將來可能被報拆。"],
+  ["權狀坪數、車位編號與實際位置相符",""],
+  ["確認屋內無他人居住、無租約、無雜物占用","有租約要確認買賣不破租賃的處理方式。"],
+  ["合約中「現況交屋」的範圍寫清楚了嗎","哪些瑕疵已知、哪些由誰負責，白紙黑字。"],
+]},
+{ title:"漏水與壁癌", tag:"最重要", items:[
+  ["天花板有無水漬、水痕","重點看浴室管道間、廚房、陽台排水孔對應的上方天花板。"],
+  ["打開浴室、廚房維修孔往內看","看有無積水、鏽蝕、有沒有裝接水盤。"],
+  ["窗框四角有無裂縫","窗框水泥接處最脆弱，應力拉扯會裂，是滲水常見入口。"],
+  ["用手摸牆角、踢腳板、衣櫃背後、床頭牆","摸起來冰涼潮濕、油漆粉化，就是壁癌前兆。"],
+  ["注意「只有某一小塊」剛油漆過的牆面","局部補漆通常不是為了好看。"],
+  ["外牆、女兒牆、頂樓防水層狀況",""],
+  ["雨天或雨後再回訪確認一次","這一項不做完，前面都只是猜測。"],
+]},
+{ title:"給水系統", items:[
+  ["每個水龍頭全開，測水壓與水量",""],
+  ["放水 30 秒看有無鏽水、雜質","水管老化的直接證據。"],
+  ["熱水器出熱水要等多久、能不能穩定出熱水",""],
+  ["熱水器安裝位置是否合法安全","裝在密閉陽台、室內又無強制排氣，是一氧化碳中毒風險。"],
+  ["馬桶沖水測試","丟 8 張衛生紙沖，看是否順暢；再搖搖看有無鬆動。"],
+  ["流理台下方、洗手台下方水管有無滲漏",""],
+  ["社區水塔、蓄水池最近清洗時間",""],
+]},
+{ title:"排水系統", items:[
+  ["浴室地排倒一整瓶水，看排水速度",""],
+  ["陽台、後陽台排水孔是否淤塞","泥沙淤積會造成下雨天倒灌淹水。"],
+  ["廚房排水順暢、有無油垢回堵",""],
+  ["洗衣機排水孔位置與是否堪用",""],
+  ["各排水孔有無臭味、有無存水彎","有臭味通常代表存水彎沒做或已乾涸。"],
+]},
+{ title:"電力系統", tag:"攸關安全", items:[
+  ["打開總開關箱：有沒有漏電斷路器（ELCB）","老屋常見沒裝，這是保命的東西。"],
+  ["迴路是否有標示、有沒有舊式保險絲","舊式陶瓷保險絲代表全屋電路可能沒更新過。"],
+  ["安培數夠不夠用","要開冷氣、電磁爐、烘衣機的家庭要特別確認。"],
+  ["逐一測試每個插座","帶充電線或小夜燈，一個一個插，別只試客廳那個。"],
+  ["三孔插座是否真的有接地",""],
+  ["所有電燈開關逐一試，找出無效開關",""],
+  ["有無明線、電線破皮、老舊 PVC 線",""],
+  ["冷氣是否有專用迴路、室外機放得下嗎",""],
+  ["抄下電表號碼與現在度數","交屋結算用得到。"],
+]},
+{ title:"結構與地坪", items:[
+  ["用硬幣輕敲地磚，走遍每個房間找膨拱","聽到空空的聲音就是膨管，範圍圈起來記下。"],
+  ["牆面、地磚有無裂縫、剝落",""],
+  ["手機水平儀 App 測地板與牆面傾斜","也可以把彈珠放地上看會不會滾。"],
+  ["樑柱有無明顯裂縫","斜向、貫穿型裂縫要特別警覺，必要時找結構技師。"],
+  ["天花板有無下陷、輕鋼架鏽蝕",""],
+  ["木作櫃體有無蛀蟲孔、木屑","木作多的房子一定要看。"],
+]},
+{ title:"門窗", items:[
+  ["大門開關順暢、鎖具正常、貓眼與門弓器堪用",""],
+  ["每扇房門開關、有無變形卡住、門把鬆動",""],
+  ["窗戶開關順暢、氣密程度、關起來有無風聲",""],
+  ["鋁窗軌道下方排水孔是否通暢","堵住就會從室內側溢水。"],
+  ["紗窗完整、有無破損",""],
+  ["有幼童要確認窗戶防墜設施",""],
+]},
+{ title:"附屬設備（合約有寫的都要測）", items:[
+  ["冷氣：每台開機吹冷、有無異音漏水",""],
+  ["瓦斯爐、抽油煙機、烘碗機實際操作",""],
+  ["廚具門片、五金、抽屜滑軌",""],
+  ["浴室設備：淋浴龍頭、暖風機、免治馬桶",""],
+  ["對講機、電鈴、門禁感應卡",""],
+  ["合約載明的窗簾、燈具、櫥櫃是否都還在","交屋前被搬走是常見糾紛。"],
+  ["索取遙控器、說明書、保固卡",""],
+]},
+{ title:"公設與社區", items:[
+  ["向管委會確認管理費是否繳清、有無欠費",""],
+  ["有無已決議的公共修繕分攤","外牆拉皮、電梯更新，動輒好幾萬，記得問。"],
+  ["實際把車開進車位停一次","車寬、車高、柱子位置，紙上數字跟實際差很多。"],
+  ["機械車位親自操作一次、確認限重限高",""],
+  ["信箱、垃圾清運時間、車道遙控器",""],
+  ["社區規約有無特殊限制","養寵物、出租、裝修時段。"],
+]},
+{ title:"交屋當天點交", tag:"別漏掉", items:[
+  ["水費、電費、瓦斯費結清收據","建議請賣方在交屋前一天結清並辦過戶。"],
+  ["管理費結清證明",""],
+  ["房屋稅、地價稅按天數分算清楚",""],
+  ["鑰匙全數點收","大門、各房門、信箱、車位卡、車道遙控器，數量當場點。"],
+  ["權狀、契稅單、契約、相關文件收齊",""],
+  ["屋內確實清空、大型垃圾已清運",""],
+  ["交屋當下全屋拍照存證","這組照片是日後認定屋況的基準。"],
+  ["排定更換門鎖","無法保證賣方沒有留備份鑰匙。"],
+  ["規劃遷入戶籍","符合自用住宅資格，房屋稅、地價稅都有優惠。"],
+]},
+];
+
+const list = document.getElementById("list");
+let total = 0;
+
+DATA.forEach((block, bi) => {
+  const sec = document.createElement("section");
+  sec.className = "block";
+  const idx = String(bi + 1).padStart(2, "0");
+  const tag = block.tag ? `<span class="tag${block.calm ? " calm" : ""}">${block.tag}</span>` : "";
+  sec.innerHTML = `<div class="block-head"><span class="idx">${idx}</span><h2>${block.title}</h2>${tag}</div>`;
+
+  block.items.forEach((it, ii) => {
+    total++;
+    const id = `i${bi}-${ii}`;
+    const div = document.createElement("div");
+    div.className = "item";
+    div.dataset.state = "";
+    div.dataset.block = block.title;
+    div.dataset.label = it[0];
+    div.innerHTML = `
+      <div class="q">
+        <div class="t">${it[0]}${it[1] ? `<div class="hint">${it[1]}</div>` : ""}</div>
+        <div class="marks">
+          <button class="m-ok" data-v="ok" aria-label="標記正常">正常</button>
+          <button class="m-bad" data-v="bad" aria-label="標記有缺失">缺失</button>
+          <button class="m-na" data-v="na" aria-label="標記不適用">不適用</button>
+        </div>
+      </div>
+      <textarea placeholder="記下缺失位置與狀況，例如：主臥窗框右下角滲水、約 20 公分水痕" aria-label="缺失說明"></textarea>`;
+    div.querySelectorAll(".marks button").forEach(b => {
+      b.addEventListener("click", () => {
+        div.dataset.state = div.dataset.state === b.dataset.v ? "" : b.dataset.v;
+        refresh();
+      });
+    });
+    sec.appendChild(div);
+  });
+  list.appendChild(sec);
+});
+
+document.getElementById("cAll").textContent = total;
+
+function refresh() {
+  const items = document.querySelectorAll(".item");
+  let done = 0, bad = 0;
+  items.forEach(i => {
+    if (i.dataset.state) done++;
+    if (i.dataset.state === "bad") bad++;
+  });
+  document.getElementById("cDone").textContent = done;
+  document.getElementById("cBad").textContent = bad;
+  document.getElementById("barFill").style.width = (done / total * 100) + "%";
+}
+
+const modal = document.getElementById("modal");
+const reportText = document.getElementById("reportText");
+
+document.getElementById("btnReport").addEventListener("click", () => {
+  const d = new Date();
+  const stamp = `${d.getFullYear()}/${String(d.getMonth()+1).padStart(2,"0")}/${String(d.getDate()).padStart(2,"0")} ${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")}`;
+  const lines = [`【驗屋缺失紀錄】${stamp}`, ""];
+  let bad = 0, unchecked = 0, curBlock = "";
+
+  document.querySelectorAll(".item").forEach(i => {
+    if (i.dataset.state === "bad") {
+      bad++;
+      if (curBlock !== i.dataset.block) {
+        curBlock = i.dataset.block;
+        lines.push(`◆ ${curBlock}`);
+      }
+      const memo = i.querySelector("textarea").value.trim();
+      lines.push(`  ${bad}. ${i.dataset.label}${memo ? `\n     → ${memo}` : ""}`);
+    }
+    if (!i.dataset.state) unchecked++;
+  });
+
+  if (bad === 0) lines.push("目前未記錄任何缺失。");
+  lines.push("", `已檢查 ${total - unchecked}/${total} 項，尚未檢查 ${unchecked} 項。`);
+  lines.push("", "以上為現場驗屋紀錄，請協助於交屋前確認處理方式。");
+
+  reportText.value = lines.join("\n");
+  modal.classList.add("on");
+});
+
+document.getElementById("btnCopy").addEventListener("click", async () => {
+  const btn = document.getElementById("btnCopy");
+  try {
+    await navigator.clipboard.writeText(reportText.value);
+    btn.textContent = "已複製";
+  } catch {
+    reportText.select();
+    btn.textContent = "請長按文字選取複製";
+  }
+  setTimeout(() => { btn.textContent = "複製全部"; }, 2200);
+});
+
+document.getElementById("btnClose").addEventListener("click", () => modal.classList.remove("on"));
+modal.addEventListener("click", e => { if (e.target === modal) modal.classList.remove("on"); });
+
+document.getElementById("btnReset").addEventListener("click", () => {
+  if (!confirm("清除所有勾選與備註？")) return;
+  document.querySelectorAll(".item").forEach(i => {
+    i.dataset.state = "";
+    i.querySelector("textarea").value = "";
+  });
+  refresh();
+  window.scrollTo({ top: 0 });
+});
+
+refresh();
+</script>
+<!-- REVIEW:AUTO 由 scripts/review-cta.mjs 產生，不要手改 -->
+<section class="gr-cta" aria-labelledby="gr-cta-h">
+  <div class="gr-inner">
+    <p class="gr-eyebrow">GOOGLE 評論</p>
+    <h2 id="gr-cta-h">這些整理，有幫到你嗎？</h2>
+    <p class="gr-lede">留一則 Google 評論，讓其他正在煩惱同樣問題的人，也找得到這裡。<br>一句話就夠，不用寫長。</p>
+    <a class="gr-btn" href="https://g.page/r/Cc3MaJq-9w1REAE/review" target="_blank" rel="noopener noreferrer">
+      <svg class="gr-star" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l2.9 6.6 7.1.7-5.3 4.8 1.5 7-6.2-3.6L5.8 21l1.5-7L2 9.3l7.1-.7z"/></svg>
+      去 Google 留評論
+    </a>
+    <p class="gr-note">會開啟 Google 地圖的評論視窗，需要登入 Google 帳號。</p>
+  </div>
+</section>
+<style>
+.gr-cta{max-width:820px;margin:34px auto 40px;padding:26px 24px;
+ background:#16283f;border-radius:16px;color:#e9edf2;
+ font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif;
+ text-align:center;box-sizing:border-box}
+.gr-cta *{box-sizing:border-box}
+.gr-inner{max-width:34em;margin:0 auto}
+.gr-cta .gr-eyebrow{margin:0 0 8px;font-size:12.5px;letter-spacing:.2em;color:#e8c887;font-weight:500}
+.gr-cta h2{margin:0 0 10px;font-size:23px;line-height:1.4;color:#fff;font-weight:700;
+ font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif}
+.gr-cta .gr-lede{margin:0 0 20px;font-size:16px;line-height:1.8;color:#cfd8e2}
+.gr-cta .gr-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+ min-height:52px;padding:13px 30px;border-radius:999px;
+ background:#c8963e;color:#20180a;text-decoration:none;
+ font-size:17px;font-weight:700;line-height:1.4}
+.gr-cta .gr-btn:hover{background:#dcae5c}
+.gr-cta .gr-btn:focus-visible{outline:3px solid #e8c887;outline-offset:3px}
+.gr-cta .gr-star{width:20px;height:20px;fill:#20180a;flex:none}
+.gr-cta .gr-note{margin:14px 0 0;font-size:13.5px;color:#9fb0c4;line-height:1.65}
+@media(max-width:640px){
+  .gr-cta{margin:26px 16px 32px;padding:22px 18px}
+  .gr-cta h2{font-size:20px}
+  .gr-cta .gr-btn{width:100%}
+}
+</style>
+<!-- /REVIEW:AUTO -->
+<!-- CLUSTER:AUTO 由 scripts/seo-build.mjs 產生，不要手改 -->
+<section class="seo-cluster">
+<h2>買屋・延伸閱讀</h2>
+<p>買房子這條路上的每一關：</p>
+<ul><li><a href="/buy-house-guide">買屋注意事項全攻略</a></li><li><a href="/buyer-cost">買方購屋成本試算</a></li><li><a href="/qingan3">青安 3.0 月付試算機</a></li><li><a href="/loan-guide">貸款成數與寬限期怎麼看</a></li><li><a href="/offer-deposit">斡旋金 vs 要約書</a></li><li><a href="/escrow">履約保證是什麼</a></li><li><a href="/leak-check">漏水屋況檢查清單</a></li></ul>
+</section>
+<style>
+.seo-cluster{max-width:820px;margin:34px auto 40px;padding:24px;background:#fff;
+ border:1px solid #ddd2bd;border-radius:16px;
+ font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif}
+.seo-cluster h2{font-size:20px;color:#16283f;margin:0 0 8px;line-height:1.4}
+.seo-cluster p{font-size:15px;color:#6f6a60;margin:0 0 14px;line-height:1.7}
+.seo-cluster ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.seo-cluster a{display:flex;align-items:center;min-height:44px;padding:8px 14px;
+ background:#f7f3ea;border:1px solid #ddd2bd;border-radius:10px;
+ color:#16283f;text-decoration:none;font-size:15.5px;line-height:1.5}
+.seo-cluster a:hover{border-color:#c8963e}
+@media(max-width:520px){.seo-cluster{margin:24px 16px 32px;padding:18px}}
+</style>
+<!-- /CLUSTER:AUTO -->
+</body>
+</html>

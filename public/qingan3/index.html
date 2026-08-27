@@ -1,113 +1,551 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-Hant-TW">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>新青安 3.0 試算機｜海線房仲冠良</title>
-<meta name="description" content="新青安 3.0 月付金試算：輸入貸款金額、年限、年齡與身分，算出前 3 年補貼利率下的月付金，並快篩年齡、額度、所得三道門檻是否過關。">
-<meta property="og:title" content="新青安 3.0 試算機｜海線房仲冠良"><meta property="og:type" content="website">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<title>青安 3.0（新青安 2.0）月付試算機｜海線房仲冠良</title>
+<meta name="description" content="青安3.0（媒體稱新青安2.0）月付試算：完整利率階梯 1.775%→2.275%、寬限期最長5年、年齡＋年限≤80、年所得200萬與總價上限三道門檻，逐年月付、寬限期到期跳升與總利息一次算給你看。">
+<meta property="og:title" content="青安 3.0（新青安 2.0）月付試算機｜海線房仲冠良">
+<meta property="og:description" content="1.775% 只有前 3 年。逐年利率、寬限期到期的月付跳升、總利息，一次算清楚。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-:root{--cream:#f7f3ea;--cream-2:#efe8da;--navy:#16283f;--navy-2:#1f3752;--gold:#c8963e;--gold-soft:#e8c887;--ink:#2b2b2b;--muted:#6f6a60;--line:#ddd2bd;--ok:#3f7a52;--red:#b5482f}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--cream);color:var(--ink);font-family:"Noto Sans TC",system-ui,"Microsoft JhengHei",sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
-.wrap{max-width:720px;margin:0 auto;padding:0 20px}
-header{background:var(--navy);color:var(--cream);padding:44px 0 36px;position:relative;overflow:hidden}
-header:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 88% 12%,rgba(200,150,62,.22),transparent 52%)}
-header .wrap{position:relative}
-.eyebrow{font-size:12.5px;letter-spacing:.22em;color:var(--gold-soft);font-weight:500;margin-bottom:10px}
-h1{font-family:"DM Serif Display",Georgia,serif;font-size:clamp(28px,5.5vw,40px);font-weight:400}
-.lede{margin-top:12px;color:#cfd8e2;font-size:15px;max-width:32em}
-section{padding:28px 0}
-.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:16px;box-shadow:0 2px 0 rgba(22,40,63,.05)}
-label{display:block;font-size:14px;font-weight:500;color:var(--navy);margin:14px 0 6px}
-label .hint{font-weight:400;color:var(--muted);font-size:12.5px}
-input,select{width:100%;padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font-size:16px;background:var(--cream);color:var(--ink);font-family:inherit}
-input:focus,select:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:transparent}
-.grid{display:grid;gap:14px;grid-template-columns:1fr 1fr}@media(max-width:520px){.grid{grid-template-columns:1fr}}
-.out{background:var(--navy);color:var(--cream);border-radius:14px;padding:24px;text-align:center;margin-top:4px}
-.out .k{font-size:13px;color:#cfd8e2}
-.out .v{font-family:"DM Serif Display",Georgia,serif;font-size:42px;color:var(--gold-soft);line-height:1.1;margin:4px 0}
-.out .u{font-size:14px;color:#cfd8e2}
-.out .sub{font-size:12.5px;color:#9fb0c4;margin-top:8px}
-.gate{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
-.gate:first-child{border-top:none}
-.gate .b{flex:none;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff}
-.gate.ok .b{background:var(--ok)} .gate.no .b{background:var(--red)}
-.gate .t b{color:var(--navy)}
-h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;font-size:22px;color:var(--navy);margin-bottom:10px}
-.cta{background:var(--gold);border-radius:14px;padding:24px;text-align:center;color:#3a2a0c;margin-top:6px}
-.cta a{display:inline-block;background:var(--navy);color:var(--cream);text-decoration:none;padding:12px 26px;border-radius:999px;font-weight:700;margin-top:10px}
-.note{font-size:12px;color:var(--muted);margin-top:14px;line-height:1.7}
-footer{background:var(--navy);color:#a9b6c4;padding:26px 0;font-size:13px;margin-top:20px}
-footer strong{color:var(--gold-soft);font-weight:500}
-footer .legal{margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.1);color:#7f8d9c;font-size:12px}
+:root{
+  --cream:#f7f3ea;
+  --cream-2:#efe8d9;
+  --navy:#12233a;
+  --navy-2:#1b3350;
+  --gold:#c8952a;
+  --gold-soft:#e8c97a;
+  --ink:#22303f;
+  --muted:#6b7686;
+  --alert:#b4442f;
+  --ok:#2f7a5b;
+  --line:#ddd3c0;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--cream);color:var(--ink);
+  font-family:"Noto Sans TC",system-ui,-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif;
+  line-height:1.75;-webkit-text-size-adjust:100%;
+}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px 64px}
+a{color:var(--navy)}
+.back{display:inline-block;margin:18px 0 10px;font-size:14px;color:var(--muted);text-decoration:none}
+.back:hover{color:var(--navy)}
+
+/* Hero */
+header.hero{padding:8px 0 26px;border-bottom:2px solid var(--navy)}
+.eyebrow{font-size:13px;letter-spacing:.14em;color:var(--gold);font-weight:700}
+h1{font-family:"DM Serif Display","Noto Sans TC",serif;font-size:34px;line-height:1.25;margin:10px 0 8px;color:var(--navy);font-weight:400}
+.lede{font-size:15px;color:var(--ink);margin:0}
+.tag{display:inline-block;margin-top:14px;padding:5px 11px;border:1px solid var(--navy);border-radius:999px;font-size:12.5px;font-weight:700;color:var(--navy)}
+
+h2{font-family:"DM Serif Display","Noto Sans TC",serif;font-weight:400;font-size:24px;color:var(--navy);margin:38px 0 6px;letter-spacing:.01em}
+h2 .num{font-family:"Noto Sans TC";font-size:12px;font-weight:900;color:var(--gold);display:block;letter-spacing:.18em;margin-bottom:2px}
+h3{font-size:16px;margin:22px 0 6px;color:var(--navy)}
+p{margin:8px 0}
+.small{font-size:13.5px;color:var(--muted)}
+
+/* Cards */
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin:16px 0}
+.card.dark{background:var(--navy);color:#f2ede2;border-color:var(--navy)}
+.card.dark h3,.card.dark strong{color:var(--gold-soft)}
+.card.dark .small{color:#b9c4d2}
+
+/* Form */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.grid{grid-template-columns:1fr}}
+label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px}
+label span{font-weight:400;color:var(--muted)}
+input,select{
+  width:100%;padding:11px 12px;font-size:16px;border:1px solid var(--line);
+  border-radius:10px;background:var(--cream);color:var(--ink);
+  font-family:inherit;
+}
+input:focus,select:focus{outline:3px solid var(--gold-soft);outline-offset:1px;border-color:var(--gold)}
+button.calc{
+  width:100%;margin-top:16px;padding:15px;border:0;border-radius:10px;
+  background:var(--navy);color:#fff;font-size:17px;font-weight:700;font-family:inherit;cursor:pointer;
+}
+button.calc:hover{background:var(--navy-2)}
+button.calc:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+/* Result */
+#result{display:none}
+.headline{
+  background:var(--navy);color:#fff;border-radius:14px;padding:20px;text-align:center;margin-top:18px;
+}
+.headline .k{font-size:12.5px;letter-spacing:.14em;color:var(--gold-soft);font-weight:700}
+.headline .v{font-family:"DM Serif Display",serif;font-size:44px;line-height:1.1;margin:6px 0 2px}
+.headline .u{font-size:13px;color:#b9c4d2}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.18);margin-top:16px;border-radius:10px;overflow:hidden}
+.split div{background:var(--navy);padding:12px 8px}
+.split .k{font-size:11.5px}
+.split .v{font-size:21px;font-family:inherit;font-weight:700;margin:2px 0 0}
+
+table{width:100%;border-collapse:collapse;margin-top:12px;font-size:14px}
+th,td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:right}
+th:first-child,td:first-child{text-align:left}
+thead th{font-size:12.5px;color:var(--muted);border-bottom:2px solid var(--navy);white-space:nowrap}
+tr.grace td{background:#fbf7ec}
+tr.cliff td{background:#fdeee9;font-weight:700}
+td .badge{display:inline-block;font-size:11px;padding:1px 6px;border-radius:4px;margin-left:5px;font-weight:700}
+.b-grace{background:var(--gold-soft);color:#5a4210}
+.b-cliff{background:var(--alert);color:#fff}
+
+/* Step chart */
+.chart{margin-top:16px}
+.bar-row{display:flex;align-items:center;gap:8px;margin:5px 0;font-size:12.5px}
+.bar-row .yr{width:56px;color:var(--muted);flex:none}
+.bar{height:20px;border-radius:4px;background:var(--gold-soft);min-width:2px}
+.bar.pay{background:var(--navy)}
+.bar-row .amt{color:var(--ink);white-space:nowrap}
+
+/* Checks */
+.check{display:flex;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:14.5px;align-items:flex-start}
+.check:last-child{border-bottom:0}
+.mark{flex:none;width:22px;font-weight:900}
+.pass .mark{color:var(--ok)} .fail .mark{color:var(--alert)} .warn .mark{color:var(--gold)}
+.fail .txt strong{color:var(--alert)}
+
+ul.tight{padding-left:20px;margin:8px 0}
+ul.tight li{margin:5px 0}
+.rule{border:0;border-top:1px solid var(--line);margin:34px 0}
+.note{font-size:13px;color:var(--muted);background:var(--cream-2);border-radius:10px;padding:12px 14px;margin-top:14px}
+
+/* CTA */
+.cta{background:var(--navy);border-radius:16px;padding:26px 20px;text-align:center;color:#fff;margin-top:34px}
+.cta h2{color:#fff;margin:0 0 6px}
+.cta p{color:#c7d1de;font-size:14.5px;margin:0 0 16px}
+.cta a{display:block;background:var(--gold);color:#12233a;font-weight:900;padding:14px;border-radius:10px;text-decoration:none;font-size:17px}
+.cta a.ghost{background:transparent;color:#e8c97a;border:1px solid #3b5473;margin-top:10px;font-weight:700}
+footer{margin-top:34px;padding-top:18px;border-top:2px solid var(--navy);font-size:14px}
+footer .brand{font-family:"DM Serif Display",serif;font-size:20px;color:var(--navy)}
+footer .slogan{color:var(--gold);font-weight:700;font-size:13.5px;letter-spacing:.08em}
+@media (prefers-reduced-motion:no-preference){
+  .bar{transition:width .5s ease}
+}
 </style>
+<!-- SEO:AUTO 由 scripts/seo-build.mjs 產生，不要手改 -->
+<link rel="canonical" href="https://kuanhome.com/qingan3">
+<meta property="og:url" content="https://kuanhome.com/qingan3">
+<meta property="og:site_name" content="海線房仲冠良">
+<meta property="og:locale" content="zh_TW">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://kuanhome.com/qingan3#article","headline":"青安 3.0（新青安 2.0）月付試算機","description":"青安3.0（媒體稱新青安2.0）月付試算：完整利率階梯 1.775%→2.275%、寬限期最長5年、年齡＋年限≤80、年所得200萬與總價上限三道門檻，逐年月付、寬限期到期跳升與總利息一次算給你看。","url":"https://kuanhome.com/qingan3","inLanguage":"zh-Hant-TW","dateModified":"2026-08-27T15:13:48.336Z","author":{"@id":"https://kuanhome.com/#wuguanliang"},"publisher":{"@id":"https://kuanhome.com/#agent"},"mainEntityOfPage":{"@id":"https://kuanhome.com/qingan3"}},{"@type":"RealEstateAgent","@id":"https://kuanhome.com/#agent","name":"海線房仲冠良","alternateName":"吳冠良｜台中海線房地產顧問","description":"台中海線專業房地產仲介，深耕沙鹿、清水、梧棲、龍井、大肚、大甲六區。提供資產配置、稅務諮詢、簡易裝潢，及買賣委託與土地買賣。","slogan":"懂你又懂房","url":"https://kuanhome.com/","image":"https://kuanhome.com/card/owner.webp","telephone":"+886-915-295-958","email":"wosagl15@gmail.com","address":{"@type":"PostalAddress","addressLocality":"沙鹿區","addressRegion":"台中市","postalCode":"433","addressCountry":"TW"},"geo":{"@type":"GeoCoordinates","latitude":24.2340986,"longitude":120.560349},"priceRange":"$$","areaServed":[{"@type":"AdministrativeArea","name":"台中市沙鹿區"},{"@type":"AdministrativeArea","name":"台中市清水區"},{"@type":"AdministrativeArea","name":"台中市梧棲區"},{"@type":"AdministrativeArea","name":"台中市龍井區"},{"@type":"AdministrativeArea","name":"台中市大肚區"},{"@type":"AdministrativeArea","name":"台中市大甲區"}],"sameAs":["https://www.facebook.com/share/14XZ3Wy4nLZ/","https://www.instagram.com/asmile55178/","https://www.youtube.com/@吳冠良-w9v","https://lin.ee/1WlfBub","https://sales.myhomes.com.tw/0915295958"],"employee":{"@type":"Person","@id":"https://kuanhome.com/#wuguanliang","name":"吳冠良","jobTitle":"台中海線專業房地產顧問"}},{"@type":"BreadcrumbList","@id":"https://kuanhome.com/qingan3#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://kuanhome.com/"},{"@type":"ListItem","position":2,"name":"購屋攻略","item":"https://kuanhome.com/tools"},{"@type":"ListItem","position":3,"name":"青安 3.0（新青安 2.0）月付試算機","item":"https://kuanhome.com/qingan3"}]},{"@type":"FAQPage","@id":"https://kuanhome.com/qingan3#faq","mainEntity":[{"@type":"Question","name":"先講清楚 你聽到的「新青安」是哪一版？","acceptedAnswer":{"@type":"Answer","text":"版本 大家怎麼叫 期間 青安 1.0 舊青安 2010/12～2023/7 青安 2.0 新青安 2023/8～ 2026/7/31 收件截止 青安 3.0 新青安 2.0 2026/8/1～2029/7/31 新舊制以「向銀行提出申請的日期」切分。7/31 前送件的走舊制青安 2.0，最遲要在 2026/10/31 前撥款；8/1 以後送件一律適用 3.0。已送件但還沒撥款、又符合新婚或育兒加碼的人，可以評估撤案改辦 3.0 拿更高額度，但一經選擇不得再變更。"}},{"@type":"Question","name":"算完想知道實際能貸多少？","acceptedAnswer":{"@type":"Answer","text":"額度、年限、寬限期，最後都是承辦行庫說了算。把你的物件與條件丟給我，幫你先抓一個接近核貸的版本。 加 LINE 問冠良 → 直接打電話 0915-295-958 本頁為政策說明與試算示範，不構成個別財務或投資建議。月付金以本息平均攤還、郵儲 2 年期定儲機動利率 1.72% 為基準估算，利率為機動、會隨基準調整；實際利率、額度、成數、年限、寬限期與核貸條件，依承貸行庫審核與主管機關公告為準。資料整理自行政院 2026/7/16 通過之青安 3.0 方案與財政部同日新聞稿，部分細則以財政部國庫署公告與各行庫問答集為準。 海線房仲冠良｜懂你又懂房 讓你幸福會發光 沙鹿・清水・梧棲・龍井・大肚・大甲 0915-295-958｜LINE：w"}},{"@type":"Question","name":"這些整理，有幫到你嗎？","acceptedAnswer":{"@type":"Answer","text":"留一則 Google 評論，讓其他正在煩惱同樣問題的人，也找得到這裡。 一句話就夠，不用寫長。 去 Google 留評論 會開啟 Google 地圖的評論視窗，需要登入 Google 帳號。"}}],"isPartOf":{"@id":"https://kuanhome.com/qingan3#article"}}]}</script>
+<!-- /SEO:AUTO -->
 </head>
 <body>
-<a href="/" style="position:fixed;top:12px;left:12px;z-index:99999;background:#16283f;color:#fff;padding:9px 15px;border-radius:22px;font:600 14px/1 'Microsoft JhengHei',sans-serif;text-decoration:none;box-shadow:0 3px 10px rgba(0,0,0,.3)">← 回首頁</a>
-<header><div class="wrap">
-  <p class="eyebrow">免費試算 · 不用留資料</p>
-  <h1>新青安 3.0 試算機</h1>
-  <p class="lede">算出前 3 年補貼利率下的月付金，並快篩年齡、額度、所得三道門檻。8/1 起適用新制。</p>
-</div></header>
 <div class="wrap">
-<section>
-  <div class="card">
-    <div class="grid">
-      <div><label>貸款金額（萬）</label><input id="amt" type="number" value="800" min="0"></div>
-      <div><label>貸款年限（年）<span class="hint"> 最長 40</span></label><input id="yr" type="number" value="40" min="1" max="40"></div>
-      <div><label>申請人年齡</label><input id="age" type="number" value="35" min="18" max="80"></div>
-      <div><label>身分</label><select id="id"><option value="1000">一般戶（上限 1000 萬）</option><option value="1200">新婚 2 年內（1200 萬）</option><option value="1500">有未成年子女（1500 萬）</option></select></div>
+
+<a class="back" href="/tools">← 回海線房仲冠良首頁</a>
+
+<header class="hero">
+  <div class="eyebrow">免費試算 · 不用留資料</div>
+  <h1>青安 3.0 月付試算機</h1>
+  <p class="lede">媒體叫它「新青安 2.0」，官方名稱是<strong>青年安心成家購屋優惠貸款 3.0</strong>。2026/8/1 上路，收件到 2029/7/31。這裡把利率階梯、寬限期、還有寬限期到期那一年的月付跳升，逐年算給你看。</p>
+  <div class="tag">1.775% 只有前 3 年，第 7 年起回到 2.275%</div>
+</header>
+
+<!-- 名稱釐清 -->
+<h2><span class="num">先講清楚</span>你聽到的「新青安」是哪一版？</h2>
+<div class="card">
+  <table>
+    <thead><tr><th>版本</th><th>大家怎麼叫</th><th>期間</th></tr></thead>
+    <tbody>
+      <tr><td>青安 1.0</td><td>舊青安</td><td>2010/12～2023/7</td></tr>
+      <tr><td>青安 2.0</td><td><strong>新青安</strong></td><td>2023/8～<strong>2026/7/31 收件截止</strong></td></tr>
+      <tr><td>青安 3.0</td><td>新青安 2.0</td><td><strong>2026/8/1～2029/7/31</strong></td></tr>
+    </tbody>
+  </table>
+  <p class="small" style="margin-top:10px">新舊制以「向銀行提出申請的日期」切分。7/31 前送件的走舊制青安 2.0，最遲要在 2026/10/31 前撥款；8/1 以後送件一律適用 3.0。已送件但還沒撥款、又符合新婚或育兒加碼的人，可以評估撤案改辦 3.0 拿更高額度，但一經選擇不得再變更。</p>
+</div>
+
+<!-- 試算機 -->
+<h2><span class="num">試算</span>你的每月要繳多少</h2>
+<div class="card">
+  <div class="grid">
+    <div>
+      <label for="amt">貸款金額 <span>（萬元）</span></label>
+      <input id="amt" type="number" inputmode="numeric" value="800" min="10" max="1500" step="10">
+    </div>
+    <div>
+      <label for="yrs">貸款年限 <span>（最長 40 年）</span></label>
+      <select id="yrs">
+        <option>40</option><option>35</option><option>30</option>
+        <option>25</option><option>20</option><option>15</option>
+      </select>
+    </div>
+    <div>
+      <label for="grace">寬限期 <span>（法規最長 5 年）</span></label>
+      <select id="grace">
+        <option value="0">不用寬限期</option>
+        <option value="1">1 年</option>
+        <option value="2">2 年</option>
+        <option value="3">3 年</option>
+        <option value="5" selected>5 年（上限）</option>
+      </select>
+    </div>
+    <div>
+      <label for="age">申貸時年齡 <span>（須未滿 50）</span></label>
+      <input id="age" type="number" inputmode="numeric" value="35" min="18" max="70">
+    </div>
+    <div>
+      <label for="who">家庭身分</label>
+      <select id="who">
+        <option value="1000">一般戶（上限 1,000 萬）</option>
+        <option value="1200">新婚 2 年內（1,200 萬）</option>
+        <option value="1500">育有未成年子女（1,500 萬）</option>
+      </select>
+    </div>
+    <div>
+      <label for="income">本人年所得 <span>（萬元，須 ≤200）</span></label>
+      <input id="income" type="number" inputmode="numeric" value="90" min="0" max="999" step="1">
+    </div>
+    <div>
+      <label for="price">房屋總價 <span>（萬元）</span></label>
+      <input id="price" type="number" inputmode="numeric" value="1000" min="0" step="10">
+    </div>
+    <div>
+      <label for="area">房屋所在地</label>
+      <select id="area">
+        <option value="2000" selected>台中等其他縣市（上限 2,000 萬）</option>
+        <option value="2500">新北市、新竹縣市（2,500 萬）</option>
+        <option value="3500">台北市（3,500 萬）</option>
+      </select>
+    </div>
+    <div>
+      <label for="base">郵儲基準利率情境 <span>（現況 1.72%）</span></label>
+      <select id="base">
+        <option value="0" selected>維持不變</option>
+        <option value="0.125">升息半碼（+0.125%）</option>
+        <option value="0.25">升息 1 碼（+0.25%）</option>
+        <option value="-0.125">降息半碼（−0.125%）</option>
+      </select>
+    </div>
+  </div>
+  <button class="calc" id="go">開始試算</button>
+</div>
+
+<div id="result">
+  <div class="headline">
+    <div class="k">寬限期內每月只繳利息</div>
+    <div class="v" id="bigNum">—</div>
+    <div class="u" id="bigSub">元 / 月</div>
+    <div class="split">
+      <div><div class="k">寬限期結束後月付</div><div class="v" id="afterGrace">—</div></div>
+      <div><div class="k">單月一次跳升</div><div class="v" id="jump">—</div></div>
     </div>
   </div>
 
-  <div class="out">
-    <div class="k">前 3 年月付金（利率約 1.775%）</div>
-    <div class="v"><span id="pay">—</span></div>
-    <div class="u">元 / 月</div>
-    <div class="sub" id="paysub">第 4 年起補貼逐年退場、利率調升，月付會往上。</div>
+  <div class="card">
+    <h3>資格三道門檻快篩</h3>
+    <div id="checks"></div>
   </div>
 
-  <div class="card" style="margin-top:16px">
-    <h2>三道門檻快篩</h2>
-    <div id="gates"></div>
+  <div class="card">
+    <h3>逐年月付金與利率</h3>
+    <table>
+      <thead><tr><th>年度</th><th>利率</th><th>狀態</th><th>月付金</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div class="chart" id="chart"></div>
+    <p class="small" id="totals" style="margin-top:14px"></p>
   </div>
 
-  <div class="cta">
-    想知道你實際能貸多少、月付多少？<br>
-    <a href="https://lin.ee/QyQmggG" target="_blank" rel="noopener">加 LINE 找冠良試算 →</a>
+  <div class="card dark">
+    <h3>撐不撐得住？用寬限期結束後的月付去壓力測試</h3>
+    <p id="income-need"></p>
+    <p class="small">房貸負擔率抓 30%～35% 回推。用寬限期那三、四年的低月付去評估自己買得起，是最容易出事的算法——真正要面對的是後面那個數字。</p>
   </div>
-  <p class="note">本試算為概算，利率 1.775% 為新青安 3.0 前 3 年補貼後之參考值，實際利率、額度、寬限與核貸條件依承貸銀行與主管機關公告為準。試算結果非承諾，僅供參考。</p>
-</section>
 </div>
-<footer><div class="wrap">
-  <strong>海線房仲冠良｜懂你又懂房</strong><br>
-  ・｜沙鹿・清水・梧棲・龍井・大肚・大甲<br>
-  0915-295-958｜LINE：wosawo
-</div></footer>
+
+<hr class="rule">
+
+<!-- 利率 -->
+<h2><span class="num">利率</span>1.775% 是怎麼來的、又會漲到哪</h2>
+<p>青安 3.0 只保留<strong>一段式機動利率</strong>（舊制的二段式、混合式取消）。利率＝中華郵政 2 年期定期儲金機動利率＋0.345%，再減掉政府與公股銀行合計補貼的 2 碼（1 碼＝0.25 個百分點）。以郵儲基準 1.72% 計算，補貼後就是 <strong>1.775%</strong>。</p>
+<p>補貼採「3＋3」退場：<strong>前 3 年補滿 2 碼，第 4 年起每年少補半碼（0.125%），6 年補貼期滿回到原利率。</strong>所以你會走過這條階梯：</p>
+<div class="card">
+  <table>
+    <thead><tr><th>年度</th><th>補貼</th><th>適用利率</th></tr></thead>
+    <tbody>
+      <tr><td>第 1～3 年</td><td>2 碼</td><td><strong>1.775%</strong></td></tr>
+      <tr><td>第 4 年</td><td>1.5 碼</td><td>1.900%</td></tr>
+      <tr><td>第 5 年</td><td>1 碼</td><td>2.025%</td></tr>
+      <tr><td>第 6 年</td><td>0.5 碼</td><td>2.150%</td></tr>
+      <tr><td>第 7 年起</td><td>無</td><td><strong>2.275%</strong></td></tr>
+    </tbody>
+  </table>
+  <p class="small" style="margin-top:10px">整段的利率區間就是 <strong>1.775%～2.275%</strong>，但這是「郵儲基準 1.72% 不動」的前提下。基準是機動的：郵儲升息半碼，上表每一格都跟著往上加半碼，第 7 年起就變 2.40%。上面的試算機可以直接切換升降息情境看差多少。</p>
+</div>
+<p class="small">兩件容易被忽略的事：一是<strong>退場機制對舊戶也適用</strong>，已經在繳青安 1.0、2.0 的人，補貼一樣逐年退場，1.775% 從來就不是 40 年固定利率；二是這是<strong>機動利率</strong>，銀行會在基準調整時重算你的月付金，不是簽約當下就鎖死。</p>
+
+<hr class="rule">
+
+<!-- 寬限期 -->
+<h2><span class="num">寬限期</span>法規給你 5 年，代價寫在第 6 年</h2>
+<p><strong>寬限期是「只繳利息、暫時不還本金」的期間。</strong>青安 3.0 維持青安 2.0 的規格：貸款年限最長 40 年、<strong>寬限期最長 5 年</strong>，而且寬限期是<strong>含在年限裡面</strong>——不是 40 年之外多送你 5 年。等於用 5 年不還本金，換來後面 35 年要把整筆本金還完。</p>
+<h3>三件實務上一定要知道的事</h3>
+<ul class="tight">
+  <li><strong>最長 5 年不等於一定給 5 年。</strong>法規是上限，實際由承辦行庫依你的收入、信用、負債比核定，常見是先給 2～3 年、期滿再申請展延，不保證過。</li>
+  <li><strong>本金一毛沒少，利息還多繳。</strong>寬限期內本金完全不動，這幾年的利息是白付的；同樣一筆錢，用滿 5 年寬限期，全期總利息會明顯高於不用寬限期。上面試算的「總利息」欄可以自己切換比較。</li>
+  <li><strong>第 6 年是雙重跳升。</strong>寬限期結束（開始還本金）和補貼退場（利率往上）幾乎同時發生，月付金會從只繳息的水準直接翻一倍以上。這才是青安真正的財務風險點，不是每年那半碼。</li>
+</ul>
+<div class="note">舉例：貸 1,000 萬、40 年、用滿 5 年寬限期，前 3 年每月約 14,800 元，第 5 年約 16,900 元，第 6 年開始還本息直接跳到約 33,900 元——單月多繳約 1.7 萬。同一筆錢如果一開始就不用寬限期，前 3 年月付約 29,100 元，之後爬到約 31,500 元，全程平穩。（以郵儲 1.72% 不變、本息平均攤還估算）</div>
+
+<hr class="rule">
+
+<!-- 資格 -->
+<h2><span class="num">資格</span>三道新門檻與額度加碼</h2>
+<h3>基本對象（延續舊制）</h3>
+<ul class="tight">
+  <li>已成年，且<strong>本人、配偶及未成年子女名下均無自有住宅</strong>（看的是現在名下有沒有房，不是有沒有買過房）。</li>
+  <li><strong>一生限貸一次。</strong>2023 年 8 月以後核貸過青安的人不能再辦，房子賣掉也不行；辦過農安貸款的同樣不能申請。</li>
+  <li>新貸戶要簽<strong>自住切結書</strong>。出租、營業使用、當人頭或資料造假，會停止補貼、追回溢領利息並重新核定貸款條件。</li>
+  <li>只有<strong>八大公股行庫</strong>承辦：台銀、土銀、合庫、一銀、華南、彰銀、兆豐、台企銀，民營銀行沒有這個方案。</li>
+</ul>
+<h3>3.0 新增的三道門檻</h3>
+<ol class="tight">
+  <li><strong>年所得 200 萬元以內</strong>——看「借款人本人」，不是家戶或夫妻合計。夫妻其中一方超標，可評估由未超標的一方當借款人（資料必須真實）。</li>
+  <li><strong>申貸時未滿 50 歲</strong>，而且<strong>年齡＋核貸年限不得逾 80</strong>。45 歲申貸最多核 35 年、49 歲最多 31 年；50 歲（含）以上直接不符資格，不是「只能貸短一點」。</li>
+  <li><strong>房屋總價上限</strong>：台北市 3,500 萬、新北市與新竹縣市 2,500 萬、其他縣市（含<strong>台中市</strong>）2,000 萬。<strong>銀行鑑價金額與買賣金額兩個都要過關</strong>，總價超標就是整案不適用，不能靠「只貸 1,000 萬以內」規避。</li>
+</ol>
+<h3>額度與成數</h3>
+<ul class="tight">
+  <li>一般戶最高 <strong>1,000 萬</strong>；申請日前 2 年內完成結婚登記 <strong>1,200 萬</strong>；育有未成年子女（含懷孕，持孕婦健康手冊可認定）<strong>1,500 萬</strong>。</li>
+  <li>最高貸款成數維持 <strong>8 成</strong>。額度上限與「總價 ×8 成」取低者，超出的部分要另外搭一般房貸。</li>
+  <li>最高額度、最長年限、最長寬限期都是「上限」，實際仍由行庫依收入、信用、負債與物件條件核定。買中古屋還有銀行內規的「屋齡＋年限」限制，可能把 40 年砍到 15～25 年。</li>
+</ul>
+<h3>海線這邊最常卡到的兩點</h3>
+<p>台中市屬「其他縣市」，總價天花板 2,000 萬——沙鹿、清水、梧棲、龍井、大肚、大甲的中古屋與一般透天大多在線內，比較需要注意的是新案大坪數與雙車位的總價；另一個是<strong>屋齡</strong>，海線不少物件屋齡偏高，銀行給的年限往往比你以為的短，年限一短月付就墊高，青安 40 年的優勢等於失效。</p>
+
+<div class="cta">
+  <h2>算完想知道實際能貸多少？</h2>
+  <p>額度、年限、寬限期，最後都是承辦行庫說了算。把你的物件與條件丟給我，幫你先抓一個接近核貸的版本。</p>
+  <a href="https://lin.ee/QyQmggG">加 LINE 問冠良 →</a>
+  <a class="ghost" href="tel:0915295958">直接打電話 0915-295-958</a>
+</div>
+
+<div class="note" style="margin-top:20px">
+本頁為政策說明與試算示範，不構成個別財務或投資建議。月付金以本息平均攤還、郵儲 2 年期定儲機動利率 1.72% 為基準估算，利率為機動、會隨基準調整；實際利率、額度、成數、年限、寬限期與核貸條件，依承貸行庫審核與主管機關公告為準。資料整理自行政院 2026/7/16 通過之青安 3.0 方案與財政部同日新聞稿，部分細則以財政部國庫署公告與各行庫問答集為準。
+</div>
+
+<footer>
+  <div class="brand">海線房仲冠良｜懂你又懂房</div>
+  <div class="slogan">讓你幸福會發光</div>
+  <p class="small" style="margin-top:6px">沙鹿・清水・梧棲・龍井・大肚・大甲<br>
+  0915-295-958｜LINE：wosawo｜<a href="/tools">回首頁看更多買賣屋工具</a></p>
+</footer>
+
+</div>
+
 <script>
-function calc(){
-  var amt=+document.getElementById('amt').value||0;
-  var yr=+document.getElementById('yr').value||0;
-  var age=+document.getElementById('age').value||0;
-  var cap=+document.getElementById('id').value;
-  var P=amt*10000, i=0.01775/12, n=yr*12;
-  var pay = (P>0&&n>0)? P*i/(1-Math.pow(1+i,-n)) : 0;
-  document.getElementById('pay').textContent = pay>0? Math.round(pay).toLocaleString() : '—';
-  var maxYr = Math.max(0, 80-age);
-  var g=[
-    {ok: age<50, t:'年齡：申請人須<b>未滿 50 歲</b>（目前 '+age+' 歲）'},
-    {ok: yr<=maxYr, t:'年限：年齡＋貸款年限 ≤ 80，你最多可貸 <b>'+maxYr+' 年</b>（目前設 '+yr+' 年）'},
-    {ok: amt<=cap, t:'額度：不超過身分上限 <b>'+cap+' 萬</b>（目前 '+amt+' 萬）'},
-    {ok: true, t:'排富：主借款人<b>年所得需 ≤ 200 萬</b>（看個人、不看夫妻合計）— 請自行確認'}
-  ];
-  document.getElementById('gates').innerHTML = g.map(function(x){
-    return '<div class="gate '+(x.ok?'ok':'no')+'"><span class="b">'+(x.ok?'✓':'!')+'</span><span class="t">'+x.t+'</span></div>';
-  }).join('');
-}
-['amt','yr','age','id'].forEach(function(id){document.getElementById(id).addEventListener('input',calc);});
-calc();
+(function(){
+  var LADDER = [1.775,1.775,1.775,1.900,2.025,2.150]; // 第1~6年
+  var FINAL  = 2.275;                                  // 第7年起
+
+  function rateFor(y, shift){
+    var r = (y <= 6) ? LADDER[y-1] : FINAL;
+    return r + shift;
+  }
+  function amort(bal, r, n){
+    if(r === 0) return bal / n;
+    return bal * r / (1 - Math.pow(1+r, -n));
+  }
+  function money(n){ return Math.round(n).toLocaleString('zh-TW'); }
+
+  function simulate(P, years, graceYears, shift){
+    var n = years*12, bal = P, pay = 0, totalInt = 0;
+    var yearly = [];
+    for(var i=0;i<n;i++){
+      var y = Math.floor(i/12)+1;
+      var rate = rateFor(y, shift), r = rate/100/12;
+      var inGrace = i < graceYears*12;
+      var payment;
+      if(inGrace){
+        payment = bal * r;
+        if(i%12===0) yearly.push({y:y, rate:rate, pay:payment, grace:true});
+      } else {
+        if(i%12===0 || pay===0) pay = amort(bal, r, n-i);
+        payment = pay;
+        if(i%12===0) yearly.push({y:y, rate:rate, pay:payment, grace:false});
+      }
+      var interest = bal * r;
+      totalInt += interest;
+      bal -= (payment - interest);
+      if(bal < 0) bal = 0;
+    }
+    return {yearly:yearly, totalInterest:totalInt, total:P+totalInt};
+  }
+
+  // 把連續相同（利率＋月付＋狀態）的年度壓成一列
+  function compress(yearly, years){
+    var out = [];
+    yearly.forEach(function(row){
+      var last = out[out.length-1];
+      if(last && Math.abs(last.rate-row.rate)<1e-9 && Math.abs(last.pay-row.pay)<1 && last.grace===row.grace){
+        last.to = row.y;
+      } else {
+        out.push({from:row.y, to:row.y, rate:row.rate, pay:row.pay, grace:row.grace});
+      }
+    });
+    out.forEach(function(o){
+      o.label = (o.from===o.to) ? ('第 '+o.from+' 年')
+              : (o.to>=years ? ('第 '+o.from+' 年起') : ('第 '+o.from+'～'+o.to+' 年'));
+    });
+    return out;
+  }
+
+  function check(pass, text, warn){
+    var cls = pass ? 'pass' : (warn ? 'warn' : 'fail');
+    var mark = pass ? '✓' : (warn ? '!' : '✕');
+    return '<div class="check '+cls+'"><div class="mark">'+mark+'</div><div class="txt">'+text+'</div></div>';
+  }
+
+  document.getElementById('go').addEventListener('click', function(){
+    var amtWan  = Math.max(10, +document.getElementById('amt').value || 0);
+    var years   = +document.getElementById('yrs').value;
+    var grace   = +document.getElementById('grace').value;
+    var age     = +document.getElementById('age').value || 0;
+    var cap     = +document.getElementById('who').value;
+    var income  = +document.getElementById('income').value || 0;
+    var price   = +document.getElementById('price').value || 0;
+    var areaCap = +document.getElementById('area').value;
+    var shift   = +document.getElementById('base').value;
+
+    var P = amtWan * 10000;
+    if(grace >= years) grace = Math.max(0, years-1);
+
+    var sim  = simulate(P, years, grace, shift);
+    var rows = compress(sim.yearly, years);
+
+    // 大數字：寬限中的第一段 vs 寬限結束後第一段
+    var firstPay = rows[0].pay;
+    var afterIdx = rows.findIndex(function(r){ return !r.grace; });
+    var afterPay = afterIdx >= 0 ? rows[afterIdx].pay : firstPay;
+    var jump = afterPay - firstPay;
+
+    document.getElementById('bigNum').textContent = money(firstPay);
+    document.querySelector('.headline .k').textContent =
+      grace > 0 ? ('第 1～'+Math.min(3,grace)+' 年寬限期內每月只繳利息') : '前 3 年每月本息平均攤還';
+    document.getElementById('bigSub').textContent = '元 / 月　（利率 '+rows[0].rate.toFixed(3)+'%）';
+    document.getElementById('afterGrace').textContent = money(afterPay);
+    document.getElementById('jump').textContent = (jump>0?'+':'') + money(jump);
+
+    // 逐年表
+    var html = '';
+    rows.forEach(function(r, idx){
+      var cls = r.grace ? 'grace' : (idx===afterIdx && grace>0 ? 'cliff' : '');
+      var state = r.grace ? '寬限期（只繳息）<span class="badge b-grace">寬限</span>'
+                          : (idx===afterIdx && grace>0 ? '開始還本息<span class="badge b-cliff">跳升</span>' : '本息平均攤還');
+      html += '<tr class="'+cls+'"><td>'+r.label+'</td><td>'+r.rate.toFixed(3)+'%</td><td style="text-align:left;font-size:13px">'+state+'</td><td>'+money(r.pay)+'</td></tr>';
+    });
+    document.getElementById('rows').innerHTML = html;
+
+    // 階梯圖
+    var maxPay = Math.max.apply(null, rows.map(function(r){return r.pay;}));
+    var chart = '';
+    rows.forEach(function(r){
+      var w = Math.max(2, r.pay/maxPay*100);
+      chart += '<div class="bar-row"><div class="yr">'+r.label.replace('第 ','').replace(' 年','')+'</div>'+
+               '<div class="bar '+(r.grace?'':'pay')+'" style="width:'+w+'%"></div>'+
+               '<div class="amt">'+money(r.pay)+'</div></div>';
+    });
+    document.getElementById('chart').innerHTML = chart;
+
+    var noGrace = simulate(P, years, 0, shift);
+    var extra = sim.totalInterest - noGrace.totalInterest;
+    document.getElementById('totals').innerHTML =
+      '全期總利息約 <strong>'+money(sim.totalInterest)+'</strong> 元，本息合計約 <strong>'+money(sim.total)+'</strong> 元。'+
+      (grace>0 ? '<br>用了 '+grace+' 年寬限期，比完全不用寬限期多付利息約 <strong>'+money(extra)+'</strong> 元。' : '');
+
+    // 門檻
+    var c = '';
+    c += check(age < 50, '<strong>年齡</strong>：'+age+' 歲 — '+(age<50?'未滿 50 歲，符合':'50 歲（含）以上不符青安 3.0 資格'));
+    var maxYears = Math.min(40, 80 - age);
+    c += check(years <= maxYears, '<strong>年齡＋年限 ≤ 80</strong>：你 '+age+' 歲，最長可貸 '+Math.max(0,maxYears)+' 年 — '+
+        (years<=maxYears ? '選 '+years+' 年沒問題' : '選 '+years+' 年會超標，須縮短至 '+Math.max(0,maxYears)+' 年以內'));
+    c += check(income <= 200, '<strong>本人年所得</strong>：'+income+' 萬 — '+(income<=200?'在 200 萬門檻內':'超過 200 萬，本人不符資格（可評估由所得未超標的一方申貸）'));
+    c += check(price>0 && price <= areaCap, '<strong>房屋總價</strong>：'+price+' 萬 / 上限 '+areaCap+' 萬 — '+
+        (price<=areaCap?'在天花板內（鑑價金額也要一起過關）':'超過上限，整案不適用青安 3.0'));
+    var ltvCap = price*0.8;
+    var realCap = Math.min(cap, ltvCap>0?ltvCap:cap);
+    c += check(amtWan <= realCap, '<strong>額度</strong>：申請 '+amtWan+' 萬 — 你的身分上限 '+cap+' 萬、總價 8 成約 '+Math.round(ltvCap)+' 萬，可貸上限約 <strong>'+Math.round(realCap)+' 萬</strong>'+
+        (amtWan<=realCap?'':'，超出部分要另搭一般房貸'));
+    c += check(true, '<strong>其他必要條件</strong>：本人、配偶及未成年子女名下無自有住宅；一生限貸一次；簽自住切結書。', true);
+    document.getElementById('checks').innerHTML = c;
+
+    document.getElementById('income-need').innerHTML =
+      '寬限期結束後月付約 <strong>'+money(afterPay)+'</strong> 元。以負擔率 30%～35% 回推，家庭月收入建議落在 <strong>'+
+      money(afterPay/0.35)+' ～ '+money(afterPay/0.30)+'</strong> 元之間。';
+
+    var box = document.getElementById('result');
+    box.style.display = 'block';
+    box.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+})();
 </script>
+<!-- REVIEW:AUTO 由 scripts/review-cta.mjs 產生，不要手改 -->
+<section class="gr-cta" aria-labelledby="gr-cta-h">
+  <div class="gr-inner">
+    <p class="gr-eyebrow">GOOGLE 評論</p>
+    <h2 id="gr-cta-h">這些整理，有幫到你嗎？</h2>
+    <p class="gr-lede">留一則 Google 評論，讓其他正在煩惱同樣問題的人，也找得到這裡。<br>一句話就夠，不用寫長。</p>
+    <a class="gr-btn" href="https://g.page/r/Cc3MaJq-9w1REAE/review" target="_blank" rel="noopener noreferrer">
+      <svg class="gr-star" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l2.9 6.6 7.1.7-5.3 4.8 1.5 7-6.2-3.6L5.8 21l1.5-7L2 9.3l7.1-.7z"/></svg>
+      去 Google 留評論
+    </a>
+    <p class="gr-note">會開啟 Google 地圖的評論視窗，需要登入 Google 帳號。</p>
+  </div>
+</section>
+<style>
+.gr-cta{max-width:820px;margin:34px auto 40px;padding:26px 24px;
+ background:#16283f;border-radius:16px;color:#e9edf2;
+ font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif;
+ text-align:center;box-sizing:border-box}
+.gr-cta *{box-sizing:border-box}
+.gr-inner{max-width:34em;margin:0 auto}
+.gr-cta .gr-eyebrow{margin:0 0 8px;font-size:12.5px;letter-spacing:.2em;color:#e8c887;font-weight:500}
+.gr-cta h2{margin:0 0 10px;font-size:23px;line-height:1.4;color:#fff;font-weight:700;
+ font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif}
+.gr-cta .gr-lede{margin:0 0 20px;font-size:16px;line-height:1.8;color:#cfd8e2}
+.gr-cta .gr-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+ min-height:52px;padding:13px 30px;border-radius:999px;
+ background:#c8963e;color:#20180a;text-decoration:none;
+ font-size:17px;font-weight:700;line-height:1.4}
+.gr-cta .gr-btn:hover{background:#dcae5c}
+.gr-cta .gr-btn:focus-visible{outline:3px solid #e8c887;outline-offset:3px}
+.gr-cta .gr-star{width:20px;height:20px;fill:#20180a;flex:none}
+.gr-cta .gr-note{margin:14px 0 0;font-size:13.5px;color:#9fb0c4;line-height:1.65}
+@media(max-width:640px){
+  .gr-cta{margin:26px 16px 32px;padding:22px 18px}
+  .gr-cta h2{font-size:20px}
+  .gr-cta .gr-btn{width:100%}
+}
+</style>
+<!-- /REVIEW:AUTO -->
+<!-- CLUSTER:AUTO 由 scripts/seo-build.mjs 產生，不要手改 -->
+<section class="seo-cluster">
+<h2>買屋・延伸閱讀</h2>
+<p>買房子這條路上的每一關：</p>
+<ul><li><a href="/buy-house-guide">買屋注意事項全攻略</a></li><li><a href="/buyer-cost">買方購屋成本試算</a></li><li><a href="/loan-guide">貸款成數與寬限期怎麼看</a></li><li><a href="/offer-deposit">斡旋金 vs 要約書</a></li><li><a href="/escrow">履約保證是什麼</a></li><li><a href="/leak-check">漏水屋況檢查清單</a></li><li><a href="/inspection-check">中古屋交屋驗屋清單</a></li></ul>
+</section>
+<style>
+.seo-cluster{max-width:820px;margin:34px auto 40px;padding:24px;background:#fff;
+ border:1px solid #ddd2bd;border-radius:16px;
+ font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif}
+.seo-cluster h2{font-size:20px;color:#16283f;margin:0 0 8px;line-height:1.4}
+.seo-cluster p{font-size:15px;color:#6f6a60;margin:0 0 14px;line-height:1.7}
+.seo-cluster ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.seo-cluster a{display:flex;align-items:center;min-height:44px;padding:8px 14px;
+ background:#f7f3ea;border:1px solid #ddd2bd;border-radius:10px;
+ color:#16283f;text-decoration:none;font-size:15.5px;line-height:1.5}
+.seo-cluster a:hover{border-color:#c8963e}
+@media(max-width:520px){.seo-cluster{margin:24px 16px 32px;padding:18px}}
+</style>
+<!-- /CLUSTER:AUTO -->
 </body>
 </html>

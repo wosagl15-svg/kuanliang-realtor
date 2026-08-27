@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>地役權（不動產役權）完全解析｜海線房仲冠良</title>
+<meta name="description" content="地役權在民國99年已改稱「不動產役權」。一次看懂需役地與供役地、謄本他項權利部怎麼看、和袋地通行權／既成道路差在哪，以及買賣土地前要查什麼。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#f7f3ea;
+  --cream-deep:#efe6d4;
+  --navy:#16283f;
+  --navy-2:#22405f;
+  --gold:#c8912f;
+  --gold-lt:#e9c877;
+  --brick:#9c3f2c;
+  --ink:#2c2a26;
+  --muted:#6f675a;
+  --line:rgba(22,40,63,.14);
+  --serif:"DM Serif Display","Noto Serif TC",serif;
+  --sans:"Noto Sans TC",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:ui-monospace,"SFMono-Regular","Menlo",monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--cream);color:var(--ink);
+  font-family:var(--sans);font-weight:400;line-height:1.85;
+  font-size:17px;letter-spacing:.01em;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:880px;margin:0 auto;padding:0 22px}
+h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.35;letter-spacing:.01em;margin:0}
+a{color:inherit}
+
+/* ---------- eyebrow ---------- */
+.eyebrow{
+  font-family:var(--serif);font-size:13px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--gold);margin:0 0 14px
+}
+
+/* ---------- hero ---------- */
+.hero{background:var(--navy);color:#f4efe4;padding:56px 0 62px;position:relative;overflow:hidden}
+.hero::after{
+  content:"";position:absolute;left:0;right:0;bottom:-1px;height:26px;
+  background:radial-gradient(ellipse at 50% 100%,rgba(200,145,47,.35),transparent 70%)
+}
+.hero h1{font-size:clamp(34px,7vw,52px);color:#fff;margin-bottom:8px}
+.hero .sub{font-size:15px;color:var(--gold-lt);letter-spacing:.06em;margin-bottom:26px}
+.hook{
+  font-size:clamp(19px,3.6vw,23px);font-weight:500;color:#fff;
+  border-left:3px solid var(--gold);padding:2px 0 2px 16px;margin:0 0 8px;line-height:1.7
+}
+.hook span{color:var(--gold-lt)}
+.hero p.lede{color:#c9d3df;font-size:16px;margin:16px 0 0}
+
+/* ---------- diagram ---------- */
+.diagram{background:#fbf8f1;border-radius:14px;padding:18px 16px 20px;margin-top:30px;border:1px solid rgba(0,0,0,.06)}
+.diagram svg{width:100%;height:auto;display:block}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.tab{
+  font-family:var(--sans);font-size:14px;font-weight:500;cursor:pointer;
+  background:#fff;border:1px solid var(--line);color:var(--navy);
+  padding:7px 14px;border-radius:999px;transition:.18s
+}
+.tab:hover{border-color:var(--gold)}
+.tab[aria-selected="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.tab:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.dcap{font-size:14px;color:var(--muted);margin:12px 2px 0;line-height:1.75}
+.layer{opacity:0;transition:opacity .35s ease}
+.layer.on{opacity:1}
+@media(prefers-reduced-motion:reduce){.layer{transition:none}}
+
+/* ---------- sections ---------- */
+section{padding:52px 0}
+section+section{border-top:1px solid var(--line)}
+h2{font-size:clamp(25px,4.6vw,32px);margin-bottom:6px}
+h2+.dek{color:var(--muted);font-size:15px;margin:0 0 26px}
+h3{font-size:19px;margin-bottom:6px}
+p{margin:0 0 16px}
+
+.law{
+  background:var(--cream-deep);border-left:4px solid var(--gold);
+  padding:18px 20px;border-radius:0 10px 10px 0;margin:20px 0
+}
+.law b{display:block;font-size:13px;letter-spacing:.1em;color:var(--brick);margin-bottom:6px}
+.law p{margin:0;font-size:16px;line-height:1.85}
+
+.grid{display:grid;gap:16px}
+@media(min-width:700px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px}
+.card.dark{background:var(--navy);color:#e8eef5;border-color:transparent}
+.card.dark h3{color:var(--gold-lt)}
+.card p:last-child{margin-bottom:0}
+.card .role{font-size:12px;letter-spacing:.16em;color:var(--gold);margin-bottom:8px;font-weight:700}
+
+ul.tick{list-style:none;padding:0;margin:0}
+ul.tick li{position:relative;padding-left:26px;margin-bottom:12px}
+ul.tick li::before{
+  content:"";position:absolute;left:6px;top:12px;width:7px;height:7px;
+  border-radius:50%;background:var(--gold)
+}
+ul.tick li:last-child{margin-bottom:0}
+
+/* ---------- benefit chips ---------- */
+.chips{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.chip{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.chip b{display:block;font-family:var(--serif);font-size:17px;color:var(--navy)}
+.chip span{font-size:14px;color:var(--muted);line-height:1.6}
+
+/* ---------- deed mock ---------- */
+.deed{
+  background:var(--navy);color:#d7e2ef;border-radius:12px;padding:22px 20px;
+  font-family:var(--mono);font-size:13.5px;line-height:2;overflow-x:auto
+}
+.deed .k{color:#93a7bd}
+.deed .hl{color:var(--gold-lt);font-weight:700}
+.deed .ttl{
+  font-family:var(--sans);font-size:13px;letter-spacing:.14em;color:var(--gold);
+  border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:10px;margin-bottom:12px
+}
+.note{font-size:13.5px;color:var(--muted);margin-top:10px}
+
+/* ---------- table ---------- */
+.tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:620px;background:#fff;font-size:15px}
+th,td{border:1px solid var(--line);padding:13px 14px;text-align:left;vertical-align:top;line-height:1.7}
+thead th{background:var(--navy);color:#fff;font-weight:500;font-size:14px}
+tbody th{background:var(--cream-deep);font-weight:700;color:var(--navy);width:130px}
+
+/* ---------- warn ---------- */
+.warn{background:#fdf4f1;border:1px solid rgba(156,63,44,.28);border-radius:12px;padding:20px 22px;margin:22px 0}
+.warn h3{color:var(--brick);font-family:var(--sans);font-weight:700;font-size:17px;margin-bottom:8px}
+.warn p:last-child{margin-bottom:0}
+
+/* ---------- faq ---------- */
+details{background:#fff;border:1px solid var(--line);border-radius:10px;margin-bottom:12px;overflow:hidden}
+summary{
+  cursor:pointer;padding:16px 46px 16px 18px;font-weight:500;color:var(--navy);
+  list-style:none;position:relative;line-height:1.7
+}
+summary::-webkit-details-marker{display:none}
+summary::after{
+  content:"+";position:absolute;right:18px;top:14px;font-size:22px;color:var(--gold);
+  font-family:var(--serif);transition:transform .2s
+}
+details[open] summary::after{content:"–"}
+details[open] summary{border-bottom:1px solid var(--line)}
+.answer{padding:16px 18px 4px;font-size:16px}
+summary:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+
+/* ---------- checklist ---------- */
+ol.steps{counter-reset:s;list-style:none;padding:0;margin:0}
+ol.steps li{counter-increment:s;position:relative;padding-left:52px;margin-bottom:22px}
+ol.steps li::before{
+  content:counter(s,decimal-leading-zero);position:absolute;left:0;top:2px;
+  font-family:var(--serif);font-size:20px;color:var(--gold);
+  border:1px solid var(--gold);border-radius:50%;width:36px;height:36px;
+  display:grid;place-items:center;line-height:1
+}
+ol.steps li b{display:block;color:var(--navy);font-size:17px}
+ol.steps li:last-child{margin-bottom:0}
+
+/* ---------- cta ---------- */
+.cta{background:var(--navy);color:#eef2f7;padding:52px 0}
+.cta h2{color:#fff}
+.cta p{color:#c2ceda}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.btn{
+  display:inline-block;text-decoration:none;padding:14px 26px;border-radius:999px;
+  font-weight:700;font-size:16px;transition:.18s
+}
+.btn.primary{background:var(--gold);color:#1a1408}
+.btn.primary:hover{background:var(--gold-lt)}
+.btn.ghost{border:1px solid rgba(255,255,255,.45);color:#fff}
+.btn.ghost:hover{border-color:var(--gold-lt);color:var(--gold-lt)}
+.btn:focus-visible{outline:2px solid var(--gold-lt);outline-offset:3px}
+
+footer{background:#0f1d2e;color:#8fa0b3;padding:38px 0;font-size:14px;text-align:center}
+footer .brand{font-family:var(--serif);font-size:21px;color:var(--gold-lt);margin-bottom:6px}
+footer .tag{color:#c7d2de;margin-bottom:18px;letter-spacing:.08em}
+footer a.home{
+  display:inline-block;margin-top:6px;color:#fff;text-decoration:none;
+  border-bottom:1px solid var(--gold);padding-bottom:3px
+}
+footer a.home:hover{color:var(--gold-lt)}
+.disc{font-size:13px;color:var(--muted);line-height:1.8;margin-top:8px}
+</style>
+<!-- SEO:AUTO 由 scripts/seo-build.mjs 產生，不要手改 -->
+<link rel="canonical" href="https://kuanhome.com/easement">
+<meta property="og:url" content="https://kuanhome.com/easement">
+<meta property="og:site_name" content="海線房仲冠良">
+<meta property="og:locale" content="zh_TW">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://kuanhome.com/easement#article","headline":"地役權（不動產役權）完全解析","description":"地役權在民國99年已改稱「不動產役權」。一次看懂需役地與供役地、謄本他項權利部怎麼看、和袋地通行權／既成道路差在哪，以及買賣土地前要查什麼。","url":"https://kuanhome.com/easement","inLanguage":"zh-Hant-TW","dateModified":"2026-08-27T15:13:48.330Z","author":{"@id":"https://kuanhome.com/#wuguanliang"},"publisher":{"@id":"https://kuanhome.com/#agent"},"mainEntityOfPage":{"@id":"https://kuanhome.com/easement"}},{"@type":"RealEstateAgent","@id":"https://kuanhome.com/#agent","name":"海線房仲冠良","alternateName":"吳冠良｜台中海線房地產顧問","description":"台中海線專業房地產仲介，深耕沙鹿、清水、梧棲、龍井、大肚、大甲六區。提供資產配置、稅務諮詢、簡易裝潢，及買賣委託與土地買賣。","slogan":"懂你又懂房","url":"https://kuanhome.com/","image":"https://kuanhome.com/card/owner.webp","telephone":"+886-915-295-958","email":"wosagl15@gmail.com","address":{"@type":"PostalAddress","addressLocality":"沙鹿區","addressRegion":"台中市","postalCode":"433","addressCountry":"TW"},"geo":{"@type":"GeoCoordinates","latitude":24.2340986,"longitude":120.560349},"priceRange":"$$","areaServed":[{"@type":"AdministrativeArea","name":"台中市沙鹿區"},{"@type":"AdministrativeArea","name":"台中市清水區"},{"@type":"AdministrativeArea","name":"台中市梧棲區"},{"@type":"AdministrativeArea","name":"台中市龍井區"},{"@type":"AdministrativeArea","name":"台中市大肚區"},{"@type":"AdministrativeArea","name":"台中市大甲區"}],"sameAs":["https://www.facebook.com/share/14XZ3Wy4nLZ/","https://www.instagram.com/asmile55178/","https://www.youtube.com/@吳冠良-w9v","https://lin.ee/1WlfBub","https://sales.myhomes.com.tw/0915295958"],"employee":{"@type":"Person","@id":"https://kuanhome.com/#wuguanliang","name":"吳冠良","jobTitle":"台中海線專業房地產顧問"}},{"@type":"BreadcrumbList","@id":"https://kuanhome.com/easement#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://kuanhome.com/"},{"@type":"ListItem","position":2,"name":"購屋攻略","item":"https://kuanhome.com/tools"},{"@type":"ListItem","position":3,"name":"地役權（不動產役權）完全解析","item":"https://kuanhome.com/easement"}]}]}</script>
+<!-- /SEO:AUTO -->
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">海線房仲冠良 · 土地知識</p>
+    <h1>地役權</h1>
+    <p class="sub">民國 99 年起，法律上正名為「不動產役權」</p>
+    <p class="hook">你家門口那條路，走的是<span>別人的地</span>嗎？<br>那塊地哪天賣掉，你還走得過去嗎？</p>
+    <p class="lede">土地和土地之間，常常有一種說不清的關係：我借你走、你借我埋管、我不蓋高擋你視線。口頭講講，換個地主就翻臉；登記下來，才叫權利。這頁把它一次講清楚。</p>
+
+    <div class="diagram">
+      <div class="tabs" role="tablist" aria-label="役權型態">
+        <button class="tab" role="tab" aria-selected="true" data-layer="pass">通行</button>
+        <button class="tab" role="tab" aria-selected="false" data-layer="pipe">埋設管線</button>
+        <button class="tab" role="tab" aria-selected="false" data-layer="view">採光眺望</button>
+      </div>
+      <svg viewBox="0 0 620 400" role="img" aria-label="需役地與供役地關係示意圖">
+        <!-- road -->
+        <rect x="0" y="14" width="620" height="46" fill="#22405f"/>
+        <line x1="0" y1="37" x2="620" y2="37" stroke="#e9c877" stroke-width="2.5" stroke-dasharray="26 20"/>
+        <text x="16" y="42" fill="#fff" font-size="15" font-family="Noto Sans TC,sans-serif">公路（既有道路）</text>
+
+        <!-- B parcel : servient -->
+        <rect x="34" y="78" width="552" height="132" fill="#fff" stroke="#16283f" stroke-width="2"/>
+        <text x="52" y="112" fill="#16283f" font-size="19" font-weight="700" font-family="Noto Sans TC,sans-serif">B 地｜供役不動產</text>
+        <text x="52" y="140" fill="#6f675a" font-size="14.5" font-family="Noto Sans TC,sans-serif">被使用的那一塊。臨路，但要讓出一部分。</text>
+        <text x="52" y="166" fill="#9c3f2c" font-size="14.5" font-family="Noto Sans TC,sans-serif">負擔者：價值可能被打折</text>
+
+        <!-- A parcel : dominant -->
+        <rect x="34" y="240" width="552" height="132" fill="#efe6d4" stroke="#16283f" stroke-width="2"/>
+        <text x="52" y="274" fill="#16283f" font-size="19" font-weight="700" font-family="Noto Sans TC,sans-serif">A 地｜需役不動產</text>
+        <text x="52" y="302" fill="#6f675a" font-size="14.5" font-family="Noto Sans TC,sans-serif">享受便利的那一塊。不臨路，靠 B 地才出得去。</text>
+        <text x="52" y="328" fill="#c8912f" font-size="14.5" font-weight="700" font-family="Noto Sans TC,sans-serif">受益者：役權登記在 A 地名下</text>
+
+        <!-- layer: passage -->
+        <g class="layer on" id="L-pass">
+          <rect x="452" y="60" width="86" height="180" fill="#c8912f" fill-opacity="0.22" stroke="#c8912f" stroke-width="2" stroke-dasharray="7 5"/>
+          <path d="M495 232 L495 74" stroke="#c8912f" stroke-width="3"/>
+          <path d="M495 68 l-9 16 h18 z" fill="#c8912f"/>
+          <text x="452" y="222" fill="#8a6316" font-size="13.5" font-family="Noto Sans TC,sans-serif">役權範圍</text>
+        </g>
+        <!-- layer: pipeline -->
+        <g class="layer" id="L-pipe">
+          <path d="M495 240 L495 74" stroke="#22405f" stroke-width="9" stroke-linecap="round"/>
+          <path d="M495 240 L495 74" stroke="#e9c877" stroke-width="3" stroke-dasharray="10 12"/>
+          <circle cx="495" cy="150" r="15" fill="#fff" stroke="#22405f" stroke-width="2.5"/>
+          <text x="495" y="156" fill="#22405f" font-size="14" text-anchor="middle" font-family="Noto Sans TC,sans-serif">水</text>
+          <text x="392" y="212" fill="#22405f" font-size="13.5" font-family="Noto Sans TC,sans-serif">地下管線通過</text>
+        </g>
+        <!-- layer: view -->
+        <g class="layer" id="L-view">
+          <line x1="34" y1="84" x2="586" y2="84" stroke="#9c3f2c" stroke-width="2.5" stroke-dasharray="8 6"/>
+          <text x="392" y="76" fill="#9c3f2c" font-size="13.5" font-family="Noto Sans TC,sans-serif">約定限高，不得遮擋</text>
+          <path d="M470 250 L560 130" stroke="#c8912f" stroke-width="2.5"/>
+          <path d="M563 124 l-4 18 l16 -8 z" fill="#c8912f"/>
+          <circle cx="556" cy="106" r="16" fill="#e9c877"/>
+        </g>
+      </svg>
+      <p class="dcap" id="dcap">A 地被 B 地包在後面，出不去。經由設定不動產役權，A 地取得在 B 地特定範圍內通行的權利——而且這個權利登記在土地上，B 地換誰當地主都一樣有效。</p>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="wrap">
+  <p class="eyebrow">Definition</p>
+  <h2>一句話：讓別人的地，為你的地服務</h2>
+  <p class="dek">名詞變了，觀念沒變</p>
+  <p>民國 99 年民法物權編修正前，這個權利叫「<b>地役權</b>」，只能用在土地上。修法後改名為「<b>不動產役權</b>」，範圍擴大到建物等不動產，用途也從單純通行放寬到採光、眺望、電信等等。現在謄本上登記的名稱是「不動產役權」，但大家講習慣了，口語還是說地役權——講的是同一件事。</p>
+  <div class="law">
+    <b>民法第 851 條</b>
+    <p>稱不動產役權者，謂以他人不動產供自己不動產通行、汲水、採光、眺望、電信或其他以特定便宜之用為目的之權。</p>
+  </div>
+  <p>條文裡最關鍵的兩個字是「<b>自己</b>」。役權不是給某個人方便，是給<b>某塊地</b>方便。所以它跟著土地走，不跟著人走——這是後面所有規則的源頭。</p>
+</section>
+
+<section class="wrap">
+  <p class="eyebrow">Two roles</p>
+  <h2>先搞懂你手上的是哪一塊</h2>
+  <p class="dek">同一份役權，兩塊地的處境完全相反</p>
+  <div class="grid g2">
+    <div class="card">
+      <p class="role">RECEIVING</p>
+      <h3>需役不動產</h3>
+      <p>享受便利的那一塊。因為有這個權利，它才走得出去、才有水、才保得住視野。</p>
+      <ul class="tick">
+        <li>權利登記在它的謄本上</li>
+        <li>賣掉時，役權一起過給買方</li>
+        <li>通常是<b>加分項</b>，尤其袋地</li>
+      </ul>
+    </div>
+    <div class="card dark">
+      <p class="role">SERVING</p>
+      <h3>供役不動產</h3>
+      <p>被使用的那一塊。所有權還是你的，但那個範圍你不能任意處置。</p>
+      <ul class="tick">
+        <li>負擔登記在它的他項權利部</li>
+        <li>賣掉時，買方一樣要承受</li>
+        <li>通常是<b>減分項</b>，估價會被扣</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <p class="eyebrow">Use cases</p>
+  <h2>海線常見的六種「便宜」</h2>
+  <p class="dek">法條寫的用途，實際長什麼樣子</p>
+  <div class="chips">
+    <div class="chip"><b>通行</b><span>最常見。後排農地、畸零地、老聚落巷弄。</span></div>
+    <div class="chip"><b>汲水</b><span>農地灌溉、抽水、水路經過。</span></div>
+    <div class="chip"><b>採光</b><span>約定鄰地不得於特定範圍加蓋遮擋。</span></div>
+    <div class="chip"><b>眺望</b><span>海景第一排最在意的一項。</span></div>
+    <div class="chip"><b>電信</b><span>電線、纜線、基地台設施通過。</span></div>
+    <div class="chip"><b>管線</b><span>自來水、電力、瓦斯、汙水管埋設。</span></div>
+  </div>
+  <p style="margin-top:22px">條文寫的是「或其他以特定便宜之用」，代表用途<b>不限於</b>列出來的這幾種，只要不違反法律強制規定、內容具體特定，都可以約定。重點是登記時要寫清楚範圍與目的，含糊帶過，日後就是爭議。</p>
+</section>
+
+<section class="wrap">
+  <p class="eyebrow">Characteristics</p>
+  <h2>三個一定要記住的特性</h2>
+  <p class="dek">它們決定了買賣時你承接到什麼</p>
+  <div class="grid g3">
+    <div class="card">
+      <h3>跟著地走</h3>
+      <p>役權不能單獨讓與，也不能單獨拿去設定其他權利。你不能只賣「走路的權利」而不賣土地。地換人，權利跟著換人。</p>
+    </div>
+    <div class="card">
+      <h3>分割不消滅</h3>
+      <p>需役地或供役地日後被分割、一部分被賣掉，役權原則上對分割後的各部分繼續存在，除非那個用途本來就只跟其中一部分有關。</p>
+    </div>
+    <div class="card">
+      <h3>要挑最不傷的方式</h3>
+      <p>役權人為行使或維持權利，可以做必要的附隨行為，但必須選擇對供役地損害最少的位置和方法，不能想怎麼用就怎麼用。</p>
+    </div>
+  </div>
+  <div class="warn">
+    <h3>最要命的一句話：役權會跟著土地一起賣給你</h3>
+    <p>你買下一塊有役權負擔的土地，不會因為「我不知道」就免除。登記在先的權利對抗後手，這就是為什麼看謄本不能只看所有權部。</p>
+  </div>
+</section>
+
+<section class="wrap">
+  <p class="eyebrow">How it starts</p>
+  <h2>役權怎麼來的？三條路</h2>
+  <p class="dek">絕大多數走第一條</p>
+  <ol class="steps">
+    <li>
+      <b>雙方簽約 ＋ 地政登記</b>
+      不動產物權依法律行為設定，必須以書面為之，並且<b>經登記才生效</b>。沒去地政事務所辦，簽再漂亮的契約也只是兩個人之間的約定，管不到下一手地主。登記時要載明需役地地號、範圍、目的、存續期間，並附役權位置圖。
+    </li>
+    <li>
+      <b>時效取得</b>
+      長期使用他人土地，符合要件時可向地政機關請求登記。但門檻很高：必須是「<b>繼續而且表見</b>」的使用（有具體、外觀看得出來的設施或痕跡，且未曾中斷），還要是以行使役權的意思占有，而不是基於租約、借用或對方好心通融。而且時效完成只是取得「請求登記」的地位，<b>沒登記就沒有物權效力</b>。
+    </li>
+    <li>
+      <b>自己不動產役權</b>
+      在自己名下的兩筆不動產之間預先設定。整批開發、分割出售、或預留通路與景觀時會用到——先把規則寫進登記，未來各自賣出後仍然有效。
+    </li>
+  </ol>
+</section>
+
+<section class="wrap">
+  <p class="eyebrow">Due diligence</p>
+  <h2>謄本上長這樣</h2>
+  <p class="dek">土地登記謄本「他項權利部」，一分鐘看完</p>
+  <div class="deed">
+    <div class="ttl">土地登記第二類謄本 — 他項權利部</div>
+<span class="k">登記次序　　　</span>0001<br>
+<span class="k">權利種類　　　</span><span class="hl">不動產役權</span><br>
+<span class="k">登記日期　　　</span>民國114年03月05日　<span class="k">登記原因</span> 設定<br>
+<span class="k">權利人　　　　</span>王ＯＯ<br>
+<span class="k">需役不動產　　</span><span class="hl">臺中市沙鹿區ＯＯ段 123 地號</span><br>
+<span class="k">設定權利範圍　</span><span class="hl">本筆土地東側寬 4 公尺，面積 80.00 ㎡</span><br>
+<span class="k">存續期間　　　</span>不定期<br>
+<span class="k">地　　租　　　</span>無<br>
+<span class="k">權利標的　　　</span>所有權<br>
+<span class="k">其他登記事項　</span>供通行之用，位置詳不動產役權位置圖
+  </div>
+  <p class="note">※ 上為示意排版，非真實謄本。實際欄位以各地政事務所核發版本為準。</p>
+  <p style="margin-top:24px">看到「不動產役權」四個字，接著只要問三個問題：<b>誰是需役地</b>（哪塊地在用我的地）、<b>範圍多大在哪裡</b>（調役權位置圖）、<b>存續期間多久</b>（不定期最麻煩）。三個都問完，才知道這塊地實際能用的面積剩多少。</p>
+</section>
+
+<section class="wrap">
+  <p class="eyebrow">Don't confuse</p>
+  <h2>最容易搞混的四種通行</h2>
+  <p class="dek">名字都有「通行」，法律效果差很多</p>
+  <div class="tblwrap">
+    <table>
+      <thead>
+        <tr><th style="width:130px"></th><th>怎麼來的</th><th>謄本查得到嗎</th><th>買方要注意什麼</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>不動產役權</th>
+          <td>雙方約定＋登記，或時效取得後登記</td>
+          <td>查得到，在他項權利部</td>
+          <td>買到就承受。範圍、期間、目的看登記</td>
+        </tr>
+        <tr>
+          <th>袋地通行權</th>
+          <td>法律直接給的。土地與公路無適宜聯絡、不能為通常使用時，得通行周圍地</td>
+          <td>查不到，不必登記也不必對方同意</td>
+          <td>要<b>支付償金</b>，且須擇損害最少之處所方法；路線談不攏就是訴訟</td>
+        </tr>
+        <tr>
+          <th>公用地役關係<br><span style="font-weight:400;color:var(--muted)">（既成道路）</span></th>
+          <td>公法上的狀態，非民法役權。須為不特定公眾通行所必要、通行之初所有權人未阻止、經年代久遠未曾中斷</td>
+          <td>查不到，要看現場與地籍圖、都計圖</td>
+          <td>地是你的，但<b>不能圍起來</b>，也難以建築利用。買農地、畸零地最常踩</td>
+        </tr>
+        <tr>
+          <th>口頭同意<br>／租約</th>
+          <td>單純的債權約定</td>
+          <td>查不到</td>
+          <td>只拘束當事人。地一賣，新地主可以不認</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="warn">
+    <h3>有役權可以走，不代表能申請建照</h3>
+    <p>不動產役權解決的是<b>私法上「能不能走」</b>；能不能蓋房子，看的是建築線指定、現有巷道認定與私設通路寬度等建築法規，兩者是兩套標準。手上有役權登記，仍可能因為沒有建築線而蓋不了。買地要蓋屋，役權和建築線<b>都要查</b>。</p>
+  </div>
+</section>
+
+<section class="wrap">
+  <p class="eyebrow">How it ends</p>
+  <h2>役權怎麼消滅</h2>
+  <div class="grid g2">
+    <div class="card">
+      <ul class="tick">
+        <li><b>期間屆滿</b>：有約定存續期間者，到期消滅</li>
+        <li><b>合意塗銷</b>：雙方同意，會同向地政機關辦理塗銷登記</li>
+        <li><b>權利人拋棄</b>：役權人單方拋棄並辦理登記</li>
+      </ul>
+    </div>
+    <div class="card">
+      <ul class="tick">
+        <li><b>法院宣告</b>：役權全部或一部已無存續必要時，供役地所有人可請求法院宣告消滅</li>
+        <li><b>需役地滅失或不堪使用</b>：役權隨之消滅</li>
+        <li><b>混同</b>：兩塊地變成同一人所有，且無存續必要</li>
+      </ul>
+    </div>
+  </div>
+  <p style="margin-top:22px">實務上最難的是「無存續必要」的認定。例如後方土地後來已另有道路可通，原本的通行役權就可能被主張沒有必要——但要不要打這場官司、值不值得，是另一個問題。</p>
+</section>
+
+<section class="wrap">
+  <p class="eyebrow">Checklist</p>
+  <h2>買賣土地前，這五件事一定要做</h2>
+  <ol class="steps">
+    <li><b>調閱土地登記謄本，翻到他項權利部</b>有沒有「不動產役權」。只看所有權部等於只看了一半。</li>
+    <li><b>申請不動產役權位置圖與地籍圖謄本</b>，把役權範圍實際套在土地上，算出真正能自由使用的面積。</li>
+    <li><b>到現場走一遍</b>。有沒有既有的通道、車轍、鐵皮、電桿、水溝、他人出入的痕跡？登記上沒有，不代表現場沒有。</li>
+    <li><b>問清楚有沒有口頭約定</b>。賣方跟鄰居之間的「以前都這樣」，最好在買賣契約裡寫明處理方式。</li>
+    <li><b>要蓋房子，另外查建築線</b>。役權通行和建築法規上的道路是兩回事，先向建管單位確認再簽約。</li>
+  </ol>
+  <div class="warn" style="margin-top:26px">
+    <h3>貸款也會受影響</h3>
+    <p>供役地上有役權負擔，銀行鑑價通常會保守，成數可能被壓低；若役權範圍大、位置又壓在可建築部分，個別銀行的承作意願也會不同。談價之前先問過銀行，比事後再改條件輕鬆。</p>
+  </div>
+</section>
+
+<section class="wrap">
+  <p class="eyebrow">FAQ</p>
+  <h2>常見問題</h2>
+
+  <details>
+    <summary>鄰居借我走了二十幾年，我可以主張時效取得役權嗎？</summary>
+    <div class="answer"><p>有機會，但門檻高。必須是「繼續而且表見」的使用——有看得見的通路或設施、未曾中斷，而且你是以行使役權的意思在使用，不是因為對方好心借你走或有租約。單純的鄰里通融，通常構不成。而且就算符合要件，也還要向地政機關申請登記，<b>登記完成前不生物權效力</b>。這類案件多半要走訴訟，先諮詢地政士或律師評估勝算。</p></div>
+  </details>
+
+  <details>
+    <summary>我買到有役權登記的土地，可以直接要求塗銷嗎？</summary>
+    <div class="answer"><p>不能單方面塗銷。原則上要役權人同意，雙方會同辦理塗銷登記。若確實已無存續必要（例如需役地後來已另有道路），可以向法院請求宣告消滅其無存續必要之部分。要注意的是，「我覺得不需要」和法律上的「無存續必要」不是同一件事。</p></div>
+  </details>
+
+  <details>
+    <summary>設定役權，供役地可以收錢嗎？</summary>
+    <div class="answer"><p>可以。有償或無償由雙方約定，也可以約定地租並登記。若收取權利金或地租，會涉及所得申報，金額較大時建議先請教稅務專業或地政士，把稅一起算進成本再談價。登記規費另按權利價值計收，實際金額以地政事務所核算為準。</p></div>
+  </details>
+
+  <details>
+    <summary>只有口頭答應「以後都給你走」，有效嗎？</summary>
+    <div class="answer"><p>對當事人之間有效，但那只是債權關係。土地一旦賣掉、繼承給下一代，新的地主可以不認。要真正保障，就要簽書面並辦理役權登記。<b>沒登記的承諾，撐不過一次過戶。</b></p></div>
+  </details>
+
+  <details>
+    <summary>我可以在自己的兩筆土地之間先設定嗎？</summary>
+    <div class="answer"><p>可以，這叫自己不動產役權。常見於將大筆土地分割出售前，先把通路、管線、限高等規則設定登記好，之後不論賣給誰，規則都跟著地走，省下日後一戶一戶協調的麻煩。</p></div>
+  </details>
+
+  <details>
+    <summary>不是所有權人，也可以設定役權嗎？</summary>
+    <div class="answer"><p>可以。基於以使用收益為目的之物權（例如地上權、農育權）或租賃關係而使用需役不動產的人，也能為該不動產設定役權。不過役權的存續會受到其權利本身期限的限制，設定前要把期間對清楚。</p></div>
+  </details>
+</section>
+
+</main>
+
+<section class="cta">
+  <div class="wrap">
+    <p class="eyebrow">下一步</p>
+    <h2>不確定你的地上有沒有役權？把謄本傳給我</h2>
+    <p>他項權利部有沒有登記、範圍壓在哪裡、影響哪些面積，看一份謄本加一張地籍圖就能講清楚。買地、賣地、繼承分產前先確認，比簽約後再處理省事太多。</p>
+    <div class="btns">
+      <a class="btn primary" href="https://lin.ee/QyQmggG" target="_blank" rel="noopener">加 LINE 問冠良</a>
+      <a class="btn ghost" href="tel:0915295958">撥打 0915-295958</a>
+    </div>
+    <p class="disc" style="color:#8fa0b3;margin-top:26px">本頁為一般性法律觀念說明，非個案法律意見。實際權利狀態請以地政機關登記資料為準；涉及訴訟或複雜權利關係，建議諮詢地政士或律師。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="brand">海線房仲冠良</p>
+    <p class="tag">懂你又懂房 · 讓你幸福會發光</p>
+    <p>服務區域：沙鹿 · 清水 · 梧棲 · 龍井 · 大肚 · 大甲</p>
+    <p>LINE：@asmile　電話：0915-295958</p>
+    <a class="home" href="/tools">← 回冠良主頁，看更多買賣屋工具</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var tabs = document.querySelectorAll('.tab');
+  var caps = {
+    pass:'A 地被 B 地包在後面，出不去。經由設定不動產役權，A 地取得在 B 地特定範圍內通行的權利——而且這個權利登記在土地上，B 地換誰當地主都一樣有效。',
+    pipe:'管線型役權：自來水、電力、瓦斯或汙水管必須穿越 B 地才到得了 A 地。地面看不出來，但登記上有，未來 B 地要開挖、興建都會受限制。',
+    view:'採光眺望型役權：約定 B 地在特定範圍內不得興建至遮擋 A 地視線的高度。海景第一排、山邊土地最常用，但範圍與高度一定要寫得夠具體。'
+  };
+  var cap = document.getElementById('dcap');
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){
+      tabs.forEach(function(x){ x.setAttribute('aria-selected','false'); });
+      t.setAttribute('aria-selected','true');
+      var key = t.dataset.layer;
+      document.querySelectorAll('.layer').forEach(function(l){ l.classList.remove('on'); });
+      var el = document.getElementById('L-' + key);
+      if (el) el.classList.add('on');
+      if (caps[key]) cap.textContent = caps[key];
+    });
+  });
+})();
+</script>
+<!-- REVIEW:AUTO 由 scripts/review-cta.mjs 產生，不要手改 -->
+<section class="gr-cta" aria-labelledby="gr-cta-h">
+  <div class="gr-inner">
+    <p class="gr-eyebrow">GOOGLE 評論</p>
+    <h2 id="gr-cta-h">這些整理，有幫到你嗎？</h2>
+    <p class="gr-lede">留一則 Google 評論，讓其他正在煩惱同樣問題的人，也找得到這裡。<br>一句話就夠，不用寫長。</p>
+    <a class="gr-btn" href="https://g.page/r/Cc3MaJq-9w1REAE/review" target="_blank" rel="noopener noreferrer">
+      <svg class="gr-star" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l2.9 6.6 7.1.7-5.3 4.8 1.5 7-6.2-3.6L5.8 21l1.5-7L2 9.3l7.1-.7z"/></svg>
+      去 Google 留評論
+    </a>
+    <p class="gr-note">會開啟 Google 地圖的評論視窗，需要登入 Google 帳號。</p>
+  </div>
+</section>
+<style>
+.gr-cta{max-width:820px;margin:34px auto 40px;padding:26px 24px;
+ background:#16283f;border-radius:16px;color:#e9edf2;
+ font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif;
+ text-align:center;box-sizing:border-box}
+.gr-cta *{box-sizing:border-box}
+.gr-inner{max-width:34em;margin:0 auto}
+.gr-cta .gr-eyebrow{margin:0 0 8px;font-size:12.5px;letter-spacing:.2em;color:#e8c887;font-weight:500}
+.gr-cta h2{margin:0 0 10px;font-size:23px;line-height:1.4;color:#fff;font-weight:700;
+ font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif}
+.gr-cta .gr-lede{margin:0 0 20px;font-size:16px;line-height:1.8;color:#cfd8e2}
+.gr-cta .gr-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+ min-height:52px;padding:13px 30px;border-radius:999px;
+ background:#c8963e;color:#20180a;text-decoration:none;
+ font-size:17px;font-weight:700;line-height:1.4}
+.gr-cta .gr-btn:hover{background:#dcae5c}
+.gr-cta .gr-btn:focus-visible{outline:3px solid #e8c887;outline-offset:3px}
+.gr-cta .gr-star{width:20px;height:20px;fill:#20180a;flex:none}
+.gr-cta .gr-note{margin:14px 0 0;font-size:13.5px;color:#9fb0c4;line-height:1.65}
+@media(max-width:640px){
+  .gr-cta{margin:26px 16px 32px;padding:22px 18px}
+  .gr-cta h2{font-size:20px}
+  .gr-cta .gr-btn{width:100%}
+}
+</style>
+<!-- /REVIEW:AUTO -->
+<!-- CLUSTER:AUTO 由 scripts/seo-build.mjs 產生，不要手改 -->
+<section class="seo-cluster">
+<h2>土地與自地自建・延伸閱讀</h2>
+<p>買地、蓋房子這條路上會遇到的問題，這幾頁是一整組的：</p>
+<ul><li><a href="/land-lookup">先查這塊地：使用分區與環境限制</a></li><li><a href="/building-line">能不能蓋：申請建築線全攻略</a></li><li><a href="/existing-road-faq">進得去嗎：既成道路常見問題</a></li><li><a href="/road-access">路是誰的：路權與封路攻略</a></li><li><a href="/coowned-land">地不只你一個人的：土地法第 34 條之 1</a></li><li><a href="/farmhouse">農地能不能蓋：老農配蓋農舍</a></li><li><a href="/self-build-guide">決定要蓋了：自地自建全流程</a></li><li><a href="/land-tax">賣地要繳多少：土地增值稅試算</a></li><li><a href="/blog/self-build-cash-flow">錢夠不夠：買地自建的資金缺口</a></li></ul>
+</section>
+<style>
+.seo-cluster{max-width:820px;margin:34px auto 40px;padding:24px;background:#fff;
+ border:1px solid #ddd2bd;border-radius:16px;
+ font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif}
+.seo-cluster h2{font-size:20px;color:#16283f;margin:0 0 8px;line-height:1.4}
+.seo-cluster p{font-size:15px;color:#6f6a60;margin:0 0 14px;line-height:1.7}
+.seo-cluster ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.seo-cluster a{display:flex;align-items:center;min-height:44px;padding:8px 14px;
+ background:#f7f3ea;border:1px solid #ddd2bd;border-radius:10px;
+ color:#16283f;text-decoration:none;font-size:15.5px;line-height:1.5}
+.seo-cluster a:hover{border-color:#c8963e}
+@media(max-width:520px){.seo-cluster{margin:24px 16px 32px;padding:18px}}
+</style>
+<!-- /CLUSTER:AUTO -->
+</body>
+</html>

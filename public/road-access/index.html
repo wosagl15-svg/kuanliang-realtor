@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>路權與封路攻略｜土地是你的，就一定能把路封起來嗎？｜海線房仲冠良</title>
+<meta name="description" content="既成道路、現有巷道、私設通路差在哪？封路會不會犯法？袋地通行權怎麼主張？買地前七項路權查核清單，海線房仲冠良整理。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#f7f3ea;
+  --cream-2:#f5f0e8;
+  --paper:#fffdf8;
+  --navy:#1c2b3a;
+  --navy-deep:#132030;
+  --navy-soft:#2a3d4f;
+  --gold:#c8952c;
+  --amber:#e3ab3f;
+  --ink:#241f19;
+  --muted:#6d6456;
+  --line:#ddd2bd;
+  --danger:#a8402f;
+  --ok:#3d6b4c;
+  --maxw:820px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;background:var(--cream);color:var(--ink);
+  font-family:"Noto Sans TC",system-ui,sans-serif;
+  font-weight:400;line-height:1.85;letter-spacing:.02em;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+
+/* ---- road-marking divider: the recurring motif ---- */
+.lane{
+  height:6px;margin:56px 0;border-radius:3px;
+  background:repeating-linear-gradient(90deg,var(--gold) 0 34px,transparent 34px 62px);
+  opacity:.5;
+}
+.lane.solid{background:var(--line);opacity:1;height:1px;margin:38px 0;}
+
+/* ---- hero ---- */
+header.hero{
+  background:var(--navy);color:#f4efe4;padding:64px 0 72px;position:relative;overflow:hidden;
+}
+header.hero::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:14px;
+  background:repeating-linear-gradient(90deg,var(--amber) 0 46px,transparent 46px 84px);
+  opacity:.65;
+}
+.eyebrow{
+  font-size:.76rem;letter-spacing:.34em;color:var(--amber);
+  font-weight:500;margin:0 0 22px;
+}
+h1{
+  font-family:"DM Serif Display","Noto Sans TC",serif;
+  font-size:clamp(2rem,6.6vw,3.15rem);line-height:1.28;
+  margin:0 0 20px;font-weight:400;letter-spacing:.01em;
+}
+h1 em{font-style:normal;color:var(--amber);}
+.hero p{color:#c9c2b4;font-size:1.02rem;margin:0 0 8px;max-width:34em;}
+.byline{margin-top:26px;font-size:.85rem;color:#8f8878;letter-spacing:.08em;}
+
+/* ---- sections ---- */
+section{padding:6px 0;}
+h2{
+  font-family:"DM Serif Display","Noto Sans TC",serif;
+  font-size:clamp(1.5rem,4.4vw,2.05rem);line-height:1.42;
+  margin:0 0 6px;font-weight:400;
+}
+.sec-tag{
+  display:block;font-size:.72rem;letter-spacing:.3em;color:var(--gold);
+  font-weight:500;margin-bottom:12px;
+}
+h3{font-size:1.08rem;font-weight:700;margin:34px 0 10px;letter-spacing:.03em;}
+p{margin:0 0 16px;}
+strong{font-weight:700;color:var(--navy-deep);}
+a{color:var(--navy);text-decoration-color:var(--gold);text-underline-offset:3px;}
+
+.lede{font-size:1.06rem;}
+.pull{
+  font-family:"DM Serif Display",serif;font-size:1.32rem;line-height:1.65;
+  color:var(--navy);border-left:3px solid var(--gold);
+  padding:4px 0 4px 20px;margin:30px 0;
+}
+
+/* ---- table ---- */
+.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:22px 0;}
+table{border-collapse:collapse;width:100%;min-width:600px;font-size:.9rem;background:var(--paper);}
+th,td{padding:13px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
+th{background:var(--navy);color:#f0eadd;font-weight:500;font-size:.82rem;letter-spacing:.06em;}
+td:first-child{font-weight:700;color:var(--navy-deep);white-space:nowrap;}
+.no{color:var(--danger);font-weight:700;}
+.yes{color:var(--ok);font-weight:700;}
+.hint{font-size:.82rem;color:var(--muted);margin-top:-10px;}
+
+/* ---- cards ---- */
+.card{
+  background:var(--navy);color:#e9e3d6;border-radius:14px;
+  padding:26px 24px;margin:20px 0;
+}
+.card h3{color:var(--amber);margin-top:0;}
+.card p:last-child{margin-bottom:0;}
+.card strong{color:#fff;}
+
+.cost{
+  background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--danger);
+  border-radius:10px;padding:20px 22px;margin:16px 0;
+}
+.cost h3{margin:0 0 8px;color:var(--danger);font-size:1rem;}
+.cost p{margin:0;font-size:.95rem;}
+
+.note{
+  background:#efe7d5;border-radius:10px;padding:18px 20px;margin:22px 0;
+  font-size:.94rem;border:1px dashed var(--gold);
+}
+.note strong{color:var(--navy-deep);}
+
+ol,ul{padding-left:1.25em;margin:0 0 18px;}
+li{margin-bottom:9px;}
+
+/* ---- decision tool (signature) ---- */
+.tool{
+  background:var(--navy-deep);border-radius:18px;padding:0;overflow:hidden;
+  margin:26px 0;box-shadow:0 18px 40px -24px rgba(20,33,46,.7);
+}
+.tool-head{padding:26px 24px 20px;border-bottom:1px solid rgba(255,255,255,.09);}
+.tool-head .sec-tag{margin-bottom:8px;}
+.tool-head h3{
+  font-family:"DM Serif Display",serif;font-weight:400;font-size:1.42rem;
+  color:#f4efe4;margin:0 0 6px;
+}
+.tool-head p{color:#9aa4ae;font-size:.88rem;margin:0;}
+.tool-body{padding:26px 24px 28px;}
+.step-track{display:flex;gap:6px;margin-bottom:22px;}
+.step-dot{flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,.14);transition:background .3s;}
+.step-dot.on{background:var(--amber);}
+.q{color:#f4efe4;font-size:1.08rem;font-weight:500;line-height:1.6;margin:0 0 6px;}
+.q-sub{color:#8b95a0;font-size:.84rem;margin:0 0 18px;}
+.opts{display:flex;flex-direction:column;gap:10px;}
+.opt{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);
+  color:#e9e3d6;border-radius:10px;padding:14px 16px;text-align:left;
+  font-family:inherit;font-size:.96rem;cursor:pointer;line-height:1.5;
+  transition:background .18s,border-color .18s,transform .18s;
+}
+.opt:hover{background:rgba(227,171,63,.14);border-color:var(--amber);}
+.opt:focus-visible{outline:2px solid var(--amber);outline-offset:2px;}
+.opt:active{transform:scale(.99);}
+.tool-foot{display:flex;justify-content:space-between;align-items:center;margin-top:20px;}
+.linkbtn{
+  background:none;border:none;color:#8b95a0;font-family:inherit;font-size:.84rem;
+  cursor:pointer;padding:6px 0;text-decoration:underline;text-underline-offset:3px;
+}
+.linkbtn:hover{color:var(--amber);}
+.verdict{animation:fade .35s ease;}
+@keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+.verdict-badge{
+  display:inline-block;font-size:.74rem;letter-spacing:.22em;font-weight:700;
+  padding:7px 14px;border-radius:100px;margin-bottom:16px;
+}
+.v-red{background:rgba(168,64,47,.2);color:#f0968a;border:1px solid rgba(240,150,138,.4);}
+.v-amber{background:rgba(227,171,63,.16);color:var(--amber);border:1px solid rgba(227,171,63,.42);}
+.v-green{background:rgba(61,107,76,.22);color:#8fc9a1;border:1px solid rgba(143,201,161,.4);}
+.verdict h4{font-family:"DM Serif Display",serif;font-weight:400;font-size:1.34rem;color:#f4efe4;margin:0 0 12px;line-height:1.5;}
+.verdict p{color:#b9c1c9;font-size:.94rem;margin:0 0 14px;}
+.verdict ul{color:#b9c1c9;font-size:.92rem;padding-left:1.15em;}
+.verdict li{margin-bottom:7px;}
+.verdict strong{color:var(--amber);}
+
+/* ---- checklist ---- */
+.check{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:8px 4px;margin:22px 0;}
+.check label{
+  display:flex;gap:14px;align-items:flex-start;padding:15px 20px;cursor:pointer;
+  border-bottom:1px solid var(--line);font-size:.96rem;line-height:1.6;
+}
+.check label:last-of-type{border-bottom:none;}
+.check input{
+  appearance:none;width:20px;height:20px;min-width:20px;margin-top:3px;
+  border:1.5px solid var(--gold);border-radius:5px;background:transparent;cursor:pointer;
+  transition:background .18s;position:relative;
+}
+.check input:checked{background:var(--gold);}
+.check input:checked::after{
+  content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;
+  border:solid var(--paper);border-width:0 2px 2px 0;transform:rotate(42deg);
+}
+.check input:focus-visible{outline:2px solid var(--navy);outline-offset:2px;}
+.check label:has(input:checked) span{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line);}
+.check-bar{padding:16px 20px 12px;}
+.bar{height:5px;background:var(--line);border-radius:3px;overflow:hidden;}
+.bar i{display:block;height:100%;width:0;background:var(--gold);transition:width .3s;}
+.bar-txt{font-size:.8rem;color:var(--muted);letter-spacing:.1em;margin-top:9px;}
+
+/* ---- FAQ ---- */
+details{border-bottom:1px solid var(--line);padding:4px 0;}
+summary{
+  cursor:pointer;padding:16px 30px 16px 0;font-weight:500;font-size:1rem;
+  list-style:none;position:relative;line-height:1.6;
+}
+summary::-webkit-details-marker{display:none;}
+summary::after{
+  content:"+";position:absolute;right:4px;top:14px;color:var(--gold);
+  font-size:1.3rem;font-weight:300;transition:transform .22s;
+}
+details[open] summary::after{transform:rotate(45deg);}
+details p{padding:0 0 18px;margin:0;color:#453e34;font-size:.95rem;}
+
+/* ---- CTA ---- */
+.cta{background:var(--navy);color:#e9e3d6;border-radius:16px;padding:34px 26px;text-align:center;margin:20px 0 0;}
+.cta h2{color:#f4efe4;margin-bottom:12px;}
+.cta p{color:#a8b0ba;font-size:.95rem;}
+.btns{display:flex;flex-direction:column;gap:11px;margin-top:22px;}
+.btn{
+  display:block;padding:15px;border-radius:10px;text-decoration:none;
+  font-weight:700;letter-spacing:.06em;font-size:1rem;transition:opacity .18s;
+}
+.btn:hover{opacity:.88;}
+.btn-gold{background:var(--amber);color:var(--navy-deep);}
+.btn-ghost{border:1px solid rgba(255,255,255,.28);color:#e9e3d6;}
+
+footer{padding:44px 0 60px;font-size:.8rem;color:var(--muted);line-height:1.8;}
+
+@media(min-width:640px){
+  .btns{flex-direction:row;justify-content:center;}
+  .btn{min-width:200px;}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;}
+  html{scroll-behavior:auto;}
+}
+</style>
+<!-- SEO:AUTO 由 scripts/seo-build.mjs 產生，不要手改 -->
+<link rel="canonical" href="https://kuanhome.com/road-access">
+<meta property="og:url" content="https://kuanhome.com/road-access">
+<meta property="og:site_name" content="海線房仲冠良">
+<meta property="og:locale" content="zh_TW">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://kuanhome.com/road-access#article","headline":"路權與封路攻略｜土地是你的，就一定能把路封起來嗎？","description":"既成道路、現有巷道、私設通路差在哪？封路會不會犯法？袋地通行權怎麼主張？買地前七項路權查核清單，海線房仲冠良整理。","url":"https://kuanhome.com/road-access","inLanguage":"zh-Hant-TW","dateModified":"2026-08-27T15:13:48.338Z","author":{"@id":"https://kuanhome.com/#wuguanliang"},"publisher":{"@id":"https://kuanhome.com/#agent"},"mainEntityOfPage":{"@id":"https://kuanhome.com/road-access"}},{"@type":"RealEstateAgent","@id":"https://kuanhome.com/#agent","name":"海線房仲冠良","alternateName":"吳冠良｜台中海線房地產顧問","description":"台中海線專業房地產仲介，深耕沙鹿、清水、梧棲、龍井、大肚、大甲六區。提供資產配置、稅務諮詢、簡易裝潢，及買賣委託與土地買賣。","slogan":"懂你又懂房","url":"https://kuanhome.com/","image":"https://kuanhome.com/card/owner.webp","telephone":"+886-915-295-958","email":"wosagl15@gmail.com","address":{"@type":"PostalAddress","addressLocality":"沙鹿區","addressRegion":"台中市","postalCode":"433","addressCountry":"TW"},"geo":{"@type":"GeoCoordinates","latitude":24.2340986,"longitude":120.560349},"priceRange":"$$","areaServed":[{"@type":"AdministrativeArea","name":"台中市沙鹿區"},{"@type":"AdministrativeArea","name":"台中市清水區"},{"@type":"AdministrativeArea","name":"台中市梧棲區"},{"@type":"AdministrativeArea","name":"台中市龍井區"},{"@type":"AdministrativeArea","name":"台中市大肚區"},{"@type":"AdministrativeArea","name":"台中市大甲區"}],"sameAs":["https://www.facebook.com/share/14XZ3Wy4nLZ/","https://www.instagram.com/asmile55178/","https://www.youtube.com/@吳冠良-w9v","https://lin.ee/1WlfBub","https://sales.myhomes.com.tw/0915295958"],"employee":{"@type":"Person","@id":"https://kuanhome.com/#wuguanliang","name":"吳冠良","jobTitle":"台中海線專業房地產顧問"}},{"@type":"BreadcrumbList","@id":"https://kuanhome.com/road-access#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://kuanhome.com/"},{"@type":"ListItem","position":2,"name":"購屋攻略","item":"https://kuanhome.com/tools"},{"@type":"ListItem","position":3,"name":"路權與封路攻略｜土地是你的，就一定能把路封起來嗎？","item":"https://kuanhome.com/road-access"}]},{"@type":"FAQPage","@id":"https://kuanhome.com/road-access#faq","mainEntity":[{"@type":"Question","name":"你腳下那條路，到底是哪一種？","acceptedAnswer":{"@type":"Answer","text":"台灣的「路」在法律上不是一種東西，而是 五種 。搞錯身分，後面的判斷全錯。 類型 土地所有權 地主能封嗎 能作為建築線嗎 計畫道路 （已徵收開闢） 政府 不能 可以 公共設施保留地 （計畫道路未徵收） 私人 不得妨礙指定目的 依個案，通常需開闢 既成道路 私人 不能 多可申請認定為現有巷道 現有巷道 私人／公私混合 不能（經認定者） 可以，但常需退縮 私設通路／ 單純私人土地 私人 可以* 僅服務基地本身 ＊前提：無通行契約或登記役權、且非袋地的必要通路。 既成道路與現有巷道，封了會出事；私設通路，封了不一定違法。差別就在這裡。 互動判定"}},{"@type":"Question","name":"這條路，你到底能不能封？","acceptedAnswer":{"@type":"Answer","text":"五個問題，先抓出你的風險等級。判定結果僅供初步參考，最終認定權在主管機關與法院。 封路風險快篩"}},{"@type":"Question","name":"成立之後，地主還留著什麼？","acceptedAnswer":{"@type":"Answer","text":"一、地價稅免徵。 無償供公眾通行之道路土地，查明屬實者，使用期間內可免徵地價稅。 要主動申請，不會自動生效 （屬建屋應保留之法定空地者不適用）。 二、請求補償／徵收。 釋字 400 號認為這構成「個人利益的特別犧牲」，地主應享有相當補償的權利。實務上各縣市多以財政為由排隊多年，但該登記、該陳情、該保留的資料要留著。 三、排除「超出通行目的」的使用。 公用地役關係只涵蓋「通行」。有人在你的路上擺攤、堆料、長期停車、搭棚架，已超出通行範圍，你仍可依民法第 767 條請求排除。 後果"}},{"@type":"Question","name":"什麼情況下，封路是合法的？","acceptedAnswer":{"@type":"Answer","text":"也不是完全不能封。以下情形，地主的主張站得住腳： 該路 只是鄰居圖方便 ，鄰地另有可通行的公路（不符「必要性」） 通行起始時地主就曾阻止過 、收過費、或立過牌（不符「未曾阻止」） 通行 年代不夠久、中途曾中斷 屬於建案的 私設通路 ，僅服務特定基地，非供不特定公眾通行 對方是袋地，但雙方 已有通行契約或約定路線 ，而對方逾越了約定範圍"}},{"@type":"Question","name":"手上有地，不確定路權？","acceptedAnswer":{"@type":"Answer","text":"謄本、地籍圖、現有巷道紀錄，我幫你先查一輪再談價。 海線六區：沙鹿・清水・梧棲・龍井・大肚・大甲 加 LINE 問路權 撥打 0915-295958 本頁為一般性資訊整理，不構成法律意見。個案認定涉及土地位置、使用年代與各縣市自治條例差異，實際處理請洽地政士、建築師或律師，並以主管機關認定為準。 海線房仲冠良｜太平洋房屋・沙鹿特三加盟店（勝元不動產經紀股份有限公司） GOOGLE 評論"}},{"@type":"Question","name":"這些整理，有幫到你嗎？","acceptedAnswer":{"@type":"Answer","text":"留一則 Google 評論，讓其他正在煩惱同樣問題的人，也找得到這裡。 一句話就夠，不用寫長。 去 Google 留評論 會開啟 Google 地圖的評論視窗，需要登入 Google 帳號。"}}],"isPartOf":{"@id":"https://kuanhome.com/road-access#article"}}]}</script>
+<!-- /SEO:AUTO -->
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">海線土地實務</p>
+    <h1>土地是你的，<br><em>就一定能把路封起來嗎？</em></h1>
+    <p class="lede">海線這幾年最常見的糾紛，不是漏水、不是坪數，而是<strong style="color:#e3ab3f">路</strong>。</p>
+    <p>一條走了三十年的水泥小路，新地主買下後拉起鐵鍊；一塊價格漂亮的農地，成交後才發現只能從別人家的曬穀場進出；一棟老透天，要改建時建管處回一句「你這裡沒有建築線」。</p>
+    <p class="byline">海線房仲冠良｜懂你又懂房</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section>
+  <div class="lane"></div>
+  <span class="sec-tag">先分清楚</span>
+  <h2>你腳下那條路，到底是哪一種？</h2>
+  <p>台灣的「路」在法律上不是一種東西，而是<strong>五種</strong>。搞錯身分，後面的判斷全錯。</p>
+
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>類型</th><th>土地所有權</th><th>地主能封嗎</th><th>能作為建築線嗎</th></tr></thead>
+    <tbody>
+      <tr><td>計畫道路<br>（已徵收開闢）</td><td>政府</td><td class="no">不能</td><td>可以</td></tr>
+      <tr><td>公共設施保留地<br>（計畫道路未徵收）</td><td>私人</td><td class="no">不得妨礙指定目的</td><td>依個案，通常需開闢</td></tr>
+      <tr><td>既成道路</td><td>私人</td><td class="no">不能</td><td>多可申請認定為現有巷道</td></tr>
+      <tr><td>現有巷道</td><td>私人／公私混合</td><td class="no">不能（經認定者）</td><td>可以，但常需退縮</td></tr>
+      <tr><td>私設通路／<br>單純私人土地</td><td>私人</td><td class="yes">可以*</td><td>僅服務基地本身</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="hint">＊前提：無通行契約或登記役權、且非袋地的必要通路。</p>
+
+  <p class="pull">既成道路與現有巷道，封了會出事；私設通路，封了不一定違法。差別就在這裡。</p>
+</section>
+
+<section>
+  <div class="lane"></div>
+  <span class="sec-tag">互動判定</span>
+  <h2>這條路，你到底能不能封？</h2>
+  <p>五個問題，先抓出你的風險等級。判定結果僅供初步參考，最終認定權在主管機關與法院。</p>
+
+  <div class="tool" id="tool">
+    <div class="tool-head">
+      <span class="sec-tag">封路風險快篩</span>
+      <h3>五題判斷你的立場</h3>
+      <p>沒有答案的題目就選「不確定」，系統會把它算成風險。</p>
+    </div>
+    <div class="tool-body">
+      <div class="step-track" id="track" aria-hidden="true"></div>
+      <div id="stage" role="region" aria-live="polite"></div>
+      <div class="tool-foot">
+        <button class="linkbtn" id="backBtn" type="button" hidden>← 上一題</button>
+        <button class="linkbtn" id="resetBtn" type="button" hidden>重新判定</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="lane"></div>
+  <span class="sec-tag">關鍵概念</span>
+  <h2>既成道路：地主最容易誤判的一種</h2>
+  <p>「既成道路」不是法條用語，而是<strong>大法官釋字第 400 號</strong>建立的概念：私有土地因長期供公眾通行而具公共使用性質，即使未經徵收、未變更地目，仍可能被認定具備公共道路的性質。</p>
+
+  <h3>成立的四個要件</h3>
+  <ol>
+    <li><strong>無償</strong>供不特定公眾通行——不是只給幾戶鄰居方便</li>
+    <li><strong>通行之初，地主未曾阻止</strong></li>
+    <li><strong>年代久遠且未曾中斷</strong>——實務常以二十年為觀察基準，重點是「一般人已不復記憶其起始」</li>
+    <li><strong>是通行所「必要」</strong>——不是只為了近一點、方便一點</li>
+  </ol>
+  <p>四個都成立，就形成<strong>公用地役關係</strong>。地主仍保有所有權，但不能任意設置路障阻止通行。白話說：<strong>地還是你的，但你只剩下一個被綁住的所有權。</strong></p>
+
+  <div class="card">
+    <h3>成立之後，地主還留著什麼？</h3>
+    <p><strong>一、地價稅免徵。</strong>無償供公眾通行之道路土地，查明屬實者，使用期間內可免徵地價稅。<strong>要主動申請，不會自動生效</strong>（屬建屋應保留之法定空地者不適用）。</p>
+    <p><strong>二、請求補償／徵收。</strong>釋字 400 號認為這構成「個人利益的特別犧牲」，地主應享有相當補償的權利。實務上各縣市多以財政為由排隊多年，但該登記、該陳情、該保留的資料要留著。</p>
+    <p><strong>三、排除「超出通行目的」的使用。</strong>公用地役關係只涵蓋「通行」。有人在你的路上擺攤、堆料、長期停車、搭棚架，已超出通行範圍，你仍可依民法第 767 條請求排除。</p>
+  </div>
+</section>
+
+<section>
+  <div class="lane"></div>
+  <span class="sec-tag">後果</span>
+  <h2>封錯路的三種代價</h2>
+  <p>很多地主的想法是：「大不了被告，賠錢就好。」錯了——封錯路是<strong>三線同時開火</strong>。</p>
+
+  <div class="cost">
+    <h3>刑事｜刑法第 185 條 妨害公眾往來安全罪</h3>
+    <p>損壞或壅塞陸路、水路、橋樑或其他公眾往來之設備，或以他法致生往來之危險者，處五年以下有期徒刑、拘役或一萬五千元以下罰金。只要那條路被認定為既成道路，<strong>拉鐵鍊、堆土、挖斷、砌牆都可能踩到這一條</strong>——實務上買地封路被判刑的案例並不少見。</p>
+  </div>
+  <div class="cost">
+    <h3>民事｜排除侵害 ＋ 損害賠償</h3>
+    <p>鄰地可依民法第 767 條請求排除妨害、回復原狀，並就受阻期間的損失請求賠償。<strong>拆除費用還是你自己出。</strong></p>
+  </div>
+  <div class="cost">
+    <h3>行政｜公所與工務單位</h3>
+    <p>經認定的既成道路屬公物，由公所養護。破壞路面另可能涉及毀損公物與行政裁處。</p>
+  </div>
+</section>
+
+<section>
+  <div class="lane"></div>
+  <span class="sec-tag">地主篇</span>
+  <h2>什麼情況下，封路是合法的？</h2>
+  <p>也不是完全不能封。以下情形，地主的主張站得住腳：</p>
+  <ul>
+    <li>該路<strong>只是鄰居圖方便</strong>，鄰地另有可通行的公路（不符「必要性」）</li>
+    <li><strong>通行起始時地主就曾阻止過</strong>、收過費、或立過牌（不符「未曾阻止」）</li>
+    <li>通行<strong>年代不夠久、中途曾中斷</strong></li>
+    <li>屬於建案的<strong>私設通路</strong>，僅服務特定基地，非供不特定公眾通行</li>
+    <li>對方是袋地，但雙方<strong>已有通行契約或約定路線</strong>，而對方逾越了約定範圍</li>
+  </ul>
+
+  <h3>不想讓土地被認定為既成道路？現在就要做的四件事</h3>
+  <ol>
+    <li><strong>立牌。</strong>「私人土地，通行請經同意」——留下「曾經阻止」的證據。</li>
+    <li><strong>書面化。</strong>與需要通行的鄰居簽通行同意書，寫明無償或有償、範圍、期限、可終止。有契約，就不是「無償供公眾通行」。</li>
+    <li><strong>定期象徵性封閉。</strong>每年擇日短暫設閘、拍照存證，打斷「未曾中斷」。</li>
+    <li><strong>拍照建檔。</strong>地籍圖、現況照片、日期，一年一次。十年後你會感謝自己。</li>
+  </ol>
+
+  <div class="note">
+    <strong>反過來說：</strong>如果那條路已經走了三十年、你今天才買下來——上述動作全部太晚了。<strong>公用地役關係不會因為換人持有而消滅。</strong>
+  </div>
+</section>
+
+<section>
+  <div class="lane"></div>
+  <span class="sec-tag">被封路怎麼辦</span>
+  <h2>三條路，先走便宜的那條</h2>
+
+  <h3>路一｜協商（最快、最便宜）</h3>
+  <p>先確認對方要的是什麼：錢？面子？還是希望你別走中間走旁邊？多數案子談得成，關鍵在<strong>談完一定要寫成書面並公證</strong>，最好進一步設定<strong>不動產役權</strong>登記到謄本上。口頭承諾，在土地易主的那一天全部歸零。</p>
+
+  <h3>路二｜向區公所申請認定「現有巷道」</h3>
+  <p>備妥使用年代證明（舊航照圖、門牌編釘、水電接管紀錄、鄰居切結）向公所申請。<strong>認定通過等於官方背書</strong>，後續建照、建築線都好處理。</p>
+
+  <h3>路三｜袋地通行權訴訟（民法第 787 條）</h3>
+  <p>成立三要件：<strong>一</strong>、無適當通路可通往公路（依土地性質個案判斷）；<strong>二</strong>、非因土地所有人自己的任意行為造成（例如自行蓋圍牆把路堵住）；<strong>三</strong>、必須選擇對鄰地損害最少的路線，並支付適當償金。</p>
+
+  <div class="note">
+    <strong>「不能為通常使用」是浮動的。</strong>最高法院認為，須斟酌袋地的位置、地勢、面積、用途與社會環境變化綜合判斷：若是農地，農機具能通行即可；但若地上有合法農舍供人居住，以現代人以汽車代步的生活習慣，汽車車道即屬通常使用所必要。<br><br>同一條路，<strong>農地夠用，蓋了農舍就可能不夠用。</strong>
+  </div>
+
+  <div class="card">
+    <h3>四個實務重點</h3>
+    <p><strong>有通行權 ≠ 有管線權。</strong>管線安設權（民法第 786 條）與袋地通行權的成立要件不同，法院會分別審認。談通行時務必把水、電、瓦斯、排水一起寫進去。</p>
+    <p><strong>可以開設道路，但要付償金</strong>（民法第 788 條第 1 項）。</p>
+    <p><strong>對方有反擊武器。</strong>若開路致通行地損害過鉅，通行地所有人可請求你以相當價額買下該通行地及因此形成的畸零地——你要開路，可能得整塊買下來。</p>
+    <p><strong>因分割或一部讓與形成的袋地（民法第 789 條）：</strong>只能通行原本同一塊地的其他人，但<strong>無須支付償金</strong>。祖產分割最常遇到這條。</p>
+  </div>
+
+  <p><strong>訴訟成本粗估：</strong>向土地所在地地方法院起訴，裁判費原則上以通行面積乘以公告現值約 1% 計算；需備地籍圖與雙方謄本，並事先到現場拍照、繪圖規劃通行方案；此為強制調解事件，起訴後法院會先排調解。加上律師費與測量費，一般案件抓 <strong>15～40 萬、一到兩年</strong>是合理預期。</p>
+
+  <p class="pull">買之前查清楚，永遠比買之後打官司便宜。</p>
+</section>
+
+<section>
+  <div class="lane"></div>
+  <span class="sec-tag">買方篇</span>
+  <h2>七個動作，避掉九成路權地雷</h2>
+
+  <div class="check" id="check">
+    <label><input type="checkbox"><span><strong>調土地登記謄本</strong>——看有沒有「不動產役權」（舊稱地役權）登記。有登記，最安全。</span></label>
+    <label><input type="checkbox"><span><strong>調地籍圖謄本</strong>——看基地是否與「道路地號」相接。與計畫道路相接，才叫有路。</span></label>
+    <label><input type="checkbox"><span><strong>申請土地使用分區證明</strong>——確認鄰接的那條路是計畫道路、公共設施保留地，還是私人地號。</span></label>
+    <label><input type="checkbox"><span><strong>查該條路的地號與所有權人</strong>——路是私人地號、所有權人不是你、又無登記役權，風險就在這裡。</span></label>
+    <label><input type="checkbox"><span><strong>到區公所或工務局查「現有巷道」認定紀錄</strong>——有沒有被認定過，公所有案可查。</span></label>
+    <label><input type="checkbox"><span><strong>要蓋房子？先申請「指定建築線」</strong>——這是唯一具官方效力的答案，費用低，比事後補救便宜太多。</span></label>
+    <label><input type="checkbox"><span><strong>現場走一趟＋問鄰居</strong>——有沒有鐵鍊痕跡、警告牌、封閉紀錄？鄰居會告訴你 Google 地圖不會說的事。</span></label>
+    <div class="check-bar">
+      <div class="bar"><i id="barFill"></i></div>
+      <div class="bar-txt" id="barTxt">已完成 0 / 7</div>
+    </div>
+  </div>
+
+  <p class="pull">Google 街景上看得到的路，不等於法律上你能走的路。</p>
+</section>
+
+<section>
+  <div class="lane"></div>
+  <span class="sec-tag">常見誤區</span>
+  <h2>快問快答</h2>
+
+  <details><summary>路上鋪了柏油、有路燈、有門牌，就代表是公有道路？</summary>
+    <p>不一定。柏油可能是鄰居自己鋪的，公所也可能在私地上代為維護。<strong>看地號，不要看路面。</strong></p></details>
+  <details><summary>那條路走幾十年了，是不是自動變我的？</summary>
+    <p>通行事實不會讓你取得所有權，最多是形成公用地役關係或取得通行權，<strong>所有權仍在原地主</strong>。</p></details>
+  <details><summary>我買的是袋地，賣方說「鄰居都同意讓你走」，可以嗎？</summary>
+    <p>口頭同意等於沒有。要嘛簽書面並公證，要嘛設定不動產役權登記於謄本，<strong>要嘛就把價格砍到反映風險</strong>。</p></details>
+  <details><summary>既成道路的土地，還值錢嗎？</summary>
+    <p>市價通常只有一般土地的一到三成，流通性也差。但免地價稅、未來徵收補償、以及作為公設地的節稅空間仍有價值，要看整體規劃。</p></details>
+  <details><summary>我可以在自己的既成道路上停車嗎？</summary>
+    <p>不行。你自己也受「不得妨礙公眾通行」的限制。</p></details>
+</section>
+
+<section>
+  <div class="lane"></div>
+  <span class="sec-tag">結語</span>
+  <h2>看地之前，先看路</h2>
+  <p>路權問題有一個殘忍的特性：<strong>它不會在成交前吵，只會在你要蓋、要賣、要貸款的時候爆。</strong>而爆的時候，價差往往不是幾十萬，是這塊地能不能用。</p>
+  <p>海線很多土地便宜得有道理，也有很多土地便宜得沒道理。差別常常就在那一條路上。</p>
+
+  <div class="cta">
+    <h2>手上有地，不確定路權？</h2>
+    <p>謄本、地籍圖、現有巷道紀錄，我幫你先查一輪再談價。<br>海線六區：沙鹿・清水・梧棲・龍井・大肚・大甲</p>
+    <div class="btns">
+      <a class="btn btn-gold" href="https://lin.ee/QyQmggG">加 LINE 問路權</a>
+      <a class="btn btn-ghost" href="tel:0915295958">撥打 0915-295958</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="lane solid"></div>
+  <p>本頁為一般性資訊整理，不構成法律意見。個案認定涉及土地位置、使用年代與各縣市自治條例差異，實際處理請洽地政士、建築師或律師，並以主管機關認定為準。</p>
+  <p>海線房仲冠良｜太平洋房屋・沙鹿特三加盟店（勝元不動產經紀股份有限公司）</p>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var QUESTIONS=[
+    {q:"這條路的土地，登記在誰名下？",
+     sub:"看地籍圖與土地謄本，不要看路面鋪了什麼。",
+     opts:[{t:"政府（已徵收的計畫道路）",s:99},
+           {t:"我或我家人（私有地號）",s:0},
+           {t:"我不確定",s:2}]},
+    {q:"謄本上有沒有「不動產役權」登記，或簽過通行同意書？",
+     sub:"舊稱地役權。有登記或有契約，就受它拘束。",
+     opts:[{t:"有登記或有書面契約",s:99},
+           {t:"都沒有",s:0},
+           {t:"我不確定",s:2}]},
+    {q:"這條路有沒有無償、長期供不特定公眾通行？",
+     sub:"重點是「不特定公眾」，不是固定那兩三戶。",
+     opts:[{t:"有，走很多年了，外人也走",s:3},
+           {t:"只有隔壁一兩戶在走",s:1},
+           {t:"幾乎沒人走",s:0},
+           {t:"我不確定",s:2}]},
+    {q:"當初開始通行時，你或前手有阻止、收費或立過牌嗎？",
+     sub:"「通行之初未曾阻止」是既成道路的關鍵要件。",
+     opts:[{t:"從來沒有阻止過",s:3},
+           {t:"有阻止、收費或立牌，且留有證據",s:0},
+           {t:"我不確定",s:2}]},
+    {q:"如果封了，對方還有別的路可以走嗎？",
+     sub:"沒有其他路，就會落入袋地通行權的射程。",
+     opts:[{t:"沒有，封了就出不去",s:3},
+           {t:"有，只是遠一點、繞一下",s:0},
+           {t:"我不確定",s:2}]}
+  ];
+
+  var VERDICTS={
+    red:{cls:"v-red",tag:"高風險",h:"這條路，你幾乎不能封。",
+      p:"依你的回答，這條路已經非常接近既成道路的認定，或已經受契約／既有權利拘束。片面封閉可能同時面臨刑事、民事與行政三重責任。",
+      li:["先<strong>不要動手</strong>——鐵鍊、堆土、砌牆都可能構成刑法第 185 條","要主張權益，走<strong>地價稅免徵申請</strong>與<strong>徵收補償陳情</strong>，不是走封路","如有人超出「通行」範圍擺攤、堆料、長期占用，這部分你仍可依民法第 767 條排除","封路前務必先諮詢律師或地政士"]},
+    amber:{cls:"v-amber",tag:"灰色地帶",h:"沒有人能在紙上給你答案。",
+      p:"你的情況落在既成道路認定的模糊區——要件有些成立、有些不成立，或關鍵事實你自己也不確定。這種案子最後多半是公所認定或法院判斷。",
+      li:["先把<strong>事實證據補齊</strong>：舊航照圖、水電接管紀錄、門牌編釘、現況照片","向<strong>區公所查詢現有巷道認定紀錄</strong>，看官方有沒有案","不確定的題目就是你的破口——一項一項查清楚再決定","貿然封路的風險遠大於先花錢諮詢"]},
+    green:{cls:"v-green",tag:"風險較低",h:"你的主張站得住腳，但別急著拉鐵鍊。",
+      p:"依你的回答，這條路較可能屬於單純私人土地或私設通路，未形成公用地役關係。不過認定權仍在主管機關與法院，實務上仍有翻盤空間。",
+      li:["先<strong>發存證信函</strong>或立牌告知，保留「已表達反對」的紀錄，比直接封閉安全","如果對方是袋地，仍可能循<strong>民法第 787 條</strong>取得通行權——與其對抗，不如談成有償通行契約","把通行條件<strong>書面化</strong>，日後土地要賣，這份契約就是你的資產","動工封閉前，建議先諮詢地政士或律師"]}
+  };
+
+  var stage=document.getElementById("stage"),
+      track=document.getElementById("track"),
+      backBtn=document.getElementById("backBtn"),
+      resetBtn=document.getElementById("resetBtn"),
+      idx=0, answers=[];
+
+  function drawTrack(){
+    track.innerHTML="";
+    for(var i=0;i<QUESTIONS.length;i++){
+      var d=document.createElement("div");
+      d.className="step-dot"+(i<=idx?" on":"");
+      track.appendChild(d);
+    }
+  }
+
+  function render(){
+    if(idx>=QUESTIONS.length||answers.indexOf(99)>-1){return showVerdict();}
+    drawTrack();
+    var Q=QUESTIONS[idx];
+    var html='<p class="q">'+(idx+1)+'. '+Q.q+'</p><p class="q-sub">'+Q.sub+'</p><div class="opts">';
+    Q.opts.forEach(function(o,i){
+      html+='<button class="opt" type="button" data-s="'+o.s+'">'+o.t+'</button>';
+    });
+    html+='</div>';
+    stage.innerHTML=html;
+    Array.prototype.forEach.call(stage.querySelectorAll(".opt"),function(b){
+      b.addEventListener("click",function(){
+        answers[idx]=parseInt(b.getAttribute("data-s"),10);
+        idx++; render();
+      });
+    });
+    backBtn.hidden = idx===0;
+    resetBtn.hidden = idx===0;
+  }
+
+  function showVerdict(){
+    Array.prototype.forEach.call(track.children,function(d){d.classList.add("on");});
+    var v;
+    if(answers.indexOf(99)>-1){ v=VERDICTS.red; }
+    else{
+      var total=answers.reduce(function(a,b){return a+b;},0);
+      v = total>=9 ? VERDICTS.red : (total>=4 ? VERDICTS.amber : VERDICTS.green);
+    }
+    var html='<div class="verdict"><span class="verdict-badge '+v.cls+'">'+v.tag+'</span>'+
+             '<h4>'+v.h+'</h4><p>'+v.p+'</p><ul>';
+    v.li.forEach(function(l){html+='<li>'+l+'</li>';});
+    html+='</ul><p style="font-size:.82rem;color:#7d8794;margin-top:16px">此為初步風險判斷，不構成法律意見。個案仍以主管機關認定與法院判決為準。</p></div>';
+    stage.innerHTML=html;
+    backBtn.hidden=false; resetBtn.hidden=false;
+  }
+
+  backBtn.addEventListener("click",function(){
+    if(idx>0){ idx--; answers.length=idx; }
+    render();
+  });
+  resetBtn.addEventListener("click",function(){ idx=0; answers=[]; render(); });
+
+  render();
+
+  // checklist progress
+  var boxes=document.querySelectorAll("#check input"),
+      fill=document.getElementById("barFill"),
+      txt=document.getElementById("barTxt");
+  Array.prototype.forEach.call(boxes,function(b){
+    b.addEventListener("change",function(){
+      var n=0;
+      Array.prototype.forEach.call(boxes,function(x){ if(x.checked) n++; });
+      fill.style.width=(n/boxes.length*100)+"%";
+      txt.textContent="已完成 "+n+" / "+boxes.length;
+    });
+  });
+})();
+</script>
+<!-- REVIEW:AUTO 由 scripts/review-cta.mjs 產生，不要手改 -->
+<section class="gr-cta" aria-labelledby="gr-cta-h">
+  <div class="gr-inner">
+    <p class="gr-eyebrow">GOOGLE 評論</p>
+    <h2 id="gr-cta-h">這些整理，有幫到你嗎？</h2>
+    <p class="gr-lede">留一則 Google 評論，讓其他正在煩惱同樣問題的人，也找得到這裡。<br>一句話就夠，不用寫長。</p>
+    <a class="gr-btn" href="https://g.page/r/Cc3MaJq-9w1REAE/review" target="_blank" rel="noopener noreferrer">
+      <svg class="gr-star" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l2.9 6.6 7.1.7-5.3 4.8 1.5 7-6.2-3.6L5.8 21l1.5-7L2 9.3l7.1-.7z"/></svg>
+      去 Google 留評論
+    </a>
+    <p class="gr-note">會開啟 Google 地圖的評論視窗，需要登入 Google 帳號。</p>
+  </div>
+</section>
+<style>
+.gr-cta{max-width:820px;margin:34px auto 40px;padding:26px 24px;
+ background:#16283f;border-radius:16px;color:#e9edf2;
+ font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif;
+ text-align:center;box-sizing:border-box}
+.gr-cta *{box-sizing:border-box}
+.gr-inner{max-width:34em;margin:0 auto}
+.gr-cta .gr-eyebrow{margin:0 0 8px;font-size:12.5px;letter-spacing:.2em;color:#e8c887;font-weight:500}
+.gr-cta h2{margin:0 0 10px;font-size:23px;line-height:1.4;color:#fff;font-weight:700;
+ font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif}
+.gr-cta .gr-lede{margin:0 0 20px;font-size:16px;line-height:1.8;color:#cfd8e2}
+.gr-cta .gr-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+ min-height:52px;padding:13px 30px;border-radius:999px;
+ background:#c8963e;color:#20180a;text-decoration:none;
+ font-size:17px;font-weight:700;line-height:1.4}
+.gr-cta .gr-btn:hover{background:#dcae5c}
+.gr-cta .gr-btn:focus-visible{outline:3px solid #e8c887;outline-offset:3px}
+.gr-cta .gr-star{width:20px;height:20px;fill:#20180a;flex:none}
+.gr-cta .gr-note{margin:14px 0 0;font-size:13.5px;color:#9fb0c4;line-height:1.65}
+@media(max-width:640px){
+  .gr-cta{margin:26px 16px 32px;padding:22px 18px}
+  .gr-cta h2{font-size:20px}
+  .gr-cta .gr-btn{width:100%}
+}
+</style>
+<!-- /REVIEW:AUTO -->
+<!-- CLUSTER:AUTO 由 scripts/seo-build.mjs 產生，不要手改 -->
+<section class="seo-cluster">
+<h2>土地與自地自建・延伸閱讀</h2>
+<p>買地、蓋房子這條路上會遇到的問題，這幾頁是一整組的：</p>
+<ul><li><a href="/land-lookup">先查這塊地：使用分區與環境限制</a></li><li><a href="/building-line">能不能蓋：申請建築線全攻略</a></li><li><a href="/existing-road-faq">進得去嗎：既成道路常見問題</a></li><li><a href="/easement">謄本上的他項權利：地役權（不動產役權）</a></li><li><a href="/coowned-land">地不只你一個人的：土地法第 34 條之 1</a></li><li><a href="/farmhouse">農地能不能蓋：老農配蓋農舍</a></li><li><a href="/self-build-guide">決定要蓋了：自地自建全流程</a></li><li><a href="/land-tax">賣地要繳多少：土地增值稅試算</a></li><li><a href="/blog/self-build-cash-flow">錢夠不夠：買地自建的資金缺口</a></li></ul>
+</section>
+<style>
+.seo-cluster{max-width:820px;margin:34px auto 40px;padding:24px;background:#fff;
+ border:1px solid #ddd2bd;border-radius:16px;
+ font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif}
+.seo-cluster h2{font-size:20px;color:#16283f;margin:0 0 8px;line-height:1.4}
+.seo-cluster p{font-size:15px;color:#6f6a60;margin:0 0 14px;line-height:1.7}
+.seo-cluster ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.seo-cluster a{display:flex;align-items:center;min-height:44px;padding:8px 14px;
+ background:#f7f3ea;border:1px solid #ddd2bd;border-radius:10px;
+ color:#16283f;text-decoration:none;font-size:15.5px;line-height:1.5}
+.seo-cluster a:hover{border-color:#c8963e}
+@media(max-width:520px){.seo-cluster{margin:24px 16px 32px;padding:18px}}
+</style>
+<!-- /CLUSTER:AUTO -->
+</body>
+</html>
