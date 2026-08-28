@@ -1,13 +1,15 @@
 /**
  * / — 個人官網首頁（吳冠良．台中海線專業房仲）
  *
- * 形象照 → 服務區域 → 客戶口碑 → 服務項目 → 預約諮詢
+ * 形象照 → 客戶口碑 → 服務項目（每張卡直接連到對應工具）→ 免費工具 → 預約諮詢
  * 「預約」直接接到本站的線上預約系統 /card/booking（不再只是導去 LINE）。
  * 配色沿用品牌 CIS：深藍 #16283f / 金 #c8963e / 米 #f7f3ea
  */
 import type { Metadata } from "next";
 import Link from "next/link";
 import { OWNER, SOCIAL } from "@/config/owner";
+import { SITE_URL } from "@/lib/site";
+import { agentNode, websiteNode } from "@/lib/agent-node";
 
 const SITE_TITLE = "吳冠良｜台中海線專業房仲 - 資產配置・稅務諮詢・簡易裝潢｜懂你又懂房";
 const SITE_DESC =
@@ -29,22 +31,16 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * 首頁是整個網站的「商家本體」，@id 固定為 <網址>/#agent。
+ * 43 頁靜態內容頁的 JSON-LD 用同一個 @id 指回這裡（見 scripts/seo-build.mjs），
+ * Google 才會把全站當成同一個商家、而不是 44 個不相干的實體。
+ * 資料來源是 src/config/agent.json，兩邊共用，不要在這裡另外寫死。
+ */
 const JSON_LD = {
   "@context": "https://schema.org",
-  "@type": "RealEstateAgent",
-  name: "海線房仲冠良（吳冠良）",
-  image: OWNER.photoUrl,
-  description:
-    "台中海線專業房地產仲介，善願必佑、做對的事、站在客戶這一邊。提供資產配置、稅務諮詢、簡易裝潢，及買賣委託與土地買賣。",
-  telephone: "+886-915-295958",
-  priceRange: "$$",
-  areaServed: ["沙鹿", "清水", "梧棲", "龍井", "大肚", "大甲"].map((n) => ({
-    "@type": "City",
-    name: `台中市${n}區`,
-  })),
-  address: { "@type": "PostalAddress", addressRegion: "台中市", addressCountry: "TW" },
-  slogan: "懂你又懂房",
-  sameAs: [SOCIAL.fb, SOCIAL.ig, SOCIAL.yt, "https://sales.myhomes.com.tw/0915295958"].filter(Boolean),
+  // 節點形狀統一在 src/lib/agent-node.ts，部落格文章也用同一份。
+  "@graph": [agentNode(), websiteNode()],
 };
 
 const CSS = `
@@ -142,9 +138,11 @@ h1 em{font-style:normal;color:var(--gold-soft)}
 .revcard a:hover{background:var(--gold-soft)}
 
 .serv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:18px;margin-top:40px}
-.serv-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px 26px;
+.serv-card{display:block;text-decoration:none;color:inherit;
+  background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px 26px;
   border-top:4px solid var(--gold);transition:transform .14s,box-shadow .14s}
-.serv-card:hover{transform:translateY(-4px);box-shadow:0 10px 26px rgba(22,40,63,.1)}
+.serv-card:hover{transform:translateY(-4px);box-shadow:0 10px 26px rgba(22,40,63,.1);border-color:var(--gold)}
+.serv-card:hover .tag{text-decoration:underline}
 .serv-ico{width:52px;height:52px;border-radius:13px;display:flex;align-items:center;justify-content:center;
   font-size:26px;background:var(--cream-2);margin-bottom:14px}
 .serv-card h3{font-size:19px;color:var(--navy);font-weight:700;margin-bottom:8px}
@@ -185,8 +183,10 @@ h1 em{font-style:normal;color:var(--gold-soft)}
 footer{background:var(--navy);color:#a9b6c4;padding:38px 0;font-size:13.5px;margin-top:56px}
 footer .brand-f{color:var(--gold-soft);font-family:"DM Serif Display",Georgia,serif;font-size:22px}
 footer .spirit-f{color:#cfd8e2;margin:8px 0 14px}
-footer .flinks{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:14px}
-footer .flinks a{color:var(--gold-soft)}
+/* 頁尾連結原本只有 24px 高，手機上很難點準。拉到 40px（拇指的最小舒適區）。 */
+footer .flinks{display:flex;flex-wrap:wrap;gap:2px 16px;margin-bottom:10px}
+footer .flinks a{color:var(--gold-soft);display:inline-flex;align-items:center;
+  min-height:40px;padding:0 2px;text-decoration:none}
 footer .flinks a:hover{text-decoration:underline}
 footer .legal{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.1);color:#7f8d9c;font-size:12px}
 
@@ -201,22 +201,17 @@ footer .legal{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 `;
 
-const AREAS = [
-  { ic: "🌊", name: "沙鹿", note: "捷運＆商圈" },
-  { ic: "🏛️", name: "清水", note: "海線核心" },
-  { ic: "⚓", name: "梧棲", note: "港區・三井" },
-  { ic: "🏫", name: "龍井", note: "學區潛力" },
-  { ic: "🏞️", name: "大肚", note: "山海好宅" },
-  { ic: "🌾", name: "大甲", note: "海線門戶" },
-];
-
+/**
+ * 每張服務卡片都直接連到對應的工具頁 —— 讀者不用捲到頁面下方的工具區再自己找。
+ * tag 直接寫工具名稱，點下去會到哪裡一眼就知道，不用猜。
+ */
 const SERVICES = [
-  { ic: "📊", h: "資產配置", p: "依你的資金、家庭階段與目標，規劃自住／收租／增值的房產布局，把每一分錢放對位置。", tag: "→ 幫你把資產放對地方" },
-  { ic: "🧾", h: "稅務諮詢", p: "房地合一、土增稅、贈與繼承、自住優惠…買賣前先算清楚，不讓稅費吃掉你的獲利。", tag: "→ 買賣前先幫你試算" },
-  { ic: "🛠️", h: "簡易裝潢", p: "老屋翻新、進場前小修繕、賣相優化，串接可信任的配合廠商，花小錢提升居住與成交價值。", tag: "→ 小預算換高賣相" },
-  { ic: "🏠", h: "買方全程陪跑", p: "需求規劃 → 看屋 → 議價 → 簽約 → 貸款 → 交屋驗屋，購屋 7 大關卡全程把關，怕買貴就找我。", tag: "→ 首購族最安心" },
-  { ic: "🔑", h: "賣方委託銷售", p: "誠實定價、用心行銷，售屋網＋社群多管道曝光，替屋主找到對的買家、不亂喊價。", tag: "→ 委託賣屋・賣地" },
-  { ic: "🌳", h: "土地買賣", p: "建地、農地買賣與委託，含產權、貸款與稅費相關諮詢，複雜地目也幫你講到懂。", tag: "→ 地主・投資都適合" },
+  { ic: "📊", h: "資產配置", p: "依你的資金、家庭階段與目標，規劃自住／收租／增值的房產布局，把每一分錢放對位置。", tag: "買方購屋成本試算", href: "/buyer-cost" },
+  { ic: "🧾", h: "稅務諮詢", p: "房地合一、土增稅、贈與繼承、自住優惠…買賣前先算清楚，不讓稅費吃掉你的獲利。", tag: "房地合一稅・自用優惠", href: "/selfuse-tax" },
+  { ic: "🛠️", h: "簡易裝潢", p: "老屋翻新、進場前小修繕、賣相優化，串接可信任的配合廠商，花小錢提升居住與成交價值。", tag: "漏水屋況檢查清單", href: "/leak-check" },
+  { ic: "🏠", h: "買方全程陪跑", p: "需求規劃 → 看屋 → 議價 → 簽約 → 貸款 → 交屋驗屋，購屋 7 大關卡全程把關，怕買貴就找我。", tag: "買屋注意事項全攻略", href: "/buy-house-guide" },
+  { ic: "🔑", h: "賣方委託銷售", p: "誠實定價、用心行銷，售屋網＋社群多管道曝光，替屋主找到對的買家、不亂喊價。", tag: "賣房前你必須知道的事", href: "/seller-guide" },
+  { ic: "🌳", h: "土地買賣", p: "建地、農地買賣與委託，含產權、貸款與稅費相關諮詢，複雜地目也幫你講到懂。", tag: "申請建築線全攻略", href: "/building-line" },
 ];
 
 /** 首頁露出的主打工具（完整 40 個在 /tools/） */
@@ -251,7 +246,6 @@ export default function Home() {
             海線房仲冠良　<span>懂你又懂房</span>
           </a>
           <div className="navlinks">
-            <a href="#area">服務區域</a>
             <a href="#services">服務項目</a>
             <a href="/tools/">免費工具</a>
             <a href="#record">客戶口碑</a>
@@ -270,9 +264,7 @@ export default function Home() {
             <div>
               <p className="eyebrow">台中海線・專業房地產顧問</p>
               <h1>
-                你好，我是
-                <br />
-                專業房仲 <em>{OWNER.name}</em>
+                我是 <em>{OWNER.alias}</em>
               </h1>
               <p className="lede">
                 深耕台中海線的房地產顧問，把稅務、貸款、產權、屋況都替你查到清楚。善願必佑、站在客戶這一邊——懂你又懂房。
@@ -302,27 +294,6 @@ export default function Home() {
           </div>
         </div>
       </header>
-
-      {/* 服務區域 */}
-      <section className="area" id="area">
-        <div className="wrap center">
-          <p className="kicker">SERVICE AREA</p>
-          <h2 className="title">深耕台中海線</h2>
-          <p className="lead">只做海線，所以每一條街的行情、學區、生活機能都講得出來。買賣、帶看、估價都找我。</p>
-          <div className="arealist">
-            {AREAS.map((a) => (
-              <div className="area-card" key={a.name}>
-                <div className="ic">{a.ic}</div>
-                <b>{a.name}</b>
-                <span>{a.note}</span>
-              </div>
-            ))}
-          </div>
-          <p className="area-note">
-            不在清單上、但同屬<b>台中海線</b>的區域一樣歡迎詢問，先聊聊、免費估價 👉
-          </p>
-        </div>
-      </section>
 
       {/* 客戶口碑 */}
       <section className="record" id="record">
@@ -355,12 +326,12 @@ export default function Home() {
           </div>
           <div className="serv-grid">
             {SERVICES.map((s) => (
-              <div className="serv-card" key={s.h}>
+              <Link className="serv-card" key={s.h} href={s.href}>
                 <div className="serv-ico">{s.ic}</div>
                 <h3>{s.h}</h3>
                 <p>{s.p}</p>
-                <span className="tag">{s.tag}</span>
-              </div>
+                <span className="tag">→ {s.tag}</span>
+              </Link>
             ))}
           </div>
         </div>
@@ -445,10 +416,11 @@ export default function Home() {
           <div className="brand-f">海線房仲・{OWNER.name}</div>
           <div className="spirit-f">善願必佑 · 做對的事 · 站在客戶這一邊 · 讓你幸福會發光</div>
           <div className="flinks">
-            <a href="#area">服務區域</a>
-            <a href="#record">客戶口碑</a>
             <a href="#services">服務項目</a>
+            <a href="#record">客戶口碑</a>
             <Link href="/card/booking">線上預約</Link>
+            <Link href="/blog">房產筆記</Link>
+            <Link href="/tools">買賣屋工具</Link>
             <Link href="/card">電子名片</Link>
             {SOCIAL.fb ? (
               <a href={SOCIAL.fb} target="_blank" rel="noopener noreferrer">
