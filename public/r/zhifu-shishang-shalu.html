@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<!--
+  致富時上（沙鹿福成路）社區介紹。
+  ⚠ 放在 public/r/ 底下的「單檔」，不是 public/<slug>/index.html ——
+    listStaticPages() 只認「目錄裡有 index.html」，做成那個形狀會被自動掃進
+    next.config 的 rewrite ＋ sitemap ＋ /tools 清單。放這裡三個都不會碰到。
+  ⚠ 社區資料會變（管委會、車位配置、建物現況），所以自帶 noindex，不進搜尋。
+-->
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>致富時上｜沙鹿區福成路社區介紹｜海線房仲冠良</title>
+<style>
+:root{
+  --navy:#16283f; --cream:#fdf8f0; --gold:#c8963e; --gold-soft:#e0c188;
+  --orange:#f26e22; --red:#d9401e; --line:#e7dfce; --sub:#5f6b7a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--cream);color:var(--navy);
+  font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;
+  font-size:18px;line-height:1.75;-webkit-text-size-adjust:100%}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+
+header{background:var(--navy);color:var(--cream);padding:46px 0 40px;position:relative;overflow:hidden}
+header:before{content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 88% 8%,rgba(200,150,62,.24),transparent 55%)}
+header .wrap{position:relative}
+.eyebrow{font-size:15px;font-weight:700;color:var(--gold-soft);letter-spacing:.06em}
+h1{font-size:clamp(28px,6vw,42px);line-height:1.25;font-weight:800;margin-top:10px}
+.addr{font-size:17px;color:#cfd8e2;margin-top:12px}
+
+.hero{display:flex;gap:14px;margin:26px 0 6px}
+.hero .b{flex:1;background:#fff;border-radius:16px;padding:20px 16px;text-align:center;
+  box-shadow:0 6px 18px rgba(0,0,0,.06)}
+.hero .b .l{font-size:15px;font-weight:700;color:var(--sub)}
+.hero .b .v{font-size:clamp(40px,11vw,60px);font-weight:900;line-height:1.05;margin-top:6px;
+  letter-spacing:-.03em;color:var(--navy)}
+.hero .b.o .v{color:var(--red)}
+.hero .b .u{font-size:15px;font-weight:700;color:var(--sub);margin-top:4px}
+.hero .mid{display:flex;align-items:center;font-weight:900;color:var(--sub);font-size:18px}
+
+.punch{background:var(--navy);color:var(--cream);border-radius:16px;padding:22px 24px;
+  font-size:19px;font-weight:700;line-height:1.7;margin:18px 0 30px}
+.punch b{color:var(--gold-soft)}
+
+main{padding:34px 0 10px}
+h2{font-size:23px;font-weight:800;margin:34px 0 12px;padding-left:13px;
+  border-left:6px solid var(--gold)}
+h3{font-size:19px;font-weight:800;margin:22px 0 8px}
+p{margin:12px 0}
+ul{margin:12px 0 12px 22px}
+li{margin:7px 0}
+
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:17px}
+th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:left}
+th{width:38%;color:var(--sub);font-weight:700;white-space:nowrap}
+td{font-weight:700}
+
+.note{background:#fff6e2;border-left:6px solid var(--gold);border-radius:10px;
+  padding:16px 18px;margin:22px 0;font-size:17px}
+.stance{background:#fff;border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin:26px 0}
+
+.cta{background:var(--gold);color:#2a1d05;border-radius:18px;padding:26px 24px;
+  margin:34px 0 10px;text-align:center}
+.cta h2{border:0;padding:0;margin:0 0 8px;font-size:24px}
+.cta p{margin:6px 0 16px;font-size:17px}
+.cta a{display:inline-block;background:var(--navy);color:var(--cream);
+  text-decoration:none;font-weight:800;font-size:19px;
+  padding:14px 30px;border-radius:999px;min-height:48px;line-height:24px}
+
+footer{border-top:1px solid var(--line);margin-top:34px;padding:24px 0 46px;
+  font-size:15px;color:var(--sub)}
+footer b{color:var(--navy)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">沙鹿 ・ 社區介紹</div>
+    <h1>致富時上</h1>
+    <div class="addr">台中市沙鹿區福成路 48 巷 8 號 ・ 德邑建設</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="b"><div class="l">總戶數</div><div class="v">125</div><div class="u">戶</div></div>
+    <div class="mid">vs</div>
+    <div class="b o"><div class="l">車位</div><div class="v">109</div><div class="u">個</div></div>
+  </div>
+
+  <div class="punch">
+    不是一戶一個。<br>
+    所以在這裡買房，<b>「有沒有帶車位」不是理所當然，是要問清楚的事</b>。<br>
+    同一個社區，有車位跟沒車位，是兩種完全不同的物件。
+  </div>
+
+  <main>
+
+    <h2>社區基本資料</h2>
+    <table>
+      <tr><th>建設公司</th><td>德邑建設</td></tr>
+      <tr><th>地址</th><td>沙鹿區福成路 48 巷 8 號</td></tr>
+      <tr><th>完工</th><td>2019 年 12 月（屋齡約 6 年半）</td></tr>
+      <tr><th>規模</th><td>10 層 RC 造，共 125 戶</td></tr>
+      <tr><th>基地面積</th><td>約 860 平方公尺（約 260 坪）</td></tr>
+      <tr><th>車位</th><td>坡道平面 109 個</td></tr>
+      <tr><th>坪數規劃</th><td>25 ~ 37 坪</td></tr>
+    </table>
+
+    <h2>從這些數字，可以讀出三件事</h2>
+
+    <h3>一、小基地、高密度</h3>
+    <p>260 坪的基地放 125 戶、蓋 10 層，平均<strong>一層 12 到 13 戶</strong>。</p>
+    <p>好處是總價下得來，25 到 37 坪的規劃對首購跟兩人小家庭很友善。</p>
+    <p>代價是同一層鄰居多、電梯尖峰時段要等，公共空間的使用密度也高。</p>
+    <p>沒有好壞，只有適不適合你。</p>
+
+    <h3>二、坡道平面，不是機械</h3>
+    <p>很多人買房只問「有沒有車位」，不問「是哪一種」。</p>
+    <p>機械車位有維護費、有故障停機、有車體高度限制；坡道平面沒有這些問題，但佔的空間大。所以在小基地的社區裡，能配到坡道平面算是加分。</p>
+
+    <h3>三、屋齡六年半，是一個好觀察的區間</h3>
+    <p>新到還沒有大修的問題，舊到已經看得出管理好不好。</p>
+    <p>看這種屋齡的房子，我會建議直接看兩件事：<strong>公設現況</strong>，還有<strong>管委會的財務報表</strong>。六年半，剛好是「有沒有在維護」開始顯現的時候。</p>
+
+    <h2>看這個社區，我會提醒的三個問題</h2>
+    <ul>
+      <li>這一戶<strong>有沒有帶車位</strong>，是坡道平面還是別的形式</li>
+      <li><strong>管理費怎麼收</strong>，公共基金存了多少</li>
+      <li><strong>同一層有幾戶、電梯幾部</strong></li>
+    </ul>
+    <p>前面兩個問屋主或管理室就知道。第三個，去現場站一下就有答案。</p>
+
+    <div class="stance">
+      <p style="margin-top:0"><strong>我沒有要推薦這個社區，也沒有要唱衰它。</strong></p>
+      <p style="margin-bottom:0">我只是把公開查得到的數字整理出來，讓你自己判斷它適不適合你。買方賣方我都服務，幫你排名對誰都不公平。</p>
+    </div>
+
+    <div class="note">
+      ⚠️ 社區資料會變動——管委會、車位配置、建物現況都可能跟這頁不一樣。
+      要出價、要簽約，請以<strong>現場</strong>與<strong>正式文件</strong>（謄本、規約、財務報表）為準。
+    </div>
+
+    <div class="cta">
+      <h2>想看這個社區，或想比其他社區？</h2>
+      <p>台中海線在地服務。把需求跟預算告訴我，我幫你比。免費，不推銷。</p>
+      <a href="tel:0915295958">打電話給冠良 0915-295958</a>
+    </div>
+
+  </main>
+
+  <footer>
+    <p><b>吳冠良・海線房仲</b>　讓你幸福會發光</p>
+    <p>電話 0915-295958（同 LINE：wosawo）</p>
+    <p style="margin-top:14px">資料來源：公開的社區與建物登記資訊。本頁僅供參考，不作為任何形式之證明。</p>
+  </footer>
+
+</div>
+
+</body>
+</html>

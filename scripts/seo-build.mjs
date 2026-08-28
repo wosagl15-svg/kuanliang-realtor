@@ -111,6 +111,10 @@ const CLUSTERS = {
   },
 };
 
+/* 評論引導區塊由 scripts/review-cta.mjs 產生，這裡只需要認得它的標記，好把它排除在 FAQ 之外 */
+const REVIEW_BEGIN = "<!-- REVIEW:AUTO 由 scripts/review-cta.mjs 產生，不要手改 -->";
+const REVIEW_END = "<!-- /REVIEW:AUTO -->";
+
 const CLUSTER_BEGIN = "<!-- CLUSTER:AUTO 由 scripts/seo-build.mjs 產生，不要手改 -->";
 const CLUSTER_END = "<!-- /CLUSTER:AUTO -->";
 
@@ -212,7 +216,13 @@ function extractFaq(html) {
   const clean = body
     .replace(/<(script|style)[^>]*>[\s\S]*?<\/\1>/gi, " ")
     // 主題群集區塊的標題不是問答，排除掉
-    .replace(new RegExp(`${CLUSTER_BEGIN}[\\s\\S]*?${CLUSTER_END}`, "g"), " ");
+    .replace(new RegExp(`${CLUSTER_BEGIN}[\\s\\S]*?${CLUSTER_END}`, "g"), " ")
+    /* 🔴 2026-08-28：Google 評論引導區塊的標題是「這些整理，有幫到你嗎？」，問號結尾，
+       被當成 FAQ 抓進結構化資料——而那個區塊全站 54 頁都有。實測 14 個有 FAQPage
+       的頁面全部被污染，其中 8 頁還是靠這一題才湊到三題門檻。
+       CTA 區塊同理（「還是乾脆賣掉？」），行銷用語不是問答內容。 */
+    .replace(new RegExp(`${REVIEW_BEGIN}[\\s\\S]*?${REVIEW_END}`, "g"), " ")
+    .replace(/<(div|section)[^>]*class=["'][^"']*\bcta\b[^"']*["'][\s\S]*?<\/\1>/gi, " ");
 
   const headings = [...clean.matchAll(/<h([23])[^>]*>([\s\S]*?)<\/h\1>/gi)];
   const faq = [];
