@@ -1,0 +1,493 @@
+<!-- 同社區比價表（買方版，一次性）。刻意不放在 public/<slug>/index.html，
+     所以不會被 listStaticPages() 掃到 → 不進 rewrite、不進 sitemap、不出現在 /tools。
+     網址：https://kuanhome.com/r/fuyu-central-park-20260822.html -->
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="googlebot" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>同社區比價報告 範例｜海線房仲冠良</title>
+<meta name="description" content="這是一份同社區比價報告的格式範例，社區名稱與物件名稱皆已去識別化。實際報告會附每一戶的 591 原始連結供核對。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&display=swap">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   同社區比價表（買方版）—— 海線房仲冠良
+   讀者是 30~60 歲買方，多半從 LINE 點開用手機看。三條不破例：
+     1. 內容區一律淺色底深色字，深色只出現在頁首橫幅與頁尾
+     2. 基準字級 17px，不要縮
+     3. 手機把表格拆成一張一張卡片，不要讓他左右拖
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  --ground:#F2F6F3;
+  --surface:#FFFFFF;
+  --surface-2:#F7FAF8;
+  --band:#0E3B4A;
+  --ink:#12241E;
+  --ink-2:#3C534B;
+  --ink-3:#66796F;
+  --line:#DCE6E0;
+  --line-soft:#EAF0EC;
+  --green:#15694A;
+  --green-soft:#E4F2EB;
+  --blue:#1D5F7A;
+  --warm:#8A5D1B;
+  --warm-soft:#F6ECD9;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,-apple-system,sans-serif;
+  font-size:17px;
+  line-height:1.8;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1060px;margin:0 auto;padding:24px 16px 56px;}
+.sheet{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:5px;
+  box-shadow:0 1px 2px rgba(18,36,30,.05),0 14px 34px -22px rgba(18,36,30,.4);
+  overflow:hidden;
+}
+
+/* ---- 品牌列 ---- */
+.brandbar{
+  display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;
+  padding:14px 26px;background:var(--surface-2);border-bottom:1px solid var(--line);
+}
+.mark{display:flex;align-items:center;gap:11px;}
+.mark-badge{
+  width:38px;height:38px;flex:none;border-radius:4px;
+  background:linear-gradient(150deg,var(--blue),var(--green));
+  color:#fff;display:grid;place-items:center;
+  font-family:"Noto Serif TC",serif;font-weight:700;font-size:19px;line-height:1;
+}
+.mark-name{font-weight:700;letter-spacing:.02em;line-height:1.35;}
+.mark-sub{color:var(--ink-3);font-size:14px;line-height:1.4;}
+.brandbar .grow{flex:1 1 auto;}
+.brandbar .tel{font-size:15px;color:var(--ink-2);font-variant-numeric:tabular-nums;}
+
+/* ---- 標題橫幅 ---- */
+.band{background:var(--band);color:#F2F8F6;padding:32px 26px 28px;position:relative;}
+.band .eyebrow{
+  font-size:13px;font-weight:700;letter-spacing:.16em;color:#8FD2B4;margin:0 0 8px;
+}
+.band h1{
+  font-family:"Noto Serif TC","Songti TC",serif;font-weight:700;
+  font-size:clamp(27px,5.2vw,38px);line-height:1.25;margin:0;text-wrap:balance;
+}
+.band .meta{margin:12px 0 0;display:flex;flex-wrap:wrap;gap:4px 22px;color:#A9C6C4;font-size:15px;}
+.band .meta b{color:#DCEDE7;font-weight:500;}
+.chip-role{
+  position:absolute;top:26px;right:26px;
+  background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.24);
+  color:#EAF5F0;border-radius:3px;font-size:14px;padding:4px 12px;
+}
+
+/* ---- 三個數字 ---- */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line);}
+.stat{padding:20px 26px;border-right:1px solid var(--line-soft);}
+.stat:last-child{border-right:0;}
+.stat .k{font-size:14px;color:var(--ink-3);margin-bottom:2px;}
+.stat .v{
+  font-family:"Noto Serif TC",serif;font-weight:700;font-size:31px;line-height:1.2;
+  font-variant-numeric:tabular-nums;
+}
+.stat.is-key .v{color:var(--green);}
+
+/* ---- 區塊 ---- */
+section{padding:26px;border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:0;}
+h2{font-family:"Noto Serif TC",serif;font-weight:700;font-size:21px;line-height:1.45;margin:0 0 4px;}
+.lede{margin:0 0 18px;color:var(--ink-2);font-size:16px;max-width:60ch;}
+
+/* ---- 價格帶 ---- */
+.rail{margin:28px 0 8px;position:relative;height:70px;padding:0 48px;}
+.rail-line{position:absolute;left:48px;right:48px;top:28px;height:2px;background:var(--line);}
+.tick{position:absolute;top:0;transform:translateX(-50%);text-align:center;width:92px;}
+.tick .dot{width:12px;height:12px;border-radius:50%;margin:23px auto 0;background:#fff;border:2px solid var(--ink-3);}
+.tick .lbl{font-size:14px;color:var(--ink-3);margin-top:6px;display:block;font-variant-numeric:tabular-nums;line-height:1.4;}
+.tick .cap{display:block;font-size:13px;color:var(--ink-3);line-height:1.4;}
+.tick.is-self .dot{background:var(--green);border-color:var(--green);width:15px;height:15px;margin-top:21px;}
+.tick.is-self .lbl,.tick.is-self .cap{color:var(--green);font-weight:700;}
+.rail-note{color:var(--ink-3);font-size:14px;margin:12px 0 0;}
+/* 手機把刻度條換成分價位清單：375px 下五個刻度標籤會互相重疊，硬塞只會看不懂 */
+.rail-list{display:none;flex-direction:column;gap:8px;margin:18px 0 0;}
+.rail-list .row{
+  display:flex;align-items:baseline;gap:12px;
+  padding:11px 14px;border:1px solid var(--line);border-radius:4px;background:var(--surface-2);
+}
+.rail-list .row.is-self{border-color:var(--green);border-width:2px;background:var(--green-soft);}
+.rail-list .p{font-weight:700;font-size:18px;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.rail-list .row.is-self .p{color:var(--green);}
+.rail-list .c{color:var(--ink-3);font-size:15px;line-height:1.5;}
+.rail-list .row.is-self .c{color:var(--green);font-weight:700;}
+
+/* ---- 比較表（桌機） ---- */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:4px;}
+table{border-collapse:collapse;width:100%;font-size:15.5px;}
+thead th{
+  background:var(--surface-2);text-align:right;font-weight:500;color:var(--ink-2);
+  font-size:14px;padding:11px 13px;border-bottom:1px solid var(--line);white-space:nowrap;
+}
+thead th:first-child{text-align:left;}
+tbody td{
+  padding:13px;border-bottom:1px solid var(--line-soft);text-align:right;
+  font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--ink-2);
+}
+tbody td:first-child{text-align:left;white-space:normal;min-width:270px;color:var(--ink);}
+tbody tr:last-child td{border-bottom:0;}
+tbody tr.self{background:var(--green-soft);}
+tbody tr.self td{color:var(--ink);}
+tbody tr.self .t{font-weight:700;}
+.t{line-height:1.55;display:block;}
+a.t{color:var(--blue);text-decoration:none;}
+a.t:hover{text-decoration:underline;}
+a.t:focus-visible{outline:3px solid var(--warm);outline-offset:2px;border-radius:2px;}
+tbody tr.self a.t{color:var(--ink);}
+.ext{margin-left:5px;font-size:13px;color:var(--ink-3);}
+.pill{display:inline-block;font-size:13px;padding:1px 8px;border-radius:3px;font-weight:500;margin-top:5px;}
+.pill-self{background:var(--green);color:#fff;}
+.pill-cut{background:var(--warm-soft);color:var(--warm);border:1px solid var(--warm);}
+.bar{height:4px;background:var(--line);border-radius:2px;overflow:hidden;margin-top:6px;min-width:70px;}
+.bar i{display:block;height:100%;background:var(--blue);}
+tbody tr.self .bar i{background:var(--green);}
+.price{font-weight:700;color:var(--ink);font-size:17px;}
+.sub{color:var(--ink-3);font-size:13.5px;}
+
+/* ---- 比較表（手機：整列變一張卡） ---- */
+@media (max-width:700px){
+  .tablewrap{border:0;overflow:visible;}
+  table,tbody,tr,td{display:block;width:100%;}
+  thead{display:none;}
+  tbody tr{
+    border:1px solid var(--line);border-radius:4px;margin-bottom:12px;
+    padding:14px 16px;background:var(--surface);
+  }
+  tbody tr.self{border-color:var(--green);border-width:2px;background:var(--green-soft);}
+  tbody td{
+    padding:5px 0;border-bottom:0;text-align:right;white-space:normal;
+    display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+  }
+  tbody td:first-child{
+    display:block;min-width:0;padding:0 0 10px;margin-bottom:8px;
+    border-bottom:1px solid var(--line-soft);text-align:left;
+  }
+  tbody td[data-l]::before{
+    content:attr(data-l);color:var(--ink-3);font-size:14.5px;
+    text-align:left;flex:none;
+  }
+  .bar{margin-top:8px;}
+  tbody td.cell-price{display:block;text-align:left;}
+  tbody td.cell-price::before{display:block;margin-bottom:2px;}
+}
+
+/* ---- 瀏覽數 ---- */
+.views{display:flex;flex-direction:column;gap:15px;}
+.viewrow{display:grid;grid-template-columns:minmax(0,1fr) 76px;gap:14px;align-items:center;}
+.viewrow .n{font-size:15.5px;line-height:1.55;}
+.viewrow .track{height:9px;background:var(--line-soft);border-radius:3px;overflow:hidden;margin-top:7px;}
+.viewrow .track i{display:block;height:100%;background:var(--blue);}
+.viewrow.self .track i{background:var(--green);}
+.viewrow .cnt{text-align:right;font-variant-numeric:tabular-nums;font-size:16px;color:var(--ink-2);}
+.viewrow.self .cnt,.viewrow.self .n{color:var(--green);font-weight:700;}
+.why{color:var(--ink-3);font-size:14px;line-height:1.65;margin-top:3px;}
+
+/* ---- 建議 ---- */
+.notes{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-soft);border:1px solid var(--line);border-radius:4px;overflow:hidden;}
+.note{background:var(--surface);padding:20px 22px;}
+.note h3{margin:0 0 6px;font-size:15px;font-weight:700;letter-spacing:.04em;color:var(--green);}
+.note p{margin:0;font-size:16px;color:var(--ink-2);line-height:1.85;}
+.note p b{color:var(--ink);font-weight:700;}
+
+/* ---- 頁尾 ---- */
+.cta{padding:22px 26px;background:var(--surface-2);border-top:1px solid var(--line);}
+.cta p{margin:0 0 12px;font-size:16px;color:var(--ink-2);}
+.btns{display:flex;flex-wrap:wrap;gap:10px;}
+.btn{
+  display:inline-block;padding:11px 22px;border-radius:4px;text-decoration:none;
+  font-size:16.5px;font-weight:700;border:1px solid transparent;
+}
+.btn-line{background:var(--green);color:#fff;}
+.btn-tel{background:#fff;color:var(--blue);border-color:var(--blue);}
+.btn:focus-visible{outline:3px solid var(--warm);outline-offset:2px;}
+.foot{background:var(--band);color:#C6DCD6;padding:22px 26px;font-size:14.5px;line-height:1.75;}
+.foot .who{color:#F2F8F6;font-weight:700;font-size:16.5px;}
+.foot a{color:#8FD2B4;}
+.disclaimer{padding:18px 26px 0;color:var(--ink-3);font-size:14px;line-height:1.7;max-width:70ch;}
+
+@media (max-width:640px){
+  .wrap{padding:14px 12px 40px;}
+  .brandbar,.band,.cta,.foot,.disclaimer{padding-left:18px;padding-right:18px;}
+  section{padding:22px 18px;}
+  .band{padding-top:22px;padding-bottom:22px;}
+  .chip-role{position:static;display:inline-block;margin-bottom:12px;}
+  .stats{grid-template-columns:1fr;}
+  .stat{border-right:0;border-bottom:1px solid var(--line-soft);padding:14px 18px;}
+  .stat .v{font-size:26px;}
+  .notes{grid-template-columns:1fr;}
+  .rail{display:none;}
+  .rail-list{display:flex;}
+}
+</style>
+</head>
+<body>
+
+<div style="background:#8A5D1B;color:#fff;padding:13px 20px;font-size:15.5px;line-height:1.65;text-align:center">
+📄 <b>這是格式範例</b>　社區與物件名稱已去識別化、數字為真實市場資料。<b>實際給你的報告會附每一戶的 591 原始連結</b>，你可以自己點進去核對。
+</div>
+<div class="wrap">
+<div class="sheet">
+
+  <div class="brandbar">
+    <div class="mark">
+      <div class="mark-badge">冠</div>
+      <div>
+        <div class="mark-name">海線房仲冠良</div>
+        <div class="mark-sub">吳冠良・台中海線房地產</div>
+      </div>
+    </div>
+    <div class="grow"></div>
+    <div class="tel">0915-295958</div>
+  </div>
+
+  <div class="band">
+    <span class="chip-role">格式範例</span>
+    <p class="eyebrow">同社區在售比較</p>
+    <h1>範例：同社區比價報告</h1>
+    <p class="meta"><span>社區　<b>範例社區</b></span><span>製表　<b>2026 年 8 月 22 日 12:22</b></span></p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="k">社區在售供給</div><div class="v">7 戶</div></div>
+    <div class="stat is-key"><div class="k">本物件價格排名</div><div class="v">第 1 低</div></div>
+    <div class="stat"><div class="k">開價低於本物件</div><div class="v">0 戶</div></div>
+  </div>
+
+  <section>
+    <h2>價格帶位置</h2>
+    <p class="lede">同社區 7 筆在售物件的開價分布。本物件落在最左端，另有 2 戶開價相同。</p>
+    <div class="rail" id="rail"><div class="rail-line"></div></div>
+    <div class="rail-list" id="railList"></div>
+    <p class="rail-note">刻度為各物件開價總價（萬元），同價位物件疊在同一點。</p>
+  </section>
+
+  <section>
+    <h2>價格與物件比較</h2>
+    <p class="lede">這一戶與同社區其他 6 戶在售物件，依總價由低到高排序。<b>點物件名稱可開 591 原始刊登頁</b>，數字都能自己回頭核對。</p>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">物件</th><th scope="col">總價</th><th scope="col">坪數</th>
+            <th scope="col">單價</th><th scope="col">樓層／格局</th><th scope="col">屋齡</th><th scope="col">瀏覽</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="self">
+            <td><span class="t">範例社區　15F 兩房＋車位<span class="ext" aria-hidden="true"></span></span><span class="pill pill-self">本次介紹</span></td>
+            <td class="cell-price" data-l="總價"><span class="price">798 萬</span><div class="bar"><i style="width:14%"></i></div></td>
+            <td data-l="坪數">27.5 坪</td>
+            <td data-l="單價">29.1 萬</td>
+            <td data-l="樓層／格局">15F/15F<span class="sub"> · 2房2廳1衛</span></td>
+            <td data-l="屋齡">4 年</td>
+            <td data-l="瀏覽">51</td>
+          </tr>
+          <tr>
+            <td><span class="t">同社區 A<span class="ext" aria-hidden="true"></span></span></td>
+            <td class="cell-price" data-l="總價"><span class="price">798 萬</span> <span class="pill pill-cut">已降</span><div class="bar"><i style="width:14%"></i></div></td>
+            <td data-l="坪數">27.5 坪</td>
+            <td data-l="單價">29 萬</td>
+            <td data-l="樓層／格局">15F/15F<span class="sub"> · 2房2廳1衛</span></td>
+            <td data-l="屋齡">4 年</td>
+            <td data-l="瀏覽">1,102</td>
+          </tr>
+          <tr>
+            <td><span class="t">同社區 B<span class="ext" aria-hidden="true"></span></span></td>
+            <td class="cell-price" data-l="總價"><span class="price">798 萬</span><div class="bar"><i style="width:14%"></i></div></td>
+            <td data-l="坪數">24.5 坪</td>
+            <td data-l="單價">32.6 萬</td>
+            <td data-l="樓層／格局">15F/15F<span class="sub"> · 2房1廳1衛</span></td>
+            <td data-l="屋齡">4 年</td>
+            <td data-l="瀏覽">200</td>
+          </tr>
+          <tr>
+            <td><span class="t">同社區 C<span class="ext" aria-hidden="true"></span></span></td>
+            <td class="cell-price" data-l="總價"><span class="price">858 萬</span><div class="bar"><i style="width:44%"></i></div></td>
+            <td data-l="坪數">31.6 坪</td>
+            <td data-l="單價">27.1 萬</td>
+            <td data-l="樓層／格局">4F/15F<span class="sub"> · 2房2廳1衛</span></td>
+            <td data-l="屋齡">5 年</td>
+            <td data-l="瀏覽">304</td>
+          </tr>
+          <tr>
+            <td><span class="t">同社區 D<span class="ext" aria-hidden="true"></span></span></td>
+            <td class="cell-price" data-l="總價"><span class="price">888 萬</span><div class="bar"><i style="width:59%"></i></div></td>
+            <td data-l="坪數">27.5 坪</td>
+            <td data-l="單價">32.3 萬</td>
+            <td data-l="樓層／格局">15F/15F<span class="sub"> · 2房2廳1衛</span></td>
+            <td data-l="屋齡">4 年</td>
+            <td data-l="瀏覽">170</td>
+          </tr>
+          <tr>
+            <td><span class="t">同社區 E<span class="ext" aria-hidden="true"></span></span></td>
+            <td class="cell-price" data-l="總價"><span class="price">888 萬</span><div class="bar"><i style="width:59%"></i></div></td>
+            <td data-l="坪數">27.5 坪</td>
+            <td data-l="單價">32.3 萬</td>
+            <td data-l="樓層／格局">6F/15F<span class="sub"> · 2房2廳1衛</span></td>
+            <td data-l="屋齡">4 年</td>
+            <td data-l="瀏覽">139</td>
+          </tr>
+          <tr>
+            <td><span class="t">同社區 F<span class="ext" aria-hidden="true"></span></span></td>
+            <td class="cell-price" data-l="總價"><span class="price">950 萬</span><div class="bar"><i style="width:90%"></i></div></td>
+            <td data-l="坪數">27.3 坪</td>
+            <td data-l="單價">34.8 萬</td>
+            <td data-l="樓層／格局">3F/15F<span class="sub"> · 2房2廳1衛</span></td>
+            <td data-l="屋齡">0 年</td>
+            <td data-l="瀏覽">8</td>
+          </tr>
+                  </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>瀏覽數解讀</h2>
+    <p class="lede">瀏覽量會受刊登時間長短、開價與曝光方式影響。數字代表線上關注，不等於詢問或成交熱度。同批單價中位為 32.3 萬。</p>
+    <div class="views">
+      <div class="viewrow">
+        <div>
+          <div class="n">同社區 A</div>
+          <div class="track"><i style="width:100%"></i></div>
+          <div class="why">刊登 103 天、長期累積（平均每日約 10.7 次）；單價 29 萬低於同批中位；有調價紀錄。</div>
+        </div>
+        <div class="cnt">1,102</div>
+      </div>
+      <div class="viewrow">
+        <div>
+          <div class="n">同社區 C</div>
+          <div class="track"><i style="width:27.6%"></i></div>
+          <div class="why">刊登 44 天、平均每日約 6.9 次；單價 27.1 萬低於同批中位；照片 11 張，圖多吸點擊。</div>
+        </div>
+        <div class="cnt">304</div>
+      </div>
+      <div class="viewrow">
+        <div><div class="n">同社區 B</div><div class="track"><i style="width:18.1%"></i></div></div>
+        <div class="cnt">200</div>
+      </div>
+      <div class="viewrow">
+        <div><div class="n">同社區 D</div><div class="track"><i style="width:15.4%"></i></div></div>
+        <div class="cnt">170</div>
+      </div>
+      <div class="viewrow">
+        <div><div class="n">同社區 E</div><div class="track"><i style="width:12.6%"></i></div></div>
+        <div class="cnt">139</div>
+      </div>
+      <div class="viewrow self">
+        <div>
+          <div class="n">範例社區 15F 兩房＋車位（本次介紹）</div>
+          <div class="track"><i style="width:4.6%"></i></div>
+          <div class="why">本期瀏覽 51 次，本批有 5 戶高於本物件。</div>
+        </div>
+        <div class="cnt">51</div>
+      </div>
+      <div class="viewrow">
+        <div><div class="n">同社區 F</div><div class="track"><i style="width:0.7%"></i></div></div>
+        <div class="cnt">8</div>
+      </div>
+    </div>
+  </section>
+
+
+  <p class="disclaimer">本頁為提供給指定看屋人的參考資料，未對外公開索引。市場供給與刊登內容可能隨時間變動，表中資料為 2026 年 8 月 22 日 12:22 擷取之公開刊登資訊，僅供比較參考，不構成價格保證或成交承諾。實際坪數、格局與屋況以現場及產權文件為準。</p>
+
+  <div class="cta">
+    <p>想約看這一戶，或想比較其他社區、其他總價帶，隨時找我。</p>
+    <div class="btns">
+      <a class="btn btn-line" href="https://lin.ee/1WlfBub">用 LINE 約看屋</a>
+      <a class="btn btn-tel" href="tel:0915295958">撥打 0915-295958</a>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="who">海線房仲冠良・吳冠良</div>
+    <div>懂你又懂房 🏡　善願必佑，做對的事，站在客戶這一邊。</div>
+    <div><a href="https://kuanhome.com">kuanhome.com</a></div>
+  </div>
+
+</div>
+</div>
+
+<script>
+(function(){
+  var prices=[798,798,798,858,888,888,950],uniq=[],seen={};
+  prices.forEach(function(p){ if(!seen[p]){seen[p]=0;uniq.push(p);} seen[p]++; });
+  var min=798,max=950,rail=document.getElementById('rail'),list=document.getElementById('railList');
+  uniq.forEach(function(p){
+    var el=document.createElement('div');
+    el.className='tick'+(p===min?' is-self':'');
+    el.style.left='calc(48px + '+((p-min)/(max-min)*100)+'% - '+((p-min)/(max-min)*96)+'px)';
+    var cap = p===min
+      ? (seen[p]>1 ? '本物件 · 另 '+(seen[p]-1)+' 戶同價' : '本物件 · 最低')
+      : (seen[p]>1 ? seen[p]+' 戶' : '');
+    el.innerHTML='<div class="dot"></div><span class="lbl">'+p+'</span>'+(cap?'<span class="cap">'+cap+'</span>':'');
+    rail.appendChild(el);
+
+    // 手機版：同一份資料換成清單，標籤才不會疊在一起
+    var row=document.createElement('div');
+    row.className='row'+(p===min?' is-self':'');
+    row.innerHTML='<span class="p">'+p+' 萬</span><span class="c">'+seen[p]+' 戶'
+      +(p===min?'（含本物件）':'')+'</span>';
+    list.appendChild(row);
+  });
+})();
+</script>
+<!-- REVIEW:AUTO 由 scripts/review-cta.mjs 產生，不要手改 -->
+<section class="gr-cta" aria-labelledby="gr-cta-h">
+  <div class="gr-inner">
+    <p class="gr-eyebrow">GOOGLE 評論</p>
+    <h2 id="gr-cta-h">這些整理，有幫到你嗎？</h2>
+    <p class="gr-lede">留一則 Google 評論，讓其他正在煩惱同樣問題的人，也找得到這裡。<br>一句話就夠，不用寫長。</p>
+    <a class="gr-btn" href="https://g.page/r/Cc3MaJq-9w1REAE/review" target="_blank" rel="noopener noreferrer">
+      <svg class="gr-star" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l2.9 6.6 7.1.7-5.3 4.8 1.5 7-6.2-3.6L5.8 21l1.5-7L2 9.3l7.1-.7z"/></svg>
+      去 Google 留評論
+    </a>
+    <p class="gr-note">會開啟 Google 地圖的評論視窗，需要登入 Google 帳號。</p>
+  </div>
+</section>
+<style>
+.gr-cta{max-width:820px;margin:34px auto 40px;padding:26px 24px;
+ background:#16283f;border-radius:16px;color:#e9edf2;
+ font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif;
+ text-align:center;box-sizing:border-box}
+.gr-cta *{box-sizing:border-box}
+.gr-inner{max-width:34em;margin:0 auto}
+.gr-cta .gr-eyebrow{margin:0 0 8px;font-size:12.5px;letter-spacing:.2em;color:#e8c887;font-weight:500}
+.gr-cta h2{margin:0 0 10px;font-size:23px;line-height:1.4;color:#fff;font-weight:700;
+ font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif}
+.gr-cta .gr-lede{margin:0 0 20px;font-size:16px;line-height:1.8;color:#cfd8e2}
+.gr-cta .gr-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+ min-height:52px;padding:13px 30px;border-radius:999px;
+ background:#c8963e;color:#20180a;text-decoration:none;
+ font-size:17px;font-weight:700;line-height:1.4}
+.gr-cta .gr-btn:hover{background:#dcae5c}
+.gr-cta .gr-btn:focus-visible{outline:3px solid #e8c887;outline-offset:3px}
+.gr-cta .gr-star{width:20px;height:20px;fill:#20180a;flex:none}
+.gr-cta .gr-note{margin:14px 0 0;font-size:13.5px;color:#9fb0c4;line-height:1.65}
+@media(max-width:640px){
+  .gr-cta{margin:26px 16px 32px;padding:22px 18px}
+  .gr-cta h2{font-size:20px}
+  .gr-cta .gr-btn{width:100%}
+}
+</style>
+<!-- /REVIEW:AUTO -->
+</body>
+</html>
