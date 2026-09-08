@@ -1,4 +1,5 @@
 import { isCurrentUserAdmin } from "@/lib/admin-check";
+import RequireLogin from "@/app/admin/_components/RequireLogin";
 import {
   intentEmoji,
   intentLabel,
@@ -20,7 +21,7 @@ import { isGoogleBound, isGoogleConfigured, getCalendarDisplaySettings } from "@
 import CalendarDisplayPanel from "./CalendarDisplayPanel";
 import RateLimitPanel from "./RateLimitPanel";
 import { appointmentMapsUrl, formatSlotRangeTw } from "@/lib/appointment-notify";
-import { CIS, CHIP, type ChipTone } from "@/app/admin/_components/cis";
+import { CIS, CHIP, type ChipTone, FS } from "@/app/admin/_components/cis";
 import { Icon, StatusDot } from "@/app/admin/_ui/icons";
 import AppointmentActions from "./AppointmentActions";
 import CustomLocationApprovalPanel from "./CustomLocationApprovalPanel";
@@ -299,7 +300,12 @@ export default async function AppointmentsAdminPage({
 }: {
   searchParams: Promise<SearchParams>;
 }) {
-  if (!(await isCurrentUserAdmin())) throw new Error("權限不足");
+  // 🔴 2026-08-21：這裡本來是 `throw new Error("權限不足")`，結果「沒登入」在線上
+  //    變成 500 伺服器錯誤——admin-check 特地寫成失敗回 false，卻在這一步被丟掉了。
+  //    其他五頁後台早就改用 RequireLogin，只有這頁漏掉。沒登入要看到登入按鈕，不是錯誤頁。
+  if (!(await isCurrentUserAdmin())) {
+    return <RequireLogin title="預約管理" callbackUrl="/admin/appointments" />;
+  }
 
   const sp = await searchParams;
   const queue = QUEUES.some((item) => item.key === sp.queue) ? (sp.queue as AppointmentQueue) : "all";
@@ -369,7 +375,7 @@ export default async function AppointmentsAdminPage({
               先處理逾時與異常，再追蹤到場、結果及實際成交。
             </p>
           </div>
-          <div style={{ color: googleBound ? "#4ade80" : "#fbbf24", fontSize: 15, fontWeight: 800 }}>
+          <div style={{ color: googleBound ? "#0f7a45" : "#8a6100", fontSize: FS(15), fontWeight: 800 }}>
             <StatusDot tone={googleBound ? "green" : "yellow"} title={googleBound ? "已綁定" : "未綁定"} />
             {" "}
             {googleBound
@@ -381,10 +387,10 @@ export default async function AppointmentsAdminPage({
         </div>
 
         {sp.google === "bound" ? (
-          <div style={{ color: "#4ade80", marginBottom: 12, fontSize: 15 }}>Google 日曆綁定成功。</div>
+          <div style={{ color: "#0f7a45", marginBottom: 12, fontSize: FS(15) }}>Google 日曆綁定成功。</div>
         ) : null}
         {sp.google === "fail" ? (
-          <div style={{ color: "#fb7185", marginBottom: 12, fontSize: 15 }}>
+          <div style={{ color: "#b3202e", marginBottom: 12, fontSize: FS(15) }}>
             Google 日曆綁定失敗，請確認 OAuth 設定後重試。
           </div>
         ) : null}
@@ -394,7 +400,7 @@ export default async function AppointmentsAdminPage({
           <div
             style={{
               background: "rgba(251,146,60,.1)", border: "1px solid #7c4a12", borderRadius: 10,
-              padding: "10px 14px", marginBottom: 14, color: "#fdba74", fontSize: 15, lineHeight: 1.85,
+              padding: "10px 14px", marginBottom: 14, color: "#fdba74", fontSize: FS(15), lineHeight: 1.85,
             }}
           >
             ⚠️ 有 <b>{orphanedCalendarIds.size}</b> 筆預約的 Google 日曆事件已經不存在了（多半是直接在日曆上刪掉的）。
@@ -405,7 +411,7 @@ export default async function AppointmentsAdminPage({
           <div
             style={{
               background: "rgba(148,163,184,.08)", border: "1px solid #2a3441", borderRadius: 10,
-              padding: "9px 14px", marginBottom: 14, color: "#94a3b8", fontSize: 14.5, lineHeight: 1.8,
+              padding: "9px 14px", marginBottom: 14, color: "#94a3b8", fontSize: FS(14.5), lineHeight: 1.8,
             }}
           >
             這次沒能問到 Google 日曆，所以<b>沒有做「事件是否還在」的比對</b>（不是代表沒問題，是這次不知道）。重新整理可以再試一次。
@@ -433,10 +439,10 @@ export default async function AppointmentsAdminPage({
 
         <div className={styles.summaryGrid}>
           {[
-            ["待客戶確認", pendingCount, "#fbbf24"],
-            ["首次聯絡逾時", overdueCount, "#fb7185"],
-            ["同步／通知異常", failureCount, "#fb7185"],
-            ["會後結果待填", outcomePendingCount, "#e8c887"],
+            ["待客戶確認", pendingCount, "#8a6100"],
+            ["首次聯絡逾時", overdueCount, "#b3202e"],
+            ["同步／通知異常", failureCount, "#b3202e"],
+            ["會後結果待填", outcomePendingCount, "#1750b5"],
           ].map(([label, value, color]) => (
             <div
               key={String(label)}
@@ -498,7 +504,7 @@ export default async function AppointmentsAdminPage({
                 {item.label}
                 <span
                   className={styles.count}
-                  style={{ background: active ? "rgba(255,255,255,0.18)" : CIS.bgSoft }}
+                  style={{ background: active ? "#59657d" : CIS.bgSoft }}
                 >
                   {queueCounts[item.key]}
                 </span>
@@ -584,7 +590,7 @@ export default async function AppointmentsAdminPage({
                         <div
                           style={{
                             marginTop: 6, background: "rgba(251,146,60,.12)", border: "1px solid #7c4a12",
-                            borderRadius: 8, padding: "7px 10px", color: "#fdba74", fontSize: 14, lineHeight: 1.8, maxWidth: 560,
+                            borderRadius: 8, padding: "7px 10px", color: "#fdba74", fontSize: FS(14), lineHeight: 1.8, maxWidth: 560,
                           }}
                         >
                           ⚠️ <b>這筆的 Google 日曆事件已經不存在了</b>（多半是直接在日曆上刪掉的）。
@@ -687,7 +693,7 @@ export default async function AppointmentsAdminPage({
                         <div style={{ color: CIS.textMute }}>
                           {calendarTruth.detail}
                           {calendarTruth.error || row.calendar_sync_error ? (
-                            <div className={styles.syncError} style={{ color: "#fb7185" }}>
+                            <div className={styles.syncError} style={{ color: "#b3202e" }}>
                               {calendarTruth.error || row.calendar_sync_error}
                             </div>
                           ) : null}
@@ -699,7 +705,7 @@ export default async function AppointmentsAdminPage({
                           {notificationTruth.detail}
                           {notificationCounts[row.id] ? `，共 ${notificationCounts[row.id]} 筆紀錄` : ""}
                           {notificationTruth.error || row.last_notify_error ? (
-                            <div className={styles.syncError} style={{ color: "#fb7185" }}>
+                            <div className={styles.syncError} style={{ color: "#b3202e" }}>
                               {notificationTruth.error || row.last_notify_error}
                             </div>
                           ) : null}

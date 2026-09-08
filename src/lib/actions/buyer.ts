@@ -15,6 +15,8 @@ import {
   setBuyerTags,
   setBuyerCommunities,
   addContactLog,
+  updateContactLog,
+  deleteContactLog,
   createFreeTag,
   deleteBuyer,
   setBroadcastOptOut,
@@ -26,7 +28,7 @@ import { extractBuyer, toExtractionMeta, type ExtractedBuyer, type SourceKind } 
 import { parseBuyerByRules } from "@/lib/buyer-parse-rules";
 import { extractPhones } from "@/lib/phone";
 import type { ExtractActionResult, SaveBuyerInput } from "@/lib/buyer-action-types";
-import { findCommunities, seedDemoCommunities, clearDemoData } from "@/lib/community";
+import { findCommunities, createCommunity, seedDemoCommunities, clearDemoData } from "@/lib/community";
 import { seedDemoListings } from "@/lib/listing";
 
 async function actor(): Promise<string | null> {
@@ -195,6 +197,8 @@ export async function addContactAction(input: {
   type: string;
   content?: string;
   listingId?: string | null;
+  listingUrl?: string | null;
+  communityId?: string | null;
   reaction?: string | null;
 }): Promise<{ ok: boolean; error?: string }> {
   if (!(await isCurrentUserAdmin())) return { ok: false, error: "權限不足" };
@@ -314,4 +318,114 @@ export async function toSaveInput(d: ExtractedBuyer, rawText: string, source: st
     extractionMeta: toExtractionMeta(d),
     unclear: d.unclear,
   };
+}
+
+// ---- 修改／刪除互動紀錄（2026-08-21）----
+
+export async function updateContactAction(input: {
+  logId: string;
+  buyerId: string;
+  content?: string | null;
+  reaction?: string | null;
+  listingUrl?: string | null;
+  communityId?: string | null;
+}): Promise<{ ok: boolean; error?: string }> {
+  if (!(await isCurrentUserAdmin())) return { ok: false, error: "權限不足" };
+  try {
+    const { logId, buyerId, ...rest } = input;
+    await updateContactLog(logId, rest);
+    revalidatePath(`/admin/buyers/${buyerId}`);
+    revalidatePath("/admin/buyers");
+    return { ok: true };
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : String(e) };
+  }
+}
+
+export async function deleteContactAction(
+  logId: string,
+  buyerId: string,
+): Promise<{ ok: boolean; error?: string }> {
+  if (!(await isCurrentUserAdmin())) return { ok: false, error: "權限不足" };
+  try {
+    await deleteContactLog(logId);
+    revalidatePath(`/admin/buyers/${buyerId}`);
+    revalidatePath("/admin/buyers");
+    return { ok: true };
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : String(e) };
+  }
+}
+
+// ---- 社區主檔比對（先查自己的資料庫，不去外面抓）----
+
+export type CommunityHit = {
+  id: string;
+  name: string;
+  district: string;
+  address: string | null;
+  kind: string | null;
+  matchKind: string;
+  /** 這筆在畫面上該顯示的字：透天顯示地址，其餘顯示社區名 */
+  display: string;
+};
+
+/**
+ * 打字時即時比對社區主檔。
+ * 🔴 只查自己的資料庫，不連任何外部網站 —— 不抓 591 的原則沒有變。
+ */
+export async function searchCommunitiesAction(q: string): Promise<CommunityHit[]> {
+  if (!(await isCurrentUserAdmin())) return [];
+  const query = (q ?? "").trim();
+  if (query.length < 1) return [];
+  try {
+    const hits = await findCommunities(query);
+    return hits.slice(0, 8).map((c) => ({
+      id: c.id,
+      name: c.name,
+      district: c.district,
+      address: c.address,
+      kind: (c as { kind?: string | null }).kind ?? null,
+      matchKind: c.matchKind,
+      display: (c as { kind?: string | null }).kind === "house" && c.address ? c.address : c.name,
+    }));
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * 主檔裡沒有這個社區 → 當場建一筆。
+ * 為什麼要能當場建：如果要業務先跳到社區主檔頁新增再回來，他就不會建，
+ * 主檔永遠長不大，「輸入社區撈出所有想買的人」就永遠做不出來。
+ */
+export async function quickCreateCommunityAction(input: {
+  name: string;
+  kind: string;
+  district?: string;
+  address?: string | null;
+}): Promise<{ ok: boolean; id?: string; error?: string }> {
+  if (!(await isCurrentUserAdmin())) return { ok: false, error: "權限不足" };
+  const name = (input.name ?? "").trim();
+  if (!name) return { ok: false, error: "要有名稱" };
+  // 透天用地址辨識，沒地址就沒有辨識度，會長出一堆同名假社區
+  if (input.kind === "house" && !(input.address ?? "").trim()) {
+    return { ok: false, error: "獨棟透天要填地址，不然之後認不出是哪一間" };
+  }
+  try {
+    const existing = await findCommunities(name);
+    const exact = existing.find((c) => c.matchKind === "正式名稱" || c.matchKind === "別名");
+    if (exact) return { ok: true, id: exact.id };
+
+    const id = await createCommunity({
+      name,
+      kind: input.kind,
+      district: input.district ?? "",
+      address: input.address ?? null,
+    });
+    revalidatePath("/admin/communities");
+    return { ok: true, id };
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : String(e) };
+  }
 }

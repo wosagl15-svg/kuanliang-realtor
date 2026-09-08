@@ -1,5 +1,6 @@
 import { randomUUID } from "node:crypto";
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse, after } from "next/server";
+import { drainAppointmentOutbox } from "@/lib/appointment-outbox";
 import {
   AppointmentIdempotencyConflictError,
   AppointmentLocationApprovalError,
@@ -472,6 +473,16 @@ export async function POST(req: NextRequest) {
         { status: 503, headers: { "Retry-After": "30" } },
       );
     }
+
+    /**
+     * 排進佇列之後，馬上把它消化掉 —— 不要等 cron。
+     *
+     * 🔴 Vercel 免費方案的 cron 一天只跑一次，光靠它客人要等一天才收到確認信。
+     *    after() 是在「回應已經送給客人之後」才執行，所以不會拖慢送出的速度，
+     *    但函式會保持存活直到它跑完，通知確實會寄出去。
+     *    drainAppointmentOutbox 自己吞掉所有例外，這裡不需要也不應該 catch。
+     */
+    after(() => drainAppointmentOutbox());
 
     if (createdNew) {
       await enqueueAppointmentAnalyticsEvent(existing, "submit_success").catch((error) =>

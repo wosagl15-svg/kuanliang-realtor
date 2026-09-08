@@ -7,6 +7,7 @@ import { agentNode, websiteNode, AGENT_ID, PERSON_ID } from "@/lib/agent-node";
 import { getStaticPageTitle } from "@/lib/static-pages";
 import { BLOG_CSS } from "../blog-styles";
 import { MobileBar, CtaBox, BlogFooter } from "../parts";
+import CardDeck from "@/app/blog/CardDeck";
 
 /** 站內既有頁面的中文名，讓文章的「延伸閱讀」印得出人看得懂的字。 */
 const PAGE_NAMES: Record<string, string> = {
@@ -169,6 +170,9 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
       <div className="wrap">
         {post.youtube && !post.youtubeAtEnd && video}
+
+        {/* 圖卡組：整段解說由卡片承載，文字段落只留給法條 */}
+        <CardDeck cards={post.cards} />
 
         <article className="article" dangerouslySetInnerHTML={{ __html: post.html }} />
 

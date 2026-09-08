@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { isCurrentUserAdmin } from "@/lib/admin-check";
 import RequireLogin from "@/app/admin/_components/RequireLogin";
-import { CIS, CHIP, type ChipTone } from "@/app/admin/_components/cis";
+import { CIS, CHIP, cisGundamBar, type ChipTone, FS } from "@/app/admin/_components/cis";
 import { listBuyers, buyerStats, type BuyerListItem, parseJsonArray } from "@/lib/buyer";
 import { listingStats } from "@/lib/listing";
 import { computeCompleteness } from "@/lib/buyer-completeness";
@@ -60,7 +60,7 @@ function Chip({ tone, children }: { tone: ChipTone; children: React.ReactNode })
         background: c.bg,
         color: c.color,
         border: `1px solid ${c.border}`,
-        fontSize: 11,
+        fontSize: FS(11),
         fontWeight: 700,
         whiteSpace: "nowrap",
       }}
@@ -82,9 +82,9 @@ function StatCard({ label, value, hint, tone }: { label: string; value: string |
         flex: "1 1 130px",
       }}
     >
-      <div style={{ fontSize: 11, color: CIS.textMute, marginBottom: 6, letterSpacing: "0.05em" }}>{label}</div>
-      <div style={{ fontSize: 26, fontWeight: 800, color: tone ?? CIS.text, lineHeight: 1.1 }}>{value}</div>
-      {hint && <div style={{ fontSize: 11, color: CIS.textMute, marginTop: 5 }}>{hint}</div>}
+      <div style={{ fontSize: FS(11), color: CIS.textMute, marginBottom: 6, letterSpacing: "0.05em" }}>{label}</div>
+      <div style={{ fontSize: FS(26), fontWeight: 800, color: tone ?? CIS.text, lineHeight: 1.1 }}>{value}</div>
+      {hint && <div style={{ fontSize: FS(11), color: CIS.textMute, marginTop: 5 }}>{hint}</div>}
     </div>
   );
 }
@@ -136,8 +136,21 @@ export default async function BuyersPage({ searchParams }: { searchParams: Promi
           }}
         >
           <div>
-            <h1 style={{ fontSize: 24, fontWeight: 800, margin: "0 0 6px" }}>買方名單</h1>
-            <p style={{ fontSize: 13, color: CIS.textSub, margin: 0 }}>
+            <h1 style={{ fontSize: FS(24), fontWeight: 800, margin: "0 0 6px" }}>買方名單</h1>
+            <div style={{ ...cisGundamBar, margin: "0 0 8px", maxWidth: 200 }} />
+            <Link
+              href="/admin/grab591"
+              style={{
+                display: "inline-block",
+                marginBottom: 8,
+                fontSize: FS(11.5),
+                color: CIS.blueSoft,
+                textDecoration: "underline",
+              }}
+            >
+              🏠 裝「591 一鍵抓資料」書籤
+            </Link>
+            <p style={{ fontSize: FS(13), color: CIS.textSub, margin: 0 }}>
               篩選出同需求的一批人 → 串聯推播 → 知道誰點了
             </p>
           </div>
@@ -169,15 +182,15 @@ export default async function BuyersPage({ searchParams }: { searchParams: Promi
         {empty && (
           <section
             style={{
-              background: "rgba(200,150,62,0.07)",
+              background: "#f0f5fd",
               border: `1px solid ${CIS.blue}44`,
               borderRadius: CIS.radius,
               padding: 24,
               marginBottom: 18,
             }}
           >
-            <h2 style={{ fontSize: 16, fontWeight: 700, margin: "0 0 10px" }}>還沒有任何買方資料</h2>
-            <p style={{ fontSize: 13.5, color: CIS.textSub, lineHeight: 1.8, margin: "0 0 16px" }}>
+            <h2 style={{ fontSize: FS(16), fontWeight: 700, margin: "0 0 10px" }}>還沒有任何買方資料</h2>
+            <p style={{ fontSize: FS(13.5), color: CIS.textSub, lineHeight: 1.8, margin: "0 0 16px" }}>
               兩條路：
               <br />
               1. 先塞一批海線示範社區與物件，把配案畫面跑起來看看順不順手（示範資料都有「示範·」前綴，隨時可以清掉）
@@ -204,7 +217,7 @@ export default async function BuyersPage({ searchParams }: { searchParams: Promi
           }}
         >
           <div style={{ flex: "2 1 220px" }}>
-            <label style={{ display: "block", fontSize: 11, color: CIS.textMute, marginBottom: 5 }}>
+            <label style={{ display: "block", fontSize: FS(11), color: CIS.textMute, marginBottom: 5 }}>
               姓名 / 電話
             </label>
             <input
@@ -214,11 +227,11 @@ export default async function BuyersPage({ searchParams }: { searchParams: Promi
               style={{
                 width: "100%",
                 padding: "8px 11px",
-                background: "rgba(255,255,255,0.04)",
+                background: "#f5f8fd",
                 border: `1px solid ${CIS.cardBorder}`,
                 borderRadius: CIS.radiusSm,
                 color: CIS.text,
-                fontSize: 13,
+                fontSize: FS(13),
                 outline: "none",
               }}
             />
@@ -262,7 +275,7 @@ export default async function BuyersPage({ searchParams }: { searchParams: Promi
             },
           ].map((f) => (
             <div key={f.name} style={{ flex: "1 1 130px" }}>
-              <label style={{ display: "block", fontSize: 11, color: CIS.textMute, marginBottom: 5 }}>
+              <label style={{ display: "block", fontSize: FS(11), color: CIS.textMute, marginBottom: 5 }}>
                 {f.label}
               </label>
               <select
@@ -271,11 +284,11 @@ export default async function BuyersPage({ searchParams }: { searchParams: Promi
                 style={{
                   width: "100%",
                   padding: "8px 10px",
-                  background: "rgba(255,255,255,0.04)",
+                  background: "#f5f8fd",
                   border: `1px solid ${CIS.cardBorder}`,
                   borderRadius: CIS.radiusSm,
                   color: CIS.text,
-                  fontSize: 13,
+                  fontSize: FS(13),
                   outline: "none",
                 }}
               >
@@ -293,7 +306,7 @@ export default async function BuyersPage({ searchParams }: { searchParams: Promi
               display: "flex",
               alignItems: "center",
               gap: 6,
-              fontSize: 12,
+              fontSize: FS(12),
               color: CIS.textSub,
               padding: "8px 0",
               cursor: "pointer",
@@ -310,9 +323,9 @@ export default async function BuyersPage({ searchParams }: { searchParams: Promi
               borderRadius: CIS.radiusSm,
               border: "none",
               background: CIS.blue,
-              color: "#1a1200",
+              color: CIS.onAccent,
               fontWeight: 700,
-              fontSize: 13,
+              fontSize: FS(13),
               cursor: "pointer",
             }}
           >
@@ -321,8 +334,8 @@ export default async function BuyersPage({ searchParams }: { searchParams: Promi
         </form>
 
         {/* 命中數 */}
-        <div style={{ fontSize: 12.5, color: CIS.textSub, marginBottom: 10 }}>
-          符合條件 <strong style={{ color: CIS.blueSoft, fontSize: 15 }}>{total}</strong> 位買方
+        <div style={{ fontSize: FS(12.5), color: CIS.textSub, marginBottom: 10 }}>
+          符合條件 <strong style={{ color: CIS.blueSoft, fontSize: FS(15) }}>{total}</strong> 位買方
           {rows.length < total && `（顯示前 ${rows.length} 筆）`}
         </div>
 
@@ -362,7 +375,7 @@ export default async function BuyersPage({ searchParams }: { searchParams: Promi
                       flexShrink: 0,
                       border: `2px solid ${CHIP[GRADE_TONE[r.grade] ?? "neutral"].color}`,
                       color: CHIP[GRADE_TONE[r.grade] ?? "neutral"].color,
-                      fontSize: 13,
+                      fontSize: FS(13),
                       fontWeight: 800,
                     }}
                   >
@@ -372,21 +385,21 @@ export default async function BuyersPage({ searchParams }: { searchParams: Promi
                   {/* 主要資訊 */}
                   <div style={{ flex: "1 1 240px", minWidth: 0 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-                      <span style={{ fontSize: 15.5, fontWeight: 700 }}>{r.name || "（未留姓名）"}</span>
+                      <span style={{ fontSize: FS(15.5), fontWeight: 700 }}>{r.name || "（未留姓名）"}</span>
                       {stage && <Chip tone={stage.tone as ChipTone}>{stage.label}</Chip>}
                       {r.broadcast_opt_out === 1 && <Chip tone="danger">已退出推播</Chip>}
                       {days !== null && days > DORMANT_DAYS && <Chip tone="warn">{days} 天沒聯絡</Chip>}
                     </div>
-                    <div style={{ fontSize: 12.5, color: CIS.textMute, marginTop: 4 }}>
+                    <div style={{ fontSize: FS(12.5), color: CIS.textMute, marginTop: 4 }}>
                       {formatPhone(r.phone_norm) || "無電話"}
                       {wanted.length > 0 && `　·　${wanted.map(districtLabel).join("、")}`}
                     </div>
                   </div>
 
                   {/* 需求摘要 */}
-                  <div style={{ flex: "1 1 180px", fontSize: 12.5, color: CIS.textSub }}>
+                  <div style={{ flex: "1 1 180px", fontSize: FS(12.5), color: CIS.textSub }}>
                     {r.budget_max ? (
-                      <span style={{ color: CIS.blueSoft, fontWeight: 700, fontSize: 14 }}>
+                      <span style={{ color: CIS.blueSoft, fontWeight: 700, fontSize: FS(14) }}>
                         {r.budget_min ? `${r.budget_min}–` : "～"}
                         {r.budget_max} 萬
                       </span>
@@ -400,13 +413,13 @@ export default async function BuyersPage({ searchParams }: { searchParams: Promi
                   {/* 缺什麼 —— 這欄才是行動指引 */}
                   <div style={{ flex: "1 1 200px" }}>
                     {missing.length > 0 ? (
-                      <div style={{ fontSize: 12, color: CHIP.warn.color }}>
+                      <div style={{ fontSize: FS(12), color: CHIP.warn.color }}>
                         缺：{missing.join("、")}
                       </div>
                     ) : (
-                      <div style={{ fontSize: 12, color: CHIP.success.color }}>資料齊全 ✓</div>
+                      <div style={{ fontSize: FS(12), color: CHIP.success.color }}>資料齊全 ✓</div>
                     )}
-                    <div style={{ fontSize: 11, color: CIS.textMute, marginTop: 3 }}>
+                    <div style={{ fontSize: FS(11), color: CIS.textMute, marginTop: 3 }}>
                       熱度 {r.heat_score}
                       {days !== null ? `　·　${days} 天前聯絡` : "　·　尚無互動"}
                     </div>
@@ -425,7 +438,7 @@ export default async function BuyersPage({ searchParams }: { searchParams: Promi
                 background: CIS.card,
                 border: `1px solid ${CIS.cardBorder}`,
                 borderRadius: CIS.radius,
-                fontSize: 13.5,
+                fontSize: FS(13.5),
               }}
             >
               這組條件沒有符合的買方。把條件放寬一點試試。
@@ -446,7 +459,7 @@ export default async function BuyersPage({ searchParams }: { searchParams: Promi
               flexWrap: "wrap",
             }}
           >
-            <span style={{ fontSize: 12, color: CIS.textMute }}>
+            <span style={{ fontSize: FS(12), color: CIS.textMute }}>
               目前有示範資料（名稱都有「示範·」前綴）。要上真實資料前先清掉：
             </span>
             <SeedDemoButton hasDemo />
@@ -454,7 +467,7 @@ export default async function BuyersPage({ searchParams }: { searchParams: Promi
         )}
 
         {/* 核心區域快捷 */}
-        <div style={{ marginTop: 22, fontSize: 12, color: CIS.textMute }}>
+        <div style={{ marginTop: 22, fontSize: FS(12), color: CIS.textMute }}>
           常用區域：
           {CORE_DISTRICTS.map((d) => (
             <Link

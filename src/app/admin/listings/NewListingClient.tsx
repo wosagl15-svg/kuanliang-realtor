@@ -5,7 +5,7 @@
  */
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { CIS, CHIP } from "@/app/admin/_components/cis";
+import { CIS, CHIP, FS } from "@/app/admin/_components/cis";
 import { DISTRICTS } from "@/lib/buyer-constants";
 import type { ListingExtractActionResult } from "@/lib/listing-action-types";
 import { extractListingAction, saveListingAction } from "@/lib/actions/listing";
@@ -15,27 +15,34 @@ type Extracted = NonNullable<ListingExtractActionResult["data"]>;
 const field: React.CSSProperties = {
   width: "100%",
   padding: "8px 11px",
-  background: "rgba(255,255,255,0.04)",
+  background: "#f5f8fd",
   border: `1px solid ${CIS.cardBorder}`,
   borderRadius: CIS.radiusSm,
   color: CIS.text,
-  fontSize: 13.5,
+  fontSize: FS(13.5),
   fontFamily: CIS.font,
   outline: "none",
 };
 
 const label: React.CSSProperties = {
   display: "block",
-  fontSize: 11.5,
+  fontSize: FS(11.5),
   color: CIS.textSub,
   marginBottom: 5,
   fontWeight: 600,
 };
 
-export default function NewListingClient() {
+export default function NewListingClient({
+  initialText = "",
+  fromCase = null,
+}: {
+  /** 從每日工作台的某場「賣方線」約帶過來的內容 */
+  initialText?: string;
+  fromCase?: string | null;
+} = {}) {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
-  const [text, setText] = useState("");
+  const [text, setText] = useState(initialText);
   const [res, setRes] = useState<ListingExtractActionResult | null>(null);
   const [f, setF] = useState<Extracted | null>(null);
   const [communityId, setCommunityId] = useState<string | null>(null);
@@ -105,7 +112,24 @@ export default function NewListingClient() {
   }
 
   return (
-    <div style={{ display: "grid", gap: 16 }}>
+    <div style={{ display: "grid", gap: 16 }} id="new-listing">
+      {fromCase && (
+        <div
+          style={{
+            fontSize: FS(12),
+            fontWeight: 600,
+            color: CHIP.info.color,
+            background: CHIP.info.bg,
+            border: `1px solid ${CHIP.info.border}`,
+            borderRadius: CIS.radiusSm,
+            padding: "9px 13px",
+          }}
+        >
+          🏷️ 從預約案件 <b>{fromCase}</b> 轉過來的賣方線。屋主資料已帶入，
+          把物件地址、坪數格局、開價補上去再解析。
+        </div>
+      )}
+
       <section
         style={{ background: CIS.card, border: `1px solid ${CIS.cardBorder}`, borderRadius: CIS.radius, padding: 18 }}
       >
@@ -126,29 +150,29 @@ export default function NewListingClient() {
               padding: "9px 20px",
               borderRadius: CIS.radiusSm,
               border: "none",
-              background: pending || !text.trim() ? "rgba(255,255,255,0.08)" : CIS.blue,
-              color: pending || !text.trim() ? CIS.textMute : "#1a1200",
+              background: pending || !text.trim() ? "#e4e9f2" : CIS.blue,
+              color: pending || !text.trim() ? CIS.textMute : CIS.onAccent,
               fontWeight: 700,
-              fontSize: 13.5,
+              fontSize: FS(13.5),
               cursor: pending || !text.trim() ? "not-allowed" : "pointer",
             }}
           >
             {pending ? "解析中…" : "AI 抽出欄位"}
           </button>
           {res?.usage && (
-            <span style={{ fontSize: 12, color: CIS.textMute }}>本次花費 NT${res.usage.costTwd}</span>
+            <span style={{ fontSize: FS(12), color: CIS.textMute }}>本次花費 NT${res.usage.costTwd}</span>
           )}
         </div>
-        {res && !res.ok && <p style={{ marginTop: 10, color: CHIP.danger.color, fontSize: 13 }}>⚠️ {res.error}</p>}
+        {res && !res.ok && <p style={{ marginTop: 10, color: CHIP.danger.color, fontSize: FS(13) }}>⚠️ {res.error}</p>}
       </section>
 
       {f && (
         <section
           style={{ background: CIS.card, border: `1px solid ${CIS.cardBorder}`, borderRadius: CIS.radius, padding: 18 }}
         >
-          <div style={{ fontSize: 13.5, color: CIS.text, marginBottom: 6 }}>{f.summary}</div>
+          <div style={{ fontSize: FS(13.5), color: CIS.text, marginBottom: 6 }}>{f.summary}</div>
           {f.price_raw && (
-            <div style={{ fontSize: 12.5, color: CHIP.warn.color, marginBottom: 12 }}>
+            <div style={{ fontSize: FS(12.5), color: CHIP.warn.color, marginBottom: 12 }}>
               💰 價格原話：「{f.price_raw}」— 確認這是開價還是底價
             </div>
           )}
@@ -271,9 +295,9 @@ export default function NewListingClient() {
                       padding: "5px 12px",
                       borderRadius: 999,
                       border: `1px solid ${communityId === h.id ? CIS.blue : CIS.cardBorder}`,
-                      background: communityId === h.id ? "rgba(200,150,62,0.18)" : "transparent",
+                      background: communityId === h.id ? "#dfe9fb" : "transparent",
                       color: communityId === h.id ? CIS.blueSoft : CIS.textSub,
-                      fontSize: 12,
+                      fontSize: FS(12),
                       cursor: "pointer",
                     }}
                   >
@@ -287,10 +311,10 @@ export default function NewListingClient() {
 
           {f.unclear.length > 0 && (
             <div style={{ marginTop: 15, padding: "11px 13px", background: CHIP.warn.bg, borderRadius: CIS.radiusSm }}>
-              <div style={{ fontSize: 12, fontWeight: 700, color: CHIP.warn.color, marginBottom: 6 }}>
+              <div style={{ fontSize: FS(12), fontWeight: 700, color: CHIP.warn.color, marginBottom: 6 }}>
                 📋 要跟屋主／同事確認
               </div>
-              <ul style={{ margin: 0, paddingLeft: 17, fontSize: 12.5, color: CIS.textSub, lineHeight: 1.8 }}>
+              <ul style={{ margin: 0, paddingLeft: 17, fontSize: FS(12.5), color: CIS.textSub, lineHeight: 1.8 }}>
                 {f.unclear.map((u, i) => (
                   <li key={i}>{u}</li>
                 ))}
@@ -299,7 +323,7 @@ export default function NewListingClient() {
           )}
 
           <div style={{ marginTop: 16, paddingTop: 14, borderTop: `1px solid ${CIS.divider}` }}>
-            {err && <p style={{ color: CHIP.danger.color, fontSize: 13, marginTop: 0 }}>⚠️ {err}</p>}
+            {err && <p style={{ color: CHIP.danger.color, fontSize: FS(13), marginTop: 0 }}>⚠️ {err}</p>}
             <button
               type="button"
               onClick={doSave}
@@ -308,10 +332,10 @@ export default function NewListingClient() {
                 padding: "10px 22px",
                 borderRadius: CIS.radiusSm,
                 border: "none",
-                background: saving ? "rgba(255,255,255,0.08)" : CIS.blue,
-                color: saving ? CIS.textMute : "#1a1200",
+                background: saving ? "#e4e9f2" : CIS.blue,
+                color: saving ? CIS.textMute : CIS.onAccent,
                 fontWeight: 700,
-                fontSize: 13.5,
+                fontSize: FS(13.5),
                 cursor: saving ? "not-allowed" : "pointer",
               }}
             >

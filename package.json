@@ -8,14 +8,22 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "bookings": "node scripts/bookings.js",
+    "links": "node scripts/managelinks.js",
     "db:push": "prisma db push",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "seo": "node scripts/seo-build.mjs",
+    "prebuild": "node scripts/seo-build.mjs",
+    "indexnow": "node scripts/indexnow.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.116.0",
     "@prisma/client": "^6.16.0",
+    "@vercel/analytics": "^2.0.1",
     "googleapis": "^171.4.0",
+    "gray-matter": "^4.0.3",
     "lucide-react": "^1.8.0",
+    "marked": "^18.0.9",
     "next": "16.2.12",
     "next-auth": "5.0.0-beta.32",
     "react": "19.2.4",

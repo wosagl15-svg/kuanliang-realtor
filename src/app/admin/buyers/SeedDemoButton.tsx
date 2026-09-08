@@ -5,7 +5,7 @@
  */
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { CIS, CHIP } from "@/app/admin/_components/cis";
+import { CIS, CHIP, FS } from "@/app/admin/_components/cis";
 import { seedDemoAction, clearDemoAction } from "@/lib/actions/buyer";
 
 export default function SeedDemoButton({ hasDemo = false }: { hasDemo?: boolean }) {
@@ -47,10 +47,10 @@ export default function SeedDemoButton({ hasDemo = false }: { hasDemo?: boolean 
           padding: "9px 18px",
           borderRadius: CIS.radiusSm,
           border: `1px solid ${CIS.blue}`,
-          background: "rgba(200,150,62,0.14)",
+          background: "#e6eefc",
           color: CIS.blueSoft,
           fontWeight: 700,
-          fontSize: 13,
+          fontSize: FS(13),
           cursor: pending ? "not-allowed" : "pointer",
         }}
       >
@@ -68,7 +68,7 @@ export default function SeedDemoButton({ hasDemo = false }: { hasDemo?: boolean 
             border: `1px solid ${CIS.cardBorder}`,
             background: "transparent",
             color: CIS.textMute,
-            fontSize: 13,
+            fontSize: FS(13),
             cursor: pending ? "not-allowed" : "pointer",
           }}
         >
@@ -76,7 +76,7 @@ export default function SeedDemoButton({ hasDemo = false }: { hasDemo?: boolean 
         </button>
       )}
 
-      {msg && <span style={{ fontSize: 12.5, color: CHIP.success.color }}>{msg}</span>}
+      {msg && <span style={{ fontSize: FS(12.5), color: CHIP.success.color }}>{msg}</span>}
     </div>
   );
 }

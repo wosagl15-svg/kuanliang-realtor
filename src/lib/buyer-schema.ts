@@ -12,12 +12,24 @@
  *   - JSON 一律存 LONGTEXT，程式端 parse（避免 TiDB JSON 函式相容性問題）
  */
 import { db } from "@/lib/db";
+import { schemaGate } from "@/lib/schema-gate";
 import { SEED_TAGS } from "@/lib/buyer-constants";
 
 let ensured = false;
 
+/**
+ * ⚠️ 這個檔每加一張表、每加一個 ensureColumn、改 SEED_TAGS，**這個數字就要 +1**。
+ *    忘了 +1 → 正式站會直接跳過新的 DDL，查詢時噴 Unknown column（見 schema-gate.ts）。
+ */
+const SCHEMA_VERSION = 1;
+
 export async function ensureBuyerTables(): Promise<void> {
   if (ensured) return;
+  await schemaGate("buyer", SCHEMA_VERSION, buildBuyerTables);
+  ensured = true;
+}
+
+async function buildBuyerTables(): Promise<void> {
 
   // ---- 買方主檔 ----
   // phone_norm 唯一鍵 = 撞單／重複建檔的防線。允許 '' （少數只有 LINE 沒電話的），
@@ -252,8 +264,31 @@ export async function ensureBuyerTables(): Promise<void> {
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
   `);
 
+  // ---- 後補欄位 ----
+  // CREATE TABLE IF NOT EXISTS 對「表已經存在」的正式站毫無作用，
+  // 所以新加的欄位一律走這裡，否則本機好好的、上正式站就 Unknown column。
+  await ensureColumn("buyer_contact_log", "listing_url", "VARCHAR(512) NULL");
+  // 社區型態：決定紀錄上要顯示「社區名」還是「地址」——
+  // 獨棟透天沒有社區名，硬要填社區名只會填出一堆「XX路透天」這種假社區。
+  await ensureColumn("community", "kind", "VARCHAR(16) NULL");
+
   await seedTags();
-  ensured = true;
+}
+
+/**
+ * 補欄位（存在就跳過）。
+ * 先查 information_schema 而不是直接 ALTER 吞錯 —— 吞錯會把真正的失敗
+ * （型別不合、權限不足）一起吃掉，變成查不出來的資料遺失。
+ */
+async function ensureColumn(table: string, column: string, definition: string): Promise<void> {
+  const rows = await db.$queryRawUnsafe<{ n: bigint | number }[]>(
+    `SELECT COUNT(*) AS n FROM information_schema.COLUMNS
+     WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = ? AND COLUMN_NAME = ?`,
+    table,
+    column,
+  );
+  if (Number(rows[0]?.n ?? 0) > 0) return;
+  await db.$executeRawUnsafe(`ALTER TABLE ${table} ADD COLUMN ${column} ${definition}`);
 }
 
 /** 首次建表塞受控標籤種子。已存在就跳過（用 INSERT IGNORE，重跑安全）。 */

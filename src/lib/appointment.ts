@@ -6,6 +6,7 @@
  * 🚨 全 additive:新表,不改任何既有表 / 邏輯。
  */
 import { db } from "@/lib/db";
+import { schemaGate } from "@/lib/schema-gate";
 import { listCalendarEventIds } from "@/lib/google-calendar";
 import {
   allocateAppointmentCaseNo,
@@ -263,6 +264,17 @@ export type AppointmentOutboxRow = {
 let tableEnsured = false;
 export async function ensureAppointmentTable(): Promise<void> {
   if (tableEnsured) return;
+  await schemaGate("appointment", APPOINTMENT_SCHEMA_VERSION, buildAppointmentTables);
+  tableEnsured = true;
+}
+
+/**
+ * ⚠️ 底下每加一張表、每加一個欄位，**APPOINTMENT_SCHEMA_VERSION 就要 +1**。
+ *    忘了 +1 → 正式站會直接跳過新的 DDL，查詢時噴 Unknown column（見 schema-gate.ts）。
+ */
+const APPOINTMENT_SCHEMA_VERSION = 1;
+
+async function buildAppointmentTables(): Promise<void> {
   await db.$executeRawUnsafe(`
     CREATE TABLE IF NOT EXISTS appointment (
       id              VARCHAR(64)  NOT NULL,
@@ -902,7 +914,6 @@ export async function ensureAppointmentTable(): Promise<void> {
       KEY appointment_rate_limit_clear_time_idx (cleared_at)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
   `);
-  tableEnsured = true;
 }
 
 export async function createCustomLocationApproval(input: {

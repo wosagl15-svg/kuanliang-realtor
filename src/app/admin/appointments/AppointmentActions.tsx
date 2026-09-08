@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CIS } from "@/app/admin/_components/cis";
+import { CIS, FS } from "@/app/admin/_components/cis";
 import { Icon } from "@/app/admin/_ui/icons";
 
 type ActionResponse = {
@@ -46,7 +46,7 @@ const inputStyle = {
   border: `1px solid ${CIS.cardBorder}`,
   background: CIS.bgSoft,
   color: CIS.text,
-  fontSize: 15,
+  fontSize: FS(15),
   fontFamily: "inherit",
 } as const;
 
@@ -122,10 +122,10 @@ export default function AppointmentActions(props: Props) {
   const buttonStyle = (tone: "primary" | "success" | "warning" | "danger" | "neutral") => {
     const palette = {
       primary: { background: CIS.blue, color: "#fff" },
-      success: { background: "rgba(34,197,94,0.13)", color: "#4ade80" },
-      warning: { background: "rgba(245,169,29,0.13)", color: "#fbbf24" },
-      danger: { background: "rgba(244,63,94,0.12)", color: "#fb7185" },
-      neutral: { background: "rgba(255,255,255,0.05)", color: CIS.textSub },
+      success: { background: "rgba(34,197,94,0.13)", color: "#0f7a45" },
+      warning: { background: "rgba(245,169,29,0.13)", color: "#8a6100" },
+      danger: { background: "rgba(244,63,94,0.12)", color: "#b3202e" },
+      neutral: { background: "#f2f5fb", color: CIS.textSub },
     }[tone];
     return {
       minHeight: 40,
@@ -134,7 +134,7 @@ export default function AppointmentActions(props: Props) {
       border: `1px solid ${CIS.cardBorder}`,
       background: palette.background,
       color: palette.color,
-      fontSize: 15,
+      fontSize: FS(15),
       fontWeight: 800,
       fontFamily: "inherit",
       cursor: busy ? "default" : "pointer",
@@ -303,7 +303,7 @@ export default function AppointmentActions(props: Props) {
       </div>
 
       {!inactive ? (
-        <label style={{ display: "inline-flex", alignItems: "center", gap: 7, marginTop: 10, color: CIS.textMute, fontSize: 14 }}>
+        <label style={{ display: "inline-flex", alignItems: "center", gap: 7, marginTop: 10, color: CIS.textMute, fontSize: FS(14) }}>
           <input
             type="checkbox"
             checked={notifyCustomer}
@@ -339,11 +339,11 @@ export default function AppointmentActions(props: Props) {
       ) : null}
 
       <div style={{ marginTop: 16, paddingTop: 14, borderTop: `1px solid ${CIS.cardBorder}` }}>
-        <div style={{ color: CIS.textSub, fontSize: 15, fontWeight: 900, marginBottom: 9 }}>
+        <div style={{ color: CIS.textSub, fontSize: FS(15), fontWeight: 900, marginBottom: 9 }}>
           案件跟進與成交結果
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))", gap: 9 }}>
-          <label style={{ color: CIS.textMute, fontSize: 14 }}>
+          <label style={{ color: CIS.textMute, fontSize: FS(14) }}>
             聯絡狀態
             <select value={contactStatus} onChange={(event) => setContactStatus(event.target.value)} style={{ ...inputStyle, marginTop: 5 }}>
               <option value="uncontacted">尚未聯絡</option>
@@ -353,7 +353,7 @@ export default function AppointmentActions(props: Props) {
               <option value="closed">已結案</option>
             </select>
           </label>
-          <label style={{ color: CIS.textMute, fontSize: 14 }}>
+          <label style={{ color: CIS.textMute, fontSize: FS(14) }}>
             出席狀態
             <select value={attendanceStatus} onChange={(event) => setAttendanceStatus(event.target.value)} style={{ ...inputStyle, marginTop: 5 }}>
               <option value="pending">尚未確認</option>
@@ -362,7 +362,7 @@ export default function AppointmentActions(props: Props) {
               <option value="no_show">未到場</option>
             </select>
           </label>
-          <label style={{ color: CIS.textMute, fontSize: 14 }}>
+          <label style={{ color: CIS.textMute, fontSize: FS(14) }}>
             案件結果
             <select value={outcomeStatus} onChange={(event) => setOutcomeStatus(event.target.value)} style={{ ...inputStyle, marginTop: 5 }}>
               <option value="none">尚未填結果</option>
@@ -373,7 +373,7 @@ export default function AppointmentActions(props: Props) {
               <option value="closed_lost">未成交</option>
             </select>
           </label>
-          <label style={{ color: CIS.textMute, fontSize: 14 }}>
+          <label style={{ color: CIS.textMute, fontSize: FS(14) }}>
             下次跟進時間
             <input
               type="datetime-local"
@@ -382,7 +382,7 @@ export default function AppointmentActions(props: Props) {
               style={{ ...inputStyle, marginTop: 5 }}
             />
           </label>
-          <label style={{ color: CIS.textMute, fontSize: 14 }}>
+          <label style={{ color: CIS.textMute, fontSize: FS(14) }}>
             預估佣金【NT$】
             <input
               inputMode="numeric"
@@ -392,7 +392,7 @@ export default function AppointmentActions(props: Props) {
               style={{ ...inputStyle, marginTop: 5 }}
             />
           </label>
-          <label style={{ color: CIS.textMute, fontSize: 14 }}>
+          <label style={{ color: CIS.textMute, fontSize: FS(14) }}>
             實際佣金【NT$】
             <input
               inputMode="numeric"
@@ -402,7 +402,7 @@ export default function AppointmentActions(props: Props) {
               style={{ ...inputStyle, marginTop: 5 }}
             />
           </label>
-          <label style={{ color: CIS.textMute, fontSize: 14 }}>
+          <label style={{ color: CIS.textMute, fontSize: FS(14) }}>
             案件編號／CRM 編號
             <input
               value={caseReference}
@@ -413,7 +413,7 @@ export default function AppointmentActions(props: Props) {
             />
           </label>
         </div>
-        <label style={{ display: "block", marginTop: 9, color: CIS.textMute, fontSize: 14 }}>
+        <label style={{ display: "block", marginTop: 9, color: CIS.textMute, fontSize: FS(14) }}>
           跟進紀錄／結果備註
           <textarea
             value={outcomeNote}
@@ -461,8 +461,8 @@ export default function AppointmentActions(props: Props) {
           role="status"
           style={{
             marginTop: 11,
-            color: notice.tone === "success" ? "#4ade80" : notice.tone === "warning" ? "#fbbf24" : "#fb7185",
-            fontSize: 15,
+            color: notice.tone === "success" ? "#0f7a45" : notice.tone === "warning" ? "#8a6100" : "#b3202e",
+            fontSize: FS(15),
             fontWeight: 800,
           }}
         >

@@ -22,8 +22,20 @@ const TOKEN_URL = "https://oauth2.googleapis.com/token";
 const AUTH_URL = "https://accounts.google.com/o/oauth2/v2/auth";
 const CAL_API = "https://www.googleapis.com/calendar/v3";
 
-const CLIENT_ID = process.env.GOOGLE_CALENDAR_CLIENT_ID || process.env.AUTH_GOOGLE_ID || "";
-const CLIENT_SECRET = process.env.GOOGLE_CALENDAR_CLIENT_SECRET || process.env.AUTH_GOOGLE_SECRET || "";
+/**
+ * 🔴 2026-08-13：這裡原本會 fallback 到 AUTH_GOOGLE_ID / AUTH_GOOGLE_SECRET（後台登入用的憑證）。
+ *
+ * 造成的事故：另一個人為了「後台 Google 登入」設了 AUTH_GOOGLE_*，
+ * 日曆模組就誤判成「日曆整合已啟用」，但從來沒有人授權過日曆、
+ * config 裡沒有 google_refresh_token → getBusyRangesStrict 丟 not_bound
+ * → /api/appointment/slots 回 503 → **前台完全選不了時段，客戶無法預約**。
+ *
+ * 「用 Google 帳號登入後台」和「授權存取我的日曆」是兩件不同的事，不可互相推論。
+ * 要啟用日曆整合，請明確設定 GOOGLE_CALENDAR_CLIENT_ID / GOOGLE_CALENDAR_CLIENT_SECRET
+ * （值可以和登入用的相同），再到 /api/appointment/google/auth 完成授權。
+ */
+const CLIENT_ID = process.env.GOOGLE_CALENDAR_CLIENT_ID || "";
+const CLIENT_SECRET = process.env.GOOGLE_CALENDAR_CLIENT_SECRET || "";
 const BASE_URL = process.env.APPOINTMENT_BASE_URL || "https://example.com";
 export const GOOGLE_REDIRECT_URI = `${BASE_URL}/api/appointment/google/callback`;
 const SCOPE = "https://www.googleapis.com/auth/calendar.events https://www.googleapis.com/auth/calendar.readonly";

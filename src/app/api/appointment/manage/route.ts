@@ -1,4 +1,5 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse, after } from "next/server";
+import { drainAppointmentOutbox } from "@/lib/appointment-outbox";
 import {
   AppointmentSlotConflictError,
   LEGACY_DEFAULT_DURATION_MIN,
@@ -257,6 +258,11 @@ export async function POST(req: NextRequest) {
         { status: 503 },
       );
     }
+
+    /* 排完就馬上送，不要等 cron —— Vercel 免費方案的 cron 一天只跑一次。
+       after() 在回應送出後才執行，不會拖慢這支 API。 */
+    after(() => drainAppointmentOutbox());
+
     const analyticsEvents = [
       ...(bookingTransition ? (["booking_confirmed"] as const) : []),
       ...(attendanceTransition ? (["attendance_confirmed"] as const) : []),
@@ -343,6 +349,11 @@ export async function POST(req: NextRequest) {
         { status: 503 },
       );
     }
+
+    /* 排完就馬上送，不要等 cron —— Vercel 免費方案的 cron 一天只跑一次。
+       after() 在回應送出後才執行，不會拖慢這支 API。 */
+    after(() => drainAppointmentOutbox());
+
     return NextResponse.json({
       ok: true,
       status: "cancelled",
@@ -437,6 +448,11 @@ export async function POST(req: NextRequest) {
           { status: 503 },
         );
       }
+
+      /* 排完就馬上送，不要等 cron —— Vercel 免費方案的 cron 一天只跑一次。
+         after() 在回應送出後才執行，不會拖慢這支 API。 */
+      after(() => drainAppointmentOutbox());
+
       return NextResponse.json({
         ok: true,
         slotAt: slotAt.toISOString(),

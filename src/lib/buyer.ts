@@ -332,6 +332,8 @@ export async function addContactLog(input: {
   content?: string | null;
   communityId?: string | null;
   listingId?: string | null;
+  /** 業務貼進來的物件連結（591／樂屋／自家網頁皆可）。只存，不去抓。 */
+  listingUrl?: string | null;
   reaction?: string | null;
   occurredAt?: Date;
   createdBy?: string | null;
@@ -341,14 +343,15 @@ export async function addContactLog(input: {
   const at = input.occurredAt ?? new Date();
   await db.$executeRawUnsafe(
     `INSERT INTO buyer_contact_log
-      (id, buyer_id, type, content, community_id, listing_id, reaction, occurred_at, created_by)
-     VALUES (?,?,?,?,?,?,?,?,?)`,
+      (id, buyer_id, type, content, community_id, listing_id, listing_url, reaction, occurred_at, created_by)
+     VALUES (?,?,?,?,?,?,?,?,?,?)`,
     id,
     input.buyerId,
     input.type,
     input.content ?? null,
     input.communityId ?? null,
     input.listingId ?? null,
+    input.listingUrl ?? null,
     input.reaction ?? null,
     at,
     input.createdBy ?? null,
@@ -896,3 +899,51 @@ export async function deleteBuyer(id: string): Promise<void> {
 }
 
 export { parseJsonArray };
+
+/**
+ * 修改一筆互動紀錄（2026-08-21）
+ *
+ * 為什麼要能改：反應是當場憑印象記的，回辦公室常常想到「其實他是嫌價格不是嫌屋況」。
+ * 不能改的話，業務下次乾脆不記 —— 而整個落差分析都靠這張表。
+ *
+ * 只開放改「當初記錯的東西」（反應、內容、物件連結、社區），
+ * 不開放改 buyer_id 與 type，那是換一筆紀錄，不是修正。
+ */
+export async function updateContactLog(
+  id: string,
+  input: {
+    content?: string | null;
+    reaction?: string | null;
+    listingUrl?: string | null;
+    communityId?: string | null;
+  },
+): Promise<void> {
+  await ensureBuyerTables();
+  const sets: string[] = [];
+  const vals: unknown[] = [];
+  if (input.content !== undefined) { sets.push("content = ?"); vals.push(input.content); }
+  if (input.reaction !== undefined) { sets.push("reaction = ?"); vals.push(input.reaction); }
+  if (input.listingUrl !== undefined) { sets.push("listing_url = ?"); vals.push(input.listingUrl); }
+  if (input.communityId !== undefined) { sets.push("community_id = ?"); vals.push(input.communityId); }
+  if (!sets.length) return;
+  vals.push(id);
+  await db.$executeRawUnsafe(`UPDATE buyer_contact_log SET ${sets.join(", ")} WHERE id = ?`, ...vals);
+
+  // 反應變了，熱度要跟著重算
+  const rows = await db.$queryRawUnsafe<{ buyer_id: string }[]>(
+    `SELECT buyer_id FROM buyer_contact_log WHERE id = ?`,
+    id,
+  );
+  if (rows[0]?.buyer_id) await recomputeBuyer(rows[0].buyer_id);
+}
+
+/** 刪一筆互動紀錄（記錯類型時只能刪掉重記） */
+export async function deleteContactLog(id: string): Promise<void> {
+  await ensureBuyerTables();
+  const rows = await db.$queryRawUnsafe<{ buyer_id: string }[]>(
+    `SELECT buyer_id FROM buyer_contact_log WHERE id = ?`,
+    id,
+  );
+  await db.$executeRawUnsafe(`DELETE FROM buyer_contact_log WHERE id = ?`, id);
+  if (rows[0]?.buyer_id) await recomputeBuyer(rows[0].buyer_id);
+}

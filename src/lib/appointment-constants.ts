@@ -5,13 +5,13 @@
  */
 
 // ---- 可預約規則 ----
-// 2026-07-17：時段改「15 分鐘為單位選起始時間 + 選時長」（方案 A）。
-//   slotMinutes=15 同時是「併發防撞號 slot lock」的格粒度（見 appointment.ts occupiedSlotHours）—
-//   所有起訖都對齊 15 分鐘網格，任何時間重疊都會在 lock 表撞 PK。
+// 2026-08-12：時段改「30 分鐘一格」（系統擁有者拍板，房仲談事情 15 分鐘太短）。
+//   slotMinutes=30 同時是「併發防撞號 slot lock」的格粒度（見 appointment.ts occupiedSlotHours）—
+//   所有起訖都對齊 30 分鐘網格，任何時間重疊都會在 lock 表撞 PK。
 export const BOOKING_RULES = {
   startHour: 10, // 平日 10:00 開始
   endHour: 18, // 最後一格結束 18:00（晚 6 點後不開放,系統擁有者拍板）
-  slotMinutes: 15, // 15 分鐘一格（起始時間 + 併發鎖粒度）
+  slotMinutes: 30, // 30 分鐘一格（起始時間 + 併發鎖粒度）
   minDurationMin: 30, // 最短談 30 分（系統擁有者拍板）
   durations: [30, 60, 90, 120, 180], // 可選時長（分鐘）
   workDays: [1, 2, 3, 4, 5], // 一~五（週六日不排,系統擁有者拍板）

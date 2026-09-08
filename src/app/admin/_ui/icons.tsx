@@ -121,7 +121,7 @@ export function Icon({ name, size = 16, className, color, strokeWidth, style, "a
 
 // 狀態燈號顏色(對齊 🟢🟡🔴 語意,顏色才是語意載體)
 const TONE: Record<string, string> = {
-  green: "#22c55e", yellow: "#eab308", red: "#ef4444", orange: "#f97316",
+  green: "#0f7a45", yellow: "#eab308", red: "#ef4444", orange: "#f97316",
   blue: "#3b82f6", purple: "#a855f7", neutral: "#9ca3af",
 };
 export type StatusTone = keyof typeof TONE;

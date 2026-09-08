@@ -5,25 +5,25 @@
  */
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { CIS, CHIP } from "@/app/admin/_components/cis";
+import { CIS, CHIP, FS } from "@/app/admin/_components/cis";
 import { DISTRICTS } from "@/lib/buyer-constants";
 import { createCommunityAction } from "@/lib/actions/community";
 
 const field: React.CSSProperties = {
   width: "100%",
   padding: "8px 11px",
-  background: "rgba(255,255,255,0.04)",
+  background: "#f5f8fd",
   border: `1px solid ${CIS.cardBorder}`,
   borderRadius: CIS.radiusSm,
   color: CIS.text,
-  fontSize: 13.5,
+  fontSize: FS(13.5),
   fontFamily: CIS.font,
   outline: "none",
 };
 
 const label: React.CSSProperties = {
   display: "block",
-  fontSize: 11.5,
+  fontSize: FS(11.5),
   color: CIS.textSub,
   marginBottom: 5,
   fontWeight: 600,
@@ -84,10 +84,10 @@ export default function CommunityForm() {
           padding: "10px 20px",
           borderRadius: CIS.radiusSm,
           background: CIS.blue,
-          color: "#1a1200",
+          color: CIS.onAccent,
           border: "none",
           fontWeight: 700,
-          fontSize: 13.5,
+          fontSize: FS(13.5),
           cursor: "pointer",
         }}
       >
@@ -204,10 +204,10 @@ export default function CommunityForm() {
             padding: "9px 20px",
             borderRadius: CIS.radiusSm,
             border: "none",
-            background: pending || !f.name.trim() ? "rgba(255,255,255,0.08)" : CIS.blue,
-            color: pending || !f.name.trim() ? CIS.textMute : "#1a1200",
+            background: pending || !f.name.trim() ? "#e4e9f2" : CIS.blue,
+            color: pending || !f.name.trim() ? CIS.textMute : CIS.onAccent,
             fontWeight: 700,
-            fontSize: 13,
+            fontSize: FS(13),
             cursor: pending || !f.name.trim() ? "not-allowed" : "pointer",
           }}
         >
@@ -222,14 +222,14 @@ export default function CommunityForm() {
             border: `1px solid ${CIS.cardBorder}`,
             background: "transparent",
             color: CIS.textMute,
-            fontSize: 13,
+            fontSize: FS(13),
             cursor: "pointer",
           }}
         >
           收起
         </button>
         {msg && (
-          <span style={{ fontSize: 12.5, color: msg.ok ? CHIP.success.color : CHIP.danger.color }}>
+          <span style={{ fontSize: FS(12.5), color: msg.ok ? CHIP.success.color : CHIP.danger.color }}>
             {msg.ok ? "✓" : "⚠️"} {msg.text}
           </span>
         )}

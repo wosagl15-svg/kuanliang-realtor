@@ -28,6 +28,7 @@ export type CommunityRow = {
   walk_min_train: number | null;
   school_zone: string | null;
   note: string | null;
+  kind: string | null;
   is_demo: number;
   created_at: Date;
 };
@@ -132,6 +133,8 @@ export async function findCommunities(query: string): Promise<Array<Community & 
 
 export type CommunityInput = {
   name: string;
+  /** 型態：building 電梯大樓／華廈、community 社區、house 獨棟透天 */
+  kind?: string | null;
   aliases?: string[];
   district: string;
   address?: string | null;
@@ -152,8 +155,8 @@ export async function createCommunity(input: CommunityInput): Promise<string> {
   await db.$executeRawUnsafe(
     `INSERT INTO community
       (id, name, aliases, district, address, has_elevator, parking_type, built_year,
-       total_units, walk_min_hsr, walk_min_train, school_zone, note, is_demo)
-     VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+       total_units, walk_min_hsr, walk_min_train, school_zone, note, kind, is_demo)
+     VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
     id,
     input.name.trim(),
     JSON.stringify(input.aliases ?? []),
@@ -167,6 +170,7 @@ export async function createCommunity(input: CommunityInput): Promise<string> {
     input.walkMinTrain ?? null,
     input.schoolZone ?? null,
     input.note ?? null,
+    input.kind ?? null,
     input.isDemo ? 1 : 0,
   );
   return id;
@@ -194,6 +198,7 @@ export async function updateCommunity(id: string, input: Partial<CommunityInput>
   if (input.walkMinTrain !== undefined) push("walk_min_train", input.walkMinTrain);
   if (input.schoolZone !== undefined) push("school_zone", input.schoolZone);
   if (input.note !== undefined) push("note", input.note);
+  if (input.kind !== undefined) push("kind", input.kind);
 
   if (!sets.length) return;
   vals.push(id);

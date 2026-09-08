@@ -21,6 +21,7 @@ import {
   type OpenDay,
 } from "@/lib/appointment-constants";
 import { SOCIAL } from "../_links";
+import Turnstile, { TURNSTILE_ENABLED } from "./Turnstile";
 import styles from "./Booking.module.css";
 import {
   TRACKING_CONSENT_CHANGED_EVENT,
@@ -59,12 +60,6 @@ function readGaClientId(): string {
   return parts.length >= 4 ? `${parts[2]}.${parts[3]}` : "";
 }
 
-const MODE_DESCRIPTIONS: Record<BookingMode, string> = {
-  realtor: "買賣、租賃、房產法律或其他不動產問題",
-  collaboration: "拍片、課程、品牌、媒體或商務合作",
-  interview: "應徵海線房仲冠良相關職務",
-};
-
 const MODE_INTENTS: Record<BookingMode, IntentOption[]> = {
   realtor: [
     { key: "buy", label: "買房", description: "找自住、置產或換屋物件", apiIntent: "buy" },
@@ -85,7 +80,9 @@ const MODE_INTENTS: Record<BookingMode, IntentOption[]> = {
 };
 
 const MEET_TYPES_BY_MODE: Record<BookingMode, readonly string[]> = {
-  realtor: ["office", "hq", "studio", "phone", "video", "custom"],
+  // 2026-08-12 系統擁有者拍板：只留「公司面談 / 電話聯繫 / 我指定地點」，
+  // 拿掉分公司、工作室、線上視訊（那是原始範本的地點，不是冠良的）。
+  realtor: ["office", "phone", "custom"],
   collaboration: ["studio", "hq", "video", "phone", "custom"],
   interview: ["office", "hq", "video", "phone"],
 };
@@ -213,9 +210,10 @@ function SectionHeading({
 }
 
 function Progress({ current }: { current: number }) {
-  const labels = ["目的", "需求", "方式", "時間", "資料"];
+  // 2026-08-12：拿掉「目的」這一步（只剩房產諮詢，自動選好），從「需求」開始。
+  const labels = ["需求", "方式", "時間", "資料"];
   return (
-    <div className={styles.progress} aria-label={`預約進度：第 ${current} 步，共 5 步`}>
+    <div className={styles.progress} aria-label={`預約進度：第 ${current} 步，共 4 步`}>
       {labels.map((label, index) => (
         <div key={label} className={`${styles.progressItem} ${index + 1 <= current ? styles.progressItemActive : ""}`}>
           <span className={styles.progressBar} />
@@ -227,7 +225,8 @@ function Progress({ current }: { current: number }) {
 }
 
 export default function BookingForm() {
-  const [bookingMode, setBookingMode] = useState<BookingMode | "">("");
+  // 2026-08-12：只提供「房產諮詢」，直接預設選好，客戶一進來就從「需求」開始。
+  const [bookingMode, setBookingMode] = useState<BookingMode | "">("realtor");
   const [intentKey, setIntentKey] = useState("");
   const [meetType, setMeetType] = useState("");
   const [days, setDays] = useState<OpenDay[]>([]);
@@ -253,6 +252,8 @@ export default function BookingForm() {
   const [qualification, setQualification] = useState<Qualification>({});
   const [note, setNote] = useState("");
   const [website, setWebsite] = useState("");
+  // 防機器人 token（沒設 NEXT_PUBLIC_TURNSTILE_SITE_KEY 時一直是空字串，後端也不會檢查）
+  const [turnstileToken, setTurnstileToken] = useState("");
 
   const [errors, setErrors] = useState<FieldErrors>({});
   const [submitError, setSubmitError] = useState("");
@@ -524,15 +525,6 @@ export default function BookingForm() {
           ? 4
           : 5;
 
-  const chooseMode = (mode: BookingMode) => {
-    setBookingMode(mode);
-    setIntentKey("");
-    setMeetType(approvalToken && customReady && mode !== "interview" ? "custom" : "");
-    setQualification({});
-    setErrors({});
-    track("mode_select", mode, mode);
-  };
-
   const chooseIntent = (key: string) => {
     setIntentKey(key);
     setQualification({});
@@ -641,6 +633,7 @@ export default function BookingForm() {
           qualification: qualificationPayload,
           note: note.trim(),
           website,
+          turnstileToken,
           funnelSessionId: trackingEnabled ? sessionId : "",
           idempotencyKey: key,
           tracking: {
@@ -785,35 +778,17 @@ export default function BookingForm() {
           <div className={styles.brand}>海線房仲冠良</div>
           <h1 className={styles.title}>預約與冠良聊聊</h1>
           <p className={styles.lead}>先告訴我這次要談什麼，系統只會顯示適合的方式、時長與必要問題。</p>
-          <Progress current={currentStep} />
+          <Progress current={Math.max(1, currentStep - 1)} />
         </header>
 
         <form className={styles.form} onSubmit={submit} noValidate>
-          <section className={styles.section}>
-            <SectionHeading step={1} title="這次預約的目的是？" hint="先選類型，後面的問題才會符合你的情境。" />
-            <div className={styles.optionGrid} role="radiogroup" aria-label="預約目的">
-              {BOOKING_MODES.map((mode, index) => (
-                <button
-                  key={mode.key}
-                  ref={index === 0 ? registerRef("bookingMode") : undefined}
-                  type="button"
-                  role="radio"
-                  aria-checked={bookingMode === mode.key}
-                  className={`${styles.option} ${bookingMode === mode.key ? styles.optionActive : ""}`}
-                  onClick={() => chooseMode(mode.key)}
-                >
-                  <span className={styles.optionTitle}>{mode.label}</span>
-                  <span className={styles.optionDescription}>{MODE_DESCRIPTIONS[mode.key]}</span>
-                </button>
-              ))}
-            </div>
-            <FieldError message={errors.bookingMode} />
-          </section>
+          {/* 2026-08-12：原本的第 1 步「這次預約的目的」已移除——
+              只提供房產諮詢，bookingMode 預設就是 realtor，客戶直接從「需求」開始。 */}
 
           {bookingMode ? (
             <section className={styles.section}>
               <SectionHeading
-                step={2}
+                step={1}
                 title={bookingMode === "interview" ? "想談哪一類職務？" : bookingMode === "collaboration" ? "合作方向是什麼？" : "主要需求是什麼？"}
                 hint="選最接近的一項即可，詳細內容會在最後補充。"
               />
@@ -839,7 +814,7 @@ export default function BookingForm() {
 
           {bookingMode && intentKey ? (
             <section className={styles.section}>
-              <SectionHeading step={3} title="希望怎麼談？" hint="不同方式會有不同提前時間與可預約時長。" />
+              <SectionHeading step={2} title="希望怎麼談？" hint="不同方式會有不同提前時間與可預約時長。" />
               <div className={`${styles.optionGrid} ${styles.optionGridTwo}`} role="radiogroup" aria-label="見面方式">
                 {meetingOptions.map((option, index) => {
                   const isCustom = option.key === "custom";
@@ -914,7 +889,7 @@ export default function BookingForm() {
           {meetType ? (
             <section className={styles.section}>
               <SectionHeading
-                step={4}
+                step={3}
                 title="選擇日期、時間與時長"
                 hint={`「${MEET_TYPES.find((option) => option.key === meetType)?.label || "目前方式"}」可選 ${appointmentMeetingPolicy(meetType).publicDurations.map(durationLabel).join("、")}。`}
               />
@@ -1008,7 +983,7 @@ export default function BookingForm() {
 
           {selectedStart && duration && bookingMode && selectedIntent ? (
             <section className={styles.section}>
-              <SectionHeading step={5} title="聯絡資料與必要背景" hint="Email 用來確認預約；LINE ID 選填，不需要留下私人 LINE 帳號密碼。" />
+              <SectionHeading step={4} title="聯絡資料與必要背景" hint="Email 用來確認預約；LINE ID 選填，不需要留下私人 LINE 帳號密碼。" />
               <div className={styles.twoColumn}>
                 <div className={styles.field}>
                   <label className={styles.label} htmlFor="booking-name">姓名</label>
@@ -1163,8 +1138,20 @@ export default function BookingForm() {
               </div>
 
               {submitError ? <div className={styles.errorNotice} role="alert">{submitError}</div> : null}
-              <button className={styles.submit} type="submit" disabled={submitting}>
-                {submitting ? "正在保留時段…" : "送出並保留時段"}
+
+              {/* 防機器人驗證。沒設 site key 時這裡不會畫出任何東西，也不會擋人。 */}
+              <Turnstile onToken={setTurnstileToken} />
+
+              <button
+                className={styles.submit}
+                type="submit"
+                disabled={submitting || (TURNSTILE_ENABLED && !turnstileToken)}
+              >
+                {submitting
+                  ? "正在保留時段…"
+                  : TURNSTILE_ENABLED && !turnstileToken
+                    ? "請先完成上方驗證"
+                    : "送出並保留時段"}
               </button>
               <p className={styles.submitHint}>
                 送出後時段先保留 {BOOKING_CONFIRMATION_HOLD_MINUTES} 分鐘。請到 Email 點確認連結，才算正式預約完成。

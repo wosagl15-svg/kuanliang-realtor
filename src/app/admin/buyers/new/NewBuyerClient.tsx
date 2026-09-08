@@ -10,7 +10,7 @@
  */
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { CIS, CHIP } from "@/app/admin/_components/cis";
+import { CIS, CHIP, FS } from "@/app/admin/_components/cis";
 import {
   DISTRICTS,
   ELEVATOR_OPTIONS,
@@ -33,29 +33,38 @@ const SOURCE_KINDS: Array<{ key: SourceKind; label: string; hint: string; emoji:
 const inputStyle: React.CSSProperties = {
   width: "100%",
   padding: "9px 11px",
-  background: "rgba(255,255,255,0.04)",
+  background: "#f5f8fd",
   border: `1px solid ${CIS.cardBorder}`,
   borderRadius: CIS.radiusSm,
   color: CIS.text,
-  fontSize: 14,
+  fontSize: FS(14),
   fontFamily: CIS.font,
   outline: "none",
 };
 
 const labelStyle: React.CSSProperties = {
   display: "block",
-  fontSize: 12,
+  fontSize: FS(12),
   color: CIS.textSub,
   marginBottom: 5,
   fontWeight: 600,
 };
 
-export default function NewBuyerClient() {
+export default function NewBuyerClient({
+  initialText = "",
+  fromCase = null,
+}: {
+  /** 從別的頁（例：每日工作台的某場約）帶過來的內容，直接填進貼上框 */
+  initialText?: string;
+  /** 這筆是從哪個預約案件轉過來的，顯示用 */
+  fromCase?: string | null;
+} = {}) {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
 
-  const [kind, setKind] = useState<SourceKind>("line");
-  const [text, setText] = useState("");
+  // 從預約轉過來時預設「自己打描述」：內容是系統整理的，不是 LINE 原文
+  const [kind, setKind] = useState<SourceKind>(initialText ? "manual" : "line");
+  const [text, setText] = useState(initialText);
   const [result, setResult] = useState<ExtractActionResult | null>(null);
   const [form, setForm] = useState<Extracted | null>(null);
   const [phoneOverride, setPhoneOverride] = useState("");
@@ -147,6 +156,23 @@ export default function NewBuyerClient() {
 
   return (
     <div style={{ display: "grid", gap: 18 }}>
+      {fromCase && (
+        <div
+          style={{
+            fontSize: FS(12),
+            fontWeight: 600,
+            color: CHIP.info.color,
+            background: CHIP.info.bg,
+            border: `1px solid ${CHIP.info.border}`,
+            borderRadius: CIS.radiusSm,
+            padding: "9px 13px",
+          }}
+        >
+          🏠 從預約案件 <b>{fromCase}</b> 轉過來的買方線。內容已帶入，
+          把當場聊到的區域、預算、格局補在後面再解析。
+        </div>
+      )}
+
       {/* ---- Step 1：貼上內容 ---- */}
       <section
         style={{
@@ -166,9 +192,9 @@ export default function NewBuyerClient() {
                 padding: "8px 14px",
                 borderRadius: 999,
                 border: `1px solid ${kind === s.key ? CIS.blue : CIS.cardBorder}`,
-                background: kind === s.key ? "rgba(200,150,62,0.16)" : "transparent",
+                background: kind === s.key ? "#dfe9fb" : "transparent",
                 color: kind === s.key ? CIS.blueSoft : CIS.textSub,
-                fontSize: 13,
+                fontSize: FS(13),
                 fontWeight: 600,
                 cursor: "pointer",
               }}
@@ -178,7 +204,7 @@ export default function NewBuyerClient() {
           ))}
         </div>
 
-        <p style={{ fontSize: 12, color: CIS.textMute, margin: "0 0 10px" }}>
+        <p style={{ fontSize: FS(12), color: CIS.textMute, margin: "0 0 10px" }}>
           {SOURCE_KINDS.find((s) => s.key === kind)?.hint}
         </p>
 
@@ -205,23 +231,23 @@ export default function NewBuyerClient() {
               padding: "10px 20px",
               borderRadius: CIS.radiusSm,
               border: "none",
-              background: pending || !text.trim() ? "rgba(255,255,255,0.08)" : CIS.blue,
-              color: pending || !text.trim() ? CIS.textMute : "#1a1200",
+              background: pending || !text.trim() ? "#e4e9f2" : CIS.blue,
+              color: pending || !text.trim() ? CIS.textMute : CIS.onAccent,
               fontWeight: 700,
-              fontSize: 14,
+              fontSize: FS(14),
               cursor: pending || !text.trim() ? "not-allowed" : "pointer",
             }}
           >
             {pending ? "解析中…" : "AI 解析"}
           </button>
-          <span style={{ fontSize: 12, color: CIS.textMute }}>
+          <span style={{ fontSize: FS(12), color: CIS.textMute }}>
             約 {Math.max(1, Math.ceil(text.length / 1000))} 千字
             {result?.usage ? `｜本次花費 NT$${result.usage.costTwd}` : "｜每次約 NT$1"}
           </span>
         </div>
 
         {result && !result.ok && (
-          <p style={{ marginTop: 12, color: CHIP.danger.color, fontSize: 13 }}>⚠️ {result.error}</p>
+          <p style={{ marginTop: 12, color: CHIP.danger.color, fontSize: FS(13) }}>⚠️ {result.error}</p>
         )}
       </section>
 
@@ -231,23 +257,23 @@ export default function NewBuyerClient() {
           {/* 摘要 + 待確認 */}
           <section
             style={{
-              background: "rgba(200,150,62,0.07)",
+              background: "#f0f5fd",
               border: `1px solid ${CIS.blue}44`,
               borderRadius: CIS.radius,
               padding: 18,
             }}
           >
-            <div style={{ fontSize: 11, fontWeight: 700, color: CIS.blueSoft, letterSpacing: "0.08em", marginBottom: 8 }}>
+            <div style={{ fontSize: FS(11), fontWeight: 700, color: CIS.blueSoft, letterSpacing: "0.08em", marginBottom: 8 }}>
               AI 讀出來的重點
             </div>
-            <p style={{ margin: 0, fontSize: 14, color: CIS.text, lineHeight: 1.7 }}>{form.summary}</p>
+            <p style={{ margin: 0, fontSize: FS(14), color: CIS.text, lineHeight: 1.7 }}>{form.summary}</p>
 
             {form.unclear.length > 0 && (
               <div style={{ marginTop: 14, paddingTop: 14, borderTop: `1px solid ${CIS.divider}` }}>
-                <div style={{ fontSize: 12, fontWeight: 700, color: CHIP.warn.color, marginBottom: 8 }}>
+                <div style={{ fontSize: FS(12), fontWeight: 700, color: CHIP.warn.color, marginBottom: 8 }}>
                   📋 下次聯絡要問這些（問完資料就完整了）
                 </div>
-                <ul style={{ margin: 0, paddingLeft: 18, fontSize: 13, color: CIS.textSub, lineHeight: 1.9 }}>
+                <ul style={{ margin: 0, paddingLeft: 18, fontSize: FS(13), color: CIS.textSub, lineHeight: 1.9 }}>
                   {form.unclear.map((u, i) => (
                     <li key={i}>{u}</li>
                   ))}
@@ -266,10 +292,10 @@ export default function NewBuyerClient() {
             }}
           >
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
-              <div style={{ fontSize: 11, fontWeight: 700, color: CIS.textMute, letterSpacing: "0.08em" }}>
+              <div style={{ fontSize: FS(11), fontWeight: 700, color: CIS.textMute, letterSpacing: "0.08em" }}>
                 確認欄位（黃底 = AI 沒把握，請核對）
               </div>
-              <div style={{ fontSize: 11, color: CIS.textMute }}>滑鼠移到欄位可看原文出處</div>
+              <div style={{ fontSize: FS(11), color: CIS.textMute }}>滑鼠移到欄位可看原文出處</div>
             </div>
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))", gap: 14 }}>
@@ -458,9 +484,9 @@ export default function NewBuyerClient() {
                         padding: "6px 13px",
                         borderRadius: 999,
                         border: `1px solid ${on ? CIS.blue : CIS.cardBorder}`,
-                        background: on ? "rgba(200,150,62,0.18)" : "transparent",
+                        background: on ? "#dfe9fb" : "transparent",
                         color: on ? CIS.blueSoft : CIS.textMute,
-                        fontSize: 12.5,
+                        fontSize: FS(12.5),
                         fontWeight: on ? 700 : 500,
                         cursor: "pointer",
                       }}
@@ -482,15 +508,15 @@ export default function NewBuyerClient() {
                       key={cm.query}
                       style={{
                         padding: "10px 12px",
-                        background: "rgba(255,255,255,0.03)",
+                        background: "#f7f9fd",
                         border: `1px solid ${CIS.cardBorder}`,
                         borderRadius: CIS.radiusSm,
                       }}
                     >
-                      <div style={{ fontSize: 13, color: CIS.text, marginBottom: 6 }}>
+                      <div style={{ fontSize: FS(13), color: CIS.text, marginBottom: 6 }}>
                         「{cm.query}」
                         {cm.hits.length === 0 && (
-                          <span style={{ color: CHIP.warn.color, fontSize: 12, marginLeft: 8 }}>
+                          <span style={{ color: CHIP.warn.color, fontSize: FS(12), marginLeft: 8 }}>
                             主檔沒有這個社區 → 請先到「社區主檔」新增
                           </span>
                         )}
@@ -511,15 +537,15 @@ export default function NewBuyerClient() {
                                 padding: "5px 11px",
                                 borderRadius: 999,
                                 border: `1px solid ${on ? CIS.blue : CIS.cardBorder}`,
-                                background: on ? "rgba(200,150,62,0.18)" : "transparent",
+                                background: on ? "#dfe9fb" : "transparent",
                                 color: on ? CIS.blueSoft : CIS.textSub,
-                                fontSize: 12,
+                                fontSize: FS(12),
                                 cursor: "pointer",
                               }}
                             >
                               {on ? "✓ " : ""}
                               {h.name}
-                              <span style={{ color: CIS.textMute, marginLeft: 5, fontSize: 11 }}>
+                              <span style={{ color: CIS.textMute, marginLeft: 5, fontSize: FS(11) }}>
                                 {h.matchKind}
                               </span>
                             </button>
@@ -546,7 +572,7 @@ export default function NewBuyerClient() {
                       background: CHIP.info.bg,
                       color: CHIP.info.color,
                       border: `1px solid ${CHIP.info.border}`,
-                      fontSize: 12,
+                      fontSize: FS(12),
                       cursor: "pointer",
                     }}
                     title="點一下移除"
@@ -564,7 +590,7 @@ export default function NewBuyerClient() {
                       background: CHIP.danger.bg,
                       color: CHIP.danger.color,
                       border: `1px solid ${CHIP.danger.border}`,
-                      fontSize: 12,
+                      fontSize: FS(12),
                       cursor: "pointer",
                     }}
                     title="避雷項目，點一下移除"
@@ -573,7 +599,7 @@ export default function NewBuyerClient() {
                   </span>
                 ))}
                 {form.tags.length === 0 && form.avoid.length === 0 && (
-                  <span style={{ fontSize: 12, color: CIS.textMute }}>沒抽到標籤</span>
+                  <span style={{ fontSize: FS(12), color: CIS.textMute }}>沒抽到標籤</span>
                 )}
               </div>
             </div>
@@ -593,7 +619,7 @@ export default function NewBuyerClient() {
             {/* 存檔 */}
             <div style={{ marginTop: 20, paddingTop: 16, borderTop: `1px solid ${CIS.divider}` }}>
               {saveError && (
-                <p style={{ color: CHIP.danger.color, fontSize: 13, marginTop: 0 }}>
+                <p style={{ color: CHIP.danger.color, fontSize: FS(13), marginTop: 0 }}>
                   ⚠️ {saveError}
                   {conflict && (
                     <a
@@ -613,16 +639,16 @@ export default function NewBuyerClient() {
                   padding: "11px 24px",
                   borderRadius: CIS.radiusSm,
                   border: "none",
-                  background: saving ? "rgba(255,255,255,0.08)" : CIS.blue,
-                  color: saving ? CIS.textMute : "#1a1200",
+                  background: saving ? "#e4e9f2" : CIS.blue,
+                  color: saving ? CIS.textMute : CIS.onAccent,
                   fontWeight: 700,
-                  fontSize: 14,
+                  fontSize: FS(14),
                   cursor: saving ? "not-allowed" : "pointer",
                 }}
               >
                 {saving ? "存檔中…" : "確認存檔"}
               </button>
-              <span style={{ fontSize: 12, color: CIS.textMute, marginLeft: 12 }}>
+              <span style={{ fontSize: FS(12), color: CIS.textMute, marginLeft: 12 }}>
                 按下去才會寫進資料庫
               </span>
             </div>

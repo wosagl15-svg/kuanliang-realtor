@@ -6,7 +6,7 @@
  *
  * callbackUrl 讓登入完直接回到原本要去的頁面，不用再點一次。
  */
-import { CIS } from "@/app/admin/_components/cis";
+import { CIS, FS } from "@/app/admin/_components/cis";
 
 export default function RequireLogin({
   title = "買方資料庫",
@@ -38,9 +38,9 @@ export default function RequireLogin({
           textAlign: "center",
         }}
       >
-        <div style={{ fontSize: 30, marginBottom: 12 }}>🔐</div>
-        <h1 style={{ fontSize: 19, fontWeight: 800, margin: "0 0 8px" }}>{title}</h1>
-        <p style={{ fontSize: 13, color: CIS.textSub, margin: "0 0 22px", lineHeight: 1.8 }}>
+        <div style={{ fontSize: FS(30), marginBottom: 12 }}>🔐</div>
+        <h1 style={{ fontSize: FS(19), fontWeight: 800, margin: "0 0 8px" }}>{title}</h1>
+        <p style={{ fontSize: FS(13), color: CIS.textSub, margin: "0 0 22px", lineHeight: 1.8 }}>
           這裡有客戶的姓名與電話，需要登入才能查看。
         </p>
 
@@ -54,16 +54,16 @@ export default function RequireLogin({
             padding: "12px 20px",
             borderRadius: CIS.radiusSm,
             background: CIS.blue,
-            color: "#1a1200",
+            color: CIS.onAccent,
             fontWeight: 700,
-            fontSize: 14,
+            fontSize: FS(14),
             textDecoration: "none",
           }}
         >
           用 Google 帳號登入
         </a>
 
-        <p style={{ fontSize: 11.5, color: CIS.textMute, margin: "18px 0 0", lineHeight: 1.8 }}>
+        <p style={{ fontSize: FS(11.5), color: CIS.textMute, margin: "18px 0 0", lineHeight: 1.8 }}>
           只有白名單內的信箱進得來。
           <br />
           第一次登入 Google 會顯示「未經驗證」警告，

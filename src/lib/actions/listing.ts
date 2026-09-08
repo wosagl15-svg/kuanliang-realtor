@@ -14,6 +14,23 @@ export async function extractListingAction(text: string): Promise<ListingExtract
   if (!(await isCurrentUserAdmin())) return { ok: false, error: "權限不足" };
   if (!text?.trim()) return { ok: false, error: "請先貼上物件描述" };
 
+  /**
+   * 🔴 只貼一條網址是沒有用的 —— AI 拿到的就只有那串字，它不會、也不該去開那個網頁。
+   *    這個錯誤如果只回「解析失敗」，使用者會一直重試，永遠不知道問題在哪。
+   *    （公司內網型錄 es.houseol.com.tw 要登入才看得到，從伺服器更是連不進去。）
+   */
+  const t = text.trim();
+  const urlOnly = /^https?:\/\/\S+$/i.test(t) || (t.split(/\s+/).length <= 2 && /^https?:\/\//i.test(t));
+  if (urlOnly) {
+    const internal = /houseol\.com\.tw/i.test(t);
+    return {
+      ok: false,
+      error: internal
+        ? "這是公司內網型錄的網址。系統不會去開它（要登入，而且那是公司系統）——請在型錄頁面上全選內容（Ctrl+A → Ctrl+C），把「文字」貼進來。"
+        : "貼進來的是一條網址。系統只讀你貼的文字，不會去開那個網頁——請把物件描述的「文字」複製過來。",
+    };
+  }
+
   try {
     const r = await extractListing(text);
     // 抽到的社區名稱去比對主檔
@@ -26,7 +43,11 @@ export async function extractListingAction(text: string): Promise<ListingExtract
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);
     if (msg === "missing_anthropic_api_key")
-      return { ok: false, error: "尚未設定 ANTHROPIC_API_KEY，請先在 .env.local 填入金鑰" };
+      return {
+        ok: false,
+        error:
+          "還沒設定 AI 金鑰。正式站要設在 Vercel → Settings → Environment Variables 的 ANTHROPIC_API_KEY（本機的 .env.local 不會帶上雲端）。",
+      };
     if (msg === "text_too_long") return { ok: false, error: "內容太長（超過 4 萬字），請分段" };
     console.error("[listing/extract]", e);
     return { ok: false, error: `解析失敗：${msg}` };

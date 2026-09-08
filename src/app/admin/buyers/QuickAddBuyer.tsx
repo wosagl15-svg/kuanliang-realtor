@@ -10,7 +10,7 @@
  */
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { CIS, CHIP } from "@/app/admin/_components/cis";
+import { CIS, CHIP, FS } from "@/app/admin/_components/cis";
 import {
   DISTRICTS,
   ELEVATOR_OPTIONS,
@@ -27,18 +27,18 @@ type Extracted = NonNullable<ExtractActionResult["data"]>;
 const field: React.CSSProperties = {
   width: "100%",
   padding: "9px 11px",
-  background: "rgba(255,255,255,0.04)",
+  background: "#f5f8fd",
   border: `1px solid ${CIS.cardBorder}`,
   borderRadius: CIS.radiusSm,
   color: CIS.text,
-  fontSize: 13.5,
+  fontSize: FS(13.5),
   fontFamily: CIS.font,
   outline: "none",
 };
 
 const label: React.CSSProperties = {
   display: "block",
-  fontSize: 11.5,
+  fontSize: FS(11.5),
   color: CIS.textSub,
   marginBottom: 5,
   fontWeight: 600,
@@ -170,19 +170,19 @@ export default function QuickAddBuyer() {
             padding: "11px 22px",
             borderRadius: CIS.radiusSm,
             background: CIS.blue,
-            color: "#1a1200",
+            color: CIS.onAccent,
             border: "none",
             fontWeight: 700,
-            fontSize: 14,
+            fontSize: FS(14),
             cursor: "pointer",
           }}
         >
           ＋ 貼對話建檔
         </button>
-        <span style={{ fontSize: 12, color: CIS.textMute }}>
+        <span style={{ fontSize: FS(12), color: CIS.textMute }}>
           把 LINE 對話貼進來，系統抓出需求，姓名電話你自己填
         </span>
-        {okMsg && <span style={{ fontSize: 12.5, color: CHIP.success.color }}>✓ {okMsg}</span>}
+        {okMsg && <span style={{ fontSize: FS(12.5), color: CHIP.success.color }}>✓ {okMsg}</span>}
       </div>
     );
   }
@@ -198,7 +198,7 @@ export default function QuickAddBuyer() {
       }}
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-        <div style={{ fontSize: 14, fontWeight: 700 }}>貼對話建檔</div>
+        <div style={{ fontSize: FS(14), fontWeight: 700 }}>貼對話建檔</div>
         <button
           type="button"
           onClick={() => {
@@ -209,7 +209,7 @@ export default function QuickAddBuyer() {
             background: "transparent",
             border: "none",
             color: CIS.textMute,
-            fontSize: 13,
+            fontSize: FS(13),
             cursor: "pointer",
           }}
         >
@@ -236,10 +236,10 @@ export default function QuickAddBuyer() {
             padding: "9px 20px",
             borderRadius: CIS.radiusSm,
             border: "none",
-            background: pending || !text.trim() ? "rgba(255,255,255,0.08)" : CIS.blue,
-            color: pending || !text.trim() ? CIS.textMute : "#1a1200",
+            background: pending || !text.trim() ? "#e4e9f2" : CIS.blue,
+            color: pending || !text.trim() ? CIS.textMute : CIS.onAccent,
             fontWeight: 700,
-            fontSize: 13.5,
+            fontSize: FS(13.5),
             cursor: pending || !text.trim() ? "not-allowed" : "pointer",
           }}
         >
@@ -247,19 +247,19 @@ export default function QuickAddBuyer() {
         </button>
 
         {res?.engine === "rules" && (
-          <span style={{ fontSize: 12, color: CHIP.warn.color }}>
+          <span style={{ fontSize: FS(12), color: CHIP.warn.color }}>
             規則解析（免費）· 未設 AI 金鑰，欄位請逐一確認
           </span>
         )}
         {res?.engine === "ai" && res.usage && (
-          <span style={{ fontSize: 12, color: CIS.textMute }}>AI 解析 · 本次 NT${res.usage.costTwd}</span>
+          <span style={{ fontSize: FS(12), color: CIS.textMute }}>AI 解析 · 本次 NT${res.usage.costTwd}</span>
         )}
       </div>
 
       {/* 步驟二：確認 */}
       {f && (
         <div style={{ marginTop: 18, paddingTop: 16, borderTop: `1px solid ${CIS.divider}` }}>
-          <p style={{ fontSize: 13.5, color: CIS.text, margin: "0 0 14px", lineHeight: 1.7 }}>{f.summary}</p>
+          <p style={{ fontSize: FS(13.5), color: CIS.text, margin: "0 0 14px", lineHeight: 1.7 }}>{f.summary}</p>
 
           {/* 🔴 姓名 / 電話 / LINE：一律自行輸入 */}
           <div
@@ -268,7 +268,7 @@ export default function QuickAddBuyer() {
               gridTemplateColumns: "repeat(auto-fit,minmax(170px,1fr))",
               gap: 12,
               padding: 14,
-              background: "rgba(200,150,62,0.07)",
+              background: "#f0f5fd",
               border: `1px solid ${CIS.blue}44`,
               borderRadius: CIS.radiusSm,
               marginBottom: 16,
@@ -301,7 +301,7 @@ export default function QuickAddBuyer() {
                 style={field}
               />
             </div>
-            <div style={{ gridColumn: "1 / -1", fontSize: 11.5, color: CIS.textMute }}>
+            <div style={{ gridColumn: "1 / -1", fontSize: FS(11.5), color: CIS.textMute }}>
               這三欄請自己填。對話裡抓到的只是預設值，常常是錯的或抓到別人的號碼。
               {res?.phonesFound && res.phonesFound.length > 1 && (
                 <span style={{ color: CHIP.warn.color }}>
@@ -441,9 +441,9 @@ export default function QuickAddBuyer() {
                       padding: "6px 13px",
                       borderRadius: 999,
                       border: `1px solid ${on ? CIS.blue : CIS.cardBorder}`,
-                      background: on ? "rgba(200,150,62,0.18)" : "transparent",
+                      background: on ? "#dfe9fb" : "transparent",
                       color: on ? CIS.blueSoft : CIS.textMute,
-                      fontSize: 12.5,
+                      fontSize: FS(12.5),
                       fontWeight: on ? 700 : 500,
                       cursor: "pointer",
                     }}
@@ -470,7 +470,7 @@ export default function QuickAddBuyer() {
                       background: CHIP.info.bg,
                       color: CHIP.info.color,
                       border: `1px solid ${CHIP.info.border}`,
-                      fontSize: 12,
+                      fontSize: FS(12),
                       cursor: "pointer",
                     }}
                   >
@@ -487,7 +487,7 @@ export default function QuickAddBuyer() {
                       background: CHIP.danger.bg,
                       color: CHIP.danger.color,
                       border: `1px solid ${CHIP.danger.border}`,
-                      fontSize: 12,
+                      fontSize: FS(12),
                       cursor: "pointer",
                     }}
                   >
@@ -508,10 +508,10 @@ export default function QuickAddBuyer() {
                 borderRadius: CIS.radiusSm,
               }}
             >
-              <div style={{ fontSize: 12, fontWeight: 700, color: CHIP.warn.color, marginBottom: 6 }}>
+              <div style={{ fontSize: FS(12), fontWeight: 700, color: CHIP.warn.color, marginBottom: 6 }}>
                 📋 下次聯絡照著問，資料就完整了
               </div>
-              <ul style={{ margin: 0, paddingLeft: 17, fontSize: 12.5, color: CIS.textSub, lineHeight: 1.85 }}>
+              <ul style={{ margin: 0, paddingLeft: 17, fontSize: FS(12.5), color: CIS.textSub, lineHeight: 1.85 }}>
                 {f.unclear.map((u, i) => (
                   <li key={i}>{u}</li>
                 ))}
@@ -543,7 +543,7 @@ export default function QuickAddBuyer() {
                 style={{
                   marginTop: 14,
                   padding: "13px 15px",
-                  background: "rgba(255,255,255,0.03)",
+                  background: "#f7f9fd",
                   border: `1px solid ${CIS.cardBorder}`,
                   borderRadius: CIS.radiusSm,
                 }}
@@ -557,25 +557,25 @@ export default function QuickAddBuyer() {
                       padding: "9px 18px",
                       borderRadius: CIS.radiusSm,
                       border: `1px solid ${CIS.blue}`,
-                      background: "rgba(200,150,62,0.14)",
+                      background: "#e6eefc",
                       color: CIS.blueSoft,
-                      fontSize: 13,
+                      fontSize: FS(13),
                       fontWeight: 700,
                       textDecoration: "none",
                     }}
                   >
                     到 591 找符合這個客戶的物件 ↗
                   </a>
-                  <span style={{ fontSize: 11.5, color: CIS.textMute, lineHeight: 1.8 }}>
+                  <span style={{ fontSize: FS(11.5), color: CIS.textMute, lineHeight: 1.8 }}>
                     已帶入：{mapped.join("　·　") || "（尚無可帶入的條件）"}
                   </span>
                 </div>
                 {missed.length > 0 && (
-                  <div style={{ fontSize: 11.5, color: CHIP.warn.color, marginTop: 8, lineHeight: 1.7 }}>
+                  <div style={{ fontSize: FS(11.5), color: CHIP.warn.color, marginTop: 8, lineHeight: 1.7 }}>
                     ⚠ 591 連結帶不進去、要在對方站上自己再篩：{missed.join("、")}
                   </div>
                 )}
-                <div style={{ fontSize: 11, color: CIS.textMute, marginTop: 6, lineHeight: 1.7 }}>
+                <div style={{ fontSize: FS(11), color: CIS.textMute, marginTop: 6, lineHeight: 1.7 }}>
                   這是純連結，開新分頁到 591 看他們當下最新的物件。系統不抓取也不儲存任何 591 內容。
                 </div>
               </div>
@@ -585,7 +585,7 @@ export default function QuickAddBuyer() {
           {/* 存檔 */}
           <div style={{ marginTop: 16 }}>
             {err && (
-              <p style={{ color: CHIP.danger.color, fontSize: 13, margin: "0 0 10px" }}>
+              <p style={{ color: CHIP.danger.color, fontSize: FS(13), margin: "0 0 10px" }}>
                 ⚠️ {err}
                 {conflict && (
                   <a
@@ -605,16 +605,16 @@ export default function QuickAddBuyer() {
                 padding: "11px 24px",
                 borderRadius: CIS.radiusSm,
                 border: "none",
-                background: saving ? "rgba(255,255,255,0.08)" : CIS.blue,
-                color: saving ? CIS.textMute : "#1a1200",
+                background: saving ? "#e4e9f2" : CIS.blue,
+                color: saving ? CIS.textMute : CIS.onAccent,
                 fontWeight: 700,
-                fontSize: 14,
+                fontSize: FS(14),
                 cursor: saving ? "not-allowed" : "pointer",
               }}
             >
               {saving ? "存檔中…" : "確認建檔"}
             </button>
-            <span style={{ fontSize: 12, color: CIS.textMute, marginLeft: 12 }}>
+            <span style={{ fontSize: FS(12), color: CIS.textMute, marginLeft: 12 }}>
               存檔後直接出現在下方名單
             </span>
           </div>
@@ -622,7 +622,7 @@ export default function QuickAddBuyer() {
       )}
 
       {res && !res.ok && !f && (
-        <p style={{ marginTop: 12, color: CHIP.danger.color, fontSize: 13 }}>⚠️ {res.error}</p>
+        <p style={{ marginTop: 12, color: CHIP.danger.color, fontSize: FS(13) }}>⚠️ {res.error}</p>
       )}
     </section>
   );

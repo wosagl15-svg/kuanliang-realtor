@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { isCurrentUserAdmin } from "@/lib/admin-check";
 import RequireLogin from "@/app/admin/_components/RequireLogin";
-import { CIS, CHIP } from "@/app/admin/_components/cis";
+import { CIS, CHIP, FS } from "@/app/admin/_components/cis";
 import { listCommunities, countBuyersWanting } from "@/lib/community";
 import { districtLabel } from "@/lib/buyer-constants";
 import CommunityForm from "./CommunityForm";
@@ -37,15 +37,15 @@ export default async function CommunitiesPage() {
       }}
     >
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <Link href="/admin/buyers" style={{ fontSize: 13, color: CIS.textMute, textDecoration: "none" }}>
+        <Link href="/admin/buyers" style={{ fontSize: FS(13), color: CIS.textMute, textDecoration: "none" }}>
           ← 買方名單
         </Link>
 
-        <h1 style={{ fontSize: 24, fontWeight: 800, margin: "12px 0 6px" }}>社區主檔</h1>
-        <p style={{ fontSize: 13, color: CIS.textSub, margin: "0 0 6px", lineHeight: 1.7 }}>
+        <h1 style={{ fontSize: FS(24), fontWeight: 800, margin: "12px 0 6px" }}>社區主檔</h1>
+        <p style={{ fontSize: FS(13), color: CIS.textSub, margin: "0 0 6px", lineHeight: 1.7 }}>
           社區建一次，全系統共用。走路到高鐵幾分鐘這種資訊建在這裡，就不用每個客戶都問一次。
         </p>
-        <p style={{ fontSize: 12.5, color: CHIP.warn.color, margin: "0 0 22px", lineHeight: 1.7 }}>
+        <p style={{ fontSize: FS(12.5), color: CHIP.warn.color, margin: "0 0 22px", lineHeight: 1.7 }}>
           ⚠️ <strong>別名一定要建。</strong>客戶會講「哈佛」，你建的是「太子哈佛」——
           沒有別名，客戶提到的社區就掛不上主檔，「接到委託撈出想買的人」這個功能就失效。
         </p>
@@ -62,7 +62,7 @@ export default async function CommunitiesPage() {
                 background: CIS.card,
                 border: `1px solid ${CIS.cardBorder}`,
                 borderRadius: CIS.radius,
-                fontSize: 13.5,
+                fontSize: FS(13.5),
               }}
             >
               還沒有任何社區。先把你常經營的幾個社區建進來，或到
@@ -77,7 +77,7 @@ export default async function CommunitiesPage() {
             <section key={district}>
               <div
                 style={{
-                  fontSize: 12,
+                  fontSize: FS(12),
                   fontWeight: 700,
                   color: CIS.blueSoft,
                   letterSpacing: "0.06em",
@@ -103,12 +103,12 @@ export default async function CommunitiesPage() {
                     }}
                   >
                     <div style={{ flex: "1 1 260px", minWidth: 0 }}>
-                      <div style={{ fontSize: 15, fontWeight: 700, display: "flex", alignItems: "center", gap: 8 }}>
+                      <div style={{ fontSize: FS(15), fontWeight: 700, display: "flex", alignItems: "center", gap: 8 }}>
                         {c.name}
                         {c.isDemo && (
                           <span
                             style={{
-                              fontSize: 10.5,
+                              fontSize: FS(10.5),
                               padding: "2px 7px",
                               borderRadius: 999,
                               background: CHIP.neutral.bg,
@@ -120,7 +120,7 @@ export default async function CommunitiesPage() {
                           </span>
                         )}
                       </div>
-                      <div style={{ fontSize: 12, color: CIS.textMute, marginTop: 4 }}>
+                      <div style={{ fontSize: FS(12), color: CIS.textMute, marginTop: 4 }}>
                         {c.aliases.length > 0 ? (
                           <>別名：{c.aliases.join("、")}</>
                         ) : (
@@ -129,7 +129,7 @@ export default async function CommunitiesPage() {
                       </div>
                     </div>
 
-                    <div style={{ flex: "1 1 200px", fontSize: 12, color: CIS.textSub, lineHeight: 1.8 }}>
+                    <div style={{ flex: "1 1 200px", fontSize: FS(12), color: CIS.textSub, lineHeight: 1.8 }}>
                       {c.built_year ? `${new Date().getFullYear() - c.built_year} 年屋　` : ""}
                       {c.hasElevator === true ? "有電梯　" : c.hasElevator === false ? "無電梯　" : ""}
                       {c.parking_type ? `${c.parking_type}車位　` : ""}
@@ -143,7 +143,7 @@ export default async function CommunitiesPage() {
                     <div style={{ flexShrink: 0, textAlign: "right" }}>
                       <div
                         style={{
-                          fontSize: 20,
+                          fontSize: FS(20),
                           fontWeight: 800,
                           color: c.waiting > 0 ? CHIP.success.color : CIS.textMute,
                           lineHeight: 1,
@@ -151,7 +151,7 @@ export default async function CommunitiesPage() {
                       >
                         {c.waiting}
                       </div>
-                      <div style={{ fontSize: 10.5, color: CIS.textMute, marginTop: 4 }}>位買方在等</div>
+                      <div style={{ fontSize: FS(10.5), color: CIS.textMute, marginTop: 4 }}>位買方在等</div>
                     </div>
                   </div>
                 ))}

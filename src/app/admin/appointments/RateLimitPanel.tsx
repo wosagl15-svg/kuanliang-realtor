@@ -8,6 +8,7 @@
  * 原本三個數字寫死，他自己測試時一直用同一組 email，3 次就被鎖 1 小時。
  */
 import { useState } from "react";
+import { CIS, FS } from "@/app/admin/_components/cis";
 import {
   DEFAULT_RATE_LIMIT_SETTINGS,
   TESTING_RATE_LIMIT_SETTINGS,
@@ -17,10 +18,10 @@ import {
 } from "@/lib/appointment-rate-limit-settings";
 
 const numInput: React.CSSProperties = {
-  width: "100%", background: "#141414", border: "1px solid #2a2a2a", borderRadius: 8,
-  color: "#ededed", padding: "8px 10px", fontSize: 16,
+  width: "100%", background: CIS.panel, border: "1px solid #2a2a2a", borderRadius: 8,
+  color: "#ededed", padding: "8px 10px", fontSize: FS(16),
 };
-const lbl: React.CSSProperties = { display: "block", color: "#9aa0a6", fontSize: 14, marginBottom: 5 };
+const lbl: React.CSSProperties = { display: "block", color: "#59657d", fontSize: FS(14), marginBottom: 5 };
 
 export default function RateLimitPanel({
   initial,
@@ -86,20 +87,20 @@ export default function RateLimitPanel({
   return (
     <section
       className="rounded-xl"
-      style={{ background: "#0e0e0e", border: `1px solid ${borderColor}`, padding: open ? "14px 16px" : "10px 16px", marginBottom: 14 }}
+      style={{ background: CIS.bg, border: `1px solid ${borderColor}`, padding: open ? "14px 16px" : "10px 16px", marginBottom: 14 }}
     >
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        style={{ background: "none", border: 0, color: "#7dd3fc", fontWeight: 800, fontSize: 16, cursor: "pointer", padding: 0, display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}
+        style={{ background: "none", border: 0, color: "#17458f", fontWeight: 800, fontSize: FS(16), cursor: "pointer", padding: 0, display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}
       >
         🚦 送出頻率限制（防灌爆）
         {liveBlockedCreateBuckets > 0 && (
-          <span style={{ background: "rgba(251,191,36,.14)", color: "#fbbf24", borderRadius: 999, padding: "2px 9px", fontSize: 13.5, fontWeight: 800 }}>
+          <span style={{ background: "rgba(251,191,36,.14)", color: "#8a6100", borderRadius: 999, padding: "2px 9px", fontSize: FS(13.5), fontWeight: 800 }}>
             現在有 {liveBlockedCreateBuckets} 個送出限制正在阻擋
           </span>
         )}
-        <span style={{ color: "#5b6675", fontWeight: 400, fontSize: 14 }}>
+        <span style={{ color: "#5b6675", fontWeight: 400, fontSize: FS(14) }}>
           {s.contactLimit > 0 ? `同組資料 ${s.contactWindowMin} 分鐘 ${s.contactLimit} 次` : "同組資料不限"}
           {open ? "▲ 收起" : "▼ 展開設定"}
         </span>
@@ -108,7 +109,7 @@ export default function RateLimitPanel({
       {open && (
         <div style={{ marginTop: 14, display: "grid", gap: 14 }}>
           <div
-            style={{ background: "rgba(125,211,252,.06)", border: "1px solid #23303f", borderRadius: 8, padding: "9px 11px", color: "#9fc7e8", fontSize: 14.5, lineHeight: 1.9 }}
+            style={{ background: "rgba(125,211,252,.06)", border: "1px solid #23303f", borderRadius: 8, padding: "9px 11px", color: "#9fc7e8", fontSize: FS(14.5), lineHeight: 1.9 }}
           >
             {preview.map((line, i) => <div key={i}>・{line}</div>)}
             <div style={{ color: "#6b7684", marginTop: 4 }}>次數填 <b>0</b> = 這一道完全關掉。</div>
@@ -144,14 +145,14 @@ export default function RateLimitPanel({
             <button
               type="button"
               onClick={() => setS(TESTING_RATE_LIMIT_SETTINGS)}
-              style={{ background: "#15304d", border: "1px solid #2b5580", borderRadius: 7, color: "#7dd3fc", fontSize: 14.5, padding: "6px 12px", cursor: "pointer" }}
+              style={{ background: "#15304d", border: "1px solid #2b5580", borderRadius: 7, color: "#17458f", fontSize: FS(14.5), padding: "6px 12px", cursor: "pointer" }}
             >
               🧪 套用「我要自己測試」的寬鬆設定
             </button>
             <button
               type="button"
               onClick={() => setS(DEFAULT_RATE_LIMIT_SETTINGS)}
-              style={{ background: "none", border: "1px solid #2a2a2a", borderRadius: 7, color: "#6b7684", fontSize: 14.5, padding: "6px 12px", cursor: "pointer" }}
+              style={{ background: "none", border: "1px solid #2a2a2a", borderRadius: 7, color: "#6b7684", fontSize: FS(14.5), padding: "6px 12px", cursor: "pointer" }}
             >
               回到預設（8/10 分・3/60 分・重複 10 分）
             </button>
@@ -164,7 +165,7 @@ export default function RateLimitPanel({
               disabled={busy || !dirty}
               style={{
                 background: dirty ? "#16a34a" : "#333", border: 0, borderRadius: 8, color: "#fff",
-                padding: "9px 20px", fontSize: 15.5, fontWeight: 700,
+                padding: "9px 20px", fontSize: FS(15.5), fontWeight: 700,
                 cursor: busy ? "wait" : dirty ? "pointer" : "not-allowed",
               }}
             >
@@ -175,18 +176,18 @@ export default function RateLimitPanel({
               onClick={clear}
               disabled={clearing}
               style={{
-                background: "#4a3a12", border: "1px solid #6b5316", borderRadius: 8, color: "#fbbf24",
-                padding: "9px 18px", fontSize: 15.5, fontWeight: 700, cursor: clearing ? "wait" : "pointer",
+                background: "#4a3a12", border: "1px solid #6b5316", borderRadius: 8, color: "#8a6100",
+                padding: "9px 18px", fontSize: FS(15.5), fontWeight: 700, cursor: clearing ? "wait" : "pointer",
               }}
             >
               {clearing ? "解除中⋯" : "🔓 立刻解除目前所有限制"}
             </button>
-            <span style={{ color: "#6b7684", fontSize: 14, lineHeight: 1.7 }}>
-              被自己卡住時按右邊那顆，<b style={{ color: "#9aa0a6" }}>清計數、留稽核、不動預約資料</b>。
+            <span style={{ color: "#6b7684", fontSize: FS(14), lineHeight: 1.7 }}>
+              被自己卡住時按右邊那顆，<b style={{ color: "#59657d" }}>清計數、留稽核、不動預約資料</b>。
             </span>
           </div>
 
-          {msg && <div style={{ color: msg.ok ? "#86efac" : "#f0705c", fontSize: 14.5, lineHeight: 1.8 }}>{msg.text}</div>}
+          {msg && <div style={{ color: msg.ok ? "#86efac" : "#f0705c", fontSize: FS(14.5), lineHeight: 1.8 }}>{msg.text}</div>}
         </div>
       )}
     </section>

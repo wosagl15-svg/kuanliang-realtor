@@ -116,6 +116,22 @@ export const CONTACT_TYPES = [
 
 export type ContactTypeKey = (typeof CONTACT_TYPES)[number]["key"];
 
+/** 帶看／推案之後客戶的反應。這是「嘴巴 vs 行為」分析的原料。 */
+export const REACTIONS = [
+  { key: "loved", label: "很喜歡", tone: "success", weight: 2 },
+  { key: "ok", label: "還可以", tone: "info", weight: 1 },
+  { key: "meh", label: "沒感覺", tone: "neutral", weight: 0 },
+  { key: "disliked", label: "不喜歡", tone: "warn", weight: -1 },
+  { key: "offered", label: "出價了", tone: "success", weight: 3 },
+] as const;
+
+export type ReactionKey = (typeof REACTIONS)[number]["key"];
+
+export function reactionLabel(key: string | null | undefined): string {
+  if (!key) return "";
+  return REACTIONS.find((r) => r.key === key)?.label ?? key;
+}
+
 // ---- 標籤分類（受控標籤只能從既有清單選，才不會長出「近捷運／捷運近／離捷運近」三個同義標籤）----
 export const TAG_CATEGORIES = [
   { key: "area", label: "區域特色" },
@@ -283,3 +299,23 @@ export type FieldConfidence = {
 };
 
 export type ExtractionMeta = Record<string, FieldConfidence>;
+
+/**
+ * 社區型態 —— 決定「這筆帶看紀錄要顯示什麼名字」。
+ *
+ * 獨棟透天沒有社區名，逼業務填社區名只會生出「中山路透天」這種假社區，
+ * 主檔一旦被污染，之後「輸入社區撈出所有想買的人」就永遠不準。
+ */
+export const COMMUNITY_KINDS = [
+  { key: "building", label: "電梯大樓／華廈", shows: "name", hint: "有正式大樓名稱" },
+  { key: "community", label: "社區", shows: "name", hint: "整個社區共用一個名字" },
+  { key: "house", label: "獨棟透天／別墅", shows: "address", hint: "沒有社區名，用地址辨識" },
+] as const;
+
+export type CommunityKind = (typeof COMMUNITY_KINDS)[number]["key"];
+
+/** 這筆社區在畫面上要顯示什麼：透天顯示地址，其餘顯示名稱 */
+export function communityDisplay(c: { name: string; address?: string | null; kind?: string | null }): string {
+  if (c.kind === "house" && c.address) return c.address;
+  return c.name;
+}

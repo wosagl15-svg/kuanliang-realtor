@@ -11,6 +11,7 @@ import { OWNER, SOCIAL } from "@/config/owner";
 import { SITE_URL } from "@/lib/site";
 import { agentNode, websiteNode } from "@/lib/agent-node";
 import { getPosts } from "@/lib/blog";
+import SplitCards from "./SplitCards";
 
 const SITE_TITLE = "吳冠良｜台中海線專業房仲 - 資產配置・稅務諮詢・簡易裝潢｜懂你又懂房";
 const SITE_DESC =
@@ -439,22 +440,7 @@ export default function Home() {
           <h2 className="split-h" id="split-h">
             你想知道什麼？
           </h2>
-          <div className="splitgrid">
-            {SPLIT.map((s) => (
-              <a className="splitcard" href={s.href} key={s.href}>
-                <span className="ic" aria-hidden="true">
-                  {s.ic}
-                </span>
-                <span className="tx">
-                  <b>{s.h}</b>
-                  <span>{s.p}</span>
-                </span>
-                <span className="go" aria-hidden="true">
-                  →
-                </span>
-              </a>
-            ))}
-          </div>
+          <SplitCards items={SPLIT} />
         </div>
       </section>
 
