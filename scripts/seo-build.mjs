@@ -91,11 +91,13 @@ const CLUSTERS = {
     ],
   },
   租屋: {
-    intro: "租屋這條線的三頁，租之前一起看：",
+    intro: "租屋這條線的五頁，租之前一起看：",
     pages: [
       ["/rent-check", "這個租金貴得有道理嗎：租屋比價工具"],
       ["/rental-subsidy", "房客要報租金補貼，房東該答應嗎"],
       ["/landlord-check", "房東出租檢查表"],
+      ["/rent-notarization", "租屋公證怎麼辦：費用試算與強制執行"],
+      ["/lease-expiry-landlord", "租約到期沒處理，定期會變不定期"],
     ],
   },
   繼承與傳承: {
@@ -340,6 +342,13 @@ function buildBlock(info) {
     `<meta property="og:site_name" content="${AGENT.name}">`,
     `<meta property="og:locale" content="zh_TW">`,
     `<script type="application/ld+json">${jsonLd}</script>`,
+    /* Vercel Web Analytics。
+       🔴 public/ 底下這 50 幾個靜態頁不吃 Next 的 layout，所以 layout.tsx 裡的
+          <Analytics /> 對它們無效——實測 /qingan3、/seller-marketing 的
+          window.va 都是 undefined，等於全站最主要的內容都沒在計數。
+          這裡補上官方的 script 版本，新增頁面跟著這支腳本自動拿到。
+       ⚠️ Hobby 方案沒有 Custom Events，所以只會有瀏覽數，沒有點擊事件。 */
+    `<script defer src="/_vercel/insights/script.js"></script>`,
     END,
   ].join("\n");
 }
