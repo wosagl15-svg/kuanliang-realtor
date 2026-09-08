@@ -301,9 +301,24 @@ footer .legal{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255
  * 文案寫「訪客的處境」不寫服務名稱——他心裡想的是「我要買房」，不是「買方全程陪跑」。
  */
 const SPLIT = [
-  { ic: "🏠", h: "我要買房", p: "從看屋、出價到交屋，一關一關陪你過", href: "/buy-house-guide" },
-  { ic: "🔑", h: "我要賣房", p: "定價、稅費、委託方式，先算清楚再決定", href: "/seller-guide" },
-  { ic: "🌳", h: "我有土地", p: "建地、農地、持分，先確認能不能蓋、好不好賣", href: "/land-lookup" },
+  {
+    ic: "🏠",
+    h: "我要買房",
+    p: "出價前先拿到同社區比價報告，行情自己查得到",
+    href: "/buyer-service",
+  },
+  {
+    ic: "🔑",
+    h: "我要賣房",
+    p: "每週一份寫得出數字的回報表，不是「再等等看」",
+    href: "/seller-marketing",
+  },
+  {
+    ic: "🌳",
+    h: "我有土地",
+    p: "分區、既成道路、持分，先確認能不能蓋、好不好賣",
+    href: "/land-lookup",
+  },
 ];
 
 const SERVICES = [
@@ -422,7 +437,7 @@ export default function Home() {
       <section className="split" aria-labelledby="split-h">
         <div className="wrap">
           <h2 className="split-h" id="split-h">
-            你現在是哪一種？
+            你想知道什麼？
           </h2>
           <div className="splitgrid">
             {SPLIT.map((s) => (
