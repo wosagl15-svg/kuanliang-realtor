@@ -10,16 +10,17 @@ import Link from "next/link";
 import { OWNER, SOCIAL } from "@/config/owner";
 import { SITE_URL } from "@/lib/site";
 import { agentNode, websiteNode } from "@/lib/agent-node";
+import { getPosts } from "@/lib/blog";
 
 const SITE_TITLE = "吳冠良｜台中海線專業房仲 - 資產配置・稅務諮詢・簡易裝潢｜懂你又懂房";
 const SITE_DESC =
-  "台中海線專業房仲吳冠良，善願必佑、站在客戶這一邊。提供資產配置、稅務諮詢、簡易裝潢，以及買方陪跑、賣方委託、土地買賣。服務沙鹿、清水、梧棲、龍井、大肚、大甲。Google 商家 5.0 星。線上預約諮詢。";
+  "台中海線專業房仲吳冠良，善願必佑、站在客戶這一邊。提供資產配置、稅務諮詢、簡易裝潢，以及買方陪跑、賣方委託、土地買賣。服務沙鹿、清水、梧棲、龍井、大肚、大甲、外埔。Google 商家 5.0 星。線上預約諮詢。";
 
 export const metadata: Metadata = {
   title: SITE_TITLE,
   description: SITE_DESC,
   keywords:
-    "台中房仲,海線房仲,沙鹿房仲,清水房仲,梧棲房仲,龍井房仲,大肚房仲,大甲房仲,吳冠良,資產配置,稅務諮詢,簡易裝潢,土地買賣,委託賣屋,首購",
+    "台中房仲,海線房仲,沙鹿房仲,清水房仲,梧棲房仲,龍井房仲,大肚房仲,大甲房仲,外埔房仲,吳冠良,資產配置,稅務諮詢,簡易裝潢,土地買賣,委託賣屋,首購",
   authors: [{ name: OWNER.name }],
   robots: { index: true, follow: true },
   openGraph: {
@@ -198,6 +199,96 @@ footer .legal{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255
 .actionbar a.hi{background:var(--gold);color:#3a2a0c;font-weight:700}
 @media(min-width:721px){.actionbar{display:none}}
 
+/* ── 買／賣／土地分流帶（hero 正下方）────────────────────────── */
+.split{background:#fff;border-bottom:1px solid var(--line);padding:34px 0 38px}
+.split-h{font-size:17px;font-weight:700;color:var(--navy);text-align:center;margin:0 0 18px}
+.splitgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.splitcard{display:flex;align-items:center;gap:14px;min-height:56px;
+  background:linear-gradient(160deg,#fff,var(--cream));border:1px solid var(--line);
+  border-radius:14px;padding:18px 18px;transition:transform .14s,border-color .14s,box-shadow .14s}
+.splitcard:hover{transform:translateY(-2px);border-color:var(--gold);box-shadow:0 8px 20px rgba(22,40,63,.09)}
+.splitcard .ic{font-size:30px;line-height:1;flex:none}
+.splitcard .tx{display:flex;flex-direction:column;gap:2px;min-width:0}
+.splitcard .tx b{font-size:18px;color:var(--navy);line-height:1.4}
+.splitcard .tx span{font-size:14.5px;color:var(--muted);line-height:1.6}
+.splitcard .go{margin-left:auto;color:var(--gold);font-size:20px;font-weight:700;flex:none}
+
+/* ── 最新房產筆記（工具區之後、預約之前）──────────────────────── */
+.news{background:var(--cream-2)}
+.newsgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.newscard{display:flex;flex-direction:column;gap:8px;background:#fff;border:1px solid var(--line);
+  border-radius:14px;padding:22px 20px;transition:transform .14s,border-color .14s,box-shadow .14s}
+.newscard:hover{transform:translateY(-3px);border-color:var(--gold);box-shadow:0 8px 20px rgba(22,40,63,.09)}
+.newscard .ic{font-size:26px;line-height:1}
+.newscard b{font-size:17px;color:var(--navy);line-height:1.5}
+.newscard .d{font-size:14.5px;color:var(--muted);line-height:1.65;flex:1}
+.newscard time{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+
+@media(max-width:760px){
+  .splitgrid,.newsgrid{grid-template-columns:1fr}
+}
+
+/* ══════════════════════════════════════════════════════════════
+   手機閱讀（讀者 30～60 歲，多半從 FB／LINE 點進來用手機看）
+
+   🔴 這個區塊之前完全不存在 —— 原本 CSS 只有版面有手機斷點，
+      font-size 一個都沒有，桌機手機共用同一組字級。實測 375px 下
+      有 56 處文字小於 15px，比自家工具頁還難讀
+      （工具頁的鐵律是「基準字級 17px，不要縮」）。
+
+   ⚠️ 刻意不放大 .kicker(11.5px) 與 .eyebrow(12.5px)：
+      那兩個是 letter-spacing:.24em 的裝飾眉標，不是拿來讀的內容，
+      放大只會破壞版面。
+   ══════════════════════════════════════════════════════════════ */
+@media(max-width:760px){
+  body{font-size:17px}
+  .serv-card p{font-size:16px}
+  .serv-card .tag{font-size:15.5px}
+  .tool-d{font-size:15.5px}
+  .area-card span{font-size:15px}
+  .area-note,.checks{font-size:15.5px}
+  .bkstep .t{font-size:15px}
+  .bknote{font-size:15px}
+  .splitcard .tx span{font-size:15px}
+  .newscard .d{font-size:15.5px}
+  .newscard time{font-size:15px}
+  footer{font-size:15px}
+  footer .legal{font-size:15px}
+  .actionbar a{font-size:15px}
+  /* 預約區下方的聯絡列（電話／LINE／名片／物件），改版前 14.5px */
+  .contactrow a{font-size:15.5px}
+  /* 導覽列右上那顆「線上預約」是按鈕不是裝飾，跟著放大 */
+  .navlinks .pill{font-size:15.5px}
+
+  /* 觸控目標
+     🔴 第一版寫成「footer a」沒有生效 —— 「footer .flinks a」自己寫了
+        min-height:40px，它多一個 class，特異性比較高，把我的規則壓過去了。
+        改成同樣帶 class 的選擇器才蓋得掉。44px 是手指能穩定點中的下限。
+     ⚠️ 這整段 CSS 是 JS 樣板字串，註解裡不能出現反引號，會把字串提前結束。 */
+  footer .flinks a,.contactrow a,.actionbar a,.navlinks .pill{
+    min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+  footer .flinks{gap:12px 18px}
+  .brand{min-height:44px;display:inline-flex;align-items:center}
+
+  /* 字放大又多了兩段，頁面會變長；用留白與行數限制補回來。
+     只壓間距與摘要行數，不折疊、不隱藏任何內容。 */
+  .serv-card{padding:18px}
+  .serv-grid{gap:12px;margin-top:28px}
+  /* 52px 的圖示方塊在手機佔掉整整一行，縮小並與標題同一行 */
+  .serv-ico{width:40px;height:40px;border-radius:11px;font-size:22px;margin-bottom:8px}
+  section{padding:34px 0}
+  header.hero{padding:30px 0 34px}
+  .tool{padding:16px 18px}
+  .toolgrid{gap:12px;margin-top:26px}
+  .revcard{padding:22px}
+  .split{padding:26px 0 30px}
+  .splitcard{padding:14px 16px}
+  .newscard{padding:16px 18px;gap:6px}
+  .newsgrid{gap:12px;margin-top:24px}
+  /* 摘要最多兩行 —— 標題與日期才是點不點的依據，摘要只是輔助 */
+  .newscard .d{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+}
+
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 `;
 
@@ -205,6 +296,16 @@ footer .legal{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255
  * 每張服務卡片都直接連到對應的工具頁 —— 讀者不用捲到頁面下方的工具區再自己找。
  * tag 直接寫工具名稱，點下去會到哪裡一眼就知道，不用猜。
  */
+/**
+ * hero 底下的分流帶。三條線各自連到站上「已經存在」的指南頁，不新增內容頁。
+ * 文案寫「訪客的處境」不寫服務名稱——他心裡想的是「我要買房」，不是「買方全程陪跑」。
+ */
+const SPLIT = [
+  { ic: "🏠", h: "我要買房", p: "從看屋、出價到交屋，一關一關陪你過", href: "/buy-house-guide" },
+  { ic: "🔑", h: "我要賣房", p: "定價、稅費、委託方式，先算清楚再決定", href: "/seller-guide" },
+  { ic: "🌳", h: "我有土地", p: "建地、農地、持分，先確認能不能蓋、好不好賣", href: "/land-lookup" },
+];
+
 const SERVICES = [
   { ic: "📊", h: "資產配置", p: "依你的資金、家庭階段與目標，規劃自住／收租／增值的房產布局，把每一分錢放對位置。", tag: "買方購屋成本試算", href: "/buyer-cost" },
   { ic: "🧾", h: "稅務諮詢", p: "房地合一、土增稅、贈與繼承、自住優惠…買賣前先算清楚，不讓稅費吃掉你的獲利。", tag: "房地合一稅・自用優惠", href: "/selfuse-tax" },
@@ -234,6 +335,8 @@ const STEPS = [
 ];
 
 export default function Home() {
+  const posts = getPosts().slice(0, 3);
+
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
@@ -289,11 +392,56 @@ export default function Home() {
             </div>
             <div className="disc">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={OWNER.photoUrl} alt={`台中海線專業房仲${OWNER.name} 形象照`} width={250} height={250} />
+              {/*
+                🔴 原圖 owner.webp 是 1254×1254 / 3.1 MB，但這個位置桌機只顯示 250px、
+                   手機 142px —— 等於為了一顆頭像下載 3 MB。改成給 300/500 兩個尺寸
+                   （15 KB / 30 KB），瀏覽器自己挑。
+                ⚠️ 不要加 loading="lazy"：它在第一屏，是 LCP 元素，lazy 反而更慢。
+                   width/height 保留，版面位移（CLS）才不會跑掉。
+              */}
+              <img
+                src="/card/owner-500.webp"
+                srcSet="/card/owner-300.webp 300w, /card/owner-500.webp 500w"
+                sizes="(max-width:760px) 150px, 250px"
+                alt={`台中海線專業房仲${OWNER.name} 形象照`}
+                width={250}
+                height={250}
+              />
             </div>
           </div>
         </div>
       </header>
+
+      {/*
+        買／賣／土地分流帶。
+        實測：改版前「買方全程陪跑」在手機第 3.2 屏（2,606px）、「賣方委託銷售」在第 3.6 屏，
+        訪客得先捲過自我介紹與客戶口碑才看得到主業。房仲首頁的第一個決策點是
+        「我要買還是要賣」，不是「這個人是誰」，所以把分流拉到 hero 正下方。
+        刻意用「新增一段」而不是重排服務區——既有六張卡的敘事順序完全不動。
+      */}
+      <section className="split" aria-labelledby="split-h">
+        <div className="wrap">
+          <h2 className="split-h" id="split-h">
+            你現在是哪一種？
+          </h2>
+          <div className="splitgrid">
+            {SPLIT.map((s) => (
+              <a className="splitcard" href={s.href} key={s.href}>
+                <span className="ic" aria-hidden="true">
+                  {s.ic}
+                </span>
+                <span className="tx">
+                  <b>{s.h}</b>
+                  <span>{s.p}</span>
+                </span>
+                <span className="go" aria-hidden="true">
+                  →
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* 客戶口碑 */}
       <section className="record" id="record">
@@ -365,6 +513,41 @@ export default function Home() {
         </div>
       </section>
 
+      {/*
+        最新文章。刻意放在中段而不是頁面上方：沒有人是為了看近況才進房仲網站的，
+        放上面會擠掉買／賣分流。它真正的價值在爬蟲——首頁有新文章連結，
+        Google 與 AI 會更快發現新文章。改版前全首頁只有頁尾一個 /blog 連結（第 7.4 屏）。
+      */}
+      {posts.length > 0 && (
+        <section className="news" aria-labelledby="news-h">
+          <div className="wrap">
+            <div className="center">
+              <p className="kicker">NOTES</p>
+              <h2 className="title" id="news-h">
+                最新房產筆記
+              </h2>
+            </div>
+            <div className="newsgrid">
+              {posts.map((p) => (
+                <a className="newscard" href={`/blog/${p.slug}`} key={p.slug}>
+                  <span className="ic" aria-hidden="true">
+                    {p.emoji}
+                  </span>
+                  <b>{p.title}</b>
+                  <span className="d">{p.description}</span>
+                  <time dateTime={p.date}>{p.date.replace(/-/g, "/")}</time>
+                </a>
+              ))}
+            </div>
+            <div className="center" style={{ marginTop: 26 }}>
+              <a className="btn" href="/blog">
+                看全部房產筆記 →
+              </a>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* 預約諮詢 —— 接到真正的預約系統 */}
       <section id="booking">
         <div className="wrap">
@@ -400,7 +583,7 @@ export default function Home() {
           <div className="contactrow">
             <a href={`tel:${OWNER.phoneRaw}`}>📞 {OWNER.phone}</a>
             <a href={SOCIAL.line} target="_blank" rel="noopener noreferrer">
-              💬 LINE：wosawo
+              💬 LINE：@asmile
             </a>
             <Link href="/card">🪪 我的電子名片</Link>
             <a href="https://sales.myhomes.com.tw/0915295958" target="_blank" rel="noopener noreferrer">
@@ -433,9 +616,9 @@ export default function Home() {
               </a>
             ) : null}
           </div>
-          服務沙鹿・清水・梧棲・龍井・大肚・大甲
+          服務沙鹿・清水・梧棲・龍井・大肚・大甲・外埔
           <br />
-          {OWNER.phone}｜LINE：wosawo
+          {OWNER.phone}｜LINE：@asmile
           <div className="legal">
             本站資訊僅供參考，實際稅額、貸款條件與核貸額度以主管機關及承貸金融機構核定為準。© 2026 {OWNER.name}
           </div>

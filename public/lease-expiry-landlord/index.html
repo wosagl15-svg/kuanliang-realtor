@@ -5,11 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>租約到期沒做這件事，定期變不定期｜海線房仲冠良</title>
 <meta name="description" content="租約到期房客沒搬、房東又收了錢，可能就變成不定期租約，之後受土地法第100條限制、六款事由外不得收回房屋。民法451條原文、內政部契約第十五點的關鍵動作，以及房東到期前後的避坑清單。">
-<link rel="canonical" href="https://kuanhome.com/lease-expiry-landlord">
 <meta property="og:title" content="租約到期沒做這件事，定期變不定期｜海線房仲冠良">
 <meta property="og:description" content="不是「多寫幾句」就有效。內政部契約第十五點早就寫好了，關鍵是到期時房東要做的那個動作。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://kuanhome.com/lease-expiry-landlord">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{--cream:#f7f3ea;--cream-2:#efe8da;--navy:#16283f;--navy-2:#1f3752;--gold:#c8963e;--gold-soft:#e8c887;--ink:#2b2b2b;--muted:#6f6a60;--line:#ddd2bd;--red:#a8321a;--red-soft:#fbeae5;--green:#1c6b4f;--green-soft:#e6f2ec}
@@ -42,6 +40,43 @@ b{font-weight:700;color:var(--navy)}
 .tldr p{font-size:18.5px;line-height:1.75;margin:0;color:#e9edf2}
 .tldr b{color:var(--gold-soft)}
 
+/* ── 圖卡：三個條件 ── */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.step{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 16px;text-align:center}
+.step .n{width:34px;height:34px;border-radius:50%;background:var(--navy);color:var(--cream);
+ display:grid;place-items:center;font-size:16px;font-weight:700;margin:0 auto 12px}
+.step .t{font-size:16.5px;font-weight:700;color:var(--navy);line-height:1.5;margin:0 0 4px}
+.step .d{font-size:14px;color:var(--muted);line-height:1.6;margin:0}
+.plus{text-align:center;font-size:22px;color:var(--gold);font-weight:700;line-height:1;padding:6px 0}
+.arrow{text-align:center;font-size:26px;color:var(--gold);line-height:1;padding:10px 0 4px}
+.outcome{background:var(--red-soft);border:2px solid #e8c3b8;border-radius:14px;padding:20px;text-align:center}
+.outcome .t{font-size:20px;font-weight:700;color:var(--red);margin:0 0 4px;line-height:1.4}
+.outcome .d{font-size:15px;color:#7d3520;margin:0;line-height:1.7}
+
+/* ── 圖卡：分岔 ── */
+.fork{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px}
+.fk{border-radius:14px;padding:22px 20px;border:2px solid var(--line);background:#fff}
+.fk.no{border-color:#e8c3b8;background:var(--red-soft)}
+.fk.yes{border-color:#bcd9cb;background:var(--green-soft)}
+.fk .tag{display:inline-block;font-size:12.5px;letter-spacing:.14em;font-weight:700;margin:0 0 10px;padding:3px 10px;border-radius:999px}
+.fk.no .tag{background:var(--red);color:#fff}
+.fk.yes .tag{background:var(--green);color:#fff}
+.fk .say{font-size:17px;font-weight:700;line-height:1.55;margin:0 0 12px}
+.fk.no .say{color:var(--red)}
+.fk.yes .say{color:var(--green)}
+.fk ul{list-style:none;margin:0;padding:0}
+.fk li{font-size:15.5px;line-height:1.7;padding:6px 0 6px 20px;position:relative;color:var(--ink)}
+.fk li:before{content:"→";position:absolute;left:0;top:6px;font-weight:700}
+.fk.no li:before{color:var(--red)}
+.fk.yes li:before{color:var(--green)}
+
+/* ── 圖卡：六道門 ── */
+.gates{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:12px;margin-top:6px}
+.gate{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 14px}
+.gate .n{font-size:13px;font-weight:700;color:var(--gold);letter-spacing:.06em;margin:0 0 5px}
+.gate .t{font-size:15.5px;font-weight:700;color:var(--navy);line-height:1.5;margin:0 0 3px}
+.gate .d{font-size:13.5px;color:var(--muted);line-height:1.6;margin:0}
+
 /* 法條原文 */
 .law{background:var(--cream-2);border-left:5px solid var(--gold);border-radius:0 10px 10px 0;padding:18px 20px;margin:16px 0}
 .law .src{display:block;font-size:13.5px;color:var(--muted);letter-spacing:.04em;margin-bottom:6px}
@@ -51,7 +86,7 @@ b{font-weight:700;color:var(--navy)}
 .law ol li{margin:3px 0}
 
 /* 對照：做 / 不做 */
-.vs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+.vs{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px;margin-top:6px}
 .vs>div{border-radius:12px;padding:18px 20px;border:1px solid var(--line);background:#fff}
 .vs .bad{border-color:#e8c3b8;background:var(--red-soft)}
 .vs .good{border-color:#bcd9cb;background:var(--green-soft)}
@@ -87,6 +122,16 @@ b{font-weight:700;color:var(--navy)}
 .warn h3{color:var(--red)}
 .warn p{font-size:15.5px}
 
+/* 摺疊：法條佐證 */
+details.proof{margin-top:16px;border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden}
+details.proof>summary{cursor:pointer;padding:14px 18px;font-size:15px;color:var(--navy);font-weight:700;list-style:none;background:var(--cream-2)}
+details.proof>summary::-webkit-details-marker{display:none}
+details.proof>summary:before{content:"＋ ";color:var(--gold);font-weight:700}
+details.proof[open]>summary:before{content:"− "}
+details.proof>summary:focus-visible{outline:3px solid var(--navy);outline-offset:-3px}
+details.proof .inner{padding:4px 18px 18px}
+details.proof .law{margin-top:14px}
+
 /* 出處 */
 .sources{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px}
 .sources ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
@@ -94,7 +139,6 @@ b{font-weight:700;color:var(--navy)}
 .sources a:hover{border-color:var(--gold)}
 .sources a:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
 .sources a span{display:block;font-size:13.5px;color:var(--muted);margin-top:2px}
-
 .disclaim{margin-top:20px;font-size:14px;color:var(--muted);line-height:1.75}
 
 .cta{background:var(--gold);border-radius:14px;padding:28px;text-align:center;color:#3a2a0c;margin-top:8px}
@@ -112,16 +156,21 @@ footer a{color:var(--gold-soft)}
   header{padding:34px 0 30px}
   section{padding:28px 0}
   .card,.tldr,.sources,.cta{padding:20px}
-  .vs{grid-template-columns:1fr}
   h2{font-size:24px}
+  .step{display:grid;grid-template-columns:34px 1fr;gap:14px;text-align:left;align-items:start}
+  .step .n{margin:0}
+  .step .tx{min-width:0}
+  .plus{padding:2px 0}
 }
 </style>
+
+
 <!-- SEO:AUTO 由 scripts/seo-build.mjs 產生，不要手改 -->
 <link rel="canonical" href="https://kuanhome.com/lease-expiry-landlord">
 <meta property="og:url" content="https://kuanhome.com/lease-expiry-landlord">
 <meta property="og:site_name" content="海線房仲冠良">
 <meta property="og:locale" content="zh_TW">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://kuanhome.com/lease-expiry-landlord#article","headline":"租約到期沒做這件事，定期變不定期","description":"租約到期房客沒搬、房東又收了錢，可能就變成不定期租約，之後受土地法第100條限制、六款事由外不得收回房屋。民法451條原文、內政部契約第十五點的關鍵動作，以及房東到期前後的避坑清單。","url":"https://kuanhome.com/lease-expiry-landlord","inLanguage":"zh-Hant-TW","dateModified":"2026-08-28T11:23:40.513Z","author":{"@id":"https://kuanhome.com/#wuguanliang"},"publisher":{"@id":"https://kuanhome.com/#agent"},"mainEntityOfPage":{"@id":"https://kuanhome.com/lease-expiry-landlord"}},{"@type":"RealEstateAgent","@id":"https://kuanhome.com/#agent","name":"海線房仲冠良","alternateName":"吳冠良｜台中海線房地產顧問","description":"台中海線專業房地產仲介，深耕沙鹿、清水、梧棲、龍井、大肚、大甲六區。提供資產配置、稅務諮詢、簡易裝潢，及買賣委託與土地買賣。","slogan":"懂你又懂房","url":"https://kuanhome.com/","image":"https://kuanhome.com/card/owner.webp","telephone":"+886-915-295-958","email":"wosagl15@gmail.com","address":{"@type":"PostalAddress","addressLocality":"沙鹿區","addressRegion":"台中市","postalCode":"433","addressCountry":"TW"},"geo":{"@type":"GeoCoordinates","latitude":24.2340986,"longitude":120.560349},"priceRange":"$$","areaServed":[{"@type":"AdministrativeArea","name":"台中市沙鹿區"},{"@type":"AdministrativeArea","name":"台中市清水區"},{"@type":"AdministrativeArea","name":"台中市梧棲區"},{"@type":"AdministrativeArea","name":"台中市龍井區"},{"@type":"AdministrativeArea","name":"台中市大肚區"},{"@type":"AdministrativeArea","name":"台中市大甲區"}],"sameAs":["https://www.google.com/maps/place/?q=place_id:ChIJa-qrvNgVaTQRzcxomr73DVE","https://www.facebook.com/share/14XZ3Wy4nLZ/","https://www.instagram.com/asmile55178/","https://www.youtube.com/@吳冠良-w9v","https://lin.ee/1WlfBub","https://sales.myhomes.com.tw/0915295958"],"hasMap":"https://www.google.com/maps/place/?q=place_id:ChIJa-qrvNgVaTQRzcxomr73DVE","employee":{"@type":"Person","@id":"https://kuanhome.com/#wuguanliang","name":"吳冠良","jobTitle":"台中海線專業房地產顧問"}},{"@type":"BreadcrumbList","@id":"https://kuanhome.com/lease-expiry-landlord#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://kuanhome.com/"},{"@type":"ListItem","position":2,"name":"購屋攻略","item":"https://kuanhome.com/tools"},{"@type":"ListItem","position":3,"name":"租約到期沒做這件事，定期變不定期","item":"https://kuanhome.com/lease-expiry-landlord"}]},{"@type":"FAQPage","@id":"https://kuanhome.com/lease-expiry-landlord#faq","mainEntity":[{"@type":"Question","name":"房客沒搬，我收了下個月的錢，租約就變不定期了嗎？","acceptedAnswer":{"@type":"Answer","text":"關鍵不在收錢，在有沒有 即時表示反對 。民法第 451 條寫的是出租人「不即表示反對之意思者」才視為以不定期限繼續契約。收租金之所以危險，是因為它在證據上很像「我同意你繼續住」。所以期滿後若收到錢，要用書面講清楚那筆錢的性質不是續租的租金。"}},{"@type":"Question","name":"變成不定期租約之後，我就永遠收不回房子了嗎？","acceptedAnswer":{"@type":"Answer","text":"不是收不回，是 要有理由才能收回 。依土地法第 100 條，出租人非有六款情形之一不得收回房屋：收回自住或重建、違法轉租、積欠租金達二個月、供違法使用、違反租賃契約、損壞房屋不賠償。房客照常繳租、照常使用，你就沒有現成的理由。"}},{"@type":"Question","name":"「占用費」這個詞可以直接寫進契約嗎？","acceptedAnswer":{"@type":"Answer","text":"意思對，但 建議照官方用詞寫 。內政部契約第十五點第三項用的是「未返還租賃住宅期間之 相當月租金額 」，以及「 相當月租金額計算之違約金 」（未足一個月以日租金折算），算到返還為止。寫存證信函時照這個寫法，比較不會被挑字眼。"}},{"@type":"Question","name":"我只是把自家一戶租出去的個人房東，也要用內政部的契約嗎？","acceptedAnswer":{"@type":"Answer","text":"是。《租賃住宅市場發展及管理條例》第 5 條第 1 項明文「租賃契約出租人及承租人間 視為具消費關係 ，適用消費者保護法相關規定」。所以契約審閱期至少三日不能寫成拋棄、不得記載事項那十款對你一樣有效，自己在合約加條款要小心踩線。"}}],"isPartOf":{"@id":"https://kuanhome.com/lease-expiry-landlord#article"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://kuanhome.com/lease-expiry-landlord#article","headline":"租約到期沒做這件事，定期變不定期","description":"租約到期房客沒搬、房東又收了錢，可能就變成不定期租約，之後受土地法第100條限制、六款事由外不得收回房屋。民法451條原文、內政部契約第十五點的關鍵動作，以及房東到期前後的避坑清單。","url":"https://kuanhome.com/lease-expiry-landlord","inLanguage":"zh-Hant-TW","dateModified":"2026-09-08T13:30:27.914Z","author":{"@id":"https://kuanhome.com/#wuguanliang"},"publisher":{"@id":"https://kuanhome.com/#agent"},"mainEntityOfPage":{"@id":"https://kuanhome.com/lease-expiry-landlord"}},{"@type":"RealEstateAgent","@id":"https://kuanhome.com/#agent","name":"海線房仲冠良","alternateName":"吳冠良｜台中海線房地產顧問","description":"台中海線專業房地產仲介，深耕沙鹿、清水、梧棲、龍井、大肚、大甲、外埔七區。提供資產配置、稅務諮詢、簡易裝潢，及買賣委託與土地買賣。","slogan":"懂你又懂房","url":"https://kuanhome.com/","image":"https://kuanhome.com/card/owner.webp","telephone":"+886-915-295-958","email":"wosagl15@gmail.com","address":{"@type":"PostalAddress","addressLocality":"沙鹿區","addressRegion":"台中市","postalCode":"433","addressCountry":"TW"},"geo":{"@type":"GeoCoordinates","latitude":24.2340986,"longitude":120.560349},"priceRange":"$$","areaServed":[{"@type":"AdministrativeArea","name":"台中市沙鹿區"},{"@type":"AdministrativeArea","name":"台中市清水區"},{"@type":"AdministrativeArea","name":"台中市梧棲區"},{"@type":"AdministrativeArea","name":"台中市龍井區"},{"@type":"AdministrativeArea","name":"台中市大肚區"},{"@type":"AdministrativeArea","name":"台中市大甲區"},{"@type":"AdministrativeArea","name":"台中市外埔區"}],"sameAs":["https://www.google.com/maps/place/?q=place_id:ChIJa-qrvNgVaTQRzcxomr73DVE","https://www.facebook.com/share/14XZ3Wy4nLZ/","https://www.instagram.com/asmile55178/","https://www.youtube.com/@吳冠良-w9v","https://lin.ee/1WlfBub","https://sales.myhomes.com.tw/0915295958"],"hasMap":"https://www.google.com/maps/place/?q=place_id:ChIJa-qrvNgVaTQRzcxomr73DVE","employee":{"@type":"Person","@id":"https://kuanhome.com/#wuguanliang","name":"吳冠良","jobTitle":"台中海線專業房地產顧問"}},{"@type":"BreadcrumbList","@id":"https://kuanhome.com/lease-expiry-landlord#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://kuanhome.com/"},{"@type":"ListItem","position":2,"name":"購屋攻略","item":"https://kuanhome.com/tools"},{"@type":"ListItem","position":3,"name":"租約到期沒做這件事，定期變不定期","item":"https://kuanhome.com/lease-expiry-landlord"}]},{"@type":"FAQPage","@id":"https://kuanhome.com/lease-expiry-landlord#faq","mainEntity":[{"@type":"Question","name":"房客沒搬，我收了下個月的錢，租約就變不定期了嗎？","acceptedAnswer":{"@type":"Answer","text":"關鍵不在收錢，在 有沒有即時表示反對 。收租金之所以危險，是因為它在證據上很像「我同意你繼續住」。所以期滿後若收到錢，要用書面講清楚那筆錢的性質不是續租的租金。"}},{"@type":"Question","name":"變成不定期之後，我就永遠收不回房子了嗎？","acceptedAnswer":{"@type":"Answer","text":"不是收不回，是 要有理由才能收回 ——就是上面那六道門。房客照常繳租、照常使用，你就沒有現成的理由。"}},{"@type":"Question","name":"「占用費」這個詞可以直接寫進契約嗎？","acceptedAnswer":{"@type":"Answer","text":"意思對，但 建議照官方用詞寫 ：「未返還租賃住宅期間之相當月租金額」，以及「相當月租金額計算之違約金」（未足一個月以日租金折算），算到返還為止。寫存證信函時照這個寫法，比較不會被挑字眼。"}},{"@type":"Question","name":"我只是把自家一戶租出去的個人房東，也要用內政部的契約嗎？","acceptedAnswer":{"@type":"Answer","text":"是。法律明文把房東與房客之間 視為具消費關係 ，所以審閱期至少三日不能寫成拋棄、不得記載事項那十款對你一樣有效。"}}],"isPartOf":{"@id":"https://kuanhome.com/lease-expiry-landlord#article"}}]}</script>
 <!-- /SEO:AUTO -->
 </head>
 <body>
@@ -136,85 +185,173 @@ footer a{color:var(--gold-soft)}
 </header>
 
 <div class="wrap">
-
   <div class="tldr">
     <p class="t">一句話</p>
-    <p>租約到期房客沒搬，房東要做的關鍵動作是<b>「明示不以不定期限繼續契約」</b>——這句話不是我掰的，是<b>內政部契約第十五點第三項的原文</b>。你不用自己在合約多寫，它本來就在裡面。</p>
+    <p>租約到期房客沒搬，你要做的只有一件事：<b>用書面講出「我不同意繼續租」</b>。<br>這句話不用自己想，內政部的契約裡本來就有。</p>
   </div>
+</div>
 
-  <section>
-    <h2>一、為什麼會「自動」變成不定期</h2>
-    <p class="sub">整件事的法源只有一條，而且很短。</p>
-    <div class="card">
-      <div class="law">
-        <span class="src">民法 第 451 條</span>
-        <q>租賃期限屆滿後，承租人仍為租賃物之使用收益，而出租人不即表示反對之意思者，視為以不定期限繼續契約。</q>
+<!-- ── 圖卡區：先看懂，再看法條 ── -->
+<section>
+  <div class="wrap">
+    <h2>三件事同時發生，租約就變了</h2>
+    <p class="sub">缺一個都不會發生。看看你有沒有全中。</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="n">1</div>
+        <div class="tx"><p class="t">租期到了</p>
+        <p class="d">合約上寫的最後一天已經過去</p></div>
       </div>
-      <p>拆成白話，成立要三件事同時發生：<b>① 租期已經屆滿 ② 房客還在住 ③ 房東沒有「即時表示反對」</b>。</p>
-      <p>注意第三點的重點在<b>「不即表示反對」</b>——法律要看的是你有沒有把反對的意思講出來，不是你有沒有收錢。收租金之所以危險，是因為它在證據上很像「我同意你繼續住」，反過來坐實了「沒有表示反對」。</p>
-      <div class="vs">
-        <div class="bad">
-          <h3>沒表示反對</h3>
-          <p>期滿後照收下一筆、訊息已讀不回、口頭說「再看看」——這些都可能被認為沒有即時反對，視為以不定期限繼續契約。</p>
-        </div>
-        <div class="good">
-          <h3>有表示反對</h3>
-          <p>期滿前後以書面明確通知不續租、要求返還，並且留下紀錄。收到的錢也講清楚性質不是續租的租金。</p>
-        </div>
+      <div class="step">
+        <div class="n">2</div>
+        <div class="tx"><p class="t">房客還住著</p>
+        <p class="d">東西沒搬、鑰匙沒還</p></div>
+      </div>
+      <div class="step">
+        <div class="n">3</div>
+        <div class="tx"><p class="t">你沒說「不續租」</p>
+        <p class="d">沒表態、已讀不回<br>或說「再看看」</p></div>
       </div>
     </div>
-  </section>
 
-  <section>
-    <h2>二、變成不定期，到底有多麻煩</h2>
-    <p class="sub">你的影片說「沒那麼簡單」——法律上更精確的說法是這一條。</p>
-    <div class="card">
-      <div class="law">
-        <span class="src">土地法 第 100 條</span>
-        <q>出租人非因左列情形之一，不得收回房屋。</q>
-        <ol>
-          <li>出租人收回自住或重新建築時。</li>
-          <li>承租人違反民法第四百四十三條第一項之規定轉租於他人時。</li>
-          <li>承租人積欠租金額，除擔保金抵償外，達二個月以上時。</li>
-          <li>承租人以房屋供違反法令之使用時。</li>
-          <li>承租人違反租賃契約時。</li>
-          <li>承租人損壞出租人之房屋或附著財物，而不為相當之賠償時。</li>
-        </ol>
-      </div>
-      <p>看懂這條，就懂為什麼房東會「趕不走房客」：<b>定期租約期滿就消滅</b>，你本來不需要理由；一旦變成<b>不定期</b>，你要收回房子就得<b>落入這六款其中一款</b>。房客乖乖繳租、乖乖使用，你就沒有現成的理由。</p>
-      <p>這才是那句「你的房子使用權，可能已經不是你一個人說了算」真正的意思。</p>
+    <div class="arrow" aria-hidden="true">↓</div>
+
+    <div class="outcome">
+      <p class="t">租約自動變成「不定期」</p>
+      <p class="d">沒有到期日了。以後想收回房子，要有法定理由才行。</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section>
-    <h2>三、關鍵動作，官方契約已經幫你寫好了</h2>
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>差別只在你有沒有講那句話</h2>
+    <p class="sub">同樣是房客沒搬，講跟不講，後面完全是兩條路。</p>
+
+    <div class="fork">
+      <div class="fk no">
+        <span class="tag">沒講</span>
+        <p class="say">「先讓他住著，錢有收到就好」</p>
+        <ul>
+          <li>租約變不定期，沒有到期日</li>
+          <li>要收回房子，得符合六款理由之一</li>
+          <li>房客乖乖繳租、乖乖住，你就沒有理由</li>
+          <li>房子的使用權，不再是你一個人說了算</li>
+        </ul>
+      </div>
+      <div class="fk yes">
+        <span class="tag">有講</span>
+        <p class="say">「租約到期，我不同意繼續租，請返還房屋」</p>
+        <ul>
+          <li>租約真的結束了</li>
+          <li>可以請求返還房屋</li>
+          <li>可以按月租金收「相當月租金額」</li>
+          <li>還可以再加一筆違約金，算到搬走為止</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>變不定期之後，只剩這六道門</h2>
+    <p class="sub">土地法第 100 條。不是這六種情況，房子收不回來。</p>
+
+    <div class="gates">
+      <div class="gate"><p class="n">門 1</p><p class="t">自己要住或要改建</p><p class="d">收回自住，或重新建築</p></div>
+      <div class="gate"><p class="n">門 2</p><p class="t">房客偷偷轉租</p><p class="d">違法把房子租給別人</p></div>
+      <div class="gate"><p class="n">門 3</p><p class="t">欠租滿兩個月</p><p class="d">押金抵完之後還欠兩個月以上</p></div>
+      <div class="gate"><p class="n">門 4</p><p class="t">拿去做違法的事</p><p class="d">房子被用於違反法令的用途</p></div>
+      <div class="gate"><p class="n">門 5</p><p class="t">違反租約條款</p><p class="d">合約寫了不能做，他做了</p></div>
+      <div class="gate"><p class="n">門 6</p><p class="t">弄壞了又不賠</p><p class="d">損壞房屋或設備，不肯賠償</p></div>
+    </div>
+
+    <div class="warn" style="margin-top:18px">
+      <h3>為什麼這很麻煩</h3>
+      <p>房客準時繳租、正常使用、沒有轉租——<b>六道門一道都打不開</b>。這就是「趕不走房客」的真正原因，不是房東不夠強硬，是法律上沒有理由。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── 文字說明區 ── -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>一、法律真正在看什麼</h2>
+    <p class="sub">重點不是收不收錢，是你有沒有把話講出來。</p>
+
+    <div class="card">
+      <p>很多人以為「只要不收下個月的錢就沒事」。<b>不是。</b></p>
+      <p>法律看的是你有沒有<b>即時表示反對</b>。收錢之所以危險，是因為它在證據上很像「我同意你繼續住」——反過來坐實了你沒有反對。</p>
+      <p>所以正確做法是兩件事一起做：<b>把不續租講出來、留下紀錄</b>；如果還是收了錢，<b>另外用書面講清楚那筆錢不是租金</b>。</p>
+
+      <details class="proof">
+        <summary>看法條原文（民法第 451 條）</summary>
+        <div class="inner">
+          <div class="law">
+            <span class="src">民法　第 451 條</span>
+            <q>租賃期限屆滿後，承租人仍為租賃物之使用收益，而出租人不即表示反對之意思者，視為以不定期限繼續契約。</q>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>二、那句話不用自己想，契約裡有</h2>
     <p class="sub">這是多數轉傳版本會講錯的地方。</p>
+
     <div class="card">
-      <p>很多人會說「合約裡要自己多寫一段，寫明期滿後收的是占用費不是租金」。方向對，但<b>你多半不用自己寫</b>——內政部公告的住宅租賃契約裡本來就有，而且用詞更嚴謹：</p>
-      <div class="law">
-        <span class="src">住宅租賃定型化契約應記載及不得記載事項　十五、租賃住宅之返還（第三項）</span>
-        <q>承租人未依第一項規定返還租賃住宅時，出租人應即明示不以不定期限繼續契約，並得向承租人請求未返還租賃住宅期間之相當月租金額，及相當月租金額計算之違約金（未足一個月者，以日租金折算）至返還為止。</q>
-      </div>
+      <p>網路上常說「合約要自己多寫一段，寫明期滿後收的是占用費」。方向對，但<b>你多半不用自己寫</b>——內政部公告的住宅租賃契約裡本來就有，而且用詞更嚴謹。</p>
       <p>三個重點：</p>
-      <p><b>①「應即明示不以不定期限繼續契約」</b>——這就是民法 451「即表示反對之意思」的具體動作，官方直接寫成房東的義務。做了，才擋得住 451。</p>
-      <p><b>② 官方用詞不是「占用費」</b>，是<b>「未返還期間之相當月租金額」</b>加上<b>「相當月租金額計算之違約金」</b>。白話講就是占用費的意思，但寫進契約、寄存證信函時，<b>照官方用詞寫比較不會有爭議</b>。</p>
-      <p><b>③ 算到返還為止</b>，未滿一個月以日租金折算。也就是拖越久累積越多，這一點對房客本身就有壓力。</p>
-    </div>
-  </section>
+      <p><b>① 官方把它寫成房東的義務</b>：「應即明示不以不定期限繼續契約」。這就是民法 451 說的「表示反對」的具體動作。做了，才擋得住。</p>
+      <p><b>② 別寫「占用費」，照官方用詞</b>：是「未返還租賃住宅期間之<b>相當月租金額</b>」，加上「<b>相當月租金額計算之違約金</b>」。寫存證信函時照這個寫，比較不會被挑字眼。</p>
+      <p><b>③ 算到搬走為止</b>，未滿一個月以日租金折算。拖越久累積越多，這對房客本身就是壓力。</p>
 
-  <section>
-    <h2>四、一個很多房東不知道的前提</h2>
-    <div class="warn">
-      <h3>⚠️ 個人房東也受這套規範，不是只有代管公司</h3>
-      <p>《租賃住宅市場發展及管理條例》第 5 條第 1 項原文：<b>「租賃契約出租人及承租人間視為具消費關係，適用消費者保護法相關規定。」</b></p>
-      <p>意思是——就算你只是把自家一戶租出去的個人房東，房東與房客之間<b>一律視為消費關係</b>，內政部那份「應記載及不得記載事項」對你也有效。所以：<b>契約審閱期至少三日不能寫成拋棄</b>、<b>不得記載事項共十款</b>（例如不得寫「廣告僅供參考」、不得寫房客不得遷入戶籍、不得寫房客不得申報租金支出、不得寫房客不得申請租金補貼等），違反的條款會無效。</p>
-      <p>自己在合約亂加條款要小心：加對了是保障，加到踩線那條就是白加。</p>
+      <details class="proof">
+        <summary>看契約原文（內政部・第十五點第三項）</summary>
+        <div class="inner">
+          <div class="law">
+            <span class="src">住宅租賃定型化契約應記載及不得記載事項　十五、租賃住宅之返還（第三項）</span>
+            <q>承租人未依第一項規定返還租賃住宅時，出租人應即明示不以不定期限繼續契約，並得向承租人請求未返還租賃住宅期間之相當月租金額，及相當月租金額計算之違約金（未足一個月者，以日租金折算）至返還為止。</q>
+          </div>
+        </div>
+      </details>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section>
-    <h2>五、房東租約到期避坑清單</h2>
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>三、個人房東也一樣要遵守</h2>
+    <p class="sub">不是只有代管公司才受規範。</p>
+
+    <div class="card">
+      <p>就算你只是把自家一戶租出去，法律上<b>房東與房客之間一律視為消費關係</b>，內政部那份「應記載及不得記載事項」對你一樣有效。</p>
+      <p>所以：<b>審閱期至少三日，不能寫成拋棄</b>；<b>不得記載事項共十款</b>——不能寫「廣告僅供參考」、不能寫房客不得遷入戶籍、不能寫房客不得申報租金支出、不能寫房客不得申請租金補貼。違反的條款直接無效。</p>
+      <p>自己在合約亂加條款要小心：<b>加對了是保障，加到踩線那條就是白加。</b></p>
+
+      <details class="proof">
+        <summary>看法條原文（租賃住宅市場發展及管理條例第 5 條）</summary>
+        <div class="inner">
+          <div class="law">
+            <span class="src">租賃住宅市場發展及管理條例　第 5 條第 1 項</span>
+            <q>租賃契約出租人及承租人間視為具消費關係，適用消費者保護法相關規定。</q>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>四、房東租約到期避坑清單</h2>
     <p class="sub">勾一勾，看自己漏了哪幾項。紀錄只留在你這台裝置。</p>
+
     <div class="card">
       <div class="progress">
         <span>完成度</span>
@@ -232,55 +369,66 @@ footer a{color:var(--gold-soft)}
         <li><label><input type="checkbox"><span class="txt"><strong>知道押金可以抵充，不足還能再請求</strong><span>未返還期間的金額與未繳清費用，可由押金抵充，不足得再向房客請求。</span></span></label></li>
       </ul>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section>
-    <h2>六、常見問題</h2>
-    <p class="sub">被問最多的四題，答案都在前面，這裡集中回一次。</p>
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>五、常見問題</h2>
+    <p class="sub">被問最多的四題。</p>
+
     <div class="card">
       <h3>房客沒搬，我收了下個月的錢，租約就變不定期了嗎？</h3>
-      <p>關鍵不在收錢，在有沒有<b>即時表示反對</b>。民法第 451 條寫的是出租人「不即表示反對之意思者」才視為以不定期限繼續契約。收租金之所以危險，是因為它在證據上很像「我同意你繼續住」。所以期滿後若收到錢，要用書面講清楚那筆錢的性質不是續租的租金。</p>
+      <p>關鍵不在收錢，在<b>有沒有即時表示反對</b>。收租金之所以危險，是因為它在證據上很像「我同意你繼續住」。所以期滿後若收到錢，要用書面講清楚那筆錢的性質不是續租的租金。</p>
     </div>
     <div class="card">
-      <h3>變成不定期租約之後，我就永遠收不回房子了嗎？</h3>
-      <p>不是收不回，是<b>要有理由才能收回</b>。依土地法第 100 條，出租人非有六款情形之一不得收回房屋：收回自住或重建、違法轉租、積欠租金達二個月、供違法使用、違反租賃契約、損壞房屋不賠償。房客照常繳租、照常使用，你就沒有現成的理由。</p>
+      <h3>變成不定期之後，我就永遠收不回房子了嗎？</h3>
+      <p>不是收不回，是<b>要有理由才能收回</b>——就是上面那六道門。房客照常繳租、照常使用，你就沒有現成的理由。</p>
     </div>
     <div class="card">
       <h3>「占用費」這個詞可以直接寫進契約嗎？</h3>
-      <p>意思對，但<b>建議照官方用詞寫</b>。內政部契約第十五點第三項用的是「未返還租賃住宅期間之<b>相當月租金額</b>」，以及「<b>相當月租金額計算之違約金</b>」（未足一個月以日租金折算），算到返還為止。寫存證信函時照這個寫法，比較不會被挑字眼。</p>
+      <p>意思對，但<b>建議照官方用詞寫</b>：「未返還租賃住宅期間之相當月租金額」，以及「相當月租金額計算之違約金」（未足一個月以日租金折算），算到返還為止。寫存證信函時照這個寫法，比較不會被挑字眼。</p>
     </div>
     <div class="card">
       <h3>我只是把自家一戶租出去的個人房東，也要用內政部的契約嗎？</h3>
-      <p>是。《租賃住宅市場發展及管理條例》第 5 條第 1 項明文「租賃契約出租人及承租人間<b>視為具消費關係</b>，適用消費者保護法相關規定」。所以契約審閱期至少三日不能寫成拋棄、不得記載事項那十款對你一樣有效，自己在合約加條款要小心踩線。</p>
+      <p>是。法律明文把房東與房客之間<b>視為具消費關係</b>，所以審閱期至少三日不能寫成拋棄、不得記載事項那十款對你一樣有效。</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section>
-    <h2>七、官方出處</h2>
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>六、官方出處</h2>
+    <p class="sub">每一條都可以自己去查。</p>
+
     <div class="sources">
       <ul>
-        <li><a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=451" target="_blank" rel="noopener noreferrer">民法 第 451 條<span>全國法規資料庫</span></a></li>
-        <li><a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060001&flno=100" target="_blank" rel="noopener noreferrer">土地法 第 100 條<span>不定期租約收回房屋的六款事由</span></a></li>
-        <li><a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060125&flno=5" target="_blank" rel="noopener noreferrer">租賃住宅市場發展及管理條例 第 5 條<span>視為具消費關係的依據</span></a></li>
-        <li><a href="https://www.ey.gov.tw/Page/DFB720D019CCCB0A/478917df-7599-418f-8715-fd2716b623b4" target="_blank" rel="noopener noreferrer">住宅租賃定型化契約應記載及不得記載事項<span>行政院全球資訊網・最新為 114 年 4 月 18 日修正應記載事項第 18 點</span></a></li>
+        <li><a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=451" target="_blank" rel="noopener">民法 第 451 條<span>全國法規資料庫</span></a></li>
+        <li><a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060003&flno=100" target="_blank" rel="noopener">土地法 第 100 條<span>不定期租約收回房屋的六款事由</span></a></li>
+        <li><a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0070305&flno=5" target="_blank" rel="noopener">租賃住宅市場發展及管理條例 第 5 條<span>視為具消費關係的依據</span></a></li>
+        <li><a href="https://www.ey.gov.tw/" target="_blank" rel="noopener">住宅租賃定型化契約應記載及不得記載事項<span>行政院全球資訊網・最新為 114 年 4 月 18 日修正應記載事項第 18 點</span></a></li>
       </ul>
-      <p class="disclaim"><b>要講清楚的是</b>：合約寫得完整、通知留得下紀錄，是把自己從被動變主動，<b>不等於保證不會有爭議</b>。個案事實不同、法院認定也可能不同，金額大或已經僵持的案子，請找律師或各縣市政府的租賃爭議調處。<br>本頁條文與契約條款皆引自上列官方來源，2026 年 8 月 24 日查證；法規可能修正，請以官方最新公告為準。</p>
+      <p class="disclaim"><b>要講清楚的是</b>：合約寫得完整、通知留得下紀錄，是把自己從被動變主動，<b>不等於保證不會有爭議</b>。個案事實不同、法院認定也可能不同，金額大或已經僵持的案子，請找律師或各縣市政府的租賃爭議調處。</p>
+      <p class="disclaim">本頁條文與契約條款皆引自上列官方來源，2026 年 8 月 24 日查證；法規可能修正，請以官方最新公告為準。</p>
     </div>
-  </section>
-
-  <div class="cta">
-    <h2>房子要出租、要收回、還是乾脆賣掉？</h2>
-    <p>台中海線的房東，卡在租約、點交、修繕、房客不搬，都可以先問我一句。</p>
-    <a href="https://lin.ee/1WlfBub">用 LINE 問冠良</a>
   </div>
+</section>
 
-</div>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="cta">
+      <h2>房子要出租、要收回、還是乾脆賣掉？</h2>
+      <p>台中海線的房東，卡在租約、點交、修繕、房客不搬，都可以先問我一句。</p>
+      <a href="https://lin.ee/QyQmggG" target="_blank" rel="noopener">用 LINE 問冠良</a>
+    </div>
+  </div>
+</section>
 
 <footer>
   <div class="wrap">
     <b>海線房仲冠良・吳冠良</b><br>
     關注冠良，讓幸福會發光 ✨　善願必佑，做對的事，站在客戶這一邊。<br>
-    <a href="tel:0915295958">0915-295958</a>｜LINE：wosawo｜<a href="https://kuanhome.com">kuanhome.com</a>
+    <a href="tel:0915295958">0915-295958</a>｜LINE：@asmile｜<a href="https://kuanhome.com">kuanhome.com</a>
   </div>
 </footer>
 
@@ -348,5 +496,27 @@ footer a{color:var(--gold-soft)}
 }
 </style>
 <!-- /REVIEW:AUTO -->
+
+
+<!-- CLUSTER:AUTO 由 scripts/seo-build.mjs 產生，不要手改 -->
+<section class="seo-cluster">
+<h2>租屋・延伸閱讀</h2>
+<p>租屋這條線的五頁，租之前一起看：</p>
+<ul><li><a href="/rent-check">這個租金貴得有道理嗎：租屋比價工具</a></li><li><a href="/rental-subsidy">房客要報租金補貼，房東該答應嗎</a></li><li><a href="/landlord-check">房東出租檢查表</a></li><li><a href="/rent-notarization">租屋公證怎麼辦：費用試算與強制執行</a></li></ul>
+</section>
+<style>
+.seo-cluster{max-width:820px;margin:34px auto 40px;padding:24px;background:#fff;
+ border:1px solid #ddd2bd;border-radius:16px;
+ font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif}
+.seo-cluster h2{font-size:20px;color:#16283f;margin:0 0 8px;line-height:1.4}
+.seo-cluster p{font-size:15px;color:#6f6a60;margin:0 0 14px;line-height:1.7}
+.seo-cluster ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.seo-cluster a{display:flex;align-items:center;min-height:44px;padding:8px 14px;
+ background:#f7f3ea;border:1px solid #ddd2bd;border-radius:10px;
+ color:#16283f;text-decoration:none;font-size:15.5px;line-height:1.5}
+.seo-cluster a:hover{border-color:#c8963e}
+@media(max-width:520px){.seo-cluster{margin:24px 16px 32px;padding:18px}}
+</style>
+<!-- /CLUSTER:AUTO -->
 </body>
 </html>
