@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>海線社區成交索引｜沙鹿・梧棲・龍井・清水 148 個社區實價登錄｜海線房仲冠良</title>
+<meta name="description" content="台中海線 148 個社區的實價登錄成交整理：中位單價、總價帶、坪數區間、最近成交日，可搜尋可篩選。資料取自內政部實價登錄 115 年度成交共 359 筆。">
+<meta property="og:title" content="海線社區成交索引｜148 個社區實價登錄">
+<meta property="og:description" content="想知道某個社區今年成交多少？沙鹿、梧棲、龍井、清水 148 個社區一次查。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#f7f3ea;--cream-2:#efe8da;--navy:#16283f;--gold:#c8963e;--gold-soft:#e8c887;
+ --ink:#2b2b2b;--muted:#6f6a60;--line:#ddd2bd}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--cream);color:var(--ink);font-size:17px;line-height:1.8;
+ font-family:"Noto Sans TC",system-ui,-apple-system,"Microsoft JhengHei",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1000px;margin:0 auto;padding:0 18px}
+
+header{background:var(--navy);color:var(--cream);padding:34px 0 30px}
+.eyebrow{font-size:15px;letter-spacing:.18em;color:var(--gold-soft);font-weight:700;margin-bottom:12px}
+h1{font-family:"DM Serif Display",Georgia,serif;font-weight:400;font-size:clamp(27px,5.6vw,40px);line-height:1.25;margin-bottom:12px}
+h1 em{font-style:normal;color:var(--gold-soft)}
+.lede{color:#cfd8e2;font-size:16.5px;max-width:38em}
+.stats{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:18px;font-size:15.5px;color:#a9bccd}
+.stats b{color:var(--gold-soft);font-size:21px;font-family:"DM Serif Display",Georgia,serif}
+
+.toolbar{position:sticky;top:0;z-index:10;background:var(--cream);border-bottom:1px solid var(--line);padding:14px 0}
+#q{width:100%;min-height:50px;padding:12px 16px;font-size:17px;border:1px solid var(--line);
+ border-radius:10px;background:#fff;color:var(--ink);font-family:inherit}
+#q:focus{outline:2px solid var(--gold);outline-offset:1px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip{min-height:44px;padding:8px 15px;border-radius:999px;border:1px solid var(--line);background:#fff;
+ color:var(--ink);font-size:15px;font-family:inherit;cursor:pointer}
+.chip span{color:var(--muted);font-size:15px}
+.chip[aria-pressed="true"]{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+.chip[aria-pressed="true"] span{color:var(--gold-soft)}
+.count{margin-top:10px;font-size:15px;color:var(--muted)}
+
+.tablewrap{overflow-x:auto;margin:18px 0 0;border:1px solid var(--line);border-radius:12px;background:#fff}
+table{border-collapse:collapse;width:100%;font-size:15.5px}
+thead th{background:var(--cream-2);text-align:right;font-weight:500;color:var(--muted);font-size:15px;
+ padding:11px 13px;border-bottom:1px solid var(--line);white-space:nowrap}
+thead th:first-child{text-align:left}
+tbody td{padding:13px;border-bottom:1px solid var(--cream-2);text-align:right;
+ font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--muted)}
+tbody td.cname{text-align:left;white-space:normal;min-width:200px;color:var(--ink)}
+tbody td.cname b{font-size:17px;color:var(--navy);display:block;line-height:1.5}
+.meta{display:block;font-size:15px;color:var(--muted);font-weight:400}
+tbody td b{color:var(--navy);font-size:17px}
+tbody tr:last-child td{border-bottom:0}
+tbody tr[hidden]{display:none}
+.empty{padding:28px 16px;text-align:center;color:var(--muted)}
+
+.thin{background:var(--cream-2);border:1px solid var(--line);border-radius:10px;padding:15px 17px;
+ margin-top:16px;font-size:15.5px;color:var(--muted);line-height:1.75}
+.thin b{color:var(--navy)}
+.note{margin:16px 0 0;padding:18px 20px;background:#fff;border:1px solid var(--line);border-radius:12px;
+ font-size:15.5px;color:var(--muted);line-height:1.8}
+.note b{color:var(--navy)}
+.note p+p{margin-top:10px}
+.cta{background:var(--gold);border-radius:14px;padding:26px 22px;margin:26px 0 34px;text-align:center;color:#3a2a0c}
+.cta h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;font-size:25px;margin-bottom:6px}
+.cta p{font-size:16px;margin-bottom:18px}
+.cta a{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:13px 30px;
+ background:var(--navy);color:var(--cream);border-radius:999px;font-weight:700;font-size:17px}
+
+footer{background:var(--navy);color:#a9b6c4;padding:26px 0 34px;font-size:15px;line-height:1.8}
+footer b{color:var(--cream);font-size:17px;display:block}
+footer a{color:var(--gold-soft);display:inline-flex;align-items:center;min-height:44px}
+footer .fl{display:flex;flex-wrap:wrap;gap:4px 18px;margin-top:4px}
+
+@media(max-width:640px){
+  thead{display:none}
+  table,tbody,tr,td{display:block;width:100%}
+  tbody tr{border:1px solid var(--line);border-radius:10px;margin:0 0 10px;padding:14px 16px;background:#fff}
+  /* 卡片版：標籤靠左，數值與單位當成一組靠右。
+     ⚠️ 用 space-between 會把「47」跟「筆」也一起拉開，看起來像壞掉；
+        改成標籤吃掉剩餘空間（margin-right:auto），其餘自然黏在右邊。 */
+  tbody td{border-bottom:0;padding:5px 0;display:flex;align-items:baseline;gap:6px;text-align:right}
+  tbody td.cname{display:block;padding:0 0 10px;margin-bottom:8px;border-bottom:1px solid var(--cream-2)}
+  tbody td[data-l]::before{content:attr(data-l);color:var(--muted);font-size:15px;
+   text-align:left;flex:none;margin-right:auto;padding-right:14px}
+  tbody td .meta{display:inline;font-size:15px}
+  .tablewrap{border:0;background:transparent;overflow:visible}
+}
+</style>
+<!-- SEO:AUTO 由 scripts/seo-build.mjs 產生，不要手改 -->
+<link rel="canonical" href="https://kuanhome.com/haixian-communities">
+<meta property="og:url" content="https://kuanhome.com/haixian-communities">
+<meta property="og:site_name" content="海線房仲冠良">
+<meta property="og:locale" content="zh_TW">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://kuanhome.com/haixian-communities#article","headline":"海線社區成交索引｜沙鹿・梧棲・龍井・清水 148 個社區實價登錄","description":"台中海線 148 個社區的實價登錄成交整理：中位單價、總價帶、坪數區間、最近成交日，可搜尋可篩選。資料取自內政部實價登錄 115 年度成交共 359 筆。","url":"https://kuanhome.com/haixian-communities","inLanguage":"zh-Hant-TW","dateModified":"2026-09-09T07:37:23.307Z","author":{"@id":"https://kuanhome.com/#wuguanliang"},"publisher":{"@id":"https://kuanhome.com/#agent"},"mainEntityOfPage":{"@id":"https://kuanhome.com/haixian-communities"}},{"@type":"RealEstateAgent","@id":"https://kuanhome.com/#agent","name":"海線房仲冠良","alternateName":"吳冠良｜台中海線房地產顧問","description":"台中海線專業房地產仲介，深耕沙鹿、清水、梧棲、龍井、大肚、大甲、外埔七區。提供資產配置、稅務諮詢、簡易裝潢，及買賣委託與土地買賣。","slogan":"懂你又懂房","url":"https://kuanhome.com/","image":"https://kuanhome.com/card/owner.webp","telephone":"+886-915-295-958","email":"wosagl15@gmail.com","address":{"@type":"PostalAddress","addressLocality":"沙鹿區","addressRegion":"台中市","postalCode":"433","addressCountry":"TW"},"geo":{"@type":"GeoCoordinates","latitude":24.2340986,"longitude":120.560349},"priceRange":"$$","areaServed":[{"@type":"AdministrativeArea","name":"台中市沙鹿區"},{"@type":"AdministrativeArea","name":"台中市清水區"},{"@type":"AdministrativeArea","name":"台中市梧棲區"},{"@type":"AdministrativeArea","name":"台中市龍井區"},{"@type":"AdministrativeArea","name":"台中市大肚區"},{"@type":"AdministrativeArea","name":"台中市大甲區"},{"@type":"AdministrativeArea","name":"台中市外埔區"}],"sameAs":["https://www.google.com/maps/place/?q=place_id:ChIJa-qrvNgVaTQRzcxomr73DVE","https://www.facebook.com/share/14XZ3Wy4nLZ/","https://www.instagram.com/asmile55178/","https://www.youtube.com/@吳冠良-w9v","https://lin.ee/1WlfBub","https://sales.myhomes.com.tw/0915295958"],"hasMap":"https://www.google.com/maps/place/?q=place_id:ChIJa-qrvNgVaTQRzcxomr73DVE","employee":{"@type":"Person","@id":"https://kuanhome.com/#wuguanliang","name":"吳冠良","jobTitle":"台中海線專業房地產顧問"}},{"@type":"BreadcrumbList","@id":"https://kuanhome.com/haixian-communities#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://kuanhome.com/"},{"@type":"ListItem","position":2,"name":"購屋攻略","item":"https://kuanhome.com/tools"},{"@type":"ListItem","position":3,"name":"海線社區成交索引｜沙鹿・梧棲・龍井・清水 148 個社區實價登錄","item":"https://kuanhome.com/haixian-communities"}]}]}</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<!-- /SEO:AUTO -->
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">台中海線・實價登錄整理</p>
+    <h1>海線社區<em>成交索引</em></h1>
+    <p class="lede">想知道某個社區今年到底成交多少錢？這裡把沙鹿、梧棲、龍井、清水的實價登錄，依社區重新整理過。直接搜社區名就查得到。</p>
+    <div class="stats">
+      <span><b>148</b> 個社區</span>
+      <span><b>359</b> 筆成交</span>
+      <span><b>4</b> 個行政區</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="toolbar">
+    <input id="q" type="search" placeholder="搜社區名稱，例如：遠雄幸福成" aria-label="搜尋社區名稱">
+    <div class="chips">
+      <button class="chip" data-f="" aria-pressed="true">全部 <span>148</span></button>
+      <button class="chip" data-f="沙鹿區" aria-pressed="false">沙鹿區 <span>54</span></button><button class="chip" data-f="梧棲區" aria-pressed="false">梧棲區 <span>43</span></button><button class="chip" data-f="龍井區" aria-pressed="false">龍井區 <span>28</span></button><button class="chip" data-f="清水區" aria-pressed="false">清水區 <span>23</span></button>
+    </div>
+    <p class="count" id="count"></p>
+  </div>
+
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th>社區</th><th>成交</th><th>中位單價</th><th>總價帶</th><th>坪數</th><th>最近成交</th></tr>
+      </thead>
+      <tbody id="tb">
+<tr data-name="遠雄幸福成" data-area="梧棲區"><td class="cname"><b>遠雄幸福成</b><span class="meta">梧棲區・住宅大樓・屋齡約 1 年</span></td><td class="num"><b>47</b> 筆</td><td class="num"><b>20.9</b> 萬<span class="meta">12.4–27.3</span></td><td class="num">410–1380 萬</td><td class="num">22.4–84.5 坪</td><td class="num">115/06/15</td></tr>
+<tr data-name="梧棲隱富" data-area="梧棲區"><td class="cname"><b>梧棲隱富</b><span class="meta">梧棲區・華廈・屋齡約 2 年</span></td><td class="num"><b>16</b> 筆</td><td class="num"><b>35.1</b> 萬<span class="meta">32.2–37.9</span></td><td class="num">213–450 萬</td><td class="num">6.3–12.7 坪</td><td class="num">115/06/20</td></tr>
+<tr data-name="聯悦臻" data-area="梧棲區"><td class="cname"><b>聯悦臻</b><span class="meta">梧棲區・住宅大樓・屋齡約 1 年</span></td><td class="num"><b>12</b> 筆</td><td class="num"><b>21.2</b> 萬<span class="meta">17.6–29.2</span></td><td class="num">690–1195 萬</td><td class="num">25.2–51 坪</td><td class="num">115/05/23</td></tr>
+<tr data-name="勝麗交響曲" data-area="沙鹿區"><td class="cname"><b>勝麗交響曲</b><span class="meta">沙鹿區・住宅大樓・屋齡約 1 年</span></td><td class="num"><b>9</b> 筆</td><td class="num"><b>30.1</b> 萬<span class="meta">28.5–36.7</span></td><td class="num">961–1650 萬</td><td class="num">33.2–47.7 坪</td><td class="num">115/06/10</td></tr>
+<tr data-name="勝興興站" data-area="沙鹿區"><td class="cname"><b>勝興興站</b><span class="meta">沙鹿區・住宅大樓・屋齡約 1 年</span></td><td class="num"><b>9</b> 筆</td><td class="num"><b>30.1</b> 萬<span class="meta">27.9–31.5</span></td><td class="num">982–1680 萬</td><td class="num">36.4–66.1 坪</td><td class="num">115/04/14</td></tr>
+<tr data-name="佳鋐樂灣" data-area="梧棲區"><td class="cname"><b>佳鋐樂灣</b><span class="meta">梧棲區・住宅大樓・屋齡約 1 年</span></td><td class="num"><b>8</b> 筆</td><td class="num"><b>18.4</b> 萬<span class="meta">16.4–21.3</span></td><td class="num">570–867 萬</td><td class="num">33.3–46.7 坪</td><td class="num">115/05/08</td></tr>
+<tr data-name="昌祐又1讚" data-area="梧棲區"><td class="cname"><b>昌祐又1讚</b><span class="meta">梧棲區・住宅大樓・屋齡約 1 年</span></td><td class="num"><b>7</b> 筆</td><td class="num"><b>21.2</b> 萬<span class="meta">17.2–24</span></td><td class="num">600–930 萬</td><td class="num">30.7–43.1 坪</td><td class="num">115/06/07</td></tr>
+<tr data-name="長虹天擎" data-area="梧棲區"><td class="cname"><b>長虹天擎</b><span class="meta">梧棲區・住宅大樓・屋齡約 2 年</span></td><td class="num"><b>7</b> 筆</td><td class="num"><b>21</b> 萬<span class="meta">19–25.3</span></td><td class="num">588–1296 萬</td><td class="num">28.1–59.1 坪</td><td class="num">115/05/30</td></tr>
+<tr data-name="遠雄之星6期" data-area="清水區"><td class="cname"><b>遠雄之星6期</b><span class="meta">清水區・住宅大樓・屋齡約 6 年</span></td><td class="num"><b>7</b> 筆</td><td class="num"><b>18.1</b> 萬<span class="meta">15.7–20.4</span></td><td class="num">600–1258 萬</td><td class="num">33.8–70.8 坪</td><td class="num">115/04/20</td></tr>
+<tr data-name="帝堡NO.31" data-area="沙鹿區"><td class="cname"><b>帝堡NO.31</b><span class="meta">沙鹿區・華廈・屋齡約 1 年</span></td><td class="num"><b>6</b> 筆</td><td class="num"><b>32.7</b> 萬<span class="meta">32.2–34.3</span></td><td class="num">420–490 萬</td><td class="num">12.9–17.6 坪</td><td class="num">115/06/29</td></tr>
+<tr data-name="勝興豐境" data-area="梧棲區"><td class="cname"><b>勝興豐境</b><span class="meta">梧棲區・住宅大樓・屋齡約 1 年</span></td><td class="num"><b>5</b> 筆</td><td class="num"><b>22.4</b> 萬<span class="meta">21–24.3</span></td><td class="num">595–899 萬</td><td class="num">26.5–43.4 坪</td><td class="num">115/03/13</td></tr>
+<tr data-name="和築好好窩" data-area="梧棲區"><td class="cname"><b>和築好好窩</b><span class="meta">梧棲區・住宅大樓・屋齡約 2 年</span></td><td class="num"><b>5</b> 筆</td><td class="num"><b>19.1</b> 萬<span class="meta">18.5–27.7</span></td><td class="num">560–1120 萬</td><td class="num">30.4–44.5 坪</td><td class="num">115/05/28</td></tr>
+<tr data-name="精銳闊" data-area="龍井區"><td class="cname"><b>精銳闊</b><span class="meta">龍井區・住宅大樓・屋齡約 2 年</span></td><td class="num"><b>5</b> 筆</td><td class="num"><b>41.1</b> 萬<span class="meta">38.4–43</span></td><td class="num">1233–1766 萬</td><td class="num">30.5–42.9 坪</td><td class="num">115/06/08</td></tr>
+<tr data-name="閱好書房" data-area="梧棲區"><td class="cname"><b>閱好書房</b><span class="meta">梧棲區・住宅大樓・屋齡約 1 年</span></td><td class="num"><b>4</b> 筆</td><td class="num"><b>22.8</b> 萬<span class="meta">20.9–25.9</span></td><td class="num">520–720 萬</td><td class="num">23.5–34.5 坪</td><td class="num">115/06/01</td></tr>
+<tr data-name="益翔有樂仕" data-area="梧棲區"><td class="cname"><b>益翔有樂仕</b><span class="meta">梧棲區・住宅大樓・屋齡約 2 年</span></td><td class="num"><b>4</b> 筆</td><td class="num"><b>18.3</b> 萬<span class="meta">16.8–19.8</span></td><td class="num">525–950 萬</td><td class="num">28.5–48 坪</td><td class="num">115/04/26</td></tr>
+<tr data-name="協和豐馥" data-area="清水區"><td class="cname"><b>協和豐馥</b><span class="meta">清水區・住宅大樓・屋齡約 1 年</span></td><td class="num"><b>4</b> 筆</td><td class="num"><b>23.7</b> 萬<span class="meta">20.8–25.1</span></td><td class="num">573–982 萬</td><td class="num">23.7–45.6 坪</td><td class="num">115/05/03</td></tr>
+<tr data-name="國聚之璟" data-area="龍井區"><td class="cname"><b>國聚之璟</b><span class="meta">龍井區・住宅大樓・屋齡約 1 年</span></td><td class="num"><b>4</b> 筆</td><td class="num"><b>41.4</b> 萬<span class="meta">35.2–45.4</span></td><td class="num">1335–1750 萬</td><td class="num">34.1–43.9 坪</td><td class="num">115/05/05</td></tr>
+<tr data-name="鹿澤禮寓" data-area="沙鹿區"><td class="cname"><b>鹿澤禮寓</b><span class="meta">沙鹿區・華廈</span></td><td class="num"><b>3</b> 筆</td><td class="num"><b>22.4</b> 萬<span class="meta">20.2–24</span></td><td class="num">822–1155 萬</td><td class="num">40.8–51.5 坪</td><td class="num">115/06/11</td></tr>
+<tr data-name="永築上承" data-area="沙鹿區"><td class="cname"><b>永築上承</b><span class="meta">沙鹿區・透天厝・屋齡約 1 年</span></td><td class="num"><b>3</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1800–1950 萬</td><td class="num">52.6–71.1 坪</td><td class="num">115/05/19</td></tr>
+<tr data-name="德光會" data-area="沙鹿區"><td class="cname"><b>德光會</b><span class="meta">沙鹿區・住宅大樓・屋齡約 1 年</span></td><td class="num"><b>3</b> 筆</td><td class="num"><b>24.2</b> 萬<span class="meta">22.9–24.9</span></td><td class="num">1000–1100 萬</td><td class="num">40.5–45.4 坪</td><td class="num">115/03/21</td></tr>
+<tr data-name="安美學" data-area="梧棲區"><td class="cname"><b>安美學</b><span class="meta">梧棲區・住宅大樓・屋齡約 2 年</span></td><td class="num"><b>3</b> 筆</td><td class="num"><b>20.8</b> 萬<span class="meta">20.6–24.1</span></td><td class="num">535–770 萬</td><td class="num">22.2–41.7 坪</td><td class="num">115/03/22</td></tr>
+<tr data-name="雲頂金鑽3" data-area="梧棲區"><td class="cname"><b>雲頂金鑽3</b><span class="meta">梧棲區・透天厝・屋齡約 1 年</span></td><td class="num"><b>3</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1550–2360 萬</td><td class="num">51–62.7 坪</td><td class="num">115/04/24</td></tr>
+<tr data-name="聯悦馥" data-area="清水區"><td class="cname"><b>聯悦馥</b><span class="meta">清水區・住宅大樓・屋齡約 2 年</span></td><td class="num"><b>3</b> 筆</td><td class="num"><b>27.1</b> 萬<span class="meta">16.6–28.2</span></td><td class="num">800–1546 萬</td><td class="num">48.2–60.7 坪</td><td class="num">115/03/28</td></tr>
+<tr data-name="長虹天韻" data-area="清水區"><td class="cname"><b>長虹天韻</b><span class="meta">清水區・住宅大樓・屋齡約 1 年</span></td><td class="num"><b>3</b> 筆</td><td class="num"><b>22.4</b> 萬<span class="meta">21.9–23</span></td><td class="num">740–870 萬</td><td class="num">33.7–38.9 坪</td><td class="num">115/03/24</td></tr>
+<tr data-name="遠雄之星8期" data-area="清水區"><td class="cname"><b>遠雄之星8期</b><span class="meta">清水區・住宅大樓・屋齡約 3 年</span></td><td class="num"><b>3</b> 筆</td><td class="num"><b>18.2</b> 萬<span class="meta">15.4–18.7</span></td><td class="num">920–1090 萬</td><td class="num">53.5–59.9 坪</td><td class="num">115/03/08</td></tr>
+<tr data-name="遠雄之星" data-area="清水區"><td class="cname"><b>遠雄之星</b><span class="meta">清水區・住宅大樓・屋齡約 9 年</span></td><td class="num"><b>3</b> 筆</td><td class="num"><b>18.5</b> 萬<span class="meta">15.8–20.6</span></td><td class="num">650–1008 萬</td><td class="num">31.6–54.6 坪</td><td class="num">115/04/28</td></tr>
+<tr data-name="聯悅聚" data-area="清水區"><td class="cname"><b>聯悅聚</b><span class="meta">清水區・住宅大樓・屋齡約 5 年</span></td><td class="num"><b>3</b> 筆</td><td class="num"><b>18.5</b> 萬<span class="meta">18.4–21.9</span></td><td class="num">840–1350 萬</td><td class="num">38.4–73.4 坪</td><td class="num">115/03/01</td></tr>
+<tr data-name="協和丰景" data-area="清水區"><td class="cname"><b>協和丰景</b><span class="meta">清水區・住宅大樓・屋齡約 2 年</span></td><td class="num"><b>3</b> 筆</td><td class="num"><b>19.2</b> 萬<span class="meta">17.8–20.8</span></td><td class="num">830–967 萬</td><td class="num">46.5 坪</td><td class="num">115/04/09</td></tr>
+<tr data-name="櫻花市鎮之櫻" data-area="清水區"><td class="cname"><b>櫻花市鎮之櫻</b><span class="meta">清水區・住宅大樓・屋齡約 1 年</span></td><td class="num"><b>3</b> 筆</td><td class="num"><b>22.4</b> 萬<span class="meta">21.9–23.4</span></td><td class="num">728–1081 萬</td><td class="num">33.2–46.1 坪</td><td class="num">115/05/27</td></tr>
+<tr data-name="德光大智" data-area="龍井區"><td class="cname"><b>德光大智</b><span class="meta">龍井區・住宅大樓・屋齡約 1 年</span></td><td class="num"><b>3</b> 筆</td><td class="num"><b>29.7</b> 萬<span class="meta">27.4–30.2</span></td><td class="num">950–1124 萬</td><td class="num">39–44.7 坪</td><td class="num">115/04/25</td></tr>
+<tr data-name="築里仁2" data-area="龍井區"><td class="cname"><b>築里仁2</b><span class="meta">龍井區・華廈・屋齡約 1 年</span></td><td class="num"><b>3</b> 筆</td><td class="num"><b>22.5</b> 萬<span class="meta">22.4–24.1</span></td><td class="num">650–670 萬</td><td class="num">26.9–29.8 坪</td><td class="num">115/04/06</td></tr>
+<tr data-name="喬立浥品" data-area="龍井區"><td class="cname"><b>喬立浥品</b><span class="meta">龍井區・華廈・屋齡約 2 年</span></td><td class="num"><b>3</b> 筆</td><td class="num"><b>39.6</b> 萬<span class="meta">38.6–41.7</span></td><td class="num">1730–1785 萬</td><td class="num">46.9–48.7 坪</td><td class="num">115/03/22</td></tr>
+<tr data-name="勝美樂富" data-area="龍井區"><td class="cname"><b>勝美樂富</b><span class="meta">龍井區・華廈・屋齡約 7 年</span></td><td class="num"><b>3</b> 筆</td><td class="num"><b>26.2</b> 萬<span class="meta">25.4–26.3</span></td><td class="num">950–1288 萬</td><td class="num">37.5–49 坪</td><td class="num">115/05/18</td></tr>
+<tr data-name="新觀序" data-area="龍井區"><td class="cname"><b>新觀序</b><span class="meta">龍井區・透天厝・屋齡約 1 年</span></td><td class="num"><b>3</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1620–2000 萬</td><td class="num">57.9–79.4 坪</td><td class="num">115/05/04</td></tr>
+<tr data-name="茂洋晴山洋洋" data-area="龍井區"><td class="cname"><b>茂洋晴山洋洋</b><span class="meta">龍井區・華廈・屋齡約 2 年</span></td><td class="num"><b>3</b> 筆</td><td class="num"><b>43.5</b> 萬<span class="meta">35.5–45.1</span></td><td class="num">886–1435 萬</td><td class="num">25–39.1 坪</td><td class="num">115/06/05</td></tr>
+<tr data-name="龍寶和臻邸" data-area="沙鹿區"><td class="cname"><b>龍寶和臻邸</b><span class="meta">沙鹿區・華廈・屋齡約 1 年</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>47</b> 萬<span class="meta">45.9–48.1</span></td><td class="num">2598–2620 萬</td><td class="num">70.5 坪</td><td class="num">115/06/12</td></tr>
+<tr data-name="御璽國際村" data-area="沙鹿區"><td class="cname"><b>御璽國際村</b><span class="meta">沙鹿區・華廈・屋齡約 27 年</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>18.6</b> 萬<span class="meta">18.2–19</span></td><td class="num">625–770 萬</td><td class="num">34.4–40.5 坪</td><td class="num">115/06/07</td></tr>
+<tr data-name="和築T1" data-area="沙鹿區"><td class="cname"><b>和築T1</b><span class="meta">沙鹿區・住宅大樓・屋齡約 2 年</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>25.3</b> 萬<span class="meta">25.3–25.4</span></td><td class="num">800–1000 萬</td><td class="num">31.6–39.5 坪</td><td class="num">115/06/06</td></tr>
+<tr data-name="允將上上謙" data-area="沙鹿區"><td class="cname"><b>允將上上謙</b><span class="meta">沙鹿區・住宅大樓・屋齡約 2 年</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>29.3</b> 萬<span class="meta">26.9–31.7</span></td><td class="num">1165–1340 萬</td><td class="num">42.3–43.4 坪</td><td class="num">115/05/02</td></tr>
+<tr data-name="住寅大晶囍" data-area="沙鹿區"><td class="cname"><b>住寅大晶囍</b><span class="meta">沙鹿區・華廈・屋齡約 1 年</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>27</b> 萬<span class="meta">26.7–27.3</span></td><td class="num">1030–1055 萬</td><td class="num">38.6 坪</td><td class="num">115/05/04</td></tr>
+<tr data-name="綠光計畫NO.6青境" data-area="沙鹿區"><td class="cname"><b>綠光計畫NO.6青境</b><span class="meta">沙鹿區・透天厝・屋齡約 3 年</span></td><td class="num"><b>2</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">2020–3888 萬</td><td class="num">54–87.1 坪</td><td class="num">115/05/26</td></tr>
+<tr data-name="德光聚" data-area="沙鹿區"><td class="cname"><b>德光聚</b><span class="meta">沙鹿區・住宅大樓・屋齡約 1 年</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>25.1</b> 萬<span class="meta">24.7–25.6</span></td><td class="num">780–815 萬</td><td class="num">31.6–31.8 坪</td><td class="num">115/05/15</td></tr>
+<tr data-name="小時代VI" data-area="沙鹿區"><td class="cname"><b>小時代VI</b><span class="meta">沙鹿區・華廈・屋齡約 2 年</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>24.8</b> 萬<span class="meta">21.6–27.9</span></td><td class="num">838–1500 萬</td><td class="num">38.8–60.4 坪</td><td class="num">115/04/12</td></tr>
+<tr data-name="天府養眞" data-area="沙鹿區"><td class="cname"><b>天府養眞</b><span class="meta">沙鹿區・透天厝・屋齡約 1 年</span></td><td class="num"><b>2</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">3600–3880 萬</td><td class="num">74.4–75.4 坪</td><td class="num">115/04/13</td></tr>
+<tr data-name="心海苑" data-area="沙鹿區"><td class="cname"><b>心海苑</b><span class="meta">沙鹿區・華廈・屋齡約 6 年</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>25.1</b> 萬<span class="meta">24.7–25.6</span></td><td class="num">650–670 萬</td><td class="num">26.2–26.4 坪</td><td class="num">115/04/30</td></tr>
+<tr data-name="安城市" data-area="沙鹿區"><td class="cname"><b>安城市</b><span class="meta">沙鹿區・華廈・屋齡約 2 年</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>30.9</b> 萬<span class="meta">30.3–31.5</span></td><td class="num">730–850 萬</td><td class="num">23.2–28.1 坪</td><td class="num">115/03/04</td></tr>
+<tr data-name="鹿鳴寓所" data-area="沙鹿區"><td class="cname"><b>鹿鳴寓所</b><span class="meta">沙鹿區・華廈</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>43.4</b> 萬<span class="meta">41.6–45.2</span></td><td class="num">850–950 萬</td><td class="num">18.8–22.9 坪</td><td class="num">115/03/19</td></tr>
+<tr data-name="綠光計畫NO.7豐朵" data-area="沙鹿區"><td class="cname"><b>綠光計畫NO.7豐朵</b><span class="meta">沙鹿區・透天厝・屋齡約 1 年</span></td><td class="num"><b>2</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1750–2650 萬</td><td class="num">47.5–62.7 坪</td><td class="num">115/03/16</td></tr>
+<tr data-name="小時代3" data-area="沙鹿區"><td class="cname"><b>小時代3</b><span class="meta">沙鹿區・住宅大樓・屋齡約 3 年</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>23.5</b> 萬<span class="meta">22.5–24.6</span></td><td class="num">1100–1191 萬</td><td class="num">48.5–48.8 坪</td><td class="num">115/02/23</td></tr>
+<tr data-name="吾廬大院" data-area="沙鹿區"><td class="cname"><b>吾廬大院</b><span class="meta">沙鹿區・透天厝・屋齡約 18 年</span></td><td class="num"><b>2</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">2356–2780 萬</td><td class="num">87.3–110 坪</td><td class="num">115/01/30</td></tr>
+<tr data-name="聚佳欣世代" data-area="梧棲區"><td class="cname"><b>聚佳欣世代</b><span class="meta">梧棲區・住宅大樓・屋齡約 3 年</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>18.8</b> 萬<span class="meta">18.1–19.4</span></td><td class="num">596–840 萬</td><td class="num">33–43.2 坪</td><td class="num">115/03/27</td></tr>
+<tr data-name="沅臻城市" data-area="梧棲區"><td class="cname"><b>沅臻城市</b><span class="meta">梧棲區・住宅大樓・屋齡約 3 年</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>23.2</b> 萬<span class="meta">23.2</span></td><td class="num">1083–1093 萬</td><td class="num">51.3 坪</td><td class="num">115/02/12</td></tr>
+<tr data-name="佳鋐大境" data-area="梧棲區"><td class="cname"><b>佳鋐大境</b><span class="meta">梧棲區・住宅大樓・屋齡約 1 年</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>24.3</b> 萬<span class="meta">24–24.5</span></td><td class="num">790–799 萬</td><td class="num">32.2–33.3 坪</td><td class="num">115/03/14</td></tr>
+<tr data-name="中港好學" data-area="梧棲區"><td class="cname"><b>中港好學</b><span class="meta">梧棲區・住宅大樓・屋齡約 3 年</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>17.3</b> 萬<span class="meta">16.8–17.9</span></td><td class="num">385–450 萬</td><td class="num">23–25.1 坪</td><td class="num">115/06/06</td></tr>
+<tr data-name="德光一築" data-area="梧棲區"><td class="cname"><b>德光一築</b><span class="meta">梧棲區・住宅大樓・屋齡約 3 年</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>20.1</b> 萬<span class="meta">19–21.3</span></td><td class="num">750–850 萬</td><td class="num">35.3–44.7 坪</td><td class="num">115/03/19</td></tr>
+<tr data-name="仁愛羅馬金融名廈" data-area="梧棲區"><td class="cname"><b>仁愛羅馬金融名廈</b><span class="meta">梧棲區・住宅大樓・屋齡約 32 年</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>10.3</b> 萬<span class="meta">9.5–11</span></td><td class="num">353–435 萬</td><td class="num">37.1–39.5 坪</td><td class="num">115/04/10</td></tr>
+<tr data-name="精銳錦" data-area="梧棲區"><td class="cname"><b>精銳錦</b><span class="meta">梧棲區・住宅大樓・屋齡約 2 年</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>34.6</b> 萬<span class="meta">34.5–34.7</span></td><td class="num">1470 萬</td><td class="num">46.6 坪</td><td class="num">115/06/01</td></tr>
+<tr data-name="佳鋐樂邑" data-area="梧棲區"><td class="cname"><b>佳鋐樂邑</b><span class="meta">梧棲區・住宅大樓・屋齡約 3 年</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>19.6</b> 萬<span class="meta">19.3–19.8</span></td><td class="num">662–828 萬</td><td class="num">34.2–41.9 坪</td><td class="num">115/05/10</td></tr>
+<tr data-name="佳鋐晴灣" data-area="清水區"><td class="cname"><b>佳鋐晴灣</b><span class="meta">清水區・住宅大樓・屋齡約 6 年</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>18.9</b> 萬<span class="meta">18–19.7</span></td><td class="num">725–883 萬</td><td class="num">36.8–49 坪</td><td class="num">115/04/26</td></tr>
+<tr data-name="遠雄之星3期" data-area="清水區"><td class="cname"><b>遠雄之星3期</b><span class="meta">清水區・住宅大樓・屋齡約 7 年</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>17.7</b> 萬<span class="meta">16.7–18.7</span></td><td class="num">777–850 萬</td><td class="num">41.5–51 坪</td><td class="num">115/02/01</td></tr>
+<tr data-name="青雲賦" data-area="清水區"><td class="cname"><b>青雲賦</b><span class="meta">清水區・華廈・屋齡約 2 年</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>22.2</b> 萬<span class="meta">22–22.4</span></td><td class="num">765–790 萬</td><td class="num">34.1–35.9 坪</td><td class="num">115/03/23</td></tr>
+<tr data-name="鯨天下" data-area="清水區"><td class="cname"><b>鯨天下</b><span class="meta">清水區・住宅大樓・屋齡約 6 年</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>16.5</b> 萬<span class="meta">16.3–16.8</span></td><td class="num">627–840 萬</td><td class="num">38.5–50.1 坪</td><td class="num">115/04/25</td></tr>
+<tr data-name="果貿陽明新村B區" data-area="清水區"><td class="cname"><b>果貿陽明新村B區</b><span class="meta">清水區・住宅大樓・屋齡約 21 年</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>14.7</b> 萬<span class="meta">13.8–15.6</span></td><td class="num">750–850 萬</td><td class="num">54.4 坪</td><td class="num">115/06/17</td></tr>
+<tr data-name="佳麗堡" data-area="龍井區"><td class="cname"><b>佳麗堡</b><span class="meta">龍井區・華廈・屋齡約 1 年</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>29.2</b> 萬<span class="meta">27.8–30.5</span></td><td class="num">850–1036 萬</td><td class="num">27.9–40.9 坪</td><td class="num">115/03/13</td></tr>
+<tr data-name="昇佳美邑" data-area="龍井區"><td class="cname"><b>昇佳美邑</b><span class="meta">龍井區・透天厝・屋齡約 9 年</span></td><td class="num"><b>2</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">790–900 萬</td><td class="num">40.9–41.4 坪</td><td class="num">115/05/09</td></tr>
+<tr data-name="東海101" data-area="龍井區"><td class="cname"><b>東海101</b><span class="meta">龍井區・華廈・屋齡約 3 年</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>46.8</b> 萬<span class="meta">42.5–51.2</span></td><td class="num">1010–1028 萬</td><td class="num">20.1–23.8 坪</td><td class="num">115/06/04</td></tr>
+<tr data-name="宏泉IN中央" data-area="龍井區"><td class="cname"><b>宏泉IN中央</b><span class="meta">龍井區・華廈・屋齡約 1 年</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>26</b> 萬<span class="meta">19.3–32.8</span></td><td class="num">811–1012 萬</td><td class="num">34.3–42 坪</td><td class="num">115/05/06</td></tr>
+<tr data-name="林維洄東海" data-area="龍井區"><td class="cname"><b>林維洄東海</b><span class="meta">龍井區・華廈・屋齡約 1 年</span></td><td class="num"><b>2</b> 筆</td><td class="num"><b>34.7</b> 萬<span class="meta">34.6–34.8</span></td><td class="num">1380–1700 萬</td><td class="num">39.9–48.9 坪</td><td class="num">115/05/31</td></tr>
+<tr data-name="綠商藥郡2" data-area="沙鹿區"><td class="cname"><b>綠商藥郡2</b><span class="meta">沙鹿區・透天厝・屋齡約 3 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1680 萬</td><td class="num">55.7 坪</td><td class="num">115/06/11</td></tr>
+<tr data-name="朵翔富鈺/朵翔璞真" data-area="沙鹿區"><td class="cname"><b>朵翔富鈺/朵翔璞真</b><span class="meta">沙鹿區・透天厝・屋齡約 2 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">2450 萬</td><td class="num">65.6 坪</td><td class="num">115/06/06</td></tr>
+<tr data-name="凱悅W" data-area="沙鹿區"><td class="cname"><b>凱悅W</b><span class="meta">沙鹿區・住宅大樓・屋齡約 2 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>28.4</b> 萬<span class="meta">28.4</span></td><td class="num">750 萬</td><td class="num">26.5 坪</td><td class="num">115/06/11</td></tr>
+<tr data-name="天恆" data-area="沙鹿區"><td class="cname"><b>天恆</b><span class="meta">沙鹿區・透天厝・屋齡約 12 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">2230 萬</td><td class="num">72.8 坪</td><td class="num">115/06/13</td></tr>
+<tr data-name="晴空墅A區甲照" data-area="沙鹿區"><td class="cname"><b>晴空墅A區甲照</b><span class="meta">沙鹿區・透天厝・屋齡約 7 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1538 萬</td><td class="num">52.6 坪</td><td class="num">115/06/20</td></tr>
+<tr data-name="雲品莊園" data-area="沙鹿區"><td class="cname"><b>雲品莊園</b><span class="meta">沙鹿區・透天厝・屋齡約 11 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">2830 萬</td><td class="num">91.4 坪</td><td class="num">115/05/06</td></tr>
+<tr data-name="日月光花園B區" data-area="沙鹿區"><td class="cname"><b>日月光花園B區</b><span class="meta">沙鹿區・透天厝・屋齡約 18 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1190 萬</td><td class="num">46.4 坪</td><td class="num">115/05/23</td></tr>
+<tr data-name="寶格麗莊園" data-area="沙鹿區"><td class="cname"><b>寶格麗莊園</b><span class="meta">沙鹿區・透天厝・屋齡約 10 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1580 萬</td><td class="num">45.5 坪</td><td class="num">115/05/18</td></tr>
+<tr data-name="世界1景" data-area="沙鹿區"><td class="cname"><b>世界1景</b><span class="meta">沙鹿區・華廈・屋齡約 14 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>20.9</b> 萬<span class="meta">20.9</span></td><td class="num">758 萬</td><td class="num">36.3 坪</td><td class="num">115/05/13</td></tr>
+<tr data-name="發財墅" data-area="沙鹿區"><td class="cname"><b>發財墅</b><span class="meta">沙鹿區・透天厝・屋齡約 9 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1580 萬</td><td class="num">64 坪</td><td class="num">115/05/27</td></tr>
+<tr data-name="泉美御明秀" data-area="沙鹿區"><td class="cname"><b>泉美御明秀</b><span class="meta">沙鹿區・透天厝・屋齡約 1 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">2200 萬</td><td class="num">53.7 坪</td><td class="num">115/05/23</td></tr>
+<tr data-name="智富王三期" data-area="沙鹿區"><td class="cname"><b>智富王三期</b><span class="meta">沙鹿區・透天厝・屋齡約 20 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1350 萬</td><td class="num">74.3 坪</td><td class="num">115/05/31</td></tr>
+<tr data-name="富里凡爾賽" data-area="沙鹿區"><td class="cname"><b>富里凡爾賽</b><span class="meta">沙鹿區・住宅大樓・屋齡約 3 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>27.7</b> 萬<span class="meta">27.7</span></td><td class="num">1200 萬</td><td class="num">43.3 坪</td><td class="num">115/05/21</td></tr>
+<tr data-name="微笑築美" data-area="沙鹿區"><td class="cname"><b>微笑築美</b><span class="meta">沙鹿區・透天厝・屋齡約 3 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1600 萬</td><td class="num">57.7 坪</td><td class="num">115/05/31</td></tr>
+<tr data-name="永尚沐山林" data-area="沙鹿區"><td class="cname"><b>永尚沐山林</b><span class="meta">沙鹿區・華廈・屋齡約 1 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>34.9</b> 萬<span class="meta">34.9</span></td><td class="num">918 萬</td><td class="num">26.3 坪</td><td class="num">115/04/04</td></tr>
+<tr data-name="小時代" data-area="沙鹿區"><td class="cname"><b>小時代</b><span class="meta">沙鹿區・住宅大樓・屋齡約 7 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>21</b> 萬<span class="meta">21</span></td><td class="num">720 萬</td><td class="num">34.3 坪</td><td class="num">115/04/09</td></tr>
+<tr data-name="仁里文逸" data-area="沙鹿區"><td class="cname"><b>仁里文逸</b><span class="meta">沙鹿區・透天厝</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1260 萬</td><td class="num">39.7 坪</td><td class="num">115/04/06</td></tr>
+<tr data-name="嘉麗儷景" data-area="沙鹿區"><td class="cname"><b>嘉麗儷景</b><span class="meta">沙鹿區・華廈</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>35.3</b> 萬<span class="meta">35.3</span></td><td class="num">1200 萬</td><td class="num">33.2 坪</td><td class="num">115/04/26</td></tr>
+<tr data-name="中港比利時" data-area="沙鹿區"><td class="cname"><b>中港比利時</b><span class="meta">沙鹿區・透天厝・屋齡約 14 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1420 萬</td><td class="num">48.2 坪</td><td class="num">115/04/12</td></tr>
+<tr data-name="沙鹿小鎮" data-area="沙鹿區"><td class="cname"><b>沙鹿小鎮</b><span class="meta">沙鹿區・透天厝・屋齡約 2 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">2800 萬</td><td class="num">95.9 坪</td><td class="num">115/04/26</td></tr>
+<tr data-name="品德星美東25" data-area="沙鹿區"><td class="cname"><b>品德星美東25</b><span class="meta">沙鹿區・透天厝・屋齡約 3 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">585 萬</td><td class="num">20.2 坪</td><td class="num">115/04/15</td></tr>
+<tr data-name="帝堡十八" data-area="沙鹿區"><td class="cname"><b>帝堡十八</b><span class="meta">沙鹿區・住宅大樓・屋齡約 7 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>21.4</b> 萬<span class="meta">21.4</span></td><td class="num">740 萬</td><td class="num">34.7 坪</td><td class="num">115/04/19</td></tr>
+<tr data-name="大椿謙隱園" data-area="沙鹿區"><td class="cname"><b>大椿謙隱園</b><span class="meta">沙鹿區・透天厝</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">3300 萬</td><td class="num">87 坪</td><td class="num">115/04/26</td></tr>
+<tr data-name="丹聯A區大商場" data-area="沙鹿區"><td class="cname"><b>丹聯A區大商場</b><span class="meta">沙鹿區・住宅大樓・屋齡約 31 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>13.2</b> 萬<span class="meta">13.2</span></td><td class="num">688 萬</td><td class="num">52.3 坪</td><td class="num">115/03/07</td></tr>
+<tr data-name="凱悅京璽" data-area="沙鹿區"><td class="cname"><b>凱悅京璽</b><span class="meta">沙鹿區・華廈・屋齡約 9 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>22.8</b> 萬<span class="meta">22.8</span></td><td class="num">700 萬</td><td class="num">30.7 坪</td><td class="num">115/03/01</td></tr>
+<tr data-name="家來獵富座" data-area="沙鹿區"><td class="cname"><b>家來獵富座</b><span class="meta">沙鹿區・透天厝・屋齡約 1 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">2550 萬</td><td class="num">74 坪</td><td class="num">115/03/12</td></tr>
+<tr data-name="佳鋥大心" data-area="沙鹿區"><td class="cname"><b>佳鋥大心</b><span class="meta">沙鹿區・華廈・屋齡約 2 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>24.7</b> 萬<span class="meta">24.7</span></td><td class="num">1150 萬</td><td class="num">46.5 坪</td><td class="num">115/03/18</td></tr>
+<tr data-name="帝堡15" data-area="沙鹿區"><td class="cname"><b>帝堡15</b><span class="meta">沙鹿區・住宅大樓・屋齡約 8 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>16</b> 萬<span class="meta">16</span></td><td class="num">685 萬</td><td class="num">42.9 坪</td><td class="num">115/03/17</td></tr>
+<tr data-name="中科大郡B區" data-area="沙鹿區"><td class="cname"><b>中科大郡B區</b><span class="meta">沙鹿區・透天厝・屋齡約 15 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1475 萬</td><td class="num">52.5 坪</td><td class="num">115/02/06</td></tr>
+<tr data-name="荷園第15期A區" data-area="沙鹿區"><td class="cname"><b>荷園第15期A區</b><span class="meta">沙鹿區・透天厝・屋齡約 9 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1715 萬</td><td class="num">55.6 坪</td><td class="num">115/02/20</td></tr>
+<tr data-name="悟實參章" data-area="沙鹿區"><td class="cname"><b>悟實參章</b><span class="meta">沙鹿區・透天厝・屋齡約 1 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1625 萬</td><td class="num">43.3 坪</td><td class="num">115/01/20</td></tr>
+<tr data-name="時代1景" data-area="沙鹿區"><td class="cname"><b>時代1景</b><span class="meta">沙鹿區・華廈・屋齡約 11 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>22.4</b> 萬<span class="meta">22.4</span></td><td class="num">1000 萬</td><td class="num">44.7 坪</td><td class="num">115/01/05</td></tr>
+<tr data-name="凱悅MOMA" data-area="沙鹿區"><td class="cname"><b>凱悅MOMA</b><span class="meta">沙鹿區・透天厝・屋齡約 1 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">2510 萬</td><td class="num">85.2 坪</td><td class="num">115/01/03</td></tr>
+<tr data-name="拾壹墅" data-area="梧棲區"><td class="cname"><b>拾壹墅</b><span class="meta">梧棲區・透天厝・屋齡約 2 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1588 萬</td><td class="num">56.1 坪</td><td class="num">115/01/26</td></tr>
+<tr data-name="永益發 覓蜜" data-area="梧棲區"><td class="cname"><b>永益發 覓蜜</b><span class="meta">梧棲區・住宅大樓・屋齡約 2 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>19.2</b> 萬<span class="meta">19.2</span></td><td class="num">850 萬</td><td class="num">44.3 坪</td><td class="num">115/01/28</td></tr>
+<tr data-name="宇竣原宿" data-area="梧棲區"><td class="cname"><b>宇竣原宿</b><span class="meta">梧棲區・透天厝・屋齡約 11 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1820 萬</td><td class="num">51.1 坪</td><td class="num">115/02/15</td></tr>
+<tr data-name="九川木目心" data-area="梧棲區"><td class="cname"><b>九川木目心</b><span class="meta">梧棲區・住宅大樓・屋齡約 1 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>27.7</b> 萬<span class="meta">27.7</span></td><td class="num">596 萬</td><td class="num">21.5 坪</td><td class="num">115/02/27</td></tr>
+<tr data-name="松濤硯1章" data-area="梧棲區"><td class="cname"><b>松濤硯1章</b><span class="meta">梧棲區・透天厝・屋齡約 2 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">2580 萬</td><td class="num">71.4 坪</td><td class="num">115/03/02</td></tr>
+<tr data-name="花樣" data-area="梧棲區"><td class="cname"><b>花樣</b><span class="meta">梧棲區・透天厝・屋齡約 21 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1160 萬</td><td class="num">56.2 坪</td><td class="num">115/03/08</td></tr>
+<tr data-name="人文澄舍2" data-area="梧棲區"><td class="cname"><b>人文澄舍2</b><span class="meta">梧棲區・華廈・屋齡約 8 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>28.2</b> 萬<span class="meta">28.2</span></td><td class="num">688 萬</td><td class="num">24.4 坪</td><td class="num">115/03/14</td></tr>
+<tr data-name="宏觀帝堡" data-area="梧棲區"><td class="cname"><b>宏觀帝堡</b><span class="meta">梧棲區・透天厝・屋齡約 2 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">2258 萬</td><td class="num">79.4 坪</td><td class="num">115/03/17</td></tr>
+<tr data-name="ONE PLUS 昇祐智慧商辦大樓" data-area="梧棲區"><td class="cname"><b>ONE PLUS 昇祐智慧商辦大樓</b><span class="meta">梧棲區・住宅大樓・屋齡約 1 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>25.1</b> 萬<span class="meta">25.1</span></td><td class="num">1188 萬</td><td class="num">53.7 坪</td><td class="num">115/03/23</td></tr>
+<tr data-name="五福" data-area="梧棲區"><td class="cname"><b>五福</b><span class="meta">梧棲區・公寓・屋齡約 43 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>14.9</b> 萬<span class="meta">14.9</span></td><td class="num">370 萬</td><td class="num">24.9 坪</td><td class="num">115/03/28</td></tr>
+<tr data-name="綠園臻品第8期" data-area="梧棲區"><td class="cname"><b>綠園臻品第8期</b><span class="meta">梧棲區・透天厝・屋齡約 5 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1100 萬</td><td class="num">46.1 坪</td><td class="num">115/03/29</td></tr>
+<tr data-name="中港皇璽" data-area="梧棲區"><td class="cname"><b>中港皇璽</b><span class="meta">梧棲區・華廈・屋齡約 31 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>16.3</b> 萬<span class="meta">16.3</span></td><td class="num">750 萬</td><td class="num">46.1 坪</td><td class="num">115/04/01</td></tr>
+<tr data-name="德光二城" data-area="梧棲區"><td class="cname"><b>德光二城</b><span class="meta">梧棲區・住宅大樓・屋齡約 2 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>22.6</b> 萬<span class="meta">22.6</span></td><td class="num">976 萬</td><td class="num">43.2 坪</td><td class="num">115/04/04</td></tr>
+<tr data-name="荷園二十期" data-area="梧棲區"><td class="cname"><b>荷園二十期</b><span class="meta">梧棲區・華廈・屋齡約 1 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>25.2</b> 萬<span class="meta">25.2</span></td><td class="num">1298 萬</td><td class="num">54 坪</td><td class="num">115/04/10</td></tr>
+<tr data-name="知哲梧桐" data-area="梧棲區"><td class="cname"><b>知哲梧桐</b><span class="meta">梧棲區・華廈・屋齡約 2 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>24.5</b> 萬<span class="meta">24.5</span></td><td class="num">618 萬</td><td class="num">25.2 坪</td><td class="num">115/04/21</td></tr>
+<tr data-name="佳鋐新邑" data-area="梧棲區"><td class="cname"><b>佳鋐新邑</b><span class="meta">梧棲區・住宅大樓・屋齡約 2 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>21</b> 萬<span class="meta">21</span></td><td class="num">773 萬</td><td class="num">36.8 坪</td><td class="num">115/04/30</td></tr>
+<tr data-name="中港雲頂NO.3" data-area="梧棲區"><td class="cname"><b>中港雲頂NO.3</b><span class="meta">梧棲區・住宅大樓・屋齡約 3 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>18.2</b> 萬<span class="meta">18.2</span></td><td class="num">1035 萬</td><td class="num">57 坪</td><td class="num">115/05/01</td></tr>
+<tr data-name="哈佛學苑" data-area="梧棲區"><td class="cname"><b>哈佛學苑</b><span class="meta">梧棲區・華廈・屋齡約 19 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>18.2</b> 萬<span class="meta">18.2</span></td><td class="num">672 萬</td><td class="num">36.9 坪</td><td class="num">115/05/09</td></tr>
+<tr data-name="生活家" data-area="梧棲區"><td class="cname"><b>生活家</b><span class="meta">梧棲區・華廈・屋齡約 31 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>16.1</b> 萬<span class="meta">16.1</span></td><td class="num">480 萬</td><td class="num">29.8 坪</td><td class="num">115/05/19</td></tr>
+<tr data-name="黃金海岸" data-area="梧棲區"><td class="cname"><b>黃金海岸</b><span class="meta">梧棲區・住宅大樓・屋齡約 31 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>10.3</b> 萬<span class="meta">10.3</span></td><td class="num">498 萬</td><td class="num">48.2 坪</td><td class="num">115/05/19</td></tr>
+<tr data-name="鉅國京華" data-area="梧棲區"><td class="cname"><b>鉅國京華</b><span class="meta">梧棲區・住宅大樓・屋齡約 28 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>15.3</b> 萬<span class="meta">15.3</span></td><td class="num">652 萬</td><td class="num">42.6 坪</td><td class="num">115/05/24</td></tr>
+<tr data-name="仁愛羅馬商業" data-area="梧棲區"><td class="cname"><b>仁愛羅馬商業</b><span class="meta">梧棲區・華廈・屋齡約 33 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>8.1</b> 萬<span class="meta">8.1</span></td><td class="num">400 萬</td><td class="num">49.4 坪</td><td class="num">115/05/26</td></tr>
+<tr data-name="竣吉大心" data-area="梧棲區"><td class="cname"><b>竣吉大心</b><span class="meta">梧棲區・透天厝・屋齡約 1 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">2088 萬</td><td class="num">68.4 坪</td><td class="num">115/06/27</td></tr>
+<tr data-name="遠雄之星5期" data-area="清水區"><td class="cname"><b>遠雄之星5期</b><span class="meta">清水區・住宅大樓・屋齡約 7 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>25.4</b> 萬<span class="meta">25.4</span></td><td class="num">500 萬</td><td class="num">19.7 坪</td><td class="num">115/01/04</td></tr>
+<tr data-name="果貿陽明新村C區" data-area="清水區"><td class="cname"><b>果貿陽明新村C區</b><span class="meta">清水區・住宅大樓・屋齡約 20 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>15.8</b> 萬<span class="meta">15.8</span></td><td class="num">850 萬</td><td class="num">54 坪</td><td class="num">115/01/07</td></tr>
+<tr data-name="天寶商業大樓" data-area="清水區"><td class="cname"><b>天寶商業大樓</b><span class="meta">清水區・住宅大樓・屋齡約 42 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>12.6</b> 萬<span class="meta">12.6</span></td><td class="num">260 萬</td><td class="num">20.6 坪</td><td class="num">115/01/17</td></tr>
+<tr data-name="欣願大樓" data-area="清水區"><td class="cname"><b>欣願大樓</b><span class="meta">清水區・華廈・屋齡約 6 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>23.1</b> 萬<span class="meta">23.1</span></td><td class="num">600 萬</td><td class="num">26 坪</td><td class="num">115/02/05</td></tr>
+<tr data-name="遠雄之星7期" data-area="清水區"><td class="cname"><b>遠雄之星7期</b><span class="meta">清水區・住宅大樓・屋齡約 4 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>21.4</b> 萬<span class="meta">21.4</span></td><td class="num">630 萬</td><td class="num">29.4 坪</td><td class="num">115/03/01</td></tr>
+<tr data-name="果貿陽明新村A區" data-area="清水區"><td class="cname"><b>果貿陽明新村A區</b><span class="meta">清水區・住宅大樓・屋齡約 21 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>15.4</b> 萬<span class="meta">15.4</span></td><td class="num">973 萬</td><td class="num">63.4 坪</td><td class="num">115/03/21</td></tr>
+<tr data-name="." data-area="清水區"><td class="cname"><b>.</b><span class="meta">清水區・透天厝・屋齡約 21 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1350 萬</td><td class="num">70.9 坪</td><td class="num">115/03/30</td></tr>
+<tr data-name="勝美新橫濱" data-area="清水區"><td class="cname"><b>勝美新橫濱</b><span class="meta">清水區・住宅大樓・屋齡約 8 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>17.7</b> 萬<span class="meta">17.7</span></td><td class="num">795 萬</td><td class="num">45 坪</td><td class="num">115/04/01</td></tr>
+<tr data-name="致富好好(透天)" data-area="清水區"><td class="cname"><b>致富好好(透天)</b><span class="meta">清水區・住宅大樓・屋齡約 3 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>25</b> 萬<span class="meta">25</span></td><td class="num">858 萬</td><td class="num">34.3 坪</td><td class="num">115/04/26</td></tr>
+<tr data-name="綠活∙薆蒔光" data-area="龍井區"><td class="cname"><b>綠活∙薆蒔光</b><span class="meta">龍井區・公寓・屋齡約 2 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>27.2</b> 萬<span class="meta">27.2</span></td><td class="num">1376 萬</td><td class="num">50.7 坪</td><td class="num">115/01/03</td></tr>
+<tr data-name="新觀NO6" data-area="龍井區"><td class="cname"><b>新觀NO6</b><span class="meta">龍井區・透天厝・屋齡約 2 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1300 萬</td><td class="num">55.5 坪</td><td class="num">115/01/10</td></tr>
+<tr data-name="熊圖 敘uno" data-area="龍井區"><td class="cname"><b>熊圖 敘uno</b><span class="meta">龍井區・華廈・屋齡約 1 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>42.3</b> 萬<span class="meta">42.3</span></td><td class="num">850 萬</td><td class="num">20.1 坪</td><td class="num">115/01/22</td></tr>
+<tr data-name="御墅家居易" data-area="龍井區"><td class="cname"><b>御墅家居易</b><span class="meta">龍井區・透天厝・屋齡約 6 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">950 萬</td><td class="num">44.7 坪</td><td class="num">115/02/10</td></tr>
+<tr data-name="御墅富樂" data-area="龍井區"><td class="cname"><b>御墅富樂</b><span class="meta">龍井區・透天厝・屋齡約 1 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1270 萬</td><td class="num">51.5 坪</td><td class="num">115/03/01</td></tr>
+<tr data-name="高峰領袖7期" data-area="龍井區"><td class="cname"><b>高峰領袖7期</b><span class="meta">龍井區・透天厝・屋齡約 8 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1020 萬</td><td class="num">52 坪</td><td class="num">115/03/03</td></tr>
+<tr data-name="東海靜崗NO1" data-area="龍井區"><td class="cname"><b>東海靜崗NO1</b><span class="meta">龍井區・透天厝・屋齡約 26 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1450 萬</td><td class="num">78 坪</td><td class="num">115/03/21</td></tr>
+<tr data-name="璞邑恆樂" data-area="龍井區"><td class="cname"><b>璞邑恆樂</b><span class="meta">龍井區・透天厝・屋齡約 1 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1900 萬</td><td class="num">52.3 坪</td><td class="num">115/03/25</td></tr>
+<tr data-name="青年市" data-area="龍井區"><td class="cname"><b>青年市</b><span class="meta">龍井區・華廈・屋齡約 27 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>12</b> 萬<span class="meta">12</span></td><td class="num">325 萬</td><td class="num">27.2 坪</td><td class="num">115/04/03</td></tr>
+<tr data-name="青空蔚來" data-area="龍井區"><td class="cname"><b>青空蔚來</b><span class="meta">龍井區・華廈</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>30.1</b> 萬<span class="meta">30.1</span></td><td class="num">888 萬</td><td class="num">29.5 坪</td><td class="num">115/04/04</td></tr>
+<tr data-name="佛朗明歌" data-area="龍井區"><td class="cname"><b>佛朗明歌</b><span class="meta">龍井區・透天厝・屋齡約 22 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1900 萬</td><td class="num">62.2 坪</td><td class="num">115/04/08</td></tr>
+<tr data-name="聚恆光語繪(透天)" data-area="龍井區"><td class="cname"><b>聚恆光語繪(透天)</b><span class="meta">龍井區・透天厝・屋齡約 2 年</span></td><td class="num"><b>1</b> 筆</td><td class="num">—<span class="meta">null</span></td><td class="num">1388 萬</td><td class="num">54.8 坪</td><td class="num">115/05/08</td></tr>
+<tr data-name="智慧1號讚" data-area="龍井區"><td class="cname"><b>智慧1號讚</b><span class="meta">龍井區・華廈・屋齡約 10 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>25.4</b> 萬<span class="meta">25.4</span></td><td class="num">825 萬</td><td class="num">32.5 坪</td><td class="num">115/05/15</td></tr>
+<tr data-name="睿鍇馥築" data-area="龍井區"><td class="cname"><b>睿鍇馥築</b><span class="meta">龍井區・住宅大樓・屋齡約 2 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>25.4</b> 萬<span class="meta">25.4</span></td><td class="num">1000 萬</td><td class="num">39.3 坪</td><td class="num">115/06/05</td></tr>
+<tr data-name="我家e" data-area="龍井區"><td class="cname"><b>我家e</b><span class="meta">龍井區・華廈・屋齡約 2 年</span></td><td class="num"><b>1</b> 筆</td><td class="num"><b>27.8</b> 萬<span class="meta">27.8</span></td><td class="num">500 萬</td><td class="num">18 坪</td><td class="num">115/07/07</td></tr>
+      </tbody>
+    </table>
+    <p class="empty" id="empty" hidden>找不到符合的社區。試試只打社區名的前兩個字。</p>
+  </div>
+
+  <p class="thin">⚠️ <b>只有 1～2 筆成交的社區，數字僅供參考。</b>樣本太少的時候，一戶特別高或特別低就會把整個數字帶偏。要判斷某個社區的真實行情，建議看該區的完整分析，或直接找我拉同社區還在賣的每一戶來比。</p>
+
+  <div class="note">
+    <p><b>資料來源與限制</b></p>
+    <p>資料為內政部實價登錄 115 年度成交，整理後依社區聚合。<b>只涵蓋有登記社區名稱的成交</b>——透天、公寓等沒有社區名的物件不在此列，所以這裡的 359 筆少於四區的總成交筆數。</p>
+    <p>中位單價是該社區成交單價的中位數，比平均值不容易被極端值帶偏。總價帶與坪數是該社區成交的最低到最高。<b>實價登錄有申報時間差，最新的成交可能還沒揭露。</b></p>
+  </div>
+
+  <div class="cta">
+    <h2>想看某個社區更細的？</h2>
+    <p>我可以拉出那個社區目前還在賣的每一戶，逐筆比總價、坪數、單價、樓層、屋齡，做成一份你看得懂的比價報告。</p>
+    <a href="/card/booking">預約時間聊聊</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <b>海線房仲冠良・吳冠良</b>
+    懂你又懂房 🏡
+    <div class="fl">
+      <a href="tel:0915295958">0915-295958</a>
+      <a href="https://lin.ee/1WlfBub">LINE 諮詢</a>
+      <a href="/shalu-115-price">沙鹿完整分析</a>
+      <a href="/wuqi-115-price">梧棲完整分析</a>
+      <a href="/longjing-115-price">龍井完整分析</a>
+      <a href="/qingshui-115-price">清水完整分析</a>
+      <a href="/">回首頁</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var q = document.getElementById("q"),
+    tb = document.getElementById("tb"),
+    cnt = document.getElementById("count"),
+    empty = document.getElementById("empty"),
+    rows = [].slice.call(tb.rows),
+    chips = [].slice.call(document.querySelectorAll(".chip")),
+    area = "";
+
+  // 手機卡片版要靠 data-l 顯示欄位名稱
+  var labels = ["", "成交筆數", "中位單價", "總價帶", "坪數", "最近成交"];
+  rows.forEach(function (r) {
+    [].forEach.call(r.cells, function (td, i) {
+      if (i) td.setAttribute("data-l", labels[i]);
+    });
+  });
+
+  function apply() {
+    var kw = q.value.trim().toLowerCase(),
+      shown = 0;
+    rows.forEach(function (r) {
+      var okA = !area || r.dataset.area === area;
+      var okQ = !kw || r.dataset.name.toLowerCase().indexOf(kw) > -1;
+      var on = okA && okQ;
+      r.hidden = !on;
+      if (on) shown++;
+    });
+    cnt.textContent =
+      "顯示 " + shown + " 個社區" + (area ? "（" + area + "）" : "") +
+      (kw ? "，關鍵字「" + q.value.trim() + "」" : "");
+    empty.hidden = shown > 0;
+  }
+
+  q.addEventListener("input", apply);
+  chips.forEach(function (c) {
+    c.addEventListener("click", function () {
+      area = c.dataset.f;
+      chips.forEach(function (x) {
+        x.setAttribute("aria-pressed", String(x === c));
+      });
+      apply();
+    });
+  });
+  apply();
+})();
+</script>
+</body>
+</html>
