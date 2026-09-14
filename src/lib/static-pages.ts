@@ -15,7 +15,7 @@ import path from "node:path";
  * Google Search Console 會報「已提交的網址標記為 noindex」的錯誤，
  * 而且會稀釋整站的收錄品質。要新增內部頁就往這裡加一個 slug。
  */
-export const UNLISTED_PAGES = new Set<string>(["591", "threads-callback"]);
+export const UNLISTED_PAGES = new Set<string>(["591", "threads-callback", "hub"]);
 
 export function listStaticPages(publicDir?: string): string[] {
   const dir = publicDir ?? path.join(process.cwd(), "public");

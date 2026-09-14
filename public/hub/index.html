@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="googlebot" content="noindex,nofollow">
+<title>海線冠良軍機處</title>
+<style>
+ :root{
+   --navy:#0f1f3d; --navy2:#1c3866; --gold:#d4af5a; --gold-ink:#8a6300;
+   --bg:#f4f6fb; --card:#fff; --ink:#1c2333; --sub:#7a8399; --line:#e3e7f0;
+ }
+ :root{color-scheme:light dark}
+ *{box-sizing:border-box}
+ body{font-family:"Microsoft JhengHei","Segoe UI",system-ui,sans-serif;margin:0;
+   background:var(--bg);color:var(--ink)}
+ @media(prefers-color-scheme:dark){
+   :root{--bg:#101319;--card:#1b1f28;--ink:#e6e8ee;--sub:#96a0b5;--line:#2a2f3b}
+ }
+
+ /* ---- header banner ---- */
+ .banner{position:relative;overflow:hidden;background:linear-gradient(120deg,var(--navy) 0%,var(--navy2) 55%,#2a4a86 100%);
+   color:#fff;padding:22px 28px}
+ .banner::before{content:"";position:absolute;inset:0;opacity:.16;
+   background:repeating-linear-gradient(115deg,transparent 0 40px,rgba(212,175,90,.5) 40px 42px),
+     radial-gradient(circle at 85% 20%,rgba(212,175,90,.35),transparent 55%)}
+ .banner-row{position:relative;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+ .banner-left{display:flex;align-items:center;gap:14px}
+ .banner-emblem{font-size:34px;filter:drop-shadow(0 1px 3px rgba(0,0,0,.4))}
+ .banner-title{font-size:22px;font-weight:700;letter-spacing:1px;margin:0;display:flex;align-items:center;gap:8px}
+ .banner-title .stamp{font-size:11px;background:#b23b3b;padding:2px 7px;border-radius:4px;font-weight:600;letter-spacing:2px}
+ .banner-sub{font-size:12px;color:#cfe0ff;margin-top:2px;letter-spacing:.5px}
+ .banner-right{display:flex;align-items:center;gap:18px;font-size:12.5px;color:#dbe6ff}
+ .banner-user{display:flex;align-items:center;gap:8px}
+ .banner-user .av{width:28px;height:28px;border-radius:50%;background:var(--gold);color:#3a2b00;
+   display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+ .bell{position:relative}
+ .bell .n{position:absolute;top:-6px;right:-8px;background:#e0473f;color:#fff;border-radius:20px;
+   font-size:9px;padding:1px 5px;font-weight:700}
+
+ /* ---- nav ---- */
+ .nav{position:relative;background:#152650;display:flex;gap:2px;padding:0 20px;overflow-x:auto}
+ @media(prefers-color-scheme:dark){.nav{background:#0b1120}}
+ .nav button{background:none;border:0;color:#b9c8ea;padding:11px 16px;font-size:13px;cursor:pointer;
+   white-space:nowrap;border-bottom:2px solid transparent;font-family:inherit}
+ .nav button:hover{color:#fff}
+ .nav button.on{color:#fff;border-bottom-color:var(--gold);font-weight:600}
+
+ .wrap{max-width:1180px;margin:0 auto;padding:22px 20px 60px}
+
+ /* ---- 今日軍令 ---- */
+ .directives{background:var(--card);border-radius:16px;padding:18px 20px;margin-bottom:26px;
+   box-shadow:0 1px 8px rgba(20,30,60,.06)}
+ @media(prefers-color-scheme:dark){.directives{box-shadow:none;border:1px solid var(--line)}}
+ .directives-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+ .directives-head h2{font-size:16px;margin:0;display:flex;align-items:center;gap:8px}
+ .directives-head .n{font-size:12px;color:var(--sub);font-weight:400}
+ .directives-head a{font-size:12.5px;color:#3b5fc4;text-decoration:none;white-space:nowrap}
+ .directives-note{font-size:11.5px;color:var(--sub);margin:-6px 0 14px}
+ .dcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+ .dcard{border:1px solid var(--line);border-radius:12px;padding:12px 13px;position:relative}
+ .dcard .rank{position:absolute;top:10px;left:12px;width:20px;height:20px;border-radius:50%;
+   background:#eef1f8;color:var(--sub);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
+ .dcard .pri{position:absolute;top:8px;right:10px;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px}
+ .pri-top{background:#fde2df;color:#a3241a}
+ .pri-mid{background:#fdead0;color:#95590a}
+ .pri-low{background:#e7ecfa;color:#3b4f8a}
+ @media(prefers-color-scheme:dark){
+  .pri-top{background:#3d1512;color:#f2938a} .pri-mid{background:#3a2a0d;color:#f0ba6c} .pri-low{background:#1c2540;color:#a8b8f0}
+ }
+ .dcard .head{font-weight:700;font-size:13.5px;margin:20px 0 4px 26px}
+ .dcard .tip{font-size:12px;color:var(--sub);margin-left:26px;line-height:1.5}
+
+ /* ---- search + filters ---- */
+ .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+ #search{flex:1;min-width:220px;padding:11px 15px;border-radius:10px;border:1px solid var(--line);
+   font-size:13.5px;background:var(--card);color:var(--ink)}
+ .depts{display:flex;gap:6px;flex-wrap:wrap}
+ .depts button{border:1px solid var(--line);background:var(--card);color:var(--sub);border-radius:20px;
+   padding:8px 14px;font-size:12.5px;cursor:pointer;font-family:inherit;white-space:nowrap}
+ .depts button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+ .depts button.fav.on{background:#8a2a53;border-color:#8a2a53}
+
+ h2.sec{font-size:14px;color:var(--sub);font-weight:600;margin:22px 0 12px}
+ .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:14px;margin-bottom:8px}
+ .card{background:var(--card);border-radius:14px;padding:16px;box-shadow:0 1px 6px rgba(20,30,60,.06);
+   position:relative;display:flex;flex-direction:column;gap:6px;border-top:3px solid var(--dept-c,#8a93a8)}
+ @media(prefers-color-scheme:dark){.card{box-shadow:none;border:1px solid var(--line);border-top:3px solid var(--dept-c,#8a93a8)}}
+ .card.planned{opacity:.6}
+ .card .row{display:flex;align-items:center;gap:10px}
+ .card .icon{font-size:19px;width:34px;height:34px;border-radius:9px;background:var(--dept-bg,#eef3ff);
+   display:flex;align-items:center;justify-content:center;flex:0 0 34px}
+ .card .name{font-weight:700;font-size:14.5px;flex:1}
+ .card .desc{font-size:12.5px;color:var(--sub);line-height:1.5;min-height:36px}
+ .card .tags{font-size:11px;color:var(--dept-c,#8a93a8);font-weight:600}
+ .card .url{font-size:10.5px;color:#9aa3b5;font-family:Consolas,monospace;word-break:break-all}
+ .card .star{position:absolute;top:12px;right:12px;background:none;border:0;cursor:pointer;
+   font-size:15px;color:#d4d8e2;padding:2px 4px}
+ .card .star.on{color:#e8b23c}
+ .card .copy{position:absolute;top:12px;right:34px;background:none;border:none;cursor:pointer;
+   color:#9aa3b5;font-size:13px;padding:2px 6px;border-radius:6px}
+ .card .copy:hover{background:#eef1f6}
+ @media(prefers-color-scheme:dark){.card .copy:hover{background:#2a2f3b}}
+ .card a.open{text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:6px}
+ .badge{display:inline-block;font-size:10px;padding:1px 7px;border-radius:20px;background:#fdeecb;color:#8a6300;width:fit-content}
+ @media(prefers-color-scheme:dark){.badge{background:#3a2f0d;color:#f0c65b}}
+ .office{display:inline-block;font-size:10.5px;padding:1px 9px;border-radius:4px;
+   background:var(--dept-c,#7a1f2b);color:#fff;font-weight:600;letter-spacing:.5px;width:fit-content}
+ .card.harem{--dept-c:#8a2a53;--dept-bg:#fdeaf3}
+ .sec-gloss{font-weight:400;color:var(--sub);font-size:12px}
+ .hide{display:none !important}
+ .empty{color:var(--sub);font-size:13px;padding:6px 2px}
+
+ .foot{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);
+   display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;
+   font-size:11.5px;color:var(--sub)}
+ .foot a{color:var(--sub);text-decoration:none;margin-left:14px}
+ #gate{position:fixed;inset:0;background:var(--navy);color:#fff;display:flex;
+   align-items:center;justify-content:center;flex-direction:column;gap:14px;z-index:999}
+ #gate .box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);
+   border-radius:16px;padding:28px 32px;text-align:center;min-width:260px}
+ #gate h2{margin:0 0 4px;font-size:17px}
+ #gate p{margin:0 0 16px;font-size:12px;color:#b9c8ea}
+ #gate input{width:100%;padding:10px 12px;border-radius:8px;border:1px solid #3a4a72;
+   background:#0f1f3d;color:#fff;font-size:16px;text-align:center;letter-spacing:4px;box-sizing:border-box}
+ #gate button{margin-top:10px;width:100%;padding:10px;border:0;border-radius:8px;
+   background:var(--gold);color:#3a2b00;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit}
+ #gate .err{color:#f2938a;font-size:12px;height:16px;margin-top:6px}
+ body.locked > *:not(#gate){display:none !important}
+</style>
+</head>
+<body class="locked">
+
+ <div id="gate">
+  <div class="box">
+   <h2>🔒 海線冠良軍機處</h2>
+   <p>請輸入登入碼</p>
+   <input id="gateCode" type="password" inputmode="numeric" maxlength="10" autocomplete="off">
+   <button id="gateBtn">進入</button>
+   <div class="err" id="gateErr"></div>
+  </div>
+ </div>
+
+ <div class="banner">
+  <div class="banner-row">
+   <div class="banner-left">
+    <div class="banner-emblem">🐉</div>
+    <div>
+     <h1 class="banner-title">海線冠良軍機處 <span class="stamp">御批</span></h1>
+     <div class="banner-sub">用 AI，讓成交更簡單</div>
+    </div>
+   </div>
+   <div class="banner-right">
+    <span id="today"></span>
+    <span class="bell">🔔<span class="n" id="dirCount">0</span></span>
+    <div class="banner-user"><div class="av">冠</div>冠良</div>
+   </div>
+  </div>
+ </div>
+
+ <div class="nav" id="nav">
+  <button data-nav="home" class="on">🏠 首頁</button>
+  <button data-nav="directives">📜 今日軍令</button>
+  <button data-nav="吏">👥 客戶管理</button>
+  <button data-nav="戶">🏠 物件管理</button>
+  <button data-nav="成交">✅ 成交進度</button>
+  <button data-nav="兵">📊 市場情報</button>
+  <button data-nav="禮">📣 行銷內容</button>
+  <button data-nav="稅">🧮 稅務試算</button>
+  <button data-nav="刑">🛡️ 法務風控</button>
+  <button data-nav="all">🗂️ 工具總覽</button>
+ </div>
+
+ <div class="wrap">
+
+  <div class="directives" id="directivesPanel">
+   <div class="directives-head">
+    <h2>📜 今日軍令 <span class="n">下面 5 張是示範樣式；真正能用、接真資料的版本官網上已經做好了</span></h2>
+    <a href="https://kuanhome.com/admin/today" target="_blank" rel="noopener">開啟真實今日軍令 →</a>
+   </div>
+   <div class="directives-note">
+    ✅ <b>真的今日軍令在這裡：<a href="https://kuanhome.com/admin/today" target="_blank" rel="noopener">kuanhome.com/admin/today</a></b>——
+    今日行程、要出門的拜訪、超過2小時沒聯絡的、跟進到期的、該回報屋主的、每日固定清單、沉睡買方，全部接真資料、自動算好排序。
+    下面 5 張卡只是仿官網那版做的示範樣式，不是真資料。
+   </div>
+   <div class="dcards" id="dcards"></div>
+  </div>
+
+  <div class="toolbar">
+   <input id="search" placeholder="搜尋工具（名稱／用途／官職，例：名片、逐字稿、戶部）">
+   <div class="depts" id="depts">
+    <button data-dept="all" class="on">全部</button>
+    <button data-dept="吏">吏部</button>
+    <button data-dept="戶">戶部</button>
+    <button data-dept="禮">禮部</button>
+    <button data-dept="兵">兵部</button>
+    <button data-dept="刑">刑部</button>
+    <button data-dept="工">工部</button>
+    <button data-dept="後宮" class="fav">🌸 後宮</button>
+    <button data-dept="fav" class="fav">⭐ 我的最愛</button>
+   </div>
+  </div>
+
+  <h2 class="sec">🟢 實授在職 <span class="sec-gloss">— 已上線，領實缺辦差</span></h2>
+  <div class="grid" id="liveGrid"></div>
+
+  <h2 class="sec">🟡 候補候缺 <span class="sec-gloss">— 規劃中，掛名等缺，點了會告訴你還沒補上</span></h2>
+  <div class="grid" id="plannedGrid"></div>
+
+  <div id="emptyMsg" class="empty hide">沒有符合的工具。</div>
+
+  <div class="foot">
+   <div>海線冠良軍機處 v2.0　用專業 × AI × 行動力，成為海線第一名的房仲</div>
+   <div><a href="#" onclick="alert('之後再補');return false;">使用教學</a><a href="#" onclick="alert('直接跟我說就好');return false;">問題回報</a></div>
+  </div>
+
+ </div>
+
+<script>
+// ---- 登入碼（簡單門檻，不是真的安全機制，只是不想讓路過的人看到）----
+(function(){
+ const CODE = "517518";
+ const KEY = "haixian-hub-unlocked";
+ function unlock(){
+  document.body.classList.remove("locked");
+  const g = document.getElementById("gate");
+  if(g) g.remove();
+ }
+ try{ if(localStorage.getItem(KEY)==="1") unlock(); }catch(e){}
+ const btn = document.getElementById("gateBtn");
+ const input = document.getElementById("gateCode");
+ const err = document.getElementById("gateErr");
+ function tryUnlock(){
+  if(input.value.trim()===CODE){
+   try{ localStorage.setItem(KEY,"1"); }catch(e){}
+   unlock();
+  } else {
+   err.textContent = "登入碼不對，再試一次";
+   input.value=""; input.focus();
+  }
+ }
+ btn.onclick = tryUnlock;
+ input.addEventListener("keydown", e=>{ if(e.key==="Enter") tryUnlock(); });
+ setTimeout(()=>input.focus(), 100);
+})();
+
+const DEPT_COLOR = {
+ "吏":"#3b5fc4", "戶":"#a9720c", "禮":"#c23a6b", "兵":"#c0392b", "刑":"#6b4fa0", "工":"#1f8a5f", "後宮":"#8a2a53"
+};
+const DEPT_BG = {
+ "吏":"#eef2ff", "戶":"#fff6e0", "禮":"#ffeef3", "兵":"#fff0ee", "刑":"#f1eefc", "工":"#eafaf3", "後宮":"#fdeaf3"
+};
+
+const TOOLS = [
+ // ---- 已上線 ----
+ {name:"錄音逐字稿工具", dept:"吏", office:"吏部主事", icon:"🎙️", tags:"會議記錄・語音轉譯",
+  desc:"拖錄音檔進去，本機轉繁體中文逐字稿，可分辨說話者、自動摘要重點。",
+  url:"http://127.0.0.1:7860", live:true, note:"本機工具：要先點桌面的「錄音逐字稿工具」圖示把伺服器開起來才連得上"},
+ {name:"海線戰情室", dept:"兵", office:"兵部侍郎", icon:"🗺️", tags:"戰情總覽・跨線盤點",
+  desc:"五條房仲工作線的整合盤點、衝突清單與待辦優先序。",
+  url:"https://claude.ai/code/artifact/becfee33-395a-44cf-9d12-f084e8cfd0f1", live:true},
+ {name:"官網首頁", dept:"禮", office:"禮部尚書", icon:"🏠", tags:"官網門面・品牌形象",
+  desc:"kuanhome.com 首頁，你的門面。整合預約、名片、內容、SEO 全部連過來的入口。",
+  url:"https://kuanhome.com/", live:true},
+ {name:"官網知識庫／購屋攻略", dept:"禮", office:"禮部侍郎", icon:"📖", tags:"內容庫・購屋攻略",
+  desc:"官網上將近 50 篇買賣攻略、稅務試算、檢查清單的總目錄（青安3.0、繼承稅、漏水檢查⋯）。",
+  url:"https://kuanhome.com/tools", live:true},
+ {name:"數位名片＋線上預約", dept:"禮", office:"禮部郎中", icon:"📇", tags:"客戶接待・線上預約",
+  desc:"客戶掃名片→自己挑時間預約→自動進你的 Google 日曆＋LINE 通知你、雙方收確認信。後台可看預約總表、改期取消。",
+  url:"https://kuanhome.com/card", live:true},
+ {name:"預約後台", dept:"禮", office:"禮部主事", icon:"📋", tags:"預約管理・改期取消",
+  desc:"誰、什麼時候、要談什麼、多急，一頁看完；改期／取消／自訂地點審核。",
+  url:"https://kuanhome.com/admin/appointments", live:true},
+ {name:"物件上架小幫手", dept:"戶", office:"戶部主事", icon:"📤", tags:"物件上架・資料匯入",
+  desc:"貼物件網址（電子型錄／有巢氏／永慶／ycut）→自動解析、欄位與照片填好我家網刊登頁。永遠不自動送出，要你自己按。",
+  url:"https://kuanhome.com/upload", live:true},
+
+ // ---- 候補候缺 ----
+ {name:"名片庫（收到的名片）", dept:"吏", office:"吏部主事", icon:"🗂️", tags:"客服管理・自動建檔",
+  desc:"別人給你的名片拍照辨識，自動建檔進資料庫，48 小時沒追蹤會提醒你。跟「數位名片」相反方向：那個是你給別人，這個是別人給你。", url:"", live:false},
+ {name:"同業通訊錄", dept:"吏", office:"吏部員外郎", icon:"📒", tags:"同業聯絡・跨店協作",
+  desc:"打名字查同業在哪家店、打店名查全員名單，一鍵撥號。跨店合作或找人時用得到。", url:"", live:false},
+ {name:"買方配案", dept:"吏", office:"吏部郎中", icon:"🔎", tags:"買方服務・智慧配對",
+  desc:"物件管理後台內建「自動配買方」，貼物件→自動搜符合的買方名單，官網上已經在跑。", url:"https://kuanhome.com/admin/listings", live:true},
+ {name:"個人業務中控台", dept:"吏", office:"吏部侍郎", icon:"🗝️", tags:"客戶管理・買賣方追蹤",
+  desc:"你自己的客戶／物件中控台：買方、賣方、案件狀態一頁管理，資料只在你這台電腦，不用登入。跟官網 admin 那套是平行的兩套系統，這套較輕量、免登入。", url:"http://localhost:4321", live:true,
+  note:"本機工具：先雙擊 C:\\Agent-OS\\crm\\啟動中控台.bat"},
+ {name:"賣方（屋主）管理後台", dept:"吏", office:"吏部員外郎", icon:"🏷️", tags:"委託管理・屋主追蹤",
+  desc:"議價中→委託中→已簽，依緊急度自動排序，官網上已經在跑。", url:"https://kuanhome.com/admin/sellers", live:true},
+
+ {name:"工具費用彙報", dept:"戶", office:"戶部", icon:"💰", tags:"行政管理・費用彙整",
+  desc:"每月工具與雲端費用一頁看完，工具變多了再做。", url:"", live:false},
+ {name:"賣屋稅費試算", dept:"戶", office:"戶部主事", icon:"🧮", tags:"稅務試算・成本估算",
+  desc:"土地增值稅＋房地合一稅一次算清楚，官網上已經在跑。", url:"https://kuanhome.com/sell-tax", live:true},
+ {name:"買方購屋成本試算", dept:"戶", office:"戶部主事", icon:"🧾", tags:"稅務試算・購屋成本",
+  desc:"買方購屋的稅費／代書／規費總成本試算，官網上已經在跑。", url:"https://kuanhome.com/buyer-cost", live:true},
+ {name:"591 一鍵拋轉", dept:"戶", office:"戶部郎中", icon:"🚀", tags:"物件上架・591刊登",
+  desc:"貼電子型錄內容＋地址→產生 591 刊登資料，人工核對經紀業資料無誤後一鍵送出。官網上已經在跑。", url:"https://kuanhome.com/591", live:true},
+ {name:"591 刊登管理後台", dept:"戶", office:"戶部員外郎", icon:"🗃️", tags:"物件管理・刊登前置",
+  desc:"物件管理與 591 刊登前置系統，本機跑、資料不出這台電腦。", url:"http://127.0.0.1:5910", live:true,
+  note:"本機工具：先雙擊 C:\\Agent-OS\\591-autopost\\啟動後台.bat"},
+ {name:"成交案件進度追蹤", dept:"戶", office:"戶部郎中", icon:"📈", tags:"成交進度・案件追蹤",
+  desc:"斡旋→用印→完稅→交屋，每個案子卡在哪一關一頁看完。", url:"", live:false},
+
+ {name:"物件 FB 產線", dept:"禮", office:"翰林院修撰", icon:"📝", tags:"行銷內容・文案生成", cli:true,
+  cmd:"python 產線.py 抓/寫/發文/下架 <案號>",
+  desc:"物件編號→抓型錄→AI寫多角度文案→排程發FB粉專→到期或成交自動下架。跟「物件上架小幫手」不同：這個是寫文案發社群，那個是搬資料去我家網刊登。", url:"", live:true,
+  note:"本機工具：資料夾 C:\\Agent-OS\\物件FB產線，指令列操作"},
+ {name:"Threads／IG 排程發文", dept:"禮", office:"禮部員外郎", icon:"🧵", tags:"社群發布・自動排程", cli:true,
+  cmd:"python post_threads_ig.py",
+  desc:"排程發 Threads／IG，另有 run_comment.py 自動幫第一篇貼文補留言，每小時安全重跑一次不會重複貼。", url:"", live:true,
+  note:"本機工具：資料夾 C:\\Agent-OS\\schedule，指令列操作"},
+ {name:"AI 海報產生器", dept:"禮", office:"禮部主事", icon:"🎨", tags:"行銷素材・廣告設計",
+  desc:"選物件→AI 自動產出排版好的宣傳 DM／海報。", url:"", live:false},
+ {name:"賀成交產生器", dept:"禮", office:"禮部儀制司", icon:"🎉", tags:"成交行銷・賀成交",
+  desc:"輸入案名→一鍵產出恭賀成交圖，發文用。", url:"", live:false},
+ {name:"個人品牌內容儀表板", dept:"禮", office:"禮部郎中", icon:"🎯", tags:"內容企劃・成效追蹤",
+  desc:"你自己的內容產線總覽：定位、選題、稿件、追蹤率一頁看完，跟現有的海線內容機整合。", url:"", live:false},
+ {name:"YT部（YouTube選題板）", dept:"禮", office:"禮部員外郎", icon:"🎬", tags:"內容企劃・影音選題",
+  desc:"抓熱門話題→AI分析→產出下週 YouTube 選題與拍攝清單。已裝在本機，卡在 YouTube 授權最後一步跟要掛哪個正式網域，等你決定才能真的上線。", url:"", live:false},
+ {name:"內訓教材查詢庫", dept:"禮", office:"禮部主事", icon:"📚", tags:"教育訓練・SOP查詢",
+  desc:"SOP、規章、話術範本集中一處查，不用每次都問人。", url:"", live:false},
+
+ {name:"屋主自售雷達", dept:"兵", office:"兵部郎中", icon:"📞", tags:"開發案源・自售追蹤",
+  desc:"抓屋主自售物件，整理成撥號清單，記錄接觸結果。", url:"", live:false},
+ {name:"每日新進物件情報", dept:"兵", office:"兵部主事", icon:"📡", tags:"開發追蹤・案源管理",
+  desc:"沙鹿・清水・梧棲・龍井・大肚・大安・外埔・大甲的新進物件情報與開發分析，每天 09:00 自動掃描。", url:"http://localhost:4323", live:true,
+  note:"本機工具：在 C:\\Agent-OS\\scout 資料夾內執行 node server.js（沒有雙擊捷徑，伺服器要開著才會自動掃描）"},
+ {name:"紙本開發信系統", dept:"兵", office:"兵部郎中", icon:"✉️", tags:"開發信・名單追蹤",
+  desc:"合法名單管理→個人化開發信→列印信封標籤→記錄回覆→追蹤到委託，完整紙本開發信流程。", url:"http://localhost:4322", live:true,
+  note:"本機工具：先雙擊 C:\\Agent-OS\\letters\\啟動開發信系統.bat"},
+ {name:"競品戰情室", dept:"兵", office:"兵部侍郎", icon:"📊", tags:"市場分析・競品監控",
+  desc:"填社區名自動抓 591 同型競品，排出價格階梯、發警報、產屋主回報草稿。", url:"", live:false},
+ {name:"海線社區成交索引", dept:"兵", office:"兵部員外郎", icon:"🧭", tags:"市場情報・區域總覽",
+  desc:"沙鹿・梧棲・龍井・清水 148 個社區實價登錄，官網上已經在跑。目前是資料表，還不是互動地圖（互動版仍是候補候缺）。", url:"https://kuanhome.com/haixian-communities", live:true},
+ {name:"社區主檔管理後台", dept:"兵", office:"兵部員外郎", icon:"🗺️", tags:"市場情報・社區資料維護",
+  desc:"上面那份索引背後的可編輯後台，還能看每個社區有幾個買方在等，官網上已經在跑。", url:"https://kuanhome.com/admin/communities", live:true},
+ {name:"房價行情分析產線", dept:"兵", office:"兵部主事", icon:"📉", tags:"市場分析・行情報告", cli:true,
+  cmd:"C:\\Agent-OS\\房價分析\\產線\\",
+  desc:"內政部實價登錄批次分析→社群圖卡＋官網行情頁，海線各行政區成交分析的資料/程式/產出都在這。", url:"", live:true,
+  note:"本機工具：資料夾 C:\\Agent-OS\\房價分析，依規格書操作"},
+
+ {name:"合約／斡旋書風險檢查", dept:"刑", office:"刑部主事", icon:"⚖️", tags:"法務風控・合約審查",
+  desc:"貼合約或斡旋書內容→AI 檢查常見風險條款、缺漏欄位，提醒你哪裡要注意。", url:"", live:false},
+
+ {name:"海線學區查詢地圖", dept:"工", office:"欽天監", icon:"📍", tags:"市場情報・生活機能",
+  desc:"沙鹿・清水・梧棲・龍井・大肚・大甲國中小學區查詢，官網上已經在跑，衝 SEO 自然流量、導回官網。", url:"https://kuanhome.com/haixian-school-map", live:true},
+ {name:"工業區地圖", dept:"工", office:"工部員外郎", icon:"🏭", tags:"市場情報・工業用地",
+  desc:"廠房與工業用地：分區使用、周邊實登、附近同型物件一次查。", url:"", live:false},
+ {name:"廣告底圖產生器", dept:"工", office:"工部營繕司", icon:"🖼️", tags:"行銷素材・廣告設計",
+  desc:"自己做廣告封面：選色系、貼電話與搜尋關鍵字、自動生 QR Code。", url:"", live:false},
+ {name:"空屋虛擬佈置", dept:"工", office:"工部營繕司", icon:"🛋️", tags:"物件包裝・AI佈置",
+  desc:"空屋照片→AI 生成傢俱佈置示意圖，格局屋況不動。", url:"", live:false},
+ {name:"手繪轉格局圖", dept:"工", office:"工部營繕司", icon:"📐", tags:"格局繪圖・專業呈現",
+  desc:"現場手繪草圖拍照上傳→AI 重繪成專業格局圖。", url:"", live:false},
+
+ // ---- 後宮（私事，不算公務）----
+ {name:"個人資產燈號", dept:"後宮", office:"貴妃", icon:"🚦", tags:"私事・不算公務",
+  desc:"登記自己買的股票／資產，每天算一次損益，燈號告訴你賺賠。", url:"", harem:true},
+];
+
+// ---- 今日軍令（示範資料，見說明）----
+const DIRECTIVES = [
+ {pri:"top", label:"最高優先", head:"劉姐｜出現 92% 匹配物件", tip:"建議今日聯絡並安排帶看"},
+ {pri:"mid", label:"重要", head:"海濱路透天｜刊登 21 天", tip:"競品降價，建議聯絡屋主"},
+ {pri:"mid", label:"重要", head:"3 組帶看客超過 72 小時", tip:"建議立即追蹤"},
+ {pri:"low", label:"次要", head:"陳先生｜斡旋差距 38 萬", tip:"建議擬定議價策略"},
+ {pri:"low", label:"次要", head:"今日尚未發佈短影音", tip:"建議產出 1 支"},
+];
+
+function esc(s){return (s||"").replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));}
+
+// ---- 今日軍令渲染 ----
+const dcards=document.getElementById("dcards");
+DIRECTIVES.forEach((d,i)=>{
+ const el=document.createElement("div"); el.className="dcard";
+ const priClass = d.pri==="top"?"pri-top":d.pri==="mid"?"pri-mid":"pri-low";
+ el.innerHTML = `<div class="rank">${i+1}</div><span class="pri ${priClass}">${esc(d.label)}</span>
+   <div class="head">${esc(d.head)}</div><div class="tip">${esc(d.tip)}</div>`;
+ dcards.appendChild(el);
+});
+document.getElementById("dirCount").textContent = DIRECTIVES.length;
+document.getElementById("today").textContent = new Date().toLocaleDateString("zh-TW",{year:"numeric",month:"2-digit",day:"2-digit",weekday:"long"});
+
+// ---- 收藏（localStorage，只在這台瀏覽器生效）----
+let favs = {};
+try{ favs = JSON.parse(localStorage.getItem("haixian-hub-favs")||"{}"); }catch(e){}
+function saveFavs(){ try{ localStorage.setItem("haixian-hub-favs", JSON.stringify(favs)); }catch(e){} }
+
+async function copyText(txt, btn){
+ let ok=false;
+ try{ if(navigator.clipboard && window.isSecureContext){ await navigator.clipboard.writeText(txt); ok=true; } }catch(e){}
+ if(!ok){
+  try{
+   const ta=document.createElement("textarea"); ta.value=txt;
+   ta.style.cssText="position:fixed;top:0;left:0;width:1px;height:1px;opacity:0";
+   document.body.appendChild(ta); ta.focus(); ta.select();
+   ok=document.execCommand("copy"); document.body.removeChild(ta);
+  }catch(_){}
+ }
+ const old=btn.textContent;
+ btn.textContent = ok ? "✓" : "×";
+ setTimeout(()=>btn.textContent=old, 1200);
+}
+
+function card(t, idx){
+ const el=document.createElement("div");
+ const dc = DEPT_COLOR[t.dept]||"#8a93a8", db = DEPT_BG[t.dept]||"#eef3ff";
+ el.style.setProperty("--dept-c", dc); el.style.setProperty("--dept-bg", db);
+ el.className="card" + (t.live ? "" : " planned") + (t.harem ? " harem" : "");
+ el.dataset.dept = t.dept;
+ el.dataset.key=(t.name+" "+t.desc+" "+(t.office||"")+" "+(t.tags||"")).toLowerCase();
+ el.dataset.idx = idx;
+ const waitBadge = t.harem ? "尚未入宮" : "候補中，尚未補缺";
+ const isFav = !!favs[idx];
+ const statusLine = t.live
+   ? (t.cli ? `<div class="url">📟 ${esc(t.cmd||"命令列工具")}</div>` : `<div class="url">${esc(t.url)}</div>`)
+   : `<span class="badge">${waitBadge}</span>`;
+ const body = `
+  <div class="row">
+   <div class="icon">${t.icon}</div>
+   <div class="name">${esc(t.name)}</div>
+  </div>
+  ${t.office ? `<span class="office">${esc(t.office)}</span>` : ""}
+  <div class="desc">${esc(t.desc)}${t.note ? "<br><small style='color:#b5895a'>"+esc(t.note)+"</small>" : ""}</div>
+  ${t.tags ? `<div class="tags">${esc(t.tags)}</div>` : ""}
+  ${statusLine}
+ `;
+ const starBtn = `<button class="star ${isFav?"on":""}" title="收藏">${isFav?"★":"☆"}</button>`;
+ if(t.live && t.cli){
+  el.innerHTML = starBtn + `<button class="copy" title="複製指令">⧉</button>` + body;
+  el.querySelector(".copy").onclick=(e)=>{ e.preventDefault(); e.stopPropagation(); copyText(t.cmd||"", e.target); };
+  el.style.cursor="default";
+ } else if(t.live){
+  el.innerHTML = starBtn + `<button class="copy" title="複製網址">⧉</button>` +
+    `<a class="open" href="${esc(t.url)}" target="_blank" rel="noopener">${body}</a>`;
+  el.querySelector(".copy").onclick=(e)=>{ e.preventDefault(); e.stopPropagation(); copyText(t.url, e.target); };
+ } else {
+  el.innerHTML = starBtn + body;
+  const msg = t.harem
+    ? (t.office?"「"+t.office+"」":"") + esc(t.name)+" 目前尚未入宮。想讓她入宮的話，跟我說「做這個」就可以開始了。"
+    : (t.office?"「"+t.office+"」":"") + esc(t.name)+" 目前候補候缺，尚未補上實缺。想讓它到任，直接跟我說「做這個」就可以開始了。";
+  el.addEventListener("click", (e)=>{ if(e.target.closest(".star")) return; alert(msg); });
+  el.style.cursor="pointer";
+ }
+ el.querySelector(".star").onclick=(e)=>{
+  e.preventDefault(); e.stopPropagation();
+  favs[idx] = !favs[idx]; saveFavs();
+  e.target.classList.toggle("on", favs[idx]);
+  e.target.textContent = favs[idx] ? "★" : "☆";
+ };
+ return el;
+}
+
+const liveGrid=document.getElementById("liveGrid");
+const plannedGrid=document.getElementById("plannedGrid");
+TOOLS.forEach((t,idx)=> (t.live?liveGrid:plannedGrid).appendChild(card(t, idx)));
+
+// ---- 篩選（部門 + 收藏 + 搜尋 一起套用）----
+let activeDept = "all";
+function applyFilters(){
+ const q=document.getElementById("search").value.trim().toLowerCase();
+ let anyVisible=false;
+ document.querySelectorAll(".card").forEach(c=>{
+  const idx = c.dataset.idx;
+  const matchQ = !q || c.dataset.key.includes(q);
+  let matchDept = true;
+  if(activeDept==="fav") matchDept = !!favs[idx];
+  else if(activeDept!=="all") matchDept = c.dataset.dept===activeDept;
+  const show = matchQ && matchDept;
+  c.classList.toggle("hide", !show);
+  if(show) anyVisible=true;
+ });
+ document.getElementById("emptyMsg").classList.toggle("hide", anyVisible);
+}
+document.getElementById("search").addEventListener("input", applyFilters);
+document.querySelectorAll("#depts button").forEach(b=>{
+ b.onclick=()=>{
+  document.querySelectorAll("#depts button").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on");
+  activeDept = b.dataset.dept;
+  applyFilters();
+ };
+});
+
+// ---- 上方導覽列：對應到部門篩選或捲動 ----
+document.querySelectorAll("#nav button").forEach(b=>{
+ b.onclick=()=>{
+  document.querySelectorAll("#nav button").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on");
+  const nav = b.dataset.nav;
+  if(nav==="directives"){
+   document.getElementById("directivesPanel").scrollIntoView({behavior:"smooth"});
+   return;
+  }
+  if(nav==="home"){
+   const allBtn = document.querySelector('#depts button[data-dept="all"]');
+   allBtn.click();
+   window.scrollTo({top:0, behavior:"smooth"});
+   return;
+  }
+  if(nav==="all"){
+   document.querySelector('#depts button[data-dept="all"]').click();
+   document.getElementById("liveGrid").scrollIntoView({behavior:"smooth"});
+   return;
+  }
+  if(nav==="成交" || nav==="稅"){
+   // 目前沒有獨立分類，導去對應部別最相關的工具
+   const map = {"成交":"戶", "稅":"戶"};
+   document.querySelector('#depts button[data-dept="'+map[nav]+'"]').click();
+   document.getElementById("liveGrid").scrollIntoView({behavior:"smooth"});
+   return;
+  }
+  document.querySelector('#depts button[data-dept="'+nav+'"]').click();
+  document.getElementById("liveGrid").scrollIntoView({behavior:"smooth"});
+ };
+});
+</script>
+</body>
+</html>
