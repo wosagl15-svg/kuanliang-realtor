@@ -1,5 +1,6 @@
 /**
- * 海線房仲冠良 bot(@mrbin)推「冠良官方 Line AI 客服機器人」admin 群 — HITL 接手通知用
+ * 海線房仲冠良 bot(官方 LINE ID 已確認為 @asmile，舊註解寫的 @mrbin 是未經查證的錯誤資訊)
+ * 推「冠良官方 Line AI 客服機器人」admin 群 — HITL 接手通知用
  *
  * 2026-06-04: HITL 通知必須走海線房仲冠良 bot 推冠良監控群(海線房仲冠良 bot 不在那群,所以不能用 notifyLineGroup)。
  * 6/01 長期 token 全失效 → 一律 client_credentials 即時 mint(ABIN_LINE_CHANNEL_ID + ABIN_LINE_CHANNEL_SECRET)。
