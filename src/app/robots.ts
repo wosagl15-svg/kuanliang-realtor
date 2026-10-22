@@ -8,6 +8,8 @@ const NEVER_CRAWL = [
   "/admin/",
   // 預約管理連結帶 HMAC token，等於客戶的私人網址，絕對不能被收錄
   "/card/booking/manage",
+  // 內部教育資料（密碼頁），不該被任何爬蟲收錄
+  "/edu",
 ];
 
 /**
