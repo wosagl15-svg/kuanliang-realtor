@@ -17,7 +17,7 @@ const STATIC_PAGES = [
   "qingan3-guide", "qingshui-life", "rental-subsidy", "repurchase-tax",
   "save-elec", "self-build-guide", "self-sale-vs-agent", "selfuse-tax",
   "seller-guide", "shalu-life", "tools", "will-guide", "wuqi-life",
-  "xitun-price", "xu-ping-reform", "yifang-yanglao", "edu",
+  "xitun-price", "xu-ping-reform", "yifang-yanglao",
 ];
 
 const nextConfig: NextConfig = {
